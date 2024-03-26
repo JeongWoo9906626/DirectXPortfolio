@@ -1,5 +1,6 @@
+#include "PreCompile.h"
 #include "EngineString.h"
-#include <Windows.h>
+//#include <Windows.h>
 #include "EngineDebug.h"
 
 UEngineString::UEngineString()

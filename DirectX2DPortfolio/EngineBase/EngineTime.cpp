@@ -1,5 +1,6 @@
+#include "PreCompile.h"
 #include "EngineTime.h"
-#include <Windows.h>
+//#include <Windows.h>
 
 EngineTime::EngineTime() 
 {

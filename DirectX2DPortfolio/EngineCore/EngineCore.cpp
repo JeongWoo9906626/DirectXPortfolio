@@ -1,7 +1,8 @@
+#include "PreCompile.h"
 #include "EngineCore.h"
 #include "EngineOption.h"
-#include <EngineBase/EngineFile.h>
-#include <EngineBase/EngineDirectory.h>
+//#include <EngineBase/EngineFile.h>
+//#include <EngineBase/EngineDirectory.h>
 
 UEngineCore::UEngineCore()
 {

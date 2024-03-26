@@ -1,6 +1,7 @@
+#include "PreCompile.h"
 #include "EnginePath.h"
 #include "EngineDebug.h"
-#include <Windows.h>
+//#include <Windows.h>
 
 UEnginePath::UEnginePath()
 	: Path(std::filesystem::current_path())
