@@ -20,6 +20,7 @@ public:
 	UEngineWindow& operator=(const UEngineWindow& _Other) = delete;
 	UEngineWindow& operator=(UEngineWindow&& _Other) noexcept = delete;
 
+
 	static void Init(HINSTANCE _hInst);
 	static unsigned __int64 WindowMessageLoop(std::function<void()> _Update, std::function<void()> _End);
 
@@ -50,17 +51,17 @@ public:
 		SetWindowTextA(hWnd, _Text.data());
 	}
 
-	void Open(std::string_view _Title = "Title", std::string_view _IconPath = "");
+	void Off()
+	{
+		WindowLive = false;
+	}
 
 	HWND GetHWND() const
 	{
 		return hWnd;
 	}
 
-	void Off()
-	{
-		WindowLive = false;
-	}
+	void Open(std::string_view _Title = "Title", std::string_view _IconPath = "");
 
 	void SetWindowPosition(const FVector& _Pos);
 	void SetWindowScale(const FVector& _Scale);
@@ -89,4 +90,3 @@ private:
 	std::shared_ptr<UWindowImage> WindowImage = nullptr;
 	std::shared_ptr<UWindowImage> BackBufferImage = nullptr;
 };
-

@@ -1,10 +1,10 @@
 #include "PreCompile.h"
 #include "WindowImage.h"
 #include <EngineBase\EngineString.h>
-//#include <Windows.h>
+#include <Windows.h>
 #include <EngineBase\EngineDebug.h>
-//#include <EngineBase\EngineDirectory.h>
-//#include <EngineBase\EngineFile.h>
+#include <EngineBase\EngineDirectory.h>
+#include <EngineBase\EngineFile.h>
 
 // 윈도우에서 이미지를 사용하기 위해서 지원하는 라이브러리.
 // 헤더랑 다르게 라이브러리는 #pragma comment 통해서 추가 해야 한다.
