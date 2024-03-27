@@ -18,10 +18,10 @@ public:
 protected:
 
 private:
-	ID3D11Device* Device = nullptr;
-	ID3D11DeviceContext* Context = nullptr;
+	struct ID3D11Device* Device = nullptr;
+	struct ID3D11DeviceContext* Context = nullptr;
 	const class UEngineWindow* WindowPtr;
 
-	IDXGIAdapter* GetHighPerFormanceAdapter();
+	struct IDXGIAdapter* GetHighPerFormanceAdapter();
 };
 
