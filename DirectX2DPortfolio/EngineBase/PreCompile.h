@@ -19,3 +19,7 @@
 #include <thread>
 #include <mutex>
 #include <atomic>
+
+// 다이렉트의 수학적인 부분
+#include <DirectXPackedVector.h> // 다이렉트벡터 헤더
+#include <DirectXCollision.h> 
