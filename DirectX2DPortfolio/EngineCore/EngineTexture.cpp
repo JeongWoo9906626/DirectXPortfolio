@@ -2,11 +2,11 @@
 #include "EngineTexture.h"
 #include "EngineCore.h"
 
-UEngineTexture::UEngineTexture()
+UEngineTexture::UEngineTexture() 
 {
 }
 
-UEngineTexture::~UEngineTexture()
+UEngineTexture::~UEngineTexture() 
 {
 	if (nullptr != RTV)
 	{
