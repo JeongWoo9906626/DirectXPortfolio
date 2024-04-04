@@ -46,8 +46,23 @@
     <Filter Include="Resources\RenderingSetting">
       <UniqueIdentifier>{cbf5cd2a-6e8e-46f7-a81b-72d6910b9701}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ShaderResources">
+    <Filter Include="Resources\ShaderResources">
       <UniqueIdentifier>{7953b2b6-c3c1-4f92-838d-b85823ab7a49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty">
+      <UniqueIdentifier>{1876382c-d477-4d58-b214-a375a4cf053b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\DirectXTex">
+      <UniqueIdentifier>{ac9f8078-b9a7-4ecf-b46e-b2c7a10ffe91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\DirectXTex\Debug">
+      <UniqueIdentifier>{24f0b29a-fa73-4de6-a1c9-a388745adb0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\DirectXTex\Inc">
+      <UniqueIdentifier>{49648083-c816-4a14-b697-18eae0171479}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\DirectXTex\Release">
+      <UniqueIdentifier>{ba61fcd1-6462-4a4d-84b5-0f765e105a68}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -139,10 +154,13 @@
       <Filter>Resources\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="EngineConstantBuffer.cpp">
-      <Filter>ShaderResources</Filter>
+      <Filter>Resources\ShaderResources</Filter>
     </ClCompile>
     <ClCompile Include="EngineShaderResources.cpp">
-      <Filter>ShaderResources</Filter>
+      <Filter>Resources\ShaderResources</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineSampler.cpp">
+      <Filter>Resources\Texture</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -231,10 +249,24 @@
       <Filter>Device</Filter>
     </ClInclude>
     <ClInclude Include="EngineConstantBuffer.h">
-      <Filter>ShaderResources</Filter>
+      <Filter>Resources\ShaderResources</Filter>
     </ClInclude>
     <ClInclude Include="EngineShaderResources.h">
-      <Filter>ShaderResources</Filter>
+      <Filter>Resources\ShaderResources</Filter>
     </ClInclude>
+    <ClInclude Include="EngineSampler.h">
+      <Filter>Resources\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\DirectxTex\inc\DirectXTex.h">
+      <Filter>ThirdParty\DirectXTex\Inc</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="ThirdParty\DirectxTex\Debug\DirectXTex.lib">
+      <Filter>ThirdParty\DirectXTex\Debug</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="ThirdParty\DirectxTex\Release\DirectXTex.lib">
+      <Filter>ThirdParty\DirectXTex\Release</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>
