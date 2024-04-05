@@ -52,4 +52,6 @@ void APlayer::Tick(float _DeltaTime)
 		AddActorLocation(FVector::Down * _DeltaTime * Speed);
 	}
 
+	int a = 0;
+
 }
