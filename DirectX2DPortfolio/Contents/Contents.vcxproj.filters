@@ -11,16 +11,16 @@
       <UniqueIdentifier>{e9f62990-0fe6-4ce5-96f1-e0093f11c78e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Level\PlayLevel">
-      <UniqueIdentifier>{b6701d10-7d3c-4406-ba60-876ec93384b7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\TitleLevel">
       <UniqueIdentifier>{14f4b457-2fc7-417d-8670-5bfa698ae219}</UniqueIdentifier>
     </Filter>
     <Filter Include="Level\PlayLevel\Actor">
-      <UniqueIdentifier>{c330d029-a667-41ba-8332-f68068e07928}</UniqueIdentifier>
+      <UniqueIdentifier>{958d59fb-0361-4197-98cd-563e4d473954}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\TitleLevel">
+      <UniqueIdentifier>{b6701d10-7d3c-4406-ba60-876ec93384b7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Level\TitleLevel\Actor">
-      <UniqueIdentifier>{958d59fb-0361-4197-98cd-563e4d473954}</UniqueIdentifier>
+      <UniqueIdentifier>{c330d029-a667-41ba-8332-f68068e07928}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -31,15 +31,18 @@
       <Filter>PreCompile</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>Level\TitleLevel\Actor</Filter>
+      <Filter>Level\PlayLevel\Actor</Filter>
     </ClInclude>
     <ClInclude Include="PlayGameMode.h">
-      <Filter>Level\TitleLevel</Filter>
-    </ClInclude>
-    <ClInclude Include="TitleGameMode.h">
       <Filter>Level\PlayLevel</Filter>
     </ClInclude>
+    <ClInclude Include="TitleGameMode.h">
+      <Filter>Level\TitleLevel</Filter>
+    </ClInclude>
     <ClInclude Include="TitleLogo.h">
+      <Filter>Level\TitleLevel\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayBack.h">
       <Filter>Level\PlayLevel\Actor</Filter>
     </ClInclude>
   </ItemGroup>
@@ -51,15 +54,18 @@
       <Filter>PreCompile</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>Level\TitleLevel\Actor</Filter>
+      <Filter>Level\PlayLevel\Actor</Filter>
     </ClCompile>
     <ClCompile Include="PlayGameMode.cpp">
-      <Filter>Level\TitleLevel</Filter>
-    </ClCompile>
-    <ClCompile Include="TitleGameMode.cpp">
       <Filter>Level\PlayLevel</Filter>
     </ClCompile>
+    <ClCompile Include="TitleGameMode.cpp">
+      <Filter>Level\TitleLevel</Filter>
+    </ClCompile>
     <ClCompile Include="TitleLogo.cpp">
+      <Filter>Level\TitleLevel\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayBack.cpp">
       <Filter>Level\PlayLevel\Actor</Filter>
     </ClCompile>
   </ItemGroup>
