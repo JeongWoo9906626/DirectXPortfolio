@@ -143,7 +143,7 @@ void UCamera::Tick(float _DeltaTime)
 	if (true == IsPress(VK_RBUTTON))
 	{
 		// 
-		float4 Rot = GEngine->EngineWindow.GetScreenMouseeDirNormal();
+		float4 Rot = GEngine->EngineWindow.GetScreenMouseDirNormal();
 		AddActorRotation({ -Rot.Y, -Rot.X, 0.0f });
 	}
 }
