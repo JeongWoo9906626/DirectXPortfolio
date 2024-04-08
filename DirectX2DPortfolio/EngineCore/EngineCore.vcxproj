@@ -183,6 +183,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="EngineBlend.h" />
     <ClInclude Include="EngineBuffer.h">
       <SubType>
       </SubType>
@@ -298,6 +299,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="EngineBlend.cpp" />
     <ClCompile Include="EngineBuffer.cpp">
       <SubType>
       </SubType>
