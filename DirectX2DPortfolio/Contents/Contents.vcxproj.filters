@@ -72,6 +72,9 @@
     <ClInclude Include="ActorBase.h">
       <Filter>ActorBase</Filter>
     </ClInclude>
+    <ClInclude Include="Baba.h">
+      <Filter>Level\PlayLevel\Actor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp">
@@ -106,6 +109,9 @@
     </ClCompile>
     <ClCompile Include="ActorBase.cpp">
       <Filter>ActorBase</Filter>
+    </ClCompile>
+    <ClCompile Include="Baba.cpp">
+      <Filter>Level\PlayLevel\Actor</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,5 +1,6 @@
 #include "PreCompile.h"
 #include "ActorBase.h"
+#include <EngineCore/Renderer.h>
 #include <EngineCore/SpriteRenderer.h>
 
 AActorBase::AActorBase()
@@ -15,6 +16,7 @@ AActorBase::~AActorBase()
 void AActorBase::BeginPlay()
 {
 	Super::BeginPlay();
+	SetMoveRange(32.0f);
 }
 
 void AActorBase::Tick(float _DeltaTime)
@@ -83,7 +85,7 @@ void AActorBase::MoveSet()
 	PrevPos = GetActorLocation();
 	NextPos = PrevPos;
 
-	EActorDir CurDir = MoveHistory.top();
+	CurDir = MoveHistory.top();
 	
 	float Dir = 1.0f;
 	if (true == IsBack)

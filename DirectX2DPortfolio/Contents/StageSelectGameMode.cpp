@@ -28,6 +28,11 @@ void AStageSelectGameMode::BeginPlay()
 void AStageSelectGameMode::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
+
+	if (true == UEngineInput::IsDown(VK_SPACE))
+	{
+		GEngine->ChangeLevel("PlayLevel");
+	}
 }
 
 void AStageSelectGameMode::LevelEnd(ULevel* _NextLevel)

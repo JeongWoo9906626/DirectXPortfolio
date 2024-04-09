@@ -22,12 +22,23 @@ protected:
 
 	USpriteRenderer* Renderer = nullptr;
 
-	void MoveSet(); 
+	virtual void MoveSet(); 
 	FVector Lerp(float _CurMoveTime);
+
+	inline void SetMoveRange(float _MoveRange)
+	{
+		MoveRange = _MoveRange;
+	}
+
+	inline EActorDir GetCurDir()
+	{
+		return CurDir;
+	}
 
 private:
 	FVector PrevPos = FVector::Zero;
 	FVector NextPos = FVector::Zero;
+	EActorDir CurDir = EActorDir::None;
 
 	bool IsMove = false;
 	bool IsBack = false;

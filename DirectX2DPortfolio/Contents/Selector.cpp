@@ -1,6 +1,5 @@
 #include "PreCompile.h"
 #include "Selector.h"
-#include <EngineCore/Renderer.h>
 #include <EngineCore/SpriteRenderer.h>
 
 ASelector::ASelector()
