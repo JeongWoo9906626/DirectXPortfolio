@@ -23,44 +23,40 @@ void AActorBase::Tick(float _DeltaTime)
 
 	if (false == IsMove)
 	{
+		if (true == UEngineInput::IsDown('Z'))
+		{
+			if (true == MoveHistory.empty())
+			{
+				return;
+			}
+		
+			IsBack = true;
+			MoveSet();
+			MoveHistory.pop();
+		}
+
 		if (true == UEngineInput::IsDown(VK_LEFT))
 		{
-			PrevPos = GetActorLocation();
-			NextPos = PrevPos; 
-			NextPos.X -= MoveRange;
-
-			CurMoveTime = MoveTime;
-			IsMove = true;
+			MoveHistory.push(EActorDir::Left);
+			MoveSet();
 		}
 		
 		if (true == UEngineInput::IsDown(VK_RIGHT))
 		{
-			PrevPos = GetActorLocation();
-			NextPos = PrevPos;
-			NextPos.X += MoveRange;
-
-			CurMoveTime = MoveTime;
-			IsMove = true;
+			MoveHistory.push(EActorDir::Right);
+			MoveSet();
 		}
 
 		if (true == UEngineInput::IsDown(VK_UP))
 		{
-			PrevPos = GetActorLocation();
-			NextPos = PrevPos;
-			NextPos.Y += MoveRange;
-
-			CurMoveTime = MoveTime;
-			IsMove = true;
+			MoveHistory.push(EActorDir::Up);
+			MoveSet();
 		}
 
 		if (true == UEngineInput::IsDown(VK_DOWN))
 		{
-			PrevPos = GetActorLocation();
-			NextPos = PrevPos;
-			NextPos.Y -= MoveRange;
-
-			CurMoveTime = MoveTime;
-			IsMove = true;
+			MoveHistory.push(EActorDir::Down);
+			MoveSet();
 		}
 	}
 	else
@@ -68,6 +64,7 @@ void AActorBase::Tick(float _DeltaTime)
 		if (CurMoveTime <= 0.0f)
 		{
 			IsMove = false;
+			IsBack = false;
 			CurMoveTime = 0.0f;
 		}
 
@@ -75,6 +72,39 @@ void AActorBase::Tick(float _DeltaTime)
 
 		FVector MoveVector = Lerp(CurMoveTime);
 		SetActorLocation(MoveVector);
+	}
+}
+
+void AActorBase::MoveSet()
+{
+	IsMove = true;
+	CurMoveTime = MoveTime;
+
+	PrevPos = GetActorLocation();
+	NextPos = PrevPos;
+
+	EActorDir CurDir = MoveHistory.top();
+	
+	float Dir = 1.0f;
+	if (true == IsBack)
+	{
+		Dir = -1.0f;
+	}
+
+	switch (CurDir)
+	{
+	case EActorDir::Left:
+		NextPos.X -= MoveRange * Dir;
+		break;
+	case EActorDir::Right:
+		NextPos.X += MoveRange * Dir;
+		break;
+	case EActorDir::Up:
+		NextPos.Y += MoveRange * Dir;
+		break;
+	case EActorDir::Down:
+		NextPos.Y -= MoveRange * Dir;
+		break;
 	}
 }
 

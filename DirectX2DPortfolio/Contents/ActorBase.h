@@ -1,5 +1,6 @@
 #pragma once
 #include <EngineCore/Actor.h>
+#include <stack>
 
 class USpriteRenderer;
 class AActorBase : public AActor
@@ -21,6 +22,7 @@ protected:
 
 	USpriteRenderer* Renderer = nullptr;
 
+	void MoveSet(); 
 	FVector Lerp(float _CurMoveTime);
 
 private:
@@ -28,8 +30,10 @@ private:
 	FVector NextPos = FVector::Zero;
 
 	bool IsMove = false;
+	bool IsBack = false;
 	float MoveRange = 32.0f;
 	float MoveTime = 0.3f;
 	float CurMoveTime = 0.0f;
 
+	std::stack<EActorDir> MoveHistory;
 };
