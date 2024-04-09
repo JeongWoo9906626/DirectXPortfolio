@@ -1,10 +1,10 @@
 #pragma once
-#include <EngineCore/Actor.h>
+#include "ActorBase.h"
 
 class USpriteRenderer;
-class ASelector : public AActor
+class ASelector : public AActorBase
 {
-	GENERATED_BODY(AActor)
+	GENERATED_BODY(AActorBase)
 
 public:
 	ASelector();
@@ -20,6 +20,5 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 private:
-	USpriteRenderer* Renderer = nullptr;
 	float4 Color;
 };

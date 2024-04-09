@@ -31,6 +31,9 @@
     <Filter Include="Option">
       <UniqueIdentifier>{da47febd-2f78-41e7-8843-240836b63c6a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ActorBase">
+      <UniqueIdentifier>{ca6212d7-ddf8-4222-8cec-561069d76beb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ContentsCore.h">
@@ -66,6 +69,9 @@
     <ClInclude Include="EnumHelper.h">
       <Filter>Option</Filter>
     </ClInclude>
+    <ClInclude Include="ActorBase.h">
+      <Filter>ActorBase</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp">
@@ -97,6 +103,9 @@
     </ClCompile>
     <ClCompile Include="Selector.cpp">
       <Filter>Level\StageSelectLevel\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="ActorBase.cpp">
+      <Filter>ActorBase</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
