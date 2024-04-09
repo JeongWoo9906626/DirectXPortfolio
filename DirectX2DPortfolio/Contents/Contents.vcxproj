@@ -165,6 +165,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="EnumHelper.h" />
     <ClInclude Include="PlayBack.h">
       <SubType>
       </SubType>

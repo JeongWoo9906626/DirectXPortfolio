@@ -28,6 +28,9 @@
     <Filter Include="Level\StageSelectLevel\Actor">
       <UniqueIdentifier>{2f2a1a90-6fd5-41ef-9be2-b7fff8664f83}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Option">
+      <UniqueIdentifier>{da47febd-2f78-41e7-8843-240836b63c6a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ContentsCore.h">
@@ -59,6 +62,9 @@
     </ClInclude>
     <ClInclude Include="Selector.h">
       <Filter>Level\StageSelectLevel\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="EnumHelper.h">
+      <Filter>Option</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

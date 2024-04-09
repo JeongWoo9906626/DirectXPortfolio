@@ -23,6 +23,7 @@ void ASelectMap::BeginPlay()
 
 	Renderer->CreateAnimation("SelectMap", "SelectMap.png", 0.1f, true);
 	Renderer->ChangeAnimation("SelectMap");
+	Renderer->SetOrder(ERenderOrder::Map);
 }
 
 void ASelectMap::Tick(float _DeltaTime)

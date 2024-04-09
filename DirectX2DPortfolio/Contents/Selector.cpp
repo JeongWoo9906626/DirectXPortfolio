@@ -22,6 +22,7 @@ void ASelector::BeginPlay()
 
 	Renderer->CreateAnimation("SelectMove", "Selector.png", 0.1f, true);
 	Renderer->ChangeAnimation("SelectMove");
+	Renderer->SetOrder(ERenderOrder::Player);
 }
 
 void ASelector::Tick(float _DeltaTime)
