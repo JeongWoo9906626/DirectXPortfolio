@@ -79,7 +79,7 @@ std::string UEngineString::ToUpper(std::string_view View)
 		_Ch = std::toupper(_Ch);
 	}
 
-	return Name;
+	return Name; 
 }
 
 std::vector<std::string> UEngineString::StringCutting(std::string& _Value, std::string_view _Start, std::string_view _End)

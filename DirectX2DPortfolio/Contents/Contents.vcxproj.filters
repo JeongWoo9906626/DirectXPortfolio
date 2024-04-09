@@ -22,6 +22,12 @@
     <Filter Include="Level\TitleLevel\Actor">
       <UniqueIdentifier>{c330d029-a667-41ba-8332-f68068e07928}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Level\StageSelectLevel">
+      <UniqueIdentifier>{5973b534-6b5e-41d8-9e5e-c9ab59ec6c83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\StageSelectLevel\Actor">
+      <UniqueIdentifier>{2f2a1a90-6fd5-41ef-9be2-b7fff8664f83}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ContentsCore.h">
@@ -45,6 +51,15 @@
     <ClInclude Include="PlayBack.h">
       <Filter>Level\PlayLevel\Actor</Filter>
     </ClInclude>
+    <ClInclude Include="StageSelectGameMode.h">
+      <Filter>Level\StageSelectLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectMap.h">
+      <Filter>Level\StageSelectLevel\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Selector.h">
+      <Filter>Level\StageSelectLevel\Actor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp">
@@ -67,6 +82,15 @@
     </ClCompile>
     <ClCompile Include="PlayBack.cpp">
       <Filter>Level\PlayLevel\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="StageSelectGameMode.cpp">
+      <Filter>Level\StageSelectLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectMap.cpp">
+      <Filter>Level\StageSelectLevel\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Selector.cpp">
+      <Filter>Level\StageSelectLevel\Actor</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
