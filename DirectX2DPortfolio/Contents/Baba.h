@@ -19,8 +19,14 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 	void MoveSet() override;
+	void ChangeMoveAnimation();
 
 private:
 	float4 Color;
 
+	int AnimationIndex;
+
+	EActorDir PrevDir = EActorDir::None;
+	EActorDir NextDir = EActorDir::None;
+	EActorDir PlayerDir = EActorDir::None;
 };

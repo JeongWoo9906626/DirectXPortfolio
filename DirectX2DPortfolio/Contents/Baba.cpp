@@ -20,17 +20,83 @@ void ABaba::BeginPlay()
 	SetMoveRange(100.0f);
 
 	SetActorScale3D(FVector(1000.0f, 1000.0f, 20.0f));
-	Renderer->CreateAnimation("BabaMove_Left", "Baba.png", 0.1f, true, 9, 12);
-	Renderer->CreateAnimation("BabaMove_Right", "Baba.png", 0.1f, true, 1, 4);
-	Renderer->CreateAnimation("BabaMove_Up", "Baba.png", 0.1f, true, 5, 8);
-	Renderer->CreateAnimation("BabaMove_Down", "Baba.png", 0.1f, true, 13, 16);
 
-	Renderer->CreateAnimation("BabaIdle_Left", "Baba.png", 0.1f, true, 9, 9);
-	Renderer->CreateAnimation("BabaIdle_Right", "Baba.png", 0.1f, true, 1, 1);
-	Renderer->CreateAnimation("BabaIdle_Up", "Baba.png", 0.1f, true, 5, 5);
-	Renderer->CreateAnimation("BabaIdle_Down", "Baba.png", 0.1f, true, 13, 13);
+	// Move_Right 0 ~ 4
+	{
+		int AnimationNumber = 0;
+		for (int x = 0; x < 4; x++)
+		{
+			std::vector<int> AnimationFrameIndex;
+			std::vector<float> AnimationInterIndex;
+			for (int y = 0; y < 3; y++)
+			{
+				int Index = (y * 17) + x + 1;
+				AnimationFrameIndex.push_back(Index);
+				AnimationInterIndex.push_back(0.1f);
+			}
+			Renderer->CreateAnimation("BabaMove_Right" + std::to_string(AnimationNumber), "Baba.png", AnimationInterIndex, AnimationFrameIndex, true);
+			AnimationNumber++;
+		}
+	}
 
-	Renderer->ChangeAnimation("BabaIdle_Right");
+	// Move_Left 0 ~ 4
+	{
+		int AnimationNumber = 0;
+		for (int x = 0; x < 4; x++)
+		{
+			std::vector<int> AnimationFrameIndex;
+			std::vector<float> AnimationInterIndex;
+			for (int y = 0; y < 3; y++)
+			{
+				int Index = (y * 17) + x + 9;
+				AnimationFrameIndex.push_back(Index);
+				AnimationInterIndex.push_back(0.1f);
+			}
+			Renderer->CreateAnimation("BabaMove_Left" + std::to_string(AnimationNumber), "Baba.png", AnimationInterIndex, AnimationFrameIndex, true);
+			AnimationNumber++;
+		}
+	}
+
+	// Move_Up 0 ~ 4
+	{
+		int AnimationNumber = 0;
+		for (int x = 0; x < 4; x++)
+		{
+			std::vector<int> AnimationFrameIndex;
+			std::vector<float> AnimationInterIndex;
+			for (int y = 0; y < 3; y++)
+			{
+				int Index = (y * 17) + x + 5;
+				AnimationFrameIndex.push_back(Index);
+				AnimationInterIndex.push_back(0.1f);
+			}
+			Renderer->CreateAnimation("BabaMove_Up" + std::to_string(AnimationNumber), "Baba.png", AnimationInterIndex, AnimationFrameIndex, true);
+			AnimationNumber++;
+		}
+	}
+
+	// Move_Down 0 ~ 4
+	{
+		int AnimationNumber = 0;
+		for (int x = 0; x < 4; x++)
+		{
+			std::vector<int> AnimationFrameIndex;
+			std::vector<float> AnimationInterIndex;
+			for (int y = 0; y < 3; y++)
+			{
+				int Index = (y * 17) + x + 13;
+				AnimationFrameIndex.push_back(Index);
+				AnimationInterIndex.push_back(0.1f);
+			}
+			Renderer->CreateAnimation("BabaMove_Down" + std::to_string(AnimationNumber), "Baba.png", AnimationInterIndex, AnimationFrameIndex, true);
+			AnimationNumber++;
+		}
+	}
+
+
+
+
+	Renderer->ChangeAnimation("BabaMove_Right0");
 	Renderer->SetOrder(ERenderOrder::Player);
 }
 
@@ -42,21 +108,35 @@ void ABaba::Tick(float _DeltaTime)
 void ABaba::MoveSet()
 {
 	Super::MoveSet();
-	EActorDir CurDir = GetCurDir();
+	NextDir = GetCurDir();
 
-	switch (CurDir)
+	ChangeMoveAnimation();
+}
+
+void ABaba::ChangeMoveAnimation()
+{
+	if (PrevDir != NextDir || AnimationIndex >= 4)
+	{
+		AnimationIndex = 0;
+	}
+
+	switch (NextDir)
 	{
 	case EActorDir::Left:
-		Renderer->ChangeAnimation("BabaMove_Left");
+		Renderer->ChangeAnimation("BabaMove_Left" + std::to_string(AnimationIndex));
 		break;
 	case EActorDir::Right:
-		Renderer->ChangeAnimation("BabaMove_Right");
+		Renderer->ChangeAnimation("BabaMove_Right" + std::to_string(AnimationIndex));
 		break;
 	case EActorDir::Up:
-		Renderer->ChangeAnimation("BabaMove_Up");
+		Renderer->ChangeAnimation("BabaMove_Up" + std::to_string(AnimationIndex));
 		break;
 	case EActorDir::Down:
-		Renderer->ChangeAnimation("BabaMove_Down");
+		Renderer->ChangeAnimation("BabaMove_Down" + std::to_string(AnimationIndex));
 		break;
 	}
+	
+	AnimationIndex++;
+	PrevDir = NextDir;
+	NextDir = EActorDir::None;
 }
