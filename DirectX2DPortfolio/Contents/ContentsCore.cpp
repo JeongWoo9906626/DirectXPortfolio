@@ -3,6 +3,7 @@
 #include "PlayGameMode.h"
 #include "TitleGameMode.h"
 #include "StageSelectGameMode.h"
+#include "TestGameMode.h"
 #include <EngineCore/EngineSprite.h>
 
 UContentsCore::UContentsCore()
@@ -70,6 +71,7 @@ void UContentsCore::Initialize()
 	GEngine->CreateLevel<ATitleGameMode>("TitleLevel");
 	GEngine->CreateLevel<AStageSelectGameMode>("SelectLevel");
 	GEngine->CreateLevel<APlayGameMode>("PlayLevel");
+	GEngine->CreateLevel<ATestGameMode>("TestLevel");
 	GEngine->ChangeLevel("TitleLevel");
 
 }

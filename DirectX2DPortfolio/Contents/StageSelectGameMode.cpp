@@ -33,6 +33,11 @@ void AStageSelectGameMode::Tick(float _DeltaTime)
 	{
 		GEngine->ChangeLevel("PlayLevel");
 	}
+
+	if (true == UEngineInput::IsDown('O'))
+	{
+		GEngine->ChangeLevel("TestLevel");
+	}
 }
 
 void AStageSelectGameMode::LevelEnd(ULevel* _NextLevel)

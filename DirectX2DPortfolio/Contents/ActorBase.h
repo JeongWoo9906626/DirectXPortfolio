@@ -1,9 +1,8 @@
 #pragma once
-#include <EngineCore/Actor.h>
 #include <stack>
+#include "Tile.h"
 
-class USpriteRenderer;
-class AActorBase : public AActor
+class AActorBase : public ATile
 {
 	GENERATED_BODY(AActor)
 
@@ -20,10 +19,8 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-	USpriteRenderer* Renderer = nullptr;
-
 	virtual void MoveSet(); 
-	FVector Lerp(float _CurMoveTime);
+	FINT Lerp(float _CurMoveTime);
 
 	inline void SetMoveRange(float _MoveRange)
 	{
@@ -43,8 +40,8 @@ protected:
 	std::stack<int> AnimationIndexHistory;
 
 private:
-	FVector PrevPos = FVector::Zero;
-	FVector NextPos = FVector::Zero;
+	FINT PrevPos = FINT();
+	FINT NextPos = FINT();
 	EActorDir CurDir = EActorDir::None;
 
 	bool IsMove = false;

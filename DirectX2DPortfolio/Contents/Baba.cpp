@@ -17,8 +17,6 @@ void ABaba::BeginPlay()
 {
 	Super::BeginPlay();
 
-	SetMoveRange(100.0f);
-
 	SetActorScale3D(FVector(1000.0f, 1000.0f, 20.0f));
 
 	// Move_Right 0 ~ 4

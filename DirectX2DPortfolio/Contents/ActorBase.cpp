@@ -1,7 +1,6 @@
 #include "PreCompile.h"
 #include "ActorBase.h"
-#include <EngineCore/Renderer.h>
-#include <EngineCore/SpriteRenderer.h>
+#include <EngineCore/EngineDebugMsgWindow.h>
 
 AActorBase::AActorBase()
 {
@@ -22,6 +21,17 @@ void AActorBase::BeginPlay()
 void AActorBase::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
+
+	{
+		FVector TilePos = { TilePosition.X, TilePosition.Y, 0 };
+		std::string Msg = std::format("PlayerTilePos : {}\n", std::to_string(TilePos.X) + " " + std::to_string(TilePos.Y));
+		UEngineDebugMsgWindow::PushMsg(Msg);
+	}
+	{
+		FVector TilePos = { TilePosition.X, TilePosition.Y, 0 };
+		std::string Msg = std::format("PlayerPos : {}\n", GetActorLocation().ToString());
+		UEngineDebugMsgWindow::PushMsg(Msg);
+	}
 
 	if (false == IsMove)
 	{
@@ -74,11 +84,15 @@ void AActorBase::Tick(float _DeltaTime)
 			IsBack = false;
 			IsMove = false;
 			CurMoveTime = 0.0f;
+
+			FVector FloatToIntPos = { static_cast<int>(TilePosition.X * TileSize), static_cast<int>(TilePosition.Y * TileSize) };
+			SetActorLocation(FloatToIntPos);
 		}
 
 		CurMoveTime -= _DeltaTime;
 
-		FVector MoveVector = Lerp(CurMoveTime);
+		FINT MovePos = Lerp(CurMoveTime);
+		FVector MoveVector = { static_cast<float>(MovePos.X), static_cast<float>(MovePos.Y), 0.0f, 0.0f };
 		SetActorLocation(MoveVector);
 	}
 }
@@ -88,8 +102,10 @@ void AActorBase::MoveSet()
 	IsMove = true;
 	CurMoveTime = MoveTime;
 
-	PrevPos = GetActorLocation();
+	PrevPos = TilePosition.GetPos();
 	NextPos = PrevPos;
+
+	int a = 0;
 
 	CurDir = MoveHistory.top();
 	
@@ -102,24 +118,31 @@ void AActorBase::MoveSet()
 	switch (CurDir)
 	{
 	case EActorDir::Left:
-		NextPos.X -= MoveRange * Dir;
+		TilePosition.X -= 1.0f * Dir;
 		break;
 	case EActorDir::Right:
-		NextPos.X += MoveRange * Dir;
+		TilePosition.X += 1.0f * Dir;
 		break;
 	case EActorDir::Up:
-		NextPos.Y += MoveRange * Dir;
+		TilePosition.Y += 1.0f * Dir;
 		break;
 	case EActorDir::Down:
-		NextPos.Y -= MoveRange * Dir;
+		TilePosition.Y -= 1.0f * Dir;
 		break;
 	}
+	
+	NextPos = TilePosition;
+	
+	int a2 = 0;
 }
 
-FVector AActorBase::Lerp(float _CurMoveTime)
+FINT AActorBase::Lerp(float _CurMoveTime)
 {
 	float t = (MoveTime - _CurMoveTime) / MoveTime;
-	FVector CurPos = PrevPos * (1 - t) + NextPos * t;
+
+	FINT CurPos;
+	CurPos.X = PrevPos.X* TileSize* (1 - t) + NextPos.X * TileSize * t;
+	CurPos.Y = PrevPos.Y* TileSize* (1 - t) + NextPos.Y * TileSize * t;
 
 	return CurPos;
 }
