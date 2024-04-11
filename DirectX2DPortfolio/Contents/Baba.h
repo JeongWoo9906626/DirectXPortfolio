@@ -24,7 +24,7 @@ protected:
 private:
 	float4 Color;
 
-	int AnimationIndex;
+	int AnimationIndex = 1;
 
 	EActorDir PrevDir = EActorDir::None;
 	EActorDir NextDir = EActorDir::None;

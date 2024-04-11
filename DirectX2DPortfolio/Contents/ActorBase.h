@@ -35,6 +35,13 @@ protected:
 		return CurDir;
 	}
 
+	inline bool GetIsBack()
+	{
+		return IsBack;
+	}
+
+	std::stack<int> AnimationIndexHistory;
+
 private:
 	FVector PrevPos = FVector::Zero;
 	FVector NextPos = FVector::Zero;

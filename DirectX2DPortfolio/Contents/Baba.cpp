@@ -96,7 +96,7 @@ void ABaba::BeginPlay()
 
 
 
-	Renderer->ChangeAnimation("BabaMove_Right0");
+	Renderer->ChangeAnimation("BabaMove_Down0");
 	Renderer->SetOrder(ERenderOrder::Player);
 }
 
@@ -115,28 +115,72 @@ void ABaba::MoveSet()
 
 void ABaba::ChangeMoveAnimation()
 {
-	if (PrevDir != NextDir || AnimationIndex >= 4)
+	if (false == GetIsBack())
 	{
-		AnimationIndex = 0;
-	}
+		if (true == AnimationIndexHistory.empty())
+		{
+			AnimationIndexHistory.push(1);
+		}
+		else
+		{
+			if (AnimationIndexHistory.top() >= 3)
+			{
+				AnimationIndexHistory.push(0);
+			}
+			else
+			{
+				int InsertIndexNumber = AnimationIndexHistory.top() + 1;
+				AnimationIndexHistory.push(InsertIndexNumber);
+			}
+		}
 
-	switch (NextDir)
-	{
-	case EActorDir::Left:
-		Renderer->ChangeAnimation("BabaMove_Left" + std::to_string(AnimationIndex));
-		break;
-	case EActorDir::Right:
-		Renderer->ChangeAnimation("BabaMove_Right" + std::to_string(AnimationIndex));
-		break;
-	case EActorDir::Up:
-		Renderer->ChangeAnimation("BabaMove_Up" + std::to_string(AnimationIndex));
-		break;
-	case EActorDir::Down:
-		Renderer->ChangeAnimation("BabaMove_Down" + std::to_string(AnimationIndex));
-		break;
+		AnimationIndex = AnimationIndexHistory.top();
+
+		switch (NextDir)
+		{
+		case EActorDir::Left:
+			Renderer->ChangeAnimation("BabaMove_Left" + std::to_string(AnimationIndex));
+			break;
+		case EActorDir::Right:
+			Renderer->ChangeAnimation("BabaMove_Right" + std::to_string(AnimationIndex));
+			break;
+		case EActorDir::Up:
+			Renderer->ChangeAnimation("BabaMove_Up" + std::to_string(AnimationIndex));
+			break;
+		case EActorDir::Down:
+			Renderer->ChangeAnimation("BabaMove_Down" + std::to_string(AnimationIndex));
+			break;
+		}
+
+		PrevDir = NextDir;
+		NextDir = EActorDir::None;
 	}
-	
-	AnimationIndex++;
-	PrevDir = NextDir;
-	NextDir = EActorDir::None;
+	else
+	{
+		if (true == AnimationIndexHistory.empty())
+		{
+			Renderer->ChangeAnimation("BabaMove_Down0");
+			return;
+		}
+
+		int HistoryIndex = AnimationIndexHistory.top();
+
+		switch (NextDir)
+		{
+		case EActorDir::Left:
+			Renderer->ChangeAnimation("BabaMove_Left" + std::to_string(HistoryIndex));
+			break;
+		case EActorDir::Right:
+			Renderer->ChangeAnimation("BabaMove_Right" + std::to_string(HistoryIndex));
+			break;
+		case EActorDir::Up:
+			Renderer->ChangeAnimation("BabaMove_Up" + std::to_string(HistoryIndex));
+			break;
+		case EActorDir::Down:
+			Renderer->ChangeAnimation("BabaMove_Down" + std::to_string(HistoryIndex));
+			break;
+		}
+
+		AnimationIndexHistory.pop();
+	}
 }
