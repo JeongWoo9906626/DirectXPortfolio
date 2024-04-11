@@ -93,9 +93,6 @@ void ABaba::BeginPlay()
 		}
 	}
 
-
-
-
 	Renderer->ChangeAnimation("BabaMove_Down0");
 	Renderer->SetOrder(ERenderOrder::Player);
 }
@@ -180,7 +177,5 @@ void ABaba::ChangeMoveAnimation()
 			Renderer->ChangeAnimation("BabaMove_Down" + std::to_string(HistoryIndex));
 			break;
 		}
-
-		AnimationIndexHistory.pop();
 	}
 }

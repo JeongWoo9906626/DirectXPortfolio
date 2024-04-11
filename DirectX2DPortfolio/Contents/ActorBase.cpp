@@ -33,7 +33,7 @@ void AActorBase::Tick(float _DeltaTime)
 				return;
 			}
 
-			if (false == IsBack)
+			if (false == AnimationIndexHistory.empty())
 			{
 				AnimationIndexHistory.pop();
 			}
@@ -45,28 +45,24 @@ void AActorBase::Tick(float _DeltaTime)
 
 		if (true == UEngineInput::IsDown(VK_LEFT))
 		{
-			IsBack = false;
 			MoveHistory.push(EActorDir::Left);
 			MoveSet();
 		}
 
 		if (true == UEngineInput::IsDown(VK_RIGHT))
 		{
-			IsBack = false;
 			MoveHistory.push(EActorDir::Right);
 			MoveSet();
 		}
 
 		if (true == UEngineInput::IsDown(VK_UP))
 		{
-			IsBack = false;
 			MoveHistory.push(EActorDir::Up);
 			MoveSet();
 		}
 
 		if (true == UEngineInput::IsDown(VK_DOWN))
 		{
-			IsBack = false;
 			MoveHistory.push(EActorDir::Down);
 			MoveSet();
 		}
@@ -75,6 +71,7 @@ void AActorBase::Tick(float _DeltaTime)
 	{
 		if (CurMoveTime <= 0.0f)
 		{
+			IsBack = false;
 			IsMove = false;
 			CurMoveTime = 0.0f;
 		}
