@@ -26,6 +26,8 @@ public:
 		return TilePosition;
 	}
 
+	virtual bool MoveCheck(EActorDir _Dir) { return false; }
+
 
 protected:
 	void BeginPlay() override;

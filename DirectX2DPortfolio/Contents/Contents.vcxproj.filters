@@ -72,9 +72,6 @@
     <ClInclude Include="Selector.h">
       <Filter>Level\StageSelectLevel\Actor</Filter>
     </ClInclude>
-    <ClInclude Include="EnumHelper.h">
-      <Filter>Option</Filter>
-    </ClInclude>
     <ClInclude Include="ActorBase.h">
       <Filter>ActorBase</Filter>
     </ClInclude>
@@ -92,6 +89,9 @@
     </ClInclude>
     <ClInclude Include="TestMap.h">
       <Filter>Level\TestLevel\TestMap</Filter>
+    </ClInclude>
+    <ClInclude Include="EnumHelper.h">
+      <Filter>Option</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +139,9 @@
     </ClCompile>
     <ClCompile Include="TestMap.cpp">
       <Filter>Level\TestLevel\TestMap</Filter>
+    </ClCompile>
+    <ClCompile Include="ContentsStruct.cpp">
+      <Filter>Option</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -55,24 +55,40 @@ void AActorBase::Tick(float _DeltaTime)
 
 		if (true == UEngineInput::IsDown(VK_LEFT))
 		{
+			if (false == MoveCheck(EActorDir::Left))
+			{
+				return;
+			}
 			MoveHistory.push(EActorDir::Left);
 			MoveSet();
 		}
 
 		if (true == UEngineInput::IsDown(VK_RIGHT))
 		{
+			if (false == MoveCheck(EActorDir::Right))
+			{
+				return;
+			}
 			MoveHistory.push(EActorDir::Right);
 			MoveSet();
 		}
 
 		if (true == UEngineInput::IsDown(VK_UP))
 		{
+			if (false == MoveCheck(EActorDir::Up))
+			{
+				return;
+			}
 			MoveHistory.push(EActorDir::Up);
 			MoveSet();
 		}
 
 		if (true == UEngineInput::IsDown(VK_DOWN))
 		{
+			if (false == MoveCheck(EActorDir::Down))
+			{
+				return;
+			}
 			MoveHistory.push(EActorDir::Down);
 			MoveSet();
 		}
@@ -94,6 +110,53 @@ void AActorBase::Tick(float _DeltaTime)
 		FINT MovePos = Lerp(CurMoveTime);
 		FVector MoveVector = { static_cast<float>(MovePos.X), static_cast<float>(MovePos.Y), 0.0f, 0.0f };
 		SetActorLocation(MoveVector);
+	}
+}
+
+bool AActorBase::MoveCheck(EActorDir _Dir)
+{
+	FINT CurTilePos = TilePosition;
+	FINT NextTilePos = CurTilePos;
+
+	switch (_Dir)
+	{
+	case EActorDir::Left:
+		NextTilePos.X -= 1;
+		break;
+	case EActorDir::Right:
+		NextTilePos.X += 1;
+		break;
+	case EActorDir::Up:
+		NextTilePos.Y += 1;
+		break;
+	case EActorDir::Down:
+		NextTilePos.Y -= 1;
+		break;
+	}
+
+	FINT MapTileSize = FINT::MapSize;
+	if (NextTilePos.X >= MapTileSize.X)
+	{
+		return false;
+	}
+	else if (NextTilePos.X < 0)
+	{
+		return false;
+	}
+	else
+	{
+		if (NextTilePos.Y >= MapTileSize.Y)
+		{
+			return false;
+		}
+		else if (NextTilePos.Y < 0)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
 	}
 }
 

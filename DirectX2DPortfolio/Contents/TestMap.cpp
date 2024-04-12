@@ -23,9 +23,10 @@ void ATestMap::BeginPlay()
 
 	SetActorScale3D(FVector(ScreenX * 1.295f, ScreenY * 2.37f, 100.0f));
 
-	for (int y = 0; y < 3; y++)
+	FINT::MapSize = FINT(3, 3);
+	for (int y = 0; y < FINT::MapSize.Y; y++)
 	{
-		for (int x = 0; x < 3; x++)
+		for (int x = 0; x < FINT::MapSize.X; x++)
 		{
 			FINT Pos = FINT(x, y);
 			std::shared_ptr<ATile> NewTile = std::make_shared<ATile>();

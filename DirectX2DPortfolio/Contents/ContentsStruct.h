@@ -19,6 +19,8 @@ public:
 	}
 
 public:
+	static FINT MapSize;
+
 	inline FINT GetTilePos()
 	{
 		FINT Result = FINT(X, Y);

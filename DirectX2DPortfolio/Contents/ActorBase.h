@@ -18,6 +18,7 @@ public:
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
+	bool MoveCheck(EActorDir _Dir) override;
 
 	virtual void MoveSet(); 
 	FINT Lerp(float _CurMoveTime) const;
