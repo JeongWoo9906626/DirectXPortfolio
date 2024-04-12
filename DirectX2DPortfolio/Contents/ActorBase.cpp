@@ -4,7 +4,7 @@
 
 AActorBase::AActorBase()
 {
-
+	InputOn();
 }
 
 AActorBase::~AActorBase()
@@ -55,7 +55,7 @@ void AActorBase::Tick(float _DeltaTime)
 
 		if (true == UEngineInput::IsDown(VK_LEFT))
 		{
-			if (false == MoveCheck(EActorDir::Left))
+			if (false == MoveCheck(EActorDir::Left) || false == HasController)
 			{
 				return;
 			}
@@ -65,7 +65,7 @@ void AActorBase::Tick(float _DeltaTime)
 
 		if (true == UEngineInput::IsDown(VK_RIGHT))
 		{
-			if (false == MoveCheck(EActorDir::Right))
+			if (false == MoveCheck(EActorDir::Right) || false == HasController)
 			{
 				return;
 			}
@@ -75,7 +75,7 @@ void AActorBase::Tick(float _DeltaTime)
 
 		if (true == UEngineInput::IsDown(VK_UP))
 		{
-			if (false == MoveCheck(EActorDir::Up))
+			if (false == MoveCheck(EActorDir::Up) || false == HasController)
 			{
 				return;
 			}
@@ -85,7 +85,7 @@ void AActorBase::Tick(float _DeltaTime)
 
 		if (true == UEngineInput::IsDown(VK_DOWN))
 		{
-			if (false == MoveCheck(EActorDir::Down))
+			if (false == MoveCheck(EActorDir::Down) || false == HasController)
 			{
 				return;
 			}
@@ -100,16 +100,12 @@ void AActorBase::Tick(float _DeltaTime)
 			IsBack = false;
 			IsMove = false;
 			CurMoveTime = 0.0f;
-
-			FVector FloatToIntPos = { static_cast<int>(TilePosition.X * TileSize), static_cast<int>(TilePosition.Y * TileSize) };
-			SetActorLocation(FloatToIntPos);
 		}
 
 		CurMoveTime -= _DeltaTime;
 
-		FINT MovePos = Lerp(CurMoveTime);
-		FVector MoveVector = { static_cast<float>(MovePos.X), static_cast<float>(MovePos.Y), 0.0f, 0.0f };
-		SetActorLocation(MoveVector);
+		FVector MovePos = Lerp(CurMoveTime);
+		SetActorLocation(MovePos);
 	}
 }
 
@@ -169,10 +165,10 @@ void AActorBase::MoveSet()
 	NextPos = PrevPos;
 	CurDir = MoveHistory.top();
 	
-	float Dir = 1.0f;
+	int Dir = 1;
 	if (true == IsBack)
 	{
-		Dir = -1.0f;
+		Dir = -1;
 	}
 
 	switch (CurDir)
@@ -194,13 +190,20 @@ void AActorBase::MoveSet()
 	NextPos = TilePosition;
 }
 
-FINT AActorBase::Lerp(float _CurMoveTime) const
+FVector AActorBase::Lerp(float _CurMoveTime) const
 {
 	float t = (MoveTime - _CurMoveTime) / MoveTime;
 
-	FINT CurPos;
+	// 64.2 -> 64
+	// 63.9999999997 -> 63
+
+	//FINT CurPos;
+	FVector CurPos;
 	CurPos.X = PrevPos.X * TileSize * (1 - t) + NextPos.X * TileSize * t;
 	CurPos.Y = PrevPos.Y * TileSize * (1 - t) + NextPos.Y * TileSize * t;
+
+	CurPos.X = static_cast<int>(std::lround(CurPos.X));
+	CurPos.Y = static_cast<int>(std::lround(CurPos.Y));
 
 	return CurPos;
 }

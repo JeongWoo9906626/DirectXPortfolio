@@ -21,7 +21,7 @@ protected:
 	bool MoveCheck(EActorDir _Dir) override;
 
 	virtual void MoveSet(); 
-	FINT Lerp(float _CurMoveTime) const;
+	FVector Lerp(float _CurMoveTime) const;
 
 	inline void SetMoveRange(float _MoveRange)
 	{
@@ -47,6 +47,7 @@ private:
 
 	bool IsMove = false;
 	bool IsBack = false;
+
 	float MoveRange = 32.0f;
 	float MoveTime = 0.3f;
 	float CurMoveTime = 0.0f;

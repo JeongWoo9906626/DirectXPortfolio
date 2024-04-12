@@ -6,7 +6,6 @@ ABaba::ABaba()
 {
 	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
 	SetRoot(Renderer);
-	InputOn();
 }
 
 ABaba::~ABaba()
@@ -17,8 +16,8 @@ ABaba::~ABaba()
 void ABaba::BeginPlay()
 {
 	Super::BeginPlay();
-
-	SetActorScale3D(FVector(1000.0f, 1000.0f, 20.0f));
+	HasController = true;
+	SetActorScale3D(FVector(200.0f, 200.0f, 20.0f));
 
 	// Move_Right 0 ~ 4
 	{

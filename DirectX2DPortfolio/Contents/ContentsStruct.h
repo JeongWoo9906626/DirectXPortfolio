@@ -42,8 +42,8 @@ public:
 	{
 		FINT TilePos = *this;
 		FVector Result = FVector::Zero;
-		Result.X = TilePos.X * 128;
-		Result.Y = TilePos.Y * 128;
+		Result.X = TilePos.X * 32;
+		Result.Y = TilePos.Y * 32;
 		return Result;
 	}
 

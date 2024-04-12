@@ -23,7 +23,7 @@ void ATestMap::BeginPlay()
 
 	SetActorScale3D(FVector(ScreenX * 1.295f, ScreenY * 2.37f, 100.0f));
 
-	FINT::MapSize = FINT(3, 3);
+	FINT::MapSize = FINT(10, 10);
 	for (int y = 0; y < FINT::MapSize.Y; y++)
 	{
 		for (int x = 0; x < FINT::MapSize.X; x++)

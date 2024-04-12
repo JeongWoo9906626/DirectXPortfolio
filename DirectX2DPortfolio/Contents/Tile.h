@@ -35,8 +35,9 @@ protected:
 
 	USpriteRenderer* Renderer = nullptr;
 	FINT TilePosition = FINT();
-	bool CanMove = true;
-	float TileSize = 128.0f;
+	bool HasController = false;
+	bool CanMove = false;
+	float TileSize = 32.0f;
 
 private:
 };
