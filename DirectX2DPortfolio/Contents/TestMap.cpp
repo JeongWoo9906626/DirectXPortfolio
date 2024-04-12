@@ -2,6 +2,8 @@
 #include "TestMap.h"
 #include <EngineCore/SpriteRenderer.h>
 #include "Baba.h"
+#include "StaticHelper.h"
+#include "Selector.h"
 
 ATestMap::ATestMap()
 {
@@ -35,12 +37,23 @@ void ATestMap::BeginPlay()
 		}
 	}
 
-	FINT Pos = FINT(2, 2);
+	FINT Pos = FINT(0, 0);
 	std::shared_ptr<ATile> Player = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ABaba>("Baba"));
 	TileMap[Pos] = Player;
 	Player->SetPosition(Pos);
+	Player->SetHasController(true);
 	FVector StartPos = Pos.GetFINTToVector();
 	Player->SetActorLocation(StartPos);
+
+	FINT TestPos = FINT(2, 0);
+	std::shared_ptr<ATile> Test = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ASelector>("Test"));
+	TileMap[TestPos] = Test;
+	Test->SetCanMove(false);
+	Test->SetHasController(false);
+	FVector StartTestPos = TestPos.GetFINTToVector();
+	Test->SetActorLocation(StartTestPos);
+
+	StaticHelper::CurTileMap = TileMap;
 }
 
 void ATestMap::Tick(float _DeltaTime)
@@ -48,7 +61,6 @@ void ATestMap::Tick(float _DeltaTime)
 	Super::Tick(_DeltaTime);
 
 	TileUpdate();
-	TileMap;
 }
 
 void ATestMap::TileUpdate()
@@ -71,5 +83,6 @@ void ATestMap::TileUpdate()
 
 	TileMap.clear();
 	TileMap = NewTileMap;
+	StaticHelper::CurTileMap = TileMap;
 	NewTileMap.clear();
 }

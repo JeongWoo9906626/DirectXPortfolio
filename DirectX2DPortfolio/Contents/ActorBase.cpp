@@ -1,6 +1,7 @@
 #include "PreCompile.h"
 #include "ActorBase.h"
 #include <EngineCore/EngineDebugMsgWindow.h>
+#include "StaticHelper.h"
 
 AActorBase::AActorBase()
 {
@@ -130,22 +131,13 @@ bool AActorBase::MoveCheck(EActorDir _Dir)
 		break;
 	}
 
-	FINT MapTileSize = FINT::MapSize;
-	if (NextTilePos.X >= MapTileSize.X)
-	{
-		return false;
-	}
-	else if (NextTilePos.X < 0)
+	if (false == MoveEndCheck(NextTilePos, _Dir))
 	{
 		return false;
 	}
 	else
 	{
-		if (NextTilePos.Y >= MapTileSize.Y)
-		{
-			return false;
-		}
-		else if (NextTilePos.Y < 0)
+		if (false == MoveTileActorCheck(NextTilePos, _Dir))
 		{
 			return false;
 		}
@@ -153,6 +145,47 @@ bool AActorBase::MoveCheck(EActorDir _Dir)
 		{
 			return true;
 		}
+	}
+}
+
+bool AActorBase::MoveEndCheck(FINT _NextTilePos, EActorDir _Dir)
+{
+	FINT MapTileSize = FINT::MapSize;
+	if (_NextTilePos.X >= MapTileSize.X)
+	{
+		return false;
+	}
+	else if (_NextTilePos.X < 0)
+	{
+		return false;
+	}
+	else
+	{
+		if (_NextTilePos.Y >= MapTileSize.Y)
+		{
+			return false;
+		}
+		else if (_NextTilePos.Y < 0)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+}
+
+bool AActorBase::MoveTileActorCheck(FINT _NextTilePos, EActorDir _Dir)
+{
+	std::shared_ptr<ATile> NextTileActor = StaticHelper::CurTileMap[_NextTilePos];
+	if (false == NextTileActor->GetCanMove())
+	{
+		return false;
+	}
+	else
+	{
+		return true;
 	}
 }
 

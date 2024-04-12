@@ -93,6 +93,9 @@
     <ClInclude Include="EnumHelper.h">
       <Filter>Option</Filter>
     </ClInclude>
+    <ClInclude Include="StaticHelper.h">
+      <Filter>Option</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp">
@@ -141,6 +144,9 @@
       <Filter>Level\TestLevel\TestMap</Filter>
     </ClCompile>
     <ClCompile Include="ContentsStruct.cpp">
+      <Filter>Option</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticHelper.cpp">
       <Filter>Option</Filter>
     </ClCompile>
   </ItemGroup>

@@ -18,7 +18,9 @@ public:
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
-	bool MoveCheck(EActorDir _Dir) override;
+	bool MoveCheck(EActorDir _Dir);
+	bool MoveEndCheck(FINT _NextTilePos, EActorDir _Dir);
+	bool MoveTileActorCheck(FINT _NextTilePos, EActorDir _Dir);
 
 	virtual void MoveSet(); 
 	FVector Lerp(float _CurMoveTime) const;

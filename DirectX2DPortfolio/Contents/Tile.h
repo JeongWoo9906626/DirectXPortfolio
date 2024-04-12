@@ -26,8 +26,25 @@ public:
 		return TilePosition;
 	}
 
-	virtual bool MoveCheck(EActorDir _Dir) { return false; }
+	inline bool GetCanMove() const
+	{
+		return CanMove;
+	}
 
+	inline void SetCanMove(bool _CanMove)
+	{
+		CanMove = _CanMove;
+	}
+
+	inline bool GetHasController() const
+	{
+		return HasController;
+	}
+
+	inline void SetHasController(bool _HasController)
+	{
+		HasController = _HasController;
+	}
 
 protected:
 	void BeginPlay() override;
@@ -36,7 +53,7 @@ protected:
 	USpriteRenderer* Renderer = nullptr;
 	FINT TilePosition = FINT();
 	bool HasController = false;
-	bool CanMove = false;
+	bool CanMove = true;
 	float TileSize = 32.0f;
 
 private:
