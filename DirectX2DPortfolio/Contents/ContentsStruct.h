@@ -19,21 +19,30 @@ public:
 	}
 
 public:
-	inline FINT GetPos()
+	inline FINT GetTilePos()
 	{
 		FINT Result = FINT(X, Y);
 		return Result;
 	}
 
-	inline void SetPos(int _X, int _Y)
+	inline void SetTilePos(int _X, int _Y)
 	{
 		X = _X;
 		Y = _Y;
 	}
 
-	inline void SetPos(FINT _Pos)
+	inline void SetTilePos(FINT _TilePos)
 	{
-		SetPos(_Pos.X, _Pos.Y);
+		SetTilePos(_TilePos.X, _TilePos.Y);
+	}
+
+	inline FVector GetFINTToVector()
+	{
+		FINT TilePos = *this;
+		FVector Result = FVector::Zero;
+		Result.X = TilePos.X * 128;
+		Result.Y = TilePos.Y * 128;
+		return Result;
 	}
 
 	inline FINT operator+ (const FINT& _Other) const
@@ -100,6 +109,26 @@ public:
 		{
 			return false;
 		}
+	}
+
+	bool operator== (FINT _Other)
+	{
+		FINT Right = *this;
+		if (Right.X == _Other.X && Right.Y == _Other.Y)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	bool operator!= (FINT _Other)
+	{
+		FINT Right = *this;
+		bool Result = !Right.operator==(_Other);
+		return Result;
 	}
 };
 

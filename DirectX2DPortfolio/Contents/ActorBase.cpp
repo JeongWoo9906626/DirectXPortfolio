@@ -102,11 +102,8 @@ void AActorBase::MoveSet()
 	IsMove = true;
 	CurMoveTime = MoveTime;
 
-	PrevPos = TilePosition.GetPos();
+	PrevPos = TilePosition.GetTilePos();
 	NextPos = PrevPos;
-
-	int a = 0;
-
 	CurDir = MoveHistory.top();
 	
 	float Dir = 1.0f;
@@ -118,31 +115,29 @@ void AActorBase::MoveSet()
 	switch (CurDir)
 	{
 	case EActorDir::Left:
-		TilePosition.X -= 1.0f * Dir;
+		TilePosition.X -= Dir;
 		break;
 	case EActorDir::Right:
-		TilePosition.X += 1.0f * Dir;
+		TilePosition.X += Dir;
 		break;
 	case EActorDir::Up:
-		TilePosition.Y += 1.0f * Dir;
+		TilePosition.Y += Dir;
 		break;
 	case EActorDir::Down:
-		TilePosition.Y -= 1.0f * Dir;
+		TilePosition.Y -= Dir;
 		break;
 	}
 	
 	NextPos = TilePosition;
-	
-	int a2 = 0;
 }
 
-FINT AActorBase::Lerp(float _CurMoveTime)
+FINT AActorBase::Lerp(float _CurMoveTime) const
 {
 	float t = (MoveTime - _CurMoveTime) / MoveTime;
 
 	FINT CurPos;
-	CurPos.X = PrevPos.X* TileSize* (1 - t) + NextPos.X * TileSize * t;
-	CurPos.Y = PrevPos.Y* TileSize* (1 - t) + NextPos.Y * TileSize * t;
+	CurPos.X = PrevPos.X * TileSize * (1 - t) + NextPos.X * TileSize * t;
+	CurPos.Y = PrevPos.Y * TileSize * (1 - t) + NextPos.Y * TileSize * t;
 
 	return CurPos;
 }

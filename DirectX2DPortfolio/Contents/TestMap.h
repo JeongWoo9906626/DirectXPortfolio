@@ -21,7 +21,9 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
+	void TileUpdate();
+
 private:
 	USpriteRenderer* Renderer = nullptr;
-	std::map<FINT, std::shared_ptr<ATile>> TilePos;
+	std::map<FINT, std::shared_ptr<ATile>> TileMap;
 };

@@ -31,19 +31,45 @@ void ATestMap::BeginPlay()
 			FINT Pos = FINT(x, y);
 			std::shared_ptr<ATile> NewTile = std::make_shared<ATile>();
 			NewTile->SetPosition(Pos);
-			TilePos[Pos] = NewTile;
+			TileMap[Pos] = NewTile;
 		}
 	}
 
 	FINT Pos = FINT(2, 2);
 	std::shared_ptr<ATile> Player = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ABaba>("Baba"));
-	TilePos[Pos] = Player;
+	TileMap[Pos] = Player;
 	Player->SetPosition(Pos);
-	FVector StartPos = { Pos.X * 128.0f, Pos.Y * 128.0f };
+	FVector StartPos = Pos.GetFINTToVector();
 	Player->SetActorLocation(StartPos);
 }
 
 void ATestMap::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
+
+	TileUpdate();
+	TileMap;
+}
+
+void ATestMap::TileUpdate()
+{
+	std::map<FINT, std::shared_ptr<ATile>> NewTileMap;
+	for (std::pair<FINT, std::shared_ptr<ATile>> Iterator : TileMap)
+	{
+		FINT CurMapTilePos = Iterator.first;
+		std::shared_ptr<ATile> TileActor = Iterator.second;
+		FINT TilePos = TileActor->GetTilePosition();
+
+		if (TilePos != CurMapTilePos)
+		{
+			NewTileMap[TilePos] = TileActor;
+ 			NewTileMap[CurMapTilePos] = TileMap[TilePos];
+			NewTileMap[CurMapTilePos]->SetPosition(CurMapTilePos);
+		}
+		NewTileMap[TilePos] = TileActor;
+	}
+
+	TileMap.clear();
+	TileMap = NewTileMap;
+	NewTileMap.clear();
 }

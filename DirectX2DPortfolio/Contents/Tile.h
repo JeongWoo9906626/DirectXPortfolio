@@ -21,6 +21,11 @@ public:
 		TilePosition = _TilePosition;
 	}
 
+	inline FINT GetTilePosition() const
+	{
+		return TilePosition;
+	}
+
 
 protected:
 	void BeginPlay() override;

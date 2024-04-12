@@ -20,19 +20,19 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 	virtual void MoveSet(); 
-	FINT Lerp(float _CurMoveTime);
+	FINT Lerp(float _CurMoveTime) const;
 
 	inline void SetMoveRange(float _MoveRange)
 	{
 		MoveRange = _MoveRange;
 	}
 
-	inline EActorDir GetCurDir()
+	inline EActorDir GetCurDir() const
 	{
 		return CurDir;
 	}
 
-	inline bool GetIsBack()
+	inline bool GetIsBack() const
 	{
 		return IsBack;
 	}
