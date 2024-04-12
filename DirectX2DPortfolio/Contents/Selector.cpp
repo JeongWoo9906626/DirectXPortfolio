@@ -5,6 +5,7 @@
 ASelector::ASelector()
 {
 	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
+	SetRoot(Renderer);
 	InputOn();
 }
 

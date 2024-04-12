@@ -6,8 +6,7 @@
 ATestMap::ATestMap()
 {
 	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
-
-
+	SetRoot(Renderer);
 }
 
 ATestMap::~ATestMap()

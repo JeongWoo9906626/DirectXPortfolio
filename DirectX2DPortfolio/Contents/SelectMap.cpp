@@ -5,6 +5,7 @@
 ASelectMap::ASelectMap()
 {
 	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
+	SetRoot(Renderer);
 }
 
 ASelectMap::~ASelectMap()

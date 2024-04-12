@@ -5,6 +5,7 @@
 ABaba::ABaba()
 {
 	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
+	SetRoot(Renderer);
 	InputOn();
 }
 
