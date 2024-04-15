@@ -31,27 +31,27 @@ void ATestMap::BeginPlay()
 		for (int x = 0; x < FINT::MapSize.X; x++)
 		{
 			FINT Pos = FINT(x, y);
-			std::shared_ptr<ATile> NewTile = std::make_shared<ATile>();
-			NewTile->SetPosition(Pos);
+			ATile* NewTile = new ATile();
+			NewTile->SetTileSetting(Pos, true, false);
 			TileMap[Pos] = NewTile;
 		}
 	}
 
-	FINT Pos = FINT(0, 0);
-	std::shared_ptr<ATile> Player = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ABaba>("Baba"));
+	FINT Pos = FINT(1, 1);
+	ATile* Player = reinterpret_cast<ATile*>(GetWorld()->SpawnActor<ABaba>("Baba").get());
 	TileMap[Pos] = Player;
-	Player->SetPosition(Pos);
-	Player->SetHasController(true);
-	FVector StartPos = Pos.GetFINTToVector();
-	Player->SetActorLocation(StartPos);
+	Player->SetTileSetting(Pos, true, true);
+	Player->SetTileLocation();
+	/*FVector StartPos = Pos.GetFINTToVector();
+	Player->SetActorLocation(StartPos);*/
 
-	FINT TestPos = FINT(2, 0);
-	std::shared_ptr<ATile> Test = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ASelector>("Test"));
+	FINT TestPos = FINT(2, 2);
+	ATile* Test = reinterpret_cast<ATile*>(GetWorld()->SpawnActor<ASelector>("Test").get());
 	TileMap[TestPos] = Test;
-	Test->SetCanMove(false);
-	Test->SetHasController(false);
-	FVector StartTestPos = TestPos.GetFINTToVector();
-	Test->SetActorLocation(StartTestPos);
+	Test->SetTileSetting(TestPos, false, false);
+	Test->SetTileLocation();
+	/*FVector StartTestPos = TestPos.GetFINTToVector();
+	Test->SetActorLocation(StartTestPos);*/
 
 	StaticHelper::CurTileMap = TileMap;
 }
@@ -60,16 +60,18 @@ void ATestMap::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
+	StaticHelper::CurTileMap = TileMap;
 	TileUpdate();
+	//StaticHelper::CurTileMap = TileMap;
 }
 
 void ATestMap::TileUpdate()
 {
-	std::map<FINT, std::shared_ptr<ATile>> NewTileMap;
-	for (std::pair<FINT, std::shared_ptr<ATile>> Iterator : TileMap)
+	std::map<FINT, ATile*> NewTileMap;
+	for (std::pair<FINT, ATile*> Iterator : TileMap)
 	{
 		FINT CurMapTilePos = Iterator.first;
-		std::shared_ptr<ATile> TileActor = Iterator.second;
+		ATile* TileActor = Iterator.second;
 		FINT TilePos = TileActor->GetTilePosition();
 
 		if (TilePos != CurMapTilePos)
@@ -78,11 +80,13 @@ void ATestMap::TileUpdate()
  			NewTileMap[CurMapTilePos] = TileMap[TilePos];
 			NewTileMap[CurMapTilePos]->SetPosition(CurMapTilePos);
 		}
-		NewTileMap[TilePos] = TileActor;
+		else
+		{
+			NewTileMap[TilePos] = TileActor;
+		}
 	}
 
 	TileMap.clear();
 	TileMap = NewTileMap;
-	StaticHelper::CurTileMap = TileMap;
 	NewTileMap.clear();
 }

@@ -86,7 +86,10 @@ void AActorBase::Tick(float _DeltaTime)
 
 		if (true == UEngineInput::IsDown(VK_DOWN))
 		{
-			if (false == MoveCheck(EActorDir::Down) || false == HasController)
+			if (
+				false == MoveCheck(EActorDir::Down) || 
+				false == HasController
+				)
 			{
 				return;
 			}
@@ -178,7 +181,7 @@ bool AActorBase::MoveEndCheck(FINT _NextTilePos, EActorDir _Dir)
 
 bool AActorBase::MoveTileActorCheck(FINT _NextTilePos, EActorDir _Dir)
 {
-	std::shared_ptr<ATile> NextTileActor = StaticHelper::CurTileMap[_NextTilePos];
+	ATile* NextTileActor = StaticHelper::CurTileMap[_NextTilePos];
 	if (false == NextTileActor->GetCanMove())
 	{
 		return false;

@@ -25,5 +25,5 @@ protected:
 
 private:
 	USpriteRenderer* Renderer = nullptr;
-	std::map<FINT, std::shared_ptr<ATile>> TileMap;
+	std::map<FINT, ATile*> TileMap;
 };

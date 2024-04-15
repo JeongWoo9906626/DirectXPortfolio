@@ -46,6 +46,21 @@ public:
 		HasController = _HasController;
 	}
 
+	void SetTileSetting(FINT _TilePosition, bool _CanMove, bool _HasController)
+	{
+		this->TilePosition = _TilePosition;
+		this->CanMove = _CanMove;
+		this->HasController = _HasController;
+
+		
+	}
+
+	void SetTileLocation()
+	{
+		FVector StartPos = this->TilePosition.GetFINTToVector();
+		this->SetActorLocation(StartPos);
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -53,7 +68,7 @@ protected:
 	USpriteRenderer* Renderer = nullptr;
 	FINT TilePosition = FINT();
 	bool HasController = false;
-	bool CanMove = true;
+	bool CanMove;
 	float TileSize = 32.0f;
 
 private:

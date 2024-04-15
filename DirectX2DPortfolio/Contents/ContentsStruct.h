@@ -47,6 +47,14 @@ public:
 		return Result;
 	}
 
+	inline FINT& operator= (const FINT& _Other)
+	{
+		//FINT Result = *this;
+		X = _Other.X;
+		Y = _Other.Y;
+		return *this;
+	}
+
 	inline FINT operator+ (const FINT& _Other) const
 	{
 		FINT Result = *this;
