@@ -71,6 +71,16 @@ public:
 		return IsBlock;
 	}
 
+	void SetActorType(EActorType _Type)
+	{
+		Type = _Type;
+	}
+
+	EActorType GetActorType()
+	{
+		return Type;
+	}
+
 
 protected:
 	void BeginPlay() override;
@@ -78,6 +88,7 @@ protected:
 
 	USpriteRenderer* Renderer = nullptr;
 	FINT TilePosition = FINT();
+	EActorType Type = EActorType::None;
 
 	bool HasController = false;
 	bool CanMove;

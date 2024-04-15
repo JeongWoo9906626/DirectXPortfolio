@@ -27,31 +27,34 @@ void ATestGameMode::BeginPlay()
 
 	{
 		FINT::MapSize = FINT(10, 10);
-		for (int y = 0; y < FINT::MapSize.Y; y++)
-		{
-			for (int x = 0; x < FINT::MapSize.X; x++)
-			{
-				FINT Pos = FINT(x, y);
-				std::shared_ptr<ATile> NewTile = std::make_shared<ATile>();
-				NewTile->SetTileSetting(Pos, false, false, false);
-				TileMap[Pos] = NewTile;
-			}
-		}
+		//for (int y = 0; y < FINT::MapSize.Y; y++)
+		//{
+		//	for (int x = 0; x < FINT::MapSize.X; x++)
+		//	{
+		//		FINT Pos = FINT(x, y);
+		//		std::shared_ptr<ATile> NewTile = std::make_shared<ATile>();
+		//		/*NewTile->SetTileSetting(Pos, false, false, false);
+		//		NewTile->SetActorType(EActorType::Empty);*/
+		//		TileMap[Pos].push_back(nullptr);
+		//	}
+		//}
 	}
 
 	{
 		FINT Pos = FINT(1, 1);
 		std::shared_ptr<ATile> Player = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ABaba>("Baba"));
-		TileMap[Pos] = Player;
 		Player->SetTileSetting(Pos, true, true, false);
 		Player->SetTileLocation();
+		Player->SetActorType(EActorType::Baba);
+		TileMap[Pos].push_back(Player);
 	}
 	{
 		FINT TestPos = FINT(2, 2);
 		std::shared_ptr<ATile> Test = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ASelector>("Test"));
-		TileMap[TestPos] = Test;
 		Test->SetTileSetting(TestPos, false, false, false);
 		Test->SetTileLocation();
+		Test->SetActorType(EActorType::Selector);
+		TileMap[TestPos].push_back(Test);
 	}
 
 	StaticHelper::CurTileMap = TileMap;
@@ -84,22 +87,28 @@ void ATestGameMode::LevelStart(ULevel* _PrevLevel)
 
 void ATestGameMode::TileUpdate()
 {
-	std::map<FINT, std::shared_ptr<ATile>> NewTileMap;
-	for (std::pair<FINT, std::shared_ptr<ATile>> Iterator : TileMap)
+	std::map<FINT, std::list<std::shared_ptr<ATile>>> NewTileMap;
+	for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> Iterator : TileMap)
 	{
 		FINT CurMapTilePos = Iterator.first;
-		std::shared_ptr<ATile> TileActor = Iterator.second;
-		FINT TilePos = TileActor->GetTilePosition();
+		std::list<std::shared_ptr<ATile>> TileActorList = Iterator.second;
 
-		if (TilePos != CurMapTilePos)
+		for (std::shared_ptr<ATile> TileActor : TileActorList)
 		{
-			NewTileMap[TilePos] = TileActor;
-			NewTileMap[CurMapTilePos] = TileMap[TilePos];
-			NewTileMap[CurMapTilePos]->SetPosition(CurMapTilePos);
-		}
-		else
-		{
-			NewTileMap[TilePos] = TileActor;
+			FINT TilePos = TileActor->GetTilePosition();
+			if (TilePos != CurMapTilePos)
+			{
+				NewTileMap[TilePos].push_back(TileActor);
+				for (std::shared_ptr<ATile> TileActorIter : NewTileMap[CurMapTilePos])
+				{
+					NewTileMap[CurMapTilePos].push_back(TileActorIter);
+					TileActorIter->SetPosition(CurMapTilePos);
+				}
+			}
+			else
+			{
+				NewTileMap[TilePos].push_back(TileActor);
+			}
 		}
 	}
 

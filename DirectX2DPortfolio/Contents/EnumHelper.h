@@ -14,3 +14,13 @@ enum class EActorDir
 	Down,
 	None
 };
+
+enum class EActorType
+{
+	Empty,
+	Baba,
+	Pillar,
+	Lava,
+	Selector,
+	None,
+};

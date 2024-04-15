@@ -26,6 +26,6 @@ protected:
 	void TileUpdate();
 
 private:
-	std::map<FINT, std::shared_ptr<ATile>> TileMap;
+	std::map<FINT, std::list<std::shared_ptr<ATile>>> TileMap;
 
 };
