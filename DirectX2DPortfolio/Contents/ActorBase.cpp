@@ -171,9 +171,39 @@ bool AActorBase::MoveEndCheck(FINT _NextTilePos, EActorDir _Dir)
 
 bool AActorBase::MoveTileActorCheck(FINT _NextTilePos, EActorDir _Dir)
 {
+	FINT NextDir = FINT();
+	switch (_Dir)
+	{
+	case EActorDir::Left:
+		NextDir = FINT(-1, 0);
+		break;
+	case EActorDir::Right:
+		NextDir = FINT(+1, 0);
+		break;
+	case EActorDir::Up:
+		NextDir = FINT(0, +1);
+		break;
+	case EActorDir::Down:
+		NextDir = FINT(0, -1);
+		break;
+	case EActorDir::None:
+		break;
+	}
+
+
 	std::list<std::shared_ptr<ATile>> NextTileActorList = StaticHelper::CurTileMap[_NextTilePos];
+	if (true == NextTileActorList.empty())
+	{
+		return true;
+	}
 	for (std::shared_ptr<ATile> NextTileActor : NextTileActorList)
 	{
+		if (true == NextTileActor->GetHasController() || true == NextTileActor->GetCanMove())
+		{
+			FINT NextTilePosition = NextTileActor->GetTilePosition() + NextDir;
+			return MoveTileActorCheck(NextTilePosition, _Dir);
+		}
+
 		if (true == NextTileActor->GetIsBlock())
 		{
 			return false;

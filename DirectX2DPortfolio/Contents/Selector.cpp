@@ -2,7 +2,7 @@
 #include "Selector.h"
 #include <EngineCore/DefaultSceneComponent.h>
 #include <EngineCore/SpriteRenderer.h>
-
+#include "StaticHelper.h"
 
 ASelector::ASelector()
 {
@@ -39,14 +39,32 @@ void ASelector::Tick(float _DeltaTime)
 	{
 		if (true == UEngineInput::IsDown('T'))
 		{
-			HasController = true;
+			FINT CurTilePos = GetTilePosition();
+			std::list<std::shared_ptr<ATile>> TileActorList = StaticHelper::CurTileMap[CurTilePos];
+			for (std::shared_ptr<ATile> TileActor : TileActorList)
+			{
+				if (EActorType::Selector == TileActor->GetActorType())
+				{
+					TileActor->SetHasController(true);
+					TileActor->SetIsBlock(false);
+				}
+			}
 		}
 	}
 	else
 	{
 		if (true == UEngineInput::IsDown('T'))
 		{
-			HasController = false;
+			FINT CurTilePos = GetTilePosition();
+			std::list<std::shared_ptr<ATile>> TileActorList = StaticHelper::CurTileMap[CurTilePos];
+			for (std::shared_ptr<ATile> TileActor : TileActorList)
+			{
+				if (EActorType::Selector == TileActor->GetActorType())
+				{
+					TileActor->SetHasController(false);
+					TileActor->SetIsBlock(true);
+				}
+			}
 		}
 	}
 }

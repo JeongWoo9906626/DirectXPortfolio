@@ -51,7 +51,7 @@ void ATestGameMode::BeginPlay()
 	{
 		FINT TestPos = FINT(2, 2);
 		std::shared_ptr<ATile> Test = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ASelector>("Test"));
-		Test->SetTileSetting(TestPos, false, false, false);
+		Test->SetTileSetting(TestPos, true, false, true);
 		Test->SetTileLocation();
 		Test->SetActorType(EActorType::Selector);
 		TileMap[TestPos].push_back(Test);
@@ -99,11 +99,6 @@ void ATestGameMode::TileUpdate()
 			if (TilePos != CurMapTilePos)
 			{
 				NewTileMap[TilePos].push_back(TileActor);
-				for (std::shared_ptr<ATile> TileActorIter : NewTileMap[CurMapTilePos])
-				{
-					NewTileMap[CurMapTilePos].push_back(TileActorIter);
-					TileActorIter->SetPosition(CurMapTilePos);
-				}
 			}
 			else
 			{
