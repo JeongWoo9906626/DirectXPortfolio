@@ -1,14 +1,19 @@
 #include "PreCompile.h"
 #include "TestMap.h"
 #include <EngineCore/SpriteRenderer.h>
+#include <EngineCore/DefaultSceneComponent.h>
 #include "Baba.h"
 #include "StaticHelper.h"
 #include "Selector.h"
 
 ATestMap::ATestMap()
 {
+	UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
+
 	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
-	SetRoot(Renderer);
+	Renderer->SetupAttachment(Root);
+
+	SetRoot(Root);
 }
 
 ATestMap::~ATestMap()

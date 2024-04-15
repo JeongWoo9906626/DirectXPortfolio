@@ -1,10 +1,15 @@
 #include "PreCompile.h"
 #include "TitleLogo.h"
+#include <EngineCore/DefaultSceneComponent.h>
 
 ATitleLogo::ATitleLogo()
 {
+	UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
+
 	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
-	SetRoot(Renderer);
+	Renderer->SetupAttachment(Root);
+
+	SetRoot(Root);
 }
 
 ATitleLogo::~ATitleLogo()

@@ -21,8 +21,10 @@ void AStageSelectGameMode::BeginPlay()
 	std::shared_ptr<UCamera> Camera = GetWorld()->GetMainCamera();
 	Camera->SetActorLocation(FVector(0.0f, 0.0f, -100.0f));
 
-	GetWorld()->SpawnActor<ASelectMap>("SelectMap");
-	GetWorld()->SpawnActor<ASelector>("Selector");
+	std::shared_ptr<ASelector> Selector = GetWorld()->SpawnActor<ASelector>("Selector");
+	Selector->SetHasController(true);
+
+	std::shared_ptr<ASelectMap> SelectMap = GetWorld()->SpawnActor<ASelectMap>("SelectMap");
 }
 
 void AStageSelectGameMode::Tick(float _DeltaTime)

@@ -1,11 +1,16 @@
 #include "PreCompile.h"
 #include "SelectMap.h"
 #include <EngineCore/SpriteRenderer.h>
+#include <EngineCore/DefaultSceneComponent.h>
 
 ASelectMap::ASelectMap()
 {
+	UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
+
 	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
-	SetRoot(Renderer);
+	Renderer->SetupAttachment(Root);
+
+	SetRoot(Root);
 }
 
 ASelectMap::~ASelectMap()

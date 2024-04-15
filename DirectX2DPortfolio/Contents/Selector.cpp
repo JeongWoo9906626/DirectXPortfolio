@@ -1,11 +1,17 @@
 #include "PreCompile.h"
 #include "Selector.h"
+#include <EngineCore/DefaultSceneComponent.h>
 #include <EngineCore/SpriteRenderer.h>
+
 
 ASelector::ASelector()
 {
+	UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
+
 	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
-	SetRoot(Renderer);
+	Renderer->SetupAttachment(Root);
+
+	SetRoot(Root);
 	InputOn();
 }
 
@@ -19,7 +25,7 @@ void ASelector::BeginPlay()
 	Super::BeginPlay();
 
 	SetActorScale3D(FVector(1000.0f, 1000.0f, 20.0f));
-
+	
 	Renderer->CreateAnimation("SelectMove", "Selector.png", 0.1f, true);
 	Renderer->ChangeAnimation("SelectMove");
 	Renderer->SetOrder(ERenderOrder::Player);
@@ -28,5 +34,20 @@ void ASelector::BeginPlay()
 void ASelector::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
+
+	if (false == HasController)
+	{
+		if (true == UEngineInput::IsDown('T'))
+		{
+			HasController = true;
+		}
+	}
+	else
+	{
+		if (true == UEngineInput::IsDown('T'))
+		{
+			HasController = false;
+		}
+	}
 }
 

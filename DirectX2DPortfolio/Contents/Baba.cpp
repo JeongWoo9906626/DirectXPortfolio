@@ -1,11 +1,16 @@
 #include "PreCompile.h"
 #include "Baba.h"
 #include <EngineCore/SpriteRenderer.h>
+#include <EngineCore/DefaultSceneComponent.h>
 
 ABaba::ABaba()
 {
+	UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
+
 	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
-	SetRoot(Renderer);
+	Renderer->SetupAttachment(Root);
+	
+	SetRoot(Root);
 }
 
 ABaba::~ABaba()

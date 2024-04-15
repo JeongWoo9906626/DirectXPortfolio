@@ -21,6 +21,10 @@ void ATestGameMode::BeginPlay()
 	Camera->SetActorLocation(FVector(0.0f, 0.0f, -100.0f));
 
 	GetWorld()->SpawnActor<ATestMap>("TestMap");
+
+
+
+
 }
 
 void ATestGameMode::Tick(float _DeltaTime)
