@@ -31,14 +31,14 @@ void ATestMap::BeginPlay()
 		for (int x = 0; x < FINT::MapSize.X; x++)
 		{
 			FINT Pos = FINT(x, y);
-			ATile* NewTile = new ATile();
+			std::shared_ptr<ATile> NewTile = std::make_shared<ATile>();
 			NewTile->SetTileSetting(Pos, true, false);
 			TileMap[Pos] = NewTile;
 		}
 	}
 
 	FINT Pos = FINT(1, 1);
-	ATile* Player = reinterpret_cast<ATile*>(GetWorld()->SpawnActor<ABaba>("Baba").get());
+	std::shared_ptr<ATile> Player = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ABaba>("Baba"));
 	TileMap[Pos] = Player;
 	Player->SetTileSetting(Pos, true, true);
 	Player->SetTileLocation();
@@ -46,7 +46,7 @@ void ATestMap::BeginPlay()
 	Player->SetActorLocation(StartPos);*/
 
 	FINT TestPos = FINT(2, 2);
-	ATile* Test = reinterpret_cast<ATile*>(GetWorld()->SpawnActor<ASelector>("Test").get());
+	std::shared_ptr<ATile> Test = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ASelector>("Test"));
 	TileMap[TestPos] = Test;
 	Test->SetTileSetting(TestPos, false, false);
 	Test->SetTileLocation();
@@ -67,11 +67,11 @@ void ATestMap::Tick(float _DeltaTime)
 
 void ATestMap::TileUpdate()
 {
-	std::map<FINT, ATile*> NewTileMap;
-	for (std::pair<FINT, ATile*> Iterator : TileMap)
+	std::map<FINT, std::shared_ptr<ATile>> NewTileMap;
+	for (std::pair<FINT, std::shared_ptr<ATile>> Iterator : TileMap)
 	{
 		FINT CurMapTilePos = Iterator.first;
-		ATile* TileActor = Iterator.second;
+		std::shared_ptr<ATile> TileActor = Iterator.second;
 		FINT TilePos = TileActor->GetTilePosition();
 
 		if (TilePos != CurMapTilePos)

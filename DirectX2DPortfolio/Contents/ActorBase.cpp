@@ -181,7 +181,7 @@ bool AActorBase::MoveEndCheck(FINT _NextTilePos, EActorDir _Dir)
 
 bool AActorBase::MoveTileActorCheck(FINT _NextTilePos, EActorDir _Dir)
 {
-	ATile* NextTileActor = StaticHelper::CurTileMap[_NextTilePos];
+	std::shared_ptr<ATile> NextTileActor = StaticHelper::CurTileMap[_NextTilePos];
 	if (false == NextTileActor->GetCanMove())
 	{
 		return false;

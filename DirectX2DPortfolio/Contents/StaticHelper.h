@@ -5,6 +5,6 @@
 class StaticHelper
 {
 public:
-	static std::map<FINT, ATile*> CurTileMap;
+	static std::map<FINT, std::shared_ptr<ATile>> CurTileMap;
 
 };
