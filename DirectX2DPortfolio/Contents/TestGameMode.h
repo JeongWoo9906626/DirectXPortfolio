@@ -1,6 +1,8 @@
 #pragma once
 #include <EngineCore/GameMode.h>
+#include "ContentsStruct.h"
 
+class ATile;
 class ATestGameMode : public AGameMode
 {
 	GENERATED_BODY(AGameMode)
@@ -21,6 +23,9 @@ protected:
 	void LevelEnd(ULevel* _NextLevel) override;
 	void LevelStart(ULevel* _PrevLevel) override;
 
+	void TileUpdate();
+
 private:
+	std::map<FINT, std::shared_ptr<ATile>> TileMap;
 
 };

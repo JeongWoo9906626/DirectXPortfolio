@@ -1,7 +1,5 @@
 #pragma once
 #include <EngineCore/Actor.h>
-#include "ContentsStruct.h"
-#include "Tile.h"
 
 class USpriteRenderer;
 class ATestMap : public AActor
@@ -21,9 +19,9 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-	void TileUpdate();
+	//void TileUpdate();
 
 private:
 	USpriteRenderer* Renderer = nullptr;
-	std::map<FINT, std::shared_ptr<ATile>> TileMap;
+	
 };
