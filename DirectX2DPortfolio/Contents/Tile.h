@@ -46,12 +46,12 @@ public:
 		HasController = _HasController;
 	}
 
-	void SetTileSetting(FINT _TilePosition, bool _CanMove, bool _HasController)
+	void SetTileSetting(FINT _TilePosition, bool _CanMove, bool _HasController, bool _IsBlock)
 	{
 		this->TilePosition = _TilePosition;
 		this->CanMove = _CanMove;
 		this->HasController = _HasController;
-
+		this->IsBlock = _IsBlock;
 		
 	}
 
@@ -61,14 +61,28 @@ public:
 		this->SetActorLocation(StartPos);
 	}
 
+	void SetIsBlock(bool _IsBlock)
+	{
+		IsBlock = _IsBlock;
+	}
+
+	bool GetIsBlock()
+	{
+		return IsBlock;
+	}
+
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
 	USpriteRenderer* Renderer = nullptr;
 	FINT TilePosition = FINT();
+
 	bool HasController = false;
 	bool CanMove;
+	bool IsBlock;
+
 	float TileSize = 32.0f;
 
 private:

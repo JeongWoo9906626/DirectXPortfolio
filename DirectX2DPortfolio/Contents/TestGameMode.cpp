@@ -33,7 +33,7 @@ void ATestGameMode::BeginPlay()
 			{
 				FINT Pos = FINT(x, y);
 				std::shared_ptr<ATile> NewTile = std::make_shared<ATile>();
-				NewTile->SetTileSetting(Pos, true, false);
+				NewTile->SetTileSetting(Pos, false, false, false);
 				TileMap[Pos] = NewTile;
 			}
 		}
@@ -43,14 +43,14 @@ void ATestGameMode::BeginPlay()
 		FINT Pos = FINT(1, 1);
 		std::shared_ptr<ATile> Player = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ABaba>("Baba"));
 		TileMap[Pos] = Player;
-		Player->SetTileSetting(Pos, true, true);
+		Player->SetTileSetting(Pos, true, true, false);
 		Player->SetTileLocation();
 	}
 	{
 		FINT TestPos = FINT(2, 2);
 		std::shared_ptr<ATile> Test = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ASelector>("Test"));
 		TileMap[TestPos] = Test;
-		Test->SetTileSetting(TestPos, false, false);
+		Test->SetTileSetting(TestPos, false, false, false);
 		Test->SetTileLocation();
 	}
 
