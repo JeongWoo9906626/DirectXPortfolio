@@ -50,6 +50,8 @@ private:
 	bool IsMove = false;
 	bool IsBack = false;
 
+	bool IsMoveTile = false;
+
 	float MoveRange = 32.0f;
 	float MoveTime = 0.3f;
 	float CurMoveTime = 0.0f;

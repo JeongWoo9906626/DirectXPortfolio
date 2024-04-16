@@ -38,7 +38,7 @@ void AActorBase::Tick(float _DeltaTime)
 	{
 		if (true == UEngineInput::IsDown('Z'))
 		{
-			
+
 			if (true == MoveHistory.empty())
 			{
 				return;
@@ -137,6 +137,7 @@ bool AActorBase::MoveCheck(EActorDir _Dir)
 	}
 	else
 	{
+		IsMoveTile = false;
 		return MoveTileActorCheck(NextTilePos, _Dir);
 	}
 }
@@ -198,19 +199,39 @@ bool AActorBase::MoveTileActorCheck(FINT _NextTilePos, EActorDir _Dir)
 	}
 	for (std::shared_ptr<ATile> NextTileActor : NextTileActorList)
 	{
-		if (true == NextTileActor->GetHasController() || true == NextTileActor->GetCanMove())
+		if (true == NextTileActor->GetHasController())
 		{
 			FINT NextTilePosition = NextTileActor->GetTilePosition() + NextDir;
 			return MoveTileActorCheck(NextTilePosition, _Dir);
 		}
-
-		if (true == NextTileActor->GetIsBlock())
+		else // HasController == false
 		{
-			return false;
+			if (true == NextTileActor->GetCanMove())
+			{
+				if (true == NextTileActor->GetIsBlock())
+				{
+					FINT NextTilePosition = NextTileActor->GetTilePosition() + NextDir;
+					return MoveTileActorCheck(NextTilePosition, _Dir);
+				}
+				else // false == IsBlock
+				{
+					return true;
+				}
+			}
+			else // CanMove == false 
+			{
+				if (true == NextTileActor->GetIsBlock())
+				{
+					return false;
+				}
+				else // false == IsBlock
+				{
+					return true;
+				}
+			}
 		}
-	}
 
-	return true;
+	}
 }
 
 void AActorBase::MoveSet()
@@ -221,7 +242,7 @@ void AActorBase::MoveSet()
 	PrevPos = TilePosition.GetTilePos();
 	NextPos = PrevPos;
 	CurDir = MoveHistory.top();
-	
+
 	int Dir = 1;
 	if (true == IsBack)
 	{
@@ -243,7 +264,7 @@ void AActorBase::MoveSet()
 		TilePosition.Y -= Dir;
 		break;
 	}
-	
+
 	NextPos = TilePosition;
 }
 

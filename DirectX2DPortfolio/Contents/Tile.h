@@ -90,8 +90,11 @@ protected:
 	FINT TilePosition = FINT();
 	EActorType Type = EActorType::None;
 
+	// HasController : 키 입력을 받아 움직이는 여부
 	bool HasController = false;
+	// CanMove : 밀었을때 움직이는 여부
 	bool CanMove;
+	// IsBlock : 캐릭터 통과 여부
 	bool IsBlock;
 
 	float TileSize = 32.0f;
