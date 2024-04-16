@@ -81,6 +81,15 @@ public:
 		return Type;
 	}
 
+	virtual void SetIsTileMove(bool _IsTileMove, EActorDir _Dir)
+	{
+		IsTileMove = _IsTileMove;
+	}
+
+	bool GetIsTileMove()
+	{
+		return IsTileMove;
+	}
 
 protected:
 	void BeginPlay() override;
@@ -96,6 +105,9 @@ protected:
 	bool CanMove;
 	// IsBlock : 캐릭터 통과 여부
 	bool IsBlock;
+	
+	// 밀었을때 움직이는지 아닌지 알려주는 변수
+	bool IsTileMove = false;
 
 	float TileSize = 32.0f;
 

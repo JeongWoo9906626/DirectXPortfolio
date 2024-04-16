@@ -4,7 +4,7 @@
 
 class AActorBase : public ATile
 {
-	GENERATED_BODY(AActor)
+	GENERATED_BODY(ATile)
 
 public:
 	AActorBase();
@@ -40,6 +40,12 @@ protected:
 		return IsBack;
 	}
 
+	void SetIsTileMove(bool _IsTileMove, EActorDir _Dir) override
+	{
+		Super::SetIsTileMove(_IsTileMove, _Dir);
+		CurDir = _Dir;
+	}
+
 	std::stack<int> AnimationIndexHistory;
 
 private:
@@ -49,8 +55,6 @@ private:
 
 	bool IsMove = false;
 	bool IsBack = false;
-
-	bool IsMoveTile = false;
 
 	float MoveRange = 32.0f;
 	float MoveTime = 0.3f;

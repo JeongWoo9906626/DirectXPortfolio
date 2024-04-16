@@ -40,7 +40,7 @@ void ATestGameMode::BeginPlay()
 	{
 		FINT TestPos = FINT(2, 2);
 		std::shared_ptr<ATile> Test = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ASelector>("Test"));
-		Test->SetTileSetting(TestPos, true, false, true);
+		Test->SetTileSetting(TestPos, true, false, false);
 		Test->SetTileLocation();
 		Test->SetActorType(EActorType::Selector);
 		TileMap[TestPos].push_back(Test);
@@ -48,7 +48,7 @@ void ATestGameMode::BeginPlay()
 	{
 		FINT TestPos = FINT(2, 3);
 		std::shared_ptr<ATile> PlayerTest = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ABaba>("Baba"));
-		PlayerTest->SetTileSetting(TestPos, false, false, true);
+		PlayerTest->SetTileSetting(TestPos, true, false, true);
 		PlayerTest->SetTileLocation();
 		PlayerTest->SetActorType(EActorType::Baba);
 		TileMap[TestPos].push_back(PlayerTest);

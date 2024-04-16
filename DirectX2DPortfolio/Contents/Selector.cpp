@@ -46,7 +46,6 @@ void ASelector::Tick(float _DeltaTime)
 				if (EActorType::Selector == TileActor->GetActorType())
 				{
 					TileActor->SetHasController(true);
-					TileActor->SetIsBlock(false);
 				}
 			}
 		}
@@ -62,7 +61,6 @@ void ASelector::Tick(float _DeltaTime)
 				if (EActorType::Selector == TileActor->GetActorType())
 				{
 					TileActor->SetHasController(false);
-					TileActor->SetIsBlock(true);
 				}
 			}
 		}

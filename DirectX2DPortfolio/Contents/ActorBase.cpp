@@ -34,6 +34,8 @@ void AActorBase::Tick(float _DeltaTime)
 		UEngineDebugMsgWindow::PushMsg(Msg);
 	}
 
+	
+
 	if (false == IsMove && true == HasController)
 	{
 		if (true == UEngineInput::IsDown('Z'))
@@ -94,10 +96,23 @@ void AActorBase::Tick(float _DeltaTime)
 			MoveSet();
 		}
 	}
+	else if (false == IsMove && false == HasController)
+	{
+		if (true == IsTileMove)
+		{
+			if (false == MoveCheck(CurDir))
+			{
+				return;
+			}
+			MoveHistory.push(CurDir);
+			MoveSet();
+		}
+	}
 	else if (true == IsMove)
 	{
 		if (CurMoveTime <= 0.0f)
 		{
+			IsTileMove = false;
 			IsBack = false;
 			IsMove = false;
 			CurMoveTime = 0.0f;
@@ -137,7 +152,6 @@ bool AActorBase::MoveCheck(EActorDir _Dir)
 	}
 	else
 	{
-		IsMoveTile = false;
 		return MoveTileActorCheck(NextTilePos, _Dir);
 	}
 }
@@ -201,19 +215,30 @@ bool AActorBase::MoveTileActorCheck(FINT _NextTilePos, EActorDir _Dir)
 	{
 		if (true == NextTileActor->GetHasController())
 		{
-			FINT NextTilePosition = NextTileActor->GetTilePosition() + NextDir;
-			return MoveTileActorCheck(NextTilePosition, _Dir);
+			return true;
 		}
 		else // HasController == false
 		{
+			FINT NextTilePosition = NextTileActor->GetTilePosition() + NextDir;
 			if (true == NextTileActor->GetCanMove())
 			{
+				if (false == NextTileActor->GetIsBlock())
+				{
+					return true;
+				}
+				bool NextMoveCheck = false;
 				if (true == NextTileActor->GetIsBlock())
 				{
-					FINT NextTilePosition = NextTileActor->GetTilePosition() + NextDir;
-					return MoveTileActorCheck(NextTilePosition, _Dir);
+					NextTileActor->SetIsTileMove(true, _Dir);
+					std::shared_ptr<AActorBase> NextActorBase = static_pointer_cast<AActorBase>(NextTileActor);
+					NextMoveCheck = NextActorBase->MoveTileActorCheck(NextTilePosition, _Dir);
 				}
-				else // false == IsBlock
+
+				if (false == NextMoveCheck)
+				{
+					return false;
+				}
+				else
 				{
 					return true;
 				}
@@ -222,6 +247,7 @@ bool AActorBase::MoveTileActorCheck(FINT _NextTilePos, EActorDir _Dir)
 			{
 				if (true == NextTileActor->GetIsBlock())
 				{
+					NextTileActor->SetIsTileMove(false, _Dir);
 					return false;
 				}
 				else // false == IsBlock
@@ -230,7 +256,6 @@ bool AActorBase::MoveTileActorCheck(FINT _NextTilePos, EActorDir _Dir)
 				}
 			}
 		}
-
 	}
 }
 
