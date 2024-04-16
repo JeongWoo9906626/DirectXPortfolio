@@ -98,6 +98,23 @@ void AActorBase::Tick(float _DeltaTime)
 	}
 	else if (false == IsMove && false == HasController)
 	{
+		if (true == UEngineInput::IsDown('Z'))
+		{
+			if (true == MoveHistory.empty())
+			{
+				return;
+			}
+
+			if (false == AnimationIndexHistory.empty())
+			{
+				AnimationIndexHistory.pop();
+			}
+
+			IsBack = true;
+			MoveSet();
+			MoveHistory.pop();
+		}
+
 		if (true == IsTileMove)
 		{
 			if (false == MoveCheck(CurDir))
@@ -146,34 +163,28 @@ bool AActorBase::MoveCheck(EActorDir _Dir)
 		break;
 	}
 
-	if (false == MoveEndCheck(NextTilePos, _Dir))
-	{
-		return false;
-	}
-	else
-	{
-		return MoveTileActorCheck(NextTilePos, _Dir);
-	}
+	bool CanMove = MoveTileActorCheck(NextTilePos, _Dir);
+	return CanMove;
 }
 
-bool AActorBase::MoveEndCheck(FINT _NextTilePos, EActorDir _Dir)
+bool AActorBase::MoveEndCheck(FINT _TilePos)
 {
 	FINT MapTileSize = FINT::MapSize;
-	if (_NextTilePos.X >= MapTileSize.X)
+	if (_TilePos.X >= MapTileSize.X)
 	{
 		return false;
 	}
-	else if (_NextTilePos.X < 0)
+	else if (_TilePos.X < 0)
 	{
 		return false;
 	}
 	else
 	{
-		if (_NextTilePos.Y >= MapTileSize.Y)
+		if (_TilePos.Y >= MapTileSize.Y)
 		{
 			return false;
 		}
-		else if (_NextTilePos.Y < 0)
+		else if (_TilePos.Y < 0)
 		{
 			return false;
 		}
@@ -186,76 +197,75 @@ bool AActorBase::MoveEndCheck(FINT _NextTilePos, EActorDir _Dir)
 
 bool AActorBase::MoveTileActorCheck(FINT _NextTilePos, EActorDir _Dir)
 {
-	FINT NextDir = FINT();
+	FINT NextArray = FINT();
 	switch (_Dir)
 	{
 	case EActorDir::Left:
-		NextDir = FINT(-1, 0);
+		NextArray = FINT::LEFT;
 		break;
 	case EActorDir::Right:
-		NextDir = FINT(+1, 0);
+		NextArray = FINT::RIGHT;
 		break;
 	case EActorDir::Up:
-		NextDir = FINT(0, +1);
+		NextArray = FINT::UP;
 		break;
 	case EActorDir::Down:
-		NextDir = FINT(0, -1);
+		NextArray = FINT::DOWN;
 		break;
 	case EActorDir::None:
 		break;
 	}
 
+	bool Temp = true;
+
+	if (false == MoveEndCheck(_NextTilePos))
+	{
+		Temp = false;
+		return Temp;
+	}
 
 	std::list<std::shared_ptr<ATile>> NextTileActorList = StaticHelper::CurTileMap[_NextTilePos];
 	if (true == NextTileActorList.empty())
 	{
-		return true;
+		Temp = true;
+		return Temp;
 	}
-	for (std::shared_ptr<ATile> NextTileActor : NextTileActorList)
+	else // List가 비어있지 않은 경우 (Tile을 가지고 있는 경우)
 	{
-		if (true == NextTileActor->GetHasController())
+		for (std::shared_ptr<ATile> NextTileActor : NextTileActorList)
 		{
-			return true;
-		}
-		else // HasController == false
-		{
-			FINT NextTilePosition = NextTileActor->GetTilePosition() + NextDir;
-			if (true == NextTileActor->GetCanMove())
+			// Controller 를 가지고 있는 경우 (직접 움직일 수 있음)
+			if (true == NextTileActor->GetHasController())
 			{
-				if (false == NextTileActor->GetIsBlock())
-				{
-					return true;
-				}
-				bool NextMoveCheck = false;
-				if (true == NextTileActor->GetIsBlock())
-				{
-					NextTileActor->SetIsTileMove(true, _Dir);
-					std::shared_ptr<AActorBase> NextActorBase = static_pointer_cast<AActorBase>(NextTileActor);
-					NextMoveCheck = NextActorBase->MoveTileActorCheck(NextTilePosition, _Dir);
-				}
-
-				if (false == NextMoveCheck)
-				{
-					return false;
-				}
-				else
-				{
-					return true;
-				}
+				Temp = true;
 			}
-			else // CanMove == false 
+			else // Controller 를 가지고 있지 않은 경우
 			{
+				// Block이 true 인 경우 (뚫고 못지나 감)
 				if (true == NextTileActor->GetIsBlock())
 				{
-					NextTileActor->SetIsTileMove(false, _Dir);
-					return false;
+					// CanMove가 true인 경우 밀고 갈 수 있음
+					if (true == NextTileActor->GetCanMove())
+					{
+						std::shared_ptr<AActorBase> NewNext = static_pointer_cast<AActorBase>(NextTileActor);
+						bool Result = NewNext->MoveCheck(_Dir);
+						NewNext->SetIsTileMove(Result, _Dir);
+						
+						Temp = Temp && Result;
+					}
+					else // CanMove가 false인 경우 완전 움직일 수 없음(완전 막힘)
+					{
+						Temp = false;
+					}
 				}
-				else // false == IsBlock
+				else // Block 이 아닌 경우 (뚫고 지나감)
 				{
-					return true;
+					// CanMove가 true와 false일 때 둘다 뚫고 지나감
+					Temp = true;
 				}
 			}
 		}
+		return Temp;
 	}
 }
 

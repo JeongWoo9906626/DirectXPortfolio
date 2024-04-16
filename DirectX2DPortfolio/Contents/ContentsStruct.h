@@ -3,6 +3,12 @@
 struct FINT
 {
 public:
+	static const FINT LEFT;
+	static const FINT RIGHT;
+	static const FINT UP;
+	static const FINT DOWN;
+
+public:
 	int X;
 	int Y;
 

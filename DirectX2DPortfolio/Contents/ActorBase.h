@@ -18,12 +18,19 @@ public:
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
+
+	FVector Lerp(float _CurMoveTime) const;
+	virtual void MoveSet(); 
+
 	bool MoveCheck(EActorDir _Dir);
-	bool MoveEndCheck(FINT _NextTilePos, EActorDir _Dir);
+	bool MoveEndCheck(FINT _TilePos);
 	bool MoveTileActorCheck(FINT _NextTilePos, EActorDir _Dir);
 
-	virtual void MoveSet(); 
-	FVector Lerp(float _CurMoveTime) const;
+	void SetIsTileMove(bool _IsTileMove, EActorDir _Dir) override
+	{
+		Super::SetIsTileMove(_IsTileMove, _Dir);
+		CurDir = _Dir;
+	}
 
 	inline void SetMoveRange(float _MoveRange)
 	{
@@ -40,17 +47,12 @@ protected:
 		return IsBack;
 	}
 
-	void SetIsTileMove(bool _IsTileMove, EActorDir _Dir) override
-	{
-		Super::SetIsTileMove(_IsTileMove, _Dir);
-		CurDir = _Dir;
-	}
-
 	std::stack<int> AnimationIndexHistory;
 
 private:
 	FINT PrevPos = FINT();
 	FINT NextPos = FINT();
+
 	EActorDir CurDir = EActorDir::None;
 
 	bool IsMove = false;

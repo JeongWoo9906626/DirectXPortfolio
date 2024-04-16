@@ -31,7 +31,7 @@ void ATestGameMode::BeginPlay()
 
 	{
 		FINT Pos = FINT(1, 1);
-		std::shared_ptr<ATile> Player = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ABaba>("Baba"));
+		std::shared_ptr<ATile> Player = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ABaba>("Player"));
 		Player->SetTileSetting(Pos, true, true, false);
 		Player->SetTileLocation();
 		Player->SetActorType(EActorType::Baba);
@@ -39,19 +39,29 @@ void ATestGameMode::BeginPlay()
 	}
 	{
 		FINT TestPos = FINT(2, 2);
-		std::shared_ptr<ATile> Test = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ASelector>("Test"));
-		Test->SetTileSetting(TestPos, true, false, false);
+		std::shared_ptr<ATile> Test = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ASelector>("Test1"));
+		Test->SetTileSetting(TestPos, true, false, true);
 		Test->SetTileLocation();
 		Test->SetActorType(EActorType::Selector);
 		TileMap[TestPos].push_back(Test);
 	}
 	{
 		FINT TestPos = FINT(2, 3);
-		std::shared_ptr<ATile> PlayerTest = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ABaba>("Baba"));
-		PlayerTest->SetTileSetting(TestPos, true, false, true);
-		PlayerTest->SetTileLocation();
-		PlayerTest->SetActorType(EActorType::Baba);
-		TileMap[TestPos].push_back(PlayerTest);
+		std::shared_ptr<ATile> Test2 = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ASelector>("Test2"));
+		//std::shared_ptr<ATile> PlayerTest = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ABaba>("Baba"));
+		Test2->SetTileSetting(TestPos, true, false, true);
+		Test2->SetTileLocation();
+		Test2->SetActorType(EActorType::Selector);
+		TileMap[TestPos].push_back(Test2);
+	}
+
+	{
+		FINT TestPos = FINT(2, 4);
+		std::shared_ptr<ATile> PlayerTest2 = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ABaba>("Baba2"));
+		PlayerTest2->SetTileSetting(TestPos, false, false, true);
+		PlayerTest2->SetTileLocation();
+		PlayerTest2->SetActorType(EActorType::Baba);
+		TileMap[TestPos].push_back(PlayerTest2);
 	}
 
 	StaticHelper::CurTileMap = TileMap;
