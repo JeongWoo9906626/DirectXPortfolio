@@ -173,8 +173,16 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="ContentsGUI.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="ContentsStruct.h" />
     <ClInclude Include="EnumHelper.h" />
+    <ClInclude Include="MapEditorGUI.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="PlayBack.h">
       <SubType>
       </SubType>
@@ -241,7 +249,15 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="ContentsGUI.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="ContentsStruct.cpp" />
+    <ClCompile Include="MapEditorGUI.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="PlayBack.cpp">
       <SubType>
       </SubType>

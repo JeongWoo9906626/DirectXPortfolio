@@ -40,6 +40,9 @@
     <Filter Include="Level\TestLevel\TestMap">
       <UniqueIdentifier>{57cffc7b-c77a-43ab-84d5-4e8dc5872e2b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GUI">
+      <UniqueIdentifier>{53c3cf39-42dc-486c-b98f-579bac574986}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ContentsCore.h">
@@ -96,6 +99,12 @@
     <ClInclude Include="StaticHelper.h">
       <Filter>Option</Filter>
     </ClInclude>
+    <ClInclude Include="ContentsGUI.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="MapEditorGUI.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp">
@@ -148,6 +157,12 @@
     </ClCompile>
     <ClCompile Include="StaticHelper.cpp">
       <Filter>Option</Filter>
+    </ClCompile>
+    <ClCompile Include="ContentsGUI.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="MapEditorGUI.cpp">
+      <Filter>GUI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
