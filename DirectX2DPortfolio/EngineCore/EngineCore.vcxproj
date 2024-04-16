@@ -236,6 +236,7 @@
     <ClInclude Include="EngineSampler.h" />
     <ClInclude Include="EngineShaderResources.h" />
     <ClInclude Include="EngineSprite.h" />
+    <ClInclude Include="EngineStruct.h" />
     <ClInclude Include="EngineTexture.h">
       <SubType>
       </SubType>
@@ -296,6 +297,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="TileRenderer.h" />
     <ClInclude Include="WorldObject.h">
       <SubType>
       </SubType>
@@ -366,6 +368,7 @@
     <ClCompile Include="EngineSampler.cpp" />
     <ClCompile Include="EngineShaderResources.cpp" />
     <ClCompile Include="EngineSprite.cpp" />
+    <ClCompile Include="EngineStruct.cpp" />
     <ClCompile Include="EngineTexture.cpp">
       <SubType>
       </SubType>
@@ -428,6 +431,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="TileRenderer.cpp" />
     <ClCompile Include="WorldObject.cpp">
       <SubType>
       </SubType>
