@@ -27,17 +27,6 @@ void ATestGameMode::BeginPlay()
 
 	{
 		FINT::MapSize = FINT(10, 10);
-		//for (int y = 0; y < FINT::MapSize.Y; y++)
-		//{
-		//	for (int x = 0; x < FINT::MapSize.X; x++)
-		//	{
-		//		FINT Pos = FINT(x, y);
-		//		std::shared_ptr<ATile> NewTile = std::make_shared<ATile>();
-		//		/*NewTile->SetTileSetting(Pos, false, false, false);
-		//		NewTile->SetActorType(EActorType::Empty);*/
-		//		TileMap[Pos].push_back(nullptr);
-		//	}
-		//}
 	}
 
 	{
@@ -55,6 +44,14 @@ void ATestGameMode::BeginPlay()
 		Test->SetTileLocation();
 		Test->SetActorType(EActorType::Selector);
 		TileMap[TestPos].push_back(Test);
+	}
+	{
+		FINT TestPos = FINT(2, 3);
+		std::shared_ptr<ATile> PlayerTest = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ABaba>("Baba"));
+		PlayerTest->SetTileSetting(TestPos, true, false, true);
+		PlayerTest->SetTileLocation();
+		PlayerTest->SetActorType(EActorType::Baba);
+		TileMap[TestPos].push_back(PlayerTest);
 	}
 
 	StaticHelper::CurTileMap = TileMap;
