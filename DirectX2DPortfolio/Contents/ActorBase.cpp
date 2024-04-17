@@ -251,6 +251,7 @@ bool AActorBase::MoveTileActorCheck(FINT _NextTilePos, EActorDir _Dir)
 			if (true == NextTileActor->GetHasController())
 			{
 				Temp = true;
+				return Temp;
 			}
 			else // Controller 를 가지고 있지 않은 경우
 			{

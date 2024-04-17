@@ -12,7 +12,7 @@ AWall::AWall()
 	Renderer->SetupAttachment(Root);
 
 	SetRoot(Root);
-	InputOn();
+	//InputOn();
 }
 
 AWall::~AWall()

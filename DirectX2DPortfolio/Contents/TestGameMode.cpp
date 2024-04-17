@@ -41,6 +41,8 @@ void ATestGameMode::BeginPlay()
 		//Player->SetActorType(EActorType::Baba);
 		TileMap[Pos].push_back(Player);
 	}
+	
+
 	{
 		FINT TestPos = FINT(2, 2);
 		std::shared_ptr<ATile> WallText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AWallNoun>("WallNoun"));
@@ -50,16 +52,24 @@ void ATestGameMode::BeginPlay()
 		TileMap[TestPos].push_back(WallText);
 	}
 	
+	{
+		FINT TestPos = FINT(2, 3);
+		std::shared_ptr<ATile> IsText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AIsVerb>("IsVerb"));
+		IsText->SetTileSetting(TestPos, true, false, true);
+		IsText->SetTileLocation();
+		//Test2->SetActorType(EActorType::Selector);
+		TileMap[TestPos].push_back(IsText);
+	}
 
 	{
 		FINT TestPos = FINT(2, 4);
 		std::shared_ptr<ATile> Wall = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AWall>("Wall"));
-		Wall->SetTileSetting(TestPos, false, false, true);
+		Wall->SetTileSetting(TestPos, true, false, true);
 		Wall->SetTileLocation();
 		//Wall->SetActorType(EActorType::Pillar);
 		TileMap[TestPos].push_back(Wall);
 	}
-
+	
 	{
 		FINT TestPos = FINT(3, 3);
 		std::shared_ptr<ATile> YouNoun = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AYouNoun>("YouNoun"));
@@ -69,14 +79,6 @@ void ATestGameMode::BeginPlay()
 		TileMap[TestPos].push_back(YouNoun);
 	}
 
-	{
-		FINT TestPos = FINT(2, 3);
-		std::shared_ptr<ATile> IsText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AIsVerb>("IsVerb"));
-		IsText->SetTileSetting(TestPos, true, false, true);
-		IsText->SetTileLocation();
-		//Test2->SetActorType(EActorType::Selector);
-		TileMap[TestPos].push_back(IsText);
-	}
 
 	StaticHelper::CurTileMap = TileMap;
 
@@ -92,8 +94,8 @@ void ATestGameMode::Tick(float _DeltaTime)
 		GEngine->ChangeLevel("SelectLevel");
 	}
 
-	StaticHelper::CurTileMap = TileMap;
 	TileUpdate();
+	StaticHelper::CurTileMap = TileMap;
 	SentenceCheck();
 }
 
