@@ -21,7 +21,7 @@ void AVerbTile::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
-	WordsCheck();
+	//WordsCheck();
 }
 
 void AVerbTile::WordsCheck()
@@ -78,33 +78,48 @@ bool AVerbTile::HorizontalCheck(FINT _TilePos)
 	FINT LeftTilePos = _TilePos + FINT::LEFT;
 	FINT RightTilePos = _TilePos + FINT::RIGHT;
 
-	std::shared_ptr<ATile> LeftTileActor;
-	std::shared_ptr<ATile> RightTileActor;
+	std::shared_ptr<ATile> TempLeftTileActor;
+	std::shared_ptr<ATile> TempRightTileActor;
 
 	std::list<std::shared_ptr<ATile>> LeftTileActorList = StaticHelper::CurTileMap[LeftTilePos];
 	if (false == LeftTileActorList.empty())
 	{
-		LeftTileActor = LeftTileActorList.front();
-		if (EActorType::CharNoun == LeftTileActor->GetActorType())
+		for (std::shared_ptr<ATile> LeftTileActor : LeftTileActorList)
 		{
-			IsCharNoun = true;
+			TempLeftTileActor = LeftTileActor;
+			if (EActorType::CharNoun == LeftTileActor->GetActorType())
+			{
+				IsCharNoun = true;
+			}
+			/*else
+			{
+				IsCharNoun = false;
+			}*/
 		}
 	}
+	
 
 	std::list<std::shared_ptr<ATile>> RightTileActorList = StaticHelper::CurTileMap[RightTilePos];
 	if (false == RightTileActorList.empty())
 	{
-		RightTileActor = RightTileActorList.front();
-		if (EActorType::Noun == RightTileActor->GetActorType())
+		for (std::shared_ptr<ATile> RightTileActor : RightTileActorList)
 		{
-			IsNoun = true;
+			TempRightTileActor = RightTileActor;
+			if (EActorType::Noun == RightTileActor->GetActorType())
+			{
+				IsNoun = true;
+			}
+			/*else
+			{
+				IsNoun = false;
+			}*/
 		}
 	}
 
-	if (true == (IsNoun && IsCharNoun))
+	if (true == IsNoun && true == IsCharNoun)
 	{
-		ENounType LeftNounType = LeftTileActor->GetNounType();
-		ENounType RightNounType = RightTileActor->GetNounType();
+		ENounType LeftNounType = TempLeftTileActor->GetNounType();
+		ENounType RightNounType = TempRightTileActor->GetNounType();
 
 		std::map<FINT, std::list<std::shared_ptr<ATile>>> TileActorMap = StaticHelper::CurTileMap;
 		for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> Iterator : TileActorMap)
@@ -162,33 +177,47 @@ bool AVerbTile::VerticalCheck(FINT _TilePos)
 	FINT UpTilePos = _TilePos + FINT::UP;
 	FINT DownTilePos = _TilePos + FINT::DOWN;
 
-	std::shared_ptr<ATile> UpTileActor;
-	std::shared_ptr<ATile> DownTileActor;
+	std::shared_ptr<ATile> TempUpTileActor;
+	std::shared_ptr<ATile> TempDownTileActor;
 
 	std::list<std::shared_ptr<ATile>> UpTileActorList = StaticHelper::CurTileMap[UpTilePos];
 	if (false == UpTileActorList.empty())
 	{
-		UpTileActor = UpTileActorList.front();
-		if (EActorType::CharNoun == UpTileActor->GetActorType())
+		for (std::shared_ptr<ATile> UpTileActor : UpTileActorList)
 		{
-			IsCharNoun = true;
+			TempUpTileActor = UpTileActor;
+			if (EActorType::CharNoun == UpTileActor->GetActorType())
+			{
+				IsCharNoun = true;
+			}
+			/*else
+			{
+				IsCharNoun = false;
+			}*/
 		}
 	}
 
 	std::list<std::shared_ptr<ATile>> DownTileActorList = StaticHelper::CurTileMap[DownTilePos];
-	if (false == DownTileActorList.empty())
+	if (false == UpTileActorList.empty())
 	{
-		DownTileActor = DownTileActorList.front();
-		if (EActorType::Noun == DownTileActor->GetActorType())
+		for (std::shared_ptr<ATile> DownTileActor : DownTileActorList)
 		{
-			IsNoun = true;
+			TempDownTileActor = DownTileActor;
+			if (EActorType::Noun == DownTileActor->GetActorType())
+			{
+				IsNoun = true;
+			}
+			/*else
+			{
+				IsNoun = false;
+			}*/
 		}
 	}
 
-	if (true == (IsNoun && IsCharNoun))
+	if (true == IsNoun && true == IsCharNoun)
 	{
-		ENounType UpNounType = UpTileActor->GetNounType();
-		ENounType DownNounType = DownTileActor->GetNounType();
+		ENounType UpNounType = TempUpTileActor->GetNounType();
+		ENounType DownNounType = TempDownTileActor->GetNounType();
 
 		std::map<FINT, std::list<std::shared_ptr<ATile>>> TileActorMap = StaticHelper::CurTileMap;
 		for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> Iterator : TileActorMap)

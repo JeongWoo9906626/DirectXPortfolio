@@ -14,11 +14,12 @@ public:
 	AVerbTile& operator=(const AVerbTile& _Other) = delete;
 	AVerbTile& operator=(AVerbTile&& _Other) noexcept = delete;
 
+	void WordsCheck();
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-	void WordsCheck();
 
 	bool HorizontalCheck(FINT _TilePos);
 	bool VerticalCheck(FINT _TilePos);

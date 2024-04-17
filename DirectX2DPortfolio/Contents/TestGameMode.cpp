@@ -49,14 +49,7 @@ void ATestGameMode::BeginPlay()
 		//Test->SetActorType(EActorType::Selector);
 		TileMap[TestPos].push_back(WallText);
 	}
-	{
-		FINT TestPos = FINT(2, 3);
-		std::shared_ptr<ATile> IsText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AIsVerb>("IsVerb"));
-		IsText->SetTileSetting(TestPos, true, false, true);
-		IsText->SetTileLocation();
-		//Test2->SetActorType(EActorType::Selector);
-		TileMap[TestPos].push_back(IsText);
-	}
+	
 
 	{
 		FINT TestPos = FINT(2, 4);
@@ -76,6 +69,15 @@ void ATestGameMode::BeginPlay()
 		TileMap[TestPos].push_back(YouNoun);
 	}
 
+	{
+		FINT TestPos = FINT(2, 3);
+		std::shared_ptr<ATile> IsText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AIsVerb>("IsVerb"));
+		IsText->SetTileSetting(TestPos, true, false, true);
+		IsText->SetTileLocation();
+		//Test2->SetActorType(EActorType::Selector);
+		TileMap[TestPos].push_back(IsText);
+	}
+
 	StaticHelper::CurTileMap = TileMap;
 
 	GetWorld()->SpawnActor<ATestMap>("TestMap");
@@ -92,6 +94,7 @@ void ATestGameMode::Tick(float _DeltaTime)
 
 	StaticHelper::CurTileMap = TileMap;
 	TileUpdate();
+	SentenceCheck();
 }
 
 void ATestGameMode::LevelEnd(ULevel* _NextLevel)
@@ -129,4 +132,21 @@ void ATestGameMode::TileUpdate()
 	TileMap.clear();
 	TileMap = NewTileMap;
 	NewTileMap.clear();
+}
+
+void ATestGameMode::SentenceCheck()
+{
+	std::map<FINT, std::list<std::shared_ptr<ATile>>> NewTileMap = StaticHelper::CurTileMap;
+	for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> Iterator : NewTileMap)
+	{
+		std::list<std::shared_ptr<ATile>> TileActorList = Iterator.second;
+		for (std::shared_ptr<ATile> TileActor : TileActorList)
+		{
+			if (EActorType::Verb == TileActor->GetActorType())
+			{
+				AVerbTile* NewVerbTile = dynamic_cast<AVerbTile*>(TileActor.get());
+				NewVerbTile->WordsCheck();
+			}
+		}
+	}
 }

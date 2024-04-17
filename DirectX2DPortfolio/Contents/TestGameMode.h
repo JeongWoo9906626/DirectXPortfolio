@@ -24,6 +24,7 @@ protected:
 	void LevelStart(ULevel* _PrevLevel) override;
 
 	void TileUpdate();
+	void SentenceCheck();
 
 private:
 	std::map<FINT, std::list<std::shared_ptr<ATile>>> TileMap;
