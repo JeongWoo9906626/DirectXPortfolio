@@ -3,6 +3,7 @@
 enum class ERenderOrder
 {
 	Map,
+	Object,
 	Player,
 };
 
@@ -22,5 +23,21 @@ enum class EActorType
 	Pillar,
 	Lava,
 	Selector,
+	CharNoun,
+	Noun,
+	Verb,
+	You,
+
+
 	None,
 };
+
+enum class ENounType
+{
+	Baba,
+	Pillar,
+	Lava,
+	You,
+	None,
+};
+

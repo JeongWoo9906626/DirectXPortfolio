@@ -21,7 +21,9 @@ ABaba::~ABaba()
 void ABaba::BeginPlay()
 {
 	Super::BeginPlay();
-	HasController = true;
+
+	SetActorType(EActorType::Baba);
+	//HasController = true;
 	SetActorScale3D(FVector(200.0f, 200.0f, 20.0f));
 
 	// Move_Right 0 ~ 4

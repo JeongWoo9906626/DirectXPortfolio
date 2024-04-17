@@ -179,6 +179,10 @@
     </ClInclude>
     <ClInclude Include="ContentsStruct.h" />
     <ClInclude Include="EnumHelper.h" />
+    <ClInclude Include="IsVerb.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="MapEditorGUI.h">
       <SubType>
       </SubType>
@@ -235,6 +239,22 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="VerbTile.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Wall.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="WallNoun.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="YouNoun.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ActorBase.cpp">
@@ -254,6 +274,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="ContentsStruct.cpp" />
+    <ClCompile Include="IsVerb.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="MapEditorGUI.cpp">
       <SubType>
       </SubType>
@@ -311,6 +335,22 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="TitleLogo.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="VerbTile.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Wall.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="WallNoun.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="YouNoun.cpp">
       <SubType>
       </SubType>
     </ClCompile>

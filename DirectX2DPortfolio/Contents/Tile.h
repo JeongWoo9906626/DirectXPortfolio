@@ -66,7 +66,7 @@ public:
 		IsBlock = _IsBlock;
 	}
 
-	bool GetIsBlock()
+	bool GetIsBlock() const
 	{
 		return IsBlock;
 	}
@@ -76,9 +76,19 @@ public:
 		Type = _Type;
 	}
 
-	EActorType GetActorType()
+	EActorType GetActorType() const
 	{
 		return Type;
+	}
+
+	void SetNounType(ENounType _Type)
+	{
+		NounType = _Type;
+	}
+
+	ENounType GetNounType() const
+	{
+		return NounType;
 	}
 
 	virtual void SetIsTileMove(bool _IsTileMove, EActorDir _Dir)
@@ -86,7 +96,7 @@ public:
 		IsTileMove = _IsTileMove;
 	}
 
-	bool GetIsTileMove()
+	bool GetIsTileMove() const
 	{
 		return IsTileMove;
 	}
@@ -98,6 +108,7 @@ protected:
 	USpriteRenderer* Renderer = nullptr;
 	FINT TilePosition = FINT();
 	EActorType Type = EActorType::None;
+	ENounType NounType = ENounType::None;
 
 	// HasController : 키 입력을 받아 움직이는 여부
 	bool HasController = false;

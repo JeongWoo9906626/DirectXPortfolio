@@ -105,6 +105,21 @@
     <ClInclude Include="MapEditorGUI.h">
       <Filter>GUI</Filter>
     </ClInclude>
+    <ClInclude Include="VerbTile.h">
+      <Filter>ActorBase</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall.h">
+      <Filter>Level\PlayLevel\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="IsVerb.h">
+      <Filter>Level\PlayLevel\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="WallNoun.h">
+      <Filter>Level\PlayLevel\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="YouNoun.h">
+      <Filter>Level\PlayLevel\Actor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp">
@@ -163,6 +178,21 @@
     </ClCompile>
     <ClCompile Include="MapEditorGUI.cpp">
       <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="VerbTile.cpp">
+      <Filter>ActorBase</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall.cpp">
+      <Filter>Level\PlayLevel\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="IsVerb.cpp">
+      <Filter>Level\PlayLevel\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="WallNoun.cpp">
+      <Filter>Level\PlayLevel\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="YouNoun.cpp">
+      <Filter>Level\PlayLevel\Actor</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

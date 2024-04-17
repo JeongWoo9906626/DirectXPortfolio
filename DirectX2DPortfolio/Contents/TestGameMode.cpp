@@ -6,6 +6,10 @@
 #include "Tile.h"
 #include "Baba.h"
 #include "Selector.h"
+#include "Wall.h"
+#include "WallNoun.h"
+#include "IsVerb.h"
+#include "YouNoun.h"
 
 
 ATestGameMode::ATestGameMode()
@@ -31,37 +35,45 @@ void ATestGameMode::BeginPlay()
 
 	{
 		FINT Pos = FINT(1, 1);
-		std::shared_ptr<ATile> Player = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ABaba>("Player"));
-		Player->SetTileSetting(Pos, true, true, false);
+		std::shared_ptr<ATile> Player = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ABaba>("Baba"));
+		Player->SetTileSetting(Pos, true, true, true);
 		Player->SetTileLocation();
-		Player->SetActorType(EActorType::Baba);
+		//Player->SetActorType(EActorType::Baba);
 		TileMap[Pos].push_back(Player);
 	}
 	{
 		FINT TestPos = FINT(2, 2);
-		std::shared_ptr<ATile> Test = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ASelector>("Test1"));
-		Test->SetTileSetting(TestPos, true, false, true);
-		Test->SetTileLocation();
-		Test->SetActorType(EActorType::Selector);
-		TileMap[TestPos].push_back(Test);
+		std::shared_ptr<ATile> WallText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AWallNoun>("WallNoun"));
+		WallText->SetTileSetting(TestPos, true, false, true);
+		WallText->SetTileLocation();
+		//Test->SetActorType(EActorType::Selector);
+		TileMap[TestPos].push_back(WallText);
 	}
 	{
 		FINT TestPos = FINT(2, 3);
-		std::shared_ptr<ATile> Test2 = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ASelector>("Test2"));
-		//std::shared_ptr<ATile> PlayerTest = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ABaba>("Baba"));
-		Test2->SetTileSetting(TestPos, true, false, true);
-		Test2->SetTileLocation();
-		Test2->SetActorType(EActorType::Selector);
-		TileMap[TestPos].push_back(Test2);
+		std::shared_ptr<ATile> IsText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AIsVerb>("IsVerb"));
+		IsText->SetTileSetting(TestPos, true, false, true);
+		IsText->SetTileLocation();
+		//Test2->SetActorType(EActorType::Selector);
+		TileMap[TestPos].push_back(IsText);
 	}
 
 	{
 		FINT TestPos = FINT(2, 4);
-		std::shared_ptr<ATile> PlayerTest2 = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ABaba>("Baba2"));
-		PlayerTest2->SetTileSetting(TestPos, false, false, true);
-		PlayerTest2->SetTileLocation();
-		PlayerTest2->SetActorType(EActorType::Baba);
-		TileMap[TestPos].push_back(PlayerTest2);
+		std::shared_ptr<ATile> Wall = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AWall>("Wall"));
+		Wall->SetTileSetting(TestPos, false, false, true);
+		Wall->SetTileLocation();
+		//Wall->SetActorType(EActorType::Pillar);
+		TileMap[TestPos].push_back(Wall);
+	}
+
+	{
+		FINT TestPos = FINT(3, 3);
+		std::shared_ptr<ATile> YouNoun = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AYouNoun>("YouNoun"));
+		YouNoun->SetTileSetting(TestPos, true, false, true);
+		YouNoun->SetTileLocation();
+		//Wall->SetActorType(EActorType::Pillar);
+		TileMap[TestPos].push_back(YouNoun);
 	}
 
 	StaticHelper::CurTileMap = TileMap;

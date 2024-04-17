@@ -29,13 +29,15 @@ void ASelector::BeginPlay()
 	Renderer->CreateAnimation("SelectMove", "Selector.png", 0.1f, true);
 	Renderer->ChangeAnimation("SelectMove");
 	Renderer->SetOrder(ERenderOrder::Player);
+
+	SetActorType(EActorType::Selector);
 }
 
 void ASelector::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
-	if (false == HasController)
+	/*if (false == HasController)
 	{
 		if (true == UEngineInput::IsDown('T'))
 		{
@@ -64,6 +66,6 @@ void ASelector::Tick(float _DeltaTime)
 				}
 			}
 		}
-	}
+	}*/
 }
 
