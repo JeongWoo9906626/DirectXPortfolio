@@ -62,6 +62,7 @@ void AActorBase::Tick(float _DeltaTime)
 			{
 				return;
 			}
+			StaticHelper::TempMove = true;
 			MoveHistory.push(EActorDir::Left);
 			MoveSet();
 		}
@@ -72,6 +73,7 @@ void AActorBase::Tick(float _DeltaTime)
 			{
 				return;
 			}
+			StaticHelper::TempMove = true;
 			MoveHistory.push(EActorDir::Right);
 			MoveSet();
 		}
@@ -82,6 +84,7 @@ void AActorBase::Tick(float _DeltaTime)
 			{
 				return;
 			}
+			StaticHelper::TempMove = true;
 			MoveHistory.push(EActorDir::Up);
 			MoveSet();
 		}
@@ -92,6 +95,7 @@ void AActorBase::Tick(float _DeltaTime)
 			{
 				return;
 			}
+			StaticHelper::TempMove = true;
 			MoveHistory.push(EActorDir::Down);
 			MoveSet();
 		}
@@ -124,6 +128,14 @@ void AActorBase::Tick(float _DeltaTime)
 			MoveHistory.push(CurDir);
 			MoveSet();
 		}
+		else
+		{
+			if (true == StaticHelper::TempMove)
+			{
+				MoveHistory.push(EActorDir::None);
+				MoveSet();
+			}
+		}
 	}
 	else if (true == IsMove)
 	{
@@ -139,6 +151,7 @@ void AActorBase::Tick(float _DeltaTime)
 
 		FVector MovePos = Lerp(CurMoveTime);
 		SetActorLocation(MovePos);
+		StaticHelper::TempMove = false;
 	}
 }
 
@@ -297,6 +310,8 @@ void AActorBase::MoveSet()
 		break;
 	case EActorDir::Down:
 		TilePosition.Y -= Dir;
+		break;
+	case EActorDir::None:
 		break;
 	}
 
