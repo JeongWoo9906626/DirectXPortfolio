@@ -23,6 +23,8 @@ protected:
 	void LevelEnd(ULevel* _NextLevel) override;
 	void LevelStart(ULevel* _PrevLevel) override;
 
+	void TileMoveCheck();
+	void TileMove(float _DeltaTime);
 	void TileUpdate();
 	void SentenceCheck();
 

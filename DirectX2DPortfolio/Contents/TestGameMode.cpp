@@ -94,8 +94,9 @@ void ATestGameMode::Tick(float _DeltaTime)
 		GEngine->ChangeLevel("SelectLevel");
 	}
 
+	TileMoveCheck();
+	TileMove(_DeltaTime);
 	TileUpdate();
-	StaticHelper::CurTileMap = TileMap;
 	SentenceCheck();
 }
 
@@ -107,6 +108,38 @@ void ATestGameMode::LevelEnd(ULevel* _NextLevel)
 void ATestGameMode::LevelStart(ULevel* _PrevLevel)
 {
 	Super::LevelStart(_PrevLevel);
+}
+
+void ATestGameMode::TileMoveCheck()
+{
+	std::map<FINT, std::list<std::shared_ptr<ATile>>> NewTileMap;
+	for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> Iterator : TileMap)
+	{
+		FINT CurMapTilePos = Iterator.first;
+		std::list<std::shared_ptr<ATile>> TileActorList = Iterator.second;
+
+		for (std::shared_ptr<ATile> TileActor : TileActorList)
+		{
+			std::shared_ptr<AActorBase> NewActorBaseTile = static_pointer_cast<AActorBase>(TileActor);
+			NewActorBaseTile->InputCheck();
+		}
+	}
+}
+
+void ATestGameMode::TileMove(float _DeltaTime)
+{
+	std::map<FINT, std::list<std::shared_ptr<ATile>>> NewTileMap;
+	for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> Iterator : TileMap)
+	{
+		FINT CurMapTilePos = Iterator.first;
+		std::list<std::shared_ptr<ATile>> TileActorList = Iterator.second;
+
+		for (std::shared_ptr<ATile> TileActor : TileActorList)
+		{
+			std::shared_ptr<AActorBase> NewActorBaseTile = static_pointer_cast<AActorBase>(TileActor);
+			NewActorBaseTile->Move(_DeltaTime);
+		}
+	}
 }
 
 void ATestGameMode::TileUpdate()
@@ -134,6 +167,7 @@ void ATestGameMode::TileUpdate()
 	TileMap.clear();
 	TileMap = NewTileMap;
 	NewTileMap.clear();
+	StaticHelper::CurTileMap = TileMap;
 }
 
 void ATestGameMode::SentenceCheck()

@@ -107,8 +107,7 @@ void ABaba::Tick(float _DeltaTime)
 	Super::Tick(_DeltaTime);
 }
 
-void ABaba::MoveSet()
-{
+void ABaba::MoveSet(){
 	Super::MoveSet();
 	NextDir = GetCurDir();
 

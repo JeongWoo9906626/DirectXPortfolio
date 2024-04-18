@@ -15,16 +15,15 @@ public:
 	AActorBase& operator=(const AActorBase& _Other) = delete;
 	AActorBase& operator=(AActorBase&& _Other) noexcept = delete;
 
-protected:
-	void BeginPlay() override;
-	void Tick(float _DeltaTime) override;
+	void SetIsMove(bool _IsMove)
+	{
+		IsMove = _IsMove;
+	}
 
-	FVector Lerp(float _CurMoveTime) const;
-	virtual void MoveSet(); 
-
-	bool MoveCheck(EActorDir _Dir);
-	bool MoveEndCheck(FINT _TilePos);
-	bool MoveTileActorCheck(FINT _NextTilePos, EActorDir _Dir);
+	bool GetIsMove() const
+	{
+		return IsMove;
+	}
 
 	void SetIsTileMove(bool _IsTileMove, EActorDir _Dir) override
 	{
@@ -46,6 +45,21 @@ protected:
 	{
 		return IsBack;
 	}
+
+	void InputCheck();
+	void Move(float _DeltaTime);
+
+protected:
+	void BeginPlay() override;
+	void Tick(float _DeltaTime) override;
+
+	FVector Lerp(float _CurMoveTime) const;
+	virtual void MoveSet(); 
+
+	bool MoveCheck(EActorDir _Dir);
+	bool MoveEndCheck(FINT _TilePos);
+	bool MoveTileActorCheck(FINT _NextTilePos, EActorDir _Dir);
+
 
 	std::stack<int> AnimationIndexHistory;
 
