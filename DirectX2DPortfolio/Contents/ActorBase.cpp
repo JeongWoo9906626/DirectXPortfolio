@@ -15,26 +15,27 @@ AActorBase::~AActorBase()
 
 void AActorBase::InputCheck()
 {
-	if (true == HasController)
+	if (true == UEngineInput::IsDown('Z'))
 	{
-		if (true == UEngineInput::IsDown('Z'))
+
+		if (true == MoveHistory.empty())
 		{
-
-			if (true == MoveHistory.empty())
-			{
-				return;
-			}
-
-			if (false == AnimationIndexHistory.empty())
-			{
-				AnimationIndexHistory.pop();
-			}
-
-			IsBack = true;
-			MoveSet();
-			MoveHistory.pop();
+			return;
 		}
 
+		if (false == AnimationIndexHistory.empty())
+		{
+			AnimationIndexHistory.pop();
+		}
+
+		StaticHelper::TempMove = false;
+		IsBack = true;
+		MoveSet();
+		MoveHistory.pop();
+	}
+
+	if (true == HasController)
+	{
 		if (true == UEngineInput::IsDown(VK_LEFT))
 		{
 			if (false == MoveCheck(EActorDir::Left))
@@ -81,23 +82,6 @@ void AActorBase::InputCheck()
 	}
 	else
 	{
-		if (true == UEngineInput::IsDown('Z'))
-		{
-			if (true == MoveHistory.empty())
-			{
-				return;
-			}
-
-			if (false == AnimationIndexHistory.empty())
-			{
-				AnimationIndexHistory.pop();
-			}
-
-			IsBack = true;
-			MoveSet();
-			MoveHistory.pop();
-		}
-
 		if (true == IsTileMove)
 		{
 			if (false == MoveCheck(CurDir))
@@ -112,7 +96,7 @@ void AActorBase::InputCheck()
 			if (true == StaticHelper::TempMove)
 			{
 				MoveHistory.push(EActorDir::None);
-				//MoveSet();
+				MoveSet();
 			}
 		}
 	}
@@ -148,23 +132,6 @@ void AActorBase::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
-	/*if (true == IsMove)
-	{
-		if (CurMoveTime <= 0.0f)
-		{
-			IsTileMove = false;
-			IsBack = false;
-			IsMove = false;
-			CurMoveTime = 0.0f;
-		}
-
-		CurMoveTime -= _DeltaTime;
-
-		FVector MovePos = Lerp(CurMoveTime);
-		SetActorLocation(MovePos);
-		StaticHelper::TempMove = false;
-	}*/
-
 	{
 		FVector TilePos = { TilePosition.X, TilePosition.Y, 0 };
 		std::string Msg = std::format("PlayerTilePos : {}\n", std::to_string(TilePos.X) + " " + std::to_string(TilePos.Y));
@@ -175,110 +142,6 @@ void AActorBase::Tick(float _DeltaTime)
 		std::string Msg = std::format("PlayerPos : {}\n", GetActorLocation().ToString());
 		UEngineDebugMsgWindow::PushMsg(Msg);
 	}
-
-	
-
-	/*if (false == IsMove && true == HasController)
-	{
-		if (true == UEngineInput::IsDown('Z'))
-		{
-
-			if (true == MoveHistory.empty())
-			{
-				return;
-			}
-
-			if (false == AnimationIndexHistory.empty())
-			{
-				AnimationIndexHistory.pop();
-			}
-
-			IsBack = true;
-			MoveSet();
-			MoveHistory.pop();
-		}
-
-		if (true == UEngineInput::IsDown(VK_LEFT))
-		{
-			if (false == MoveCheck(EActorDir::Left))
-			{
-				return;
-			}
-			StaticHelper::TempMove = true;
-			MoveHistory.push(EActorDir::Left);
-			MoveSet();
-		}
-
-		if (true == UEngineInput::IsDown(VK_RIGHT))
-		{
-			if (false == MoveCheck(EActorDir::Right))
-			{
-				return;
-			}
-			StaticHelper::TempMove = true;
-			MoveHistory.push(EActorDir::Right);
-			MoveSet();
-		}
-
-		if (true == UEngineInput::IsDown(VK_UP))
-		{
-			if (false == MoveCheck(EActorDir::Up))
-			{
-				return;
-			}
-			StaticHelper::TempMove = true;
-			MoveHistory.push(EActorDir::Up);
-			MoveSet();
-		}
-
-		if (true == UEngineInput::IsDown(VK_DOWN))
-		{
-			if (false == MoveCheck(EActorDir::Down))
-			{
-				return;
-			}
-			StaticHelper::TempMove = true;
-			MoveHistory.push(EActorDir::Down);
-			MoveSet();
-		}
-	}
-	else if (false == IsMove && false == HasController)
-	{
-		if (true == UEngineInput::IsDown('Z'))
-		{
-			if (true == MoveHistory.empty())
-			{
-				return;
-			}
-
-			if (false == AnimationIndexHistory.empty())
-			{
-				AnimationIndexHistory.pop();
-			}
-
-			IsBack = true;
-			MoveSet();
-			MoveHistory.pop();
-		}
-
-		if (true == IsTileMove)
-		{
-			if (false == MoveCheck(CurDir))
-			{
-				return;
-			}
-			MoveHistory.push(CurDir);
-			MoveSet();
-		}
-		else
-		{
-			if (true == StaticHelper::TempMove)
-			{
-				MoveHistory.push(EActorDir::None);
-				MoveSet();
-			}
-		}
-	}*/
 }
 
 bool AActorBase::MoveCheck(EActorDir _Dir)
@@ -415,6 +278,7 @@ bool AActorBase::MoveTileActorCheck(FINT _NextTilePos, EActorDir _Dir)
 void AActorBase::MoveSet()
 {
 	IsMove = true;
+	IsTileMove = false;
 	CurMoveTime = MoveTime;
 
 	PrevPos = TilePosition.GetTilePos();

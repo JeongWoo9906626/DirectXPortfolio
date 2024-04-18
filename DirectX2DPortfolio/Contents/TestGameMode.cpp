@@ -43,14 +43,7 @@ void ATestGameMode::BeginPlay()
 	}
 	
 
-	{
-		FINT TestPos = FINT(2, 2);
-		std::shared_ptr<ATile> WallText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AWallNoun>("WallNoun"));
-		WallText->SetTileSetting(TestPos, true, false, true);
-		WallText->SetTileLocation();
-		//Test->SetActorType(EActorType::Selector);
-		TileMap[TestPos].push_back(WallText);
-	}
+	
 	
 	{
 		FINT TestPos = FINT(2, 3);
@@ -78,7 +71,14 @@ void ATestGameMode::BeginPlay()
 		//Wall->SetActorType(EActorType::Pillar);
 		TileMap[TestPos].push_back(YouNoun);
 	}
-
+	{
+		FINT TestPos = FINT(2, 2);
+		std::shared_ptr<ATile> WallText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AWallNoun>("WallNoun"));
+		WallText->SetTileSetting(TestPos, true, false, true);
+		WallText->SetTileLocation();
+		//Test->SetActorType(EActorType::Selector);
+		TileMap[TestPos].push_back(WallText);
+	}
 
 	StaticHelper::CurTileMap = TileMap;
 
