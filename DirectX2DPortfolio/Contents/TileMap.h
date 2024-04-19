@@ -35,6 +35,8 @@ protected:
 	void TileUpdate();
 	void TileSentenceCheck();
 
+	void MoveEnd();
+
 private:
 	FINT MapSize = FINT();
 	std::map<FINT, std::list<std::shared_ptr<ATile>>> Map;

@@ -151,7 +151,7 @@ void ATileMap::TileMoveSet()
 	{
 		return;
 	}
-	
+
 	if (true == IsBack)
 	{
 		std::map<FINT, std::list<std::shared_ptr<ATile>>> NewTileMap;
@@ -180,7 +180,7 @@ void ATileMap::TileMoveSet()
 			}
 		}
 	}
-	
+
 }
 
 void ATileMap::TileMove(float _DeltaTime)
@@ -190,6 +190,7 @@ void ATileMap::TileMove(float _DeltaTime)
 		return;
 	}
 
+	bool Temp = false;
 	std::map<FINT, std::list<std::shared_ptr<ATile>>> NewTileMap;
 	for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> Iterator : Map)
 	{
@@ -199,13 +200,17 @@ void ATileMap::TileMove(float _DeltaTime)
 		for (std::shared_ptr<ATile> TileActor : TileActorList)
 		{
 			TileActor->Move(_DeltaTime);
+			Temp = Temp || TileActor->GetIsMove();
 		}
 	}
 
-	IsInput = false;
-	IsTileMove = false;
-	IsBack = false;
-	Input = EInputType::None;
+	if (Temp == false) 
+	{
+		IsBack = false;
+		IsInput = false;
+		IsTileMove = false;
+		Input = EInputType::None;
+	}
 }
 
 void ATileMap::TileUpdate()
@@ -237,5 +242,9 @@ void ATileMap::TileUpdate()
 }
 
 void ATileMap::TileSentenceCheck()
+{
+}
+
+void ATileMap::MoveEnd()
 {
 }

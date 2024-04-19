@@ -140,6 +140,9 @@ void ATile::Move(float _DeltaTime)
 	{
 		IsMove = false;
 		CurMoveTime = MoveTime;
+		PrevPos = NextPos;
+		Info.TilePosition = NextPos;
+		//함수포인터 저거실행
 	}
 
 	CurMoveTime -= _DeltaTime;

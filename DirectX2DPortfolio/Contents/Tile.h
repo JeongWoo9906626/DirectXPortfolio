@@ -136,7 +136,7 @@ private:
 	FINT NextPos = FINT();
 
 	float MoveRange = 32.0f;
-	float MoveTime = 0.3f;
+	float MoveTime = 0.5f;
 	float CurMoveTime = 0.0f;
 
 	std::stack<EActorDir> MoveHistory;
