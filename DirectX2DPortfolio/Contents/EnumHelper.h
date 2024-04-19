@@ -18,17 +18,13 @@ enum class EActorDir
 
 enum class EActorType
 {
-	Empty,
 	Baba,
 	Pillar,
 	Lava,
 	Selector,
-	CharNoun,
-	Noun,
+	LWord,
+	RWord,
 	Verb,
-	You,
-
-
 	None,
 };
 
@@ -41,3 +37,25 @@ enum class ENounType
 	None,
 };
 
+enum class EInputType
+{
+	L,
+	R,
+	U,
+	D,
+	Z,
+	None,
+};
+
+enum class ETileType
+{
+	Baba,
+	Pillar,
+	Lava,
+	Selector,
+	LWord,
+	RWord,
+	Is,
+	And,
+	None,
+};

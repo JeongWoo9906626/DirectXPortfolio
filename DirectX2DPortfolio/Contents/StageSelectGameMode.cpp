@@ -22,7 +22,7 @@ void AStageSelectGameMode::BeginPlay()
 	Camera->SetActorLocation(FVector(0.0f, 0.0f, -100.0f));
 
 	std::shared_ptr<ASelector> Selector = GetWorld()->SpawnActor<ASelector>("Selector");
-	Selector->SetHasController(true);
+	Selector->SetIsController(true);
 
 	std::shared_ptr<ASelectMap> SelectMap = GetWorld()->SpawnActor<ASelectMap>("SelectMap");
 }

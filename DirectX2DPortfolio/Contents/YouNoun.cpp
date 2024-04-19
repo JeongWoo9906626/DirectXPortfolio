@@ -27,11 +27,11 @@ void AYouNoun::BeginPlay()
 
 	std::vector<int> AnimationFrameIndex = { 4, 22, 40 };
 	std::vector<float> AnimationInterIndex = { 0.1f, 0.1f, 0.1f };
-	Renderer->CreateAnimation("WallText", "Wall.png", AnimationInterIndex, AnimationFrameIndex, true);
-	Renderer->ChangeAnimation("WallText");
+	Renderer->CreateAnimation("YouText", "Wall.png", AnimationInterIndex, AnimationFrameIndex, true);
+	Renderer->ChangeAnimation("YouText");
 	Renderer->SetOrder(ERenderOrder::Object);
 
-	SetActorType(EActorType::Noun);
+	SetActorType(ETileType::RWord);
 	SetNounType(ENounType::You);
 }
 

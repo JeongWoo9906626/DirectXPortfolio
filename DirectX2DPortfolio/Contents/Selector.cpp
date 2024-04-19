@@ -30,7 +30,7 @@ void ASelector::BeginPlay()
 	Renderer->ChangeAnimation("SelectMove");
 	Renderer->SetOrder(ERenderOrder::Player);
 
-	SetActorType(EActorType::Selector);
+	SetActorType(ETileType::Selector);
 }
 
 void ASelector::Tick(float _DeltaTime)

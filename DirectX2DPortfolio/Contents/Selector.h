@@ -1,10 +1,10 @@
 #pragma once
-#include "ActorBase.h"
+#include "Tile.h"
 
 class USpriteRenderer;
-class ASelector : public AActorBase
+class ASelector : public ATile
 {
-	GENERATED_BODY(AActorBase)
+	GENERATED_BODY(ATile)
 
 public:
 	ASelector();

@@ -1,10 +1,10 @@
 #pragma once
-#include <stack>
-#include "Tile.h"
+//#include <stack>
+//#include "Tile.h"
 
-class AActorBase : public ATile
+class AActorBase /*: public ATile*/
 {
-	GENERATED_BODY(ATile)
+	//GENERATED_BODY(ATile)
 
 public:
 	AActorBase();
@@ -15,7 +15,7 @@ public:
 	AActorBase& operator=(const AActorBase& _Other) = delete;
 	AActorBase& operator=(AActorBase&& _Other) noexcept = delete;
 
-	void SetIsMove(bool _IsMove)
+	/*void SetIsMove(bool _IsMove)
 	{
 		IsMove = _IsMove;
 	}
@@ -47,10 +47,10 @@ public:
 	}
 
 	void InputCheck();
-	void Move(float _DeltaTime);
+	void Move(float _DeltaTime);*/
 
 protected:
-	void BeginPlay() override;
+	/*void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
 	FVector Lerp(float _CurMoveTime) const;
@@ -61,20 +61,20 @@ protected:
 	bool MoveTileActorCheck(FINT _NextTilePos, EActorDir _Dir);
 
 
-	std::stack<int> AnimationIndexHistory;
+	std::stack<int> AnimationIndexHistory;*/
 
 private:
-	FINT PrevPos = FINT();
-	FINT NextPos = FINT();
+	//FINT PrevPos = FINT();
+	//FINT NextPos = FINT();
 
-	EActorDir CurDir = EActorDir::None;
+	//EActorDir CurDir = EActorDir::None;
 
-	bool IsMove = false;
-	bool IsBack = false;
+	//bool IsMove = false;
+	//bool IsBack = false;
 
-	float MoveRange = 32.0f;
-	float MoveTime = 0.3f;
-	float CurMoveTime = 0.0f;
+	//float MoveRange = 32.0f;
+	//float MoveTime = 0.3f;
+	//float CurMoveTime = 0.0f;
 
-	std::stack<EActorDir> MoveHistory;
+	//std::stack<EActorDir> MoveHistory;
 };

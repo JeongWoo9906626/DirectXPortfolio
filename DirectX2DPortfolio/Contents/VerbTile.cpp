@@ -39,11 +39,11 @@ void AVerbTile::WordsCheck()
 			std::list<std::shared_ptr<ATile>> TileActorList = Iterator.second;
 			for (std::shared_ptr<ATile> TileActor : TileActorList)
 			{
-				EActorType ActorType = TileActor->GetActorType();
+				ETileType ActorType = TileActor->GetActorType();
 				if (ActorType == HorizontalLeftType)
 				{
-					TileActor->SetHasController(false);
-					HorizontalLeftType = EActorType::None;
+					TileActor->SetIsController(false);
+					HorizontalLeftType = ETileType::None;
 				}
 			}
 		}
@@ -57,11 +57,11 @@ void AVerbTile::WordsCheck()
 			std::list<std::shared_ptr<ATile>> TileActorList = Iterator.second;
 			for (std::shared_ptr<ATile> TileActor : TileActorList)
 			{
-				EActorType ActorType = TileActor->GetActorType();
+				ETileType ActorType = TileActor->GetActorType();
 				if (ActorType == VerticalLeftType)
 				{
-					TileActor->SetHasController(false);
-					VerticalLeftType = EActorType::None;
+					TileActor->SetIsController(false);
+					VerticalLeftType = ETileType::None;
 				}
 			}
 		}
@@ -87,7 +87,7 @@ bool AVerbTile::HorizontalCheck(FINT _TilePos)
 		for (std::shared_ptr<ATile> LeftTileActor : LeftTileActorList)
 		{
 			TempLeftTileActor = LeftTileActor;
-			if (EActorType::CharNoun == LeftTileActor->GetActorType())
+			if (ETileType::LWord == LeftTileActor->GetActorType())
 			{
 				IsCharNoun = true;
 			}
@@ -105,7 +105,7 @@ bool AVerbTile::HorizontalCheck(FINT _TilePos)
 		for (std::shared_ptr<ATile> RightTileActor : RightTileActorList)
 		{
 			TempRightTileActor = RightTileActor;
-			if (EActorType::Noun == RightTileActor->GetActorType())
+			if (ETileType::RWord == RightTileActor->GetActorType())
 			{
 				IsNoun = true;
 			}
@@ -127,14 +127,14 @@ bool AVerbTile::HorizontalCheck(FINT _TilePos)
 			std::list<std::shared_ptr<ATile>> TileActorList = Iterator.second;
 			for (std::shared_ptr<ATile> TileActor : TileActorList)
 			{
-				EActorType ActorType = TileActor->GetActorType();
-				EActorType CheckActorType = EActorType::None;
+				ETileType ActorType = TileActor->GetActorType();
+				ETileType CheckActorType = ETileType::None;
 				switch (LeftNounType)
 				{
 				case ENounType::Baba:
 					break;
 				case ENounType::Pillar:
-					CheckActorType = EActorType::Pillar;
+					CheckActorType = ETileType::Pillar;
 					break;
 				case ENounType::Lava:
 					break;
@@ -155,7 +155,7 @@ bool AVerbTile::HorizontalCheck(FINT _TilePos)
 					case ENounType::Lava:
 						break;
 					case ENounType::You:
-						TileActor->SetHasController(true);
+						TileActor->SetIsController(true);
 						break;
 					}
 
@@ -186,7 +186,7 @@ bool AVerbTile::VerticalCheck(FINT _TilePos)
 		for (std::shared_ptr<ATile> UpTileActor : UpTileActorList)
 		{
 			TempUpTileActor = UpTileActor;
-			if (EActorType::CharNoun == UpTileActor->GetActorType())
+			if (ETileType::LWord == UpTileActor->GetActorType())
 			{
 				IsCharNoun = true;
 			}
@@ -203,7 +203,7 @@ bool AVerbTile::VerticalCheck(FINT _TilePos)
 		for (std::shared_ptr<ATile> DownTileActor : DownTileActorList)
 		{
 			TempDownTileActor = DownTileActor;
-			if (EActorType::Noun == DownTileActor->GetActorType())
+			if (ETileType::RWord == DownTileActor->GetActorType())
 			{
 				IsNoun = true;
 			}
@@ -225,14 +225,14 @@ bool AVerbTile::VerticalCheck(FINT _TilePos)
 			std::list<std::shared_ptr<ATile>> TileActorList = Iterator.second;
 			for (std::shared_ptr<ATile> TileActor : TileActorList)
 			{
-				EActorType ActorType = TileActor->GetActorType();
-				EActorType CheckActorType = EActorType::None;
+				ETileType ActorType = TileActor->GetActorType();
+				ETileType CheckActorType = ETileType::None;
 				switch (UpNounType)
 				{
 				case ENounType::Baba:
 					break;
 				case ENounType::Pillar:
-					CheckActorType = EActorType::Pillar;
+					CheckActorType = ETileType::Pillar;
 					break;
 				case ENounType::Lava:
 					break;
@@ -253,7 +253,7 @@ bool AVerbTile::VerticalCheck(FINT _TilePos)
 					case ENounType::Lava:
 						break;
 					case ENounType::You:
-						TileActor->SetHasController(true);
+						TileActor->SetIsController(true);
 						break;
 					}
 					VerticalLeftType = ActorType;

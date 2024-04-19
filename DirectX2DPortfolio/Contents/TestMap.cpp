@@ -31,34 +31,4 @@ void ATestMap::BeginPlay()
 void ATestMap::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
-
-	/*StaticHelper::CurTileMap = TileMap;
-	TileUpdate();*/
-	//StaticHelper::CurTileMap = TileMap;
 }
-
-//void ATestMap::TileUpdate()
-//{
-//	std::map<FINT, std::shared_ptr<ATile>> NewTileMap;
-//	for (std::pair<FINT, std::shared_ptr<ATile>> Iterator : TileMap)
-//	{
-//		FINT CurMapTilePos = Iterator.first;
-//		std::shared_ptr<ATile> TileActor = Iterator.second;
-//		FINT TilePos = TileActor->GetTilePosition();
-//
-//		if (TilePos != CurMapTilePos)
-//		{
-//			NewTileMap[TilePos] = TileActor;
-// 			NewTileMap[CurMapTilePos] = TileMap[TilePos];
-//			NewTileMap[CurMapTilePos]->SetPosition(CurMapTilePos);
-//		}
-//		else
-//		{
-//			NewTileMap[TilePos] = TileActor;
-//		}
-//	}
-//
-//	TileMap.clear();
-//	TileMap = NewTileMap;
-//	NewTileMap.clear();
-//}

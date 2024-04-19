@@ -12,7 +12,6 @@ AWallNoun::AWallNoun()
 	Renderer->SetupAttachment(Root);
 
 	SetRoot(Root);
-	//InputOn();
 }
 
 AWallNoun::~AWallNoun()
@@ -32,7 +31,7 @@ void AWallNoun::BeginPlay()
 	Renderer->ChangeAnimation("WallText");
 	Renderer->SetOrder(ERenderOrder::Object);
 
-	SetActorType(EActorType::CharNoun);
+	SetActorType(ETileType::LWord);
 	SetNounType(ENounType::Pillar);
 }
 

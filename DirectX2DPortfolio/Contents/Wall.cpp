@@ -32,7 +32,7 @@ void AWall::BeginPlay()
 	Renderer->ChangeAnimation("WallMove");
 	Renderer->SetOrder(ERenderOrder::Object);
 
-	SetActorType(EActorType::Pillar);
+	SetActorType(ETileType::Pillar);
 }
 
 void AWall::Tick(float _DeltaTime)

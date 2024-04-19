@@ -1,9 +1,9 @@
 #pragma once
-#include "ActorBase.h"
+#include "Tile.h"
 
-class AWallNoun : public AActorBase
+class AWallNoun : public ATile
 {
-	GENERATED_BODY(AActorBase)
+	GENERATED_BODY(ATile)
 
 public:
 	AWallNoun();

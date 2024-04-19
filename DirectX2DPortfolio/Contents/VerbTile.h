@@ -1,9 +1,9 @@
 #pragma once
-#include "ActorBase.h"
+#include "Tile.h"
 
-class AVerbTile : public AActorBase
+class AVerbTile : public ATile
 {
-	GENERATED_BODY(AActorBase)
+	GENERATED_BODY(ATile)
 
 public:
 	AVerbTile();
@@ -27,8 +27,8 @@ protected:
 	void UnLock();
 
 private:
-	EActorType HorizontalLeftType = EActorType::None;
-	EActorType VerticalLeftType = EActorType::None;
+	ETileType HorizontalLeftType = ETileType::None;
+	ETileType VerticalLeftType = ETileType::None;
 
 	bool IsSentence = false;
 

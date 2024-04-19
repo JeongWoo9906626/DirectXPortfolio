@@ -120,6 +120,9 @@
     <ClInclude Include="YouNoun.h">
       <Filter>Level\PlayLevel\Actor</Filter>
     </ClInclude>
+    <ClInclude Include="TileMap.h">
+      <Filter>ActorBase</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp">
@@ -193,6 +196,9 @@
     </ClCompile>
     <ClCompile Include="YouNoun.cpp">
       <Filter>Level\PlayLevel\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="TileMap.cpp">
+      <Filter>ActorBase</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

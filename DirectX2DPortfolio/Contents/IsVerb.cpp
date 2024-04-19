@@ -32,7 +32,7 @@ void AIsVerb::BeginPlay()
 	Renderer->ChangeAnimation("IsVerb");
 	Renderer->SetOrder(ERenderOrder::Object);
 
-	SetActorType(EActorType::Verb);
+	SetActorType(ETileType::Is);
 }
 
 void AIsVerb::Tick(float _DeltaTime)

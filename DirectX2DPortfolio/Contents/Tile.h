@@ -1,6 +1,19 @@
 #pragma once
 #include <EngineCore/Actor.h>
 #include "ContentsStruct.h"
+#include <stack>
+
+class UTileInfo
+{
+public:
+	FINT TilePosition = FINT();
+	bool IsPush = false;
+	bool IsBlock = false;
+	bool IsController = false;
+	bool IsAlive = true;
+	ETileType TileType = ETileType::None;
+	ENounType NounType = ENounType::None;
+};
 
 class USpriteRenderer;
 class ATile : public AActor
@@ -16,90 +29,92 @@ public:
 	ATile& operator=(const ATile& _Other) = delete;
 	ATile& operator=(ATile&& _Other) noexcept = delete;
 
+	void SetTileInfo(FINT _TilePosition, bool _IsPush, bool _IsBlock, bool _IsController, bool _IsAlive, ETileType _TileType, ENounType _NounType);
+	inline UTileInfo GetTileInfo()
+	{
+		return Info;
+	}
+
+	inline void SetNounType(ENounType _NounType)
+	{
+		Info.NounType = _NounType;
+	}
+
+	inline ENounType GetNounType() const
+	{
+		return Info.NounType;
+	}
+
 	inline void SetPosition(FINT _TilePosition)
 	{
-		TilePosition = _TilePosition;
+		Info.TilePosition = _TilePosition;
 	}
 
 	inline FINT GetTilePosition() const
 	{
-		return TilePosition;
+		return Info.TilePosition;
 	}
 
-	inline bool GetCanMove() const
+	inline bool GetIsPush() const
 	{
-		return CanMove;
+		return Info.IsPush;
 	}
 
-	inline void SetCanMove(bool _CanMove)
+	inline void SetIsPush(bool _IsPush)
 	{
-		CanMove = _CanMove;
+		Info.IsPush = _IsPush;
 	}
 
-	inline bool GetHasController() const
+	inline bool GetIsController() const
 	{
-		return HasController;
+		return Info.IsController;
 	}
 
-	inline void SetHasController(bool _HasController)
+	inline void SetIsController(bool _IsController)
 	{
-		HasController = _HasController;
-	}
-
-	void SetTileSetting(FINT _TilePosition, bool _CanMove, bool _HasController, bool _IsBlock)
-	{
-		this->TilePosition = _TilePosition;
-		this->CanMove = _CanMove;
-		this->HasController = _HasController;
-		this->IsBlock = _IsBlock;
-		
+		Info.IsController = _IsController;
 	}
 
 	void SetTileLocation()
 	{
-		FVector StartPos = this->TilePosition.GetFINTToVector();
+		FVector StartPos = Info.TilePosition.GetFINTToVector();
 		this->SetActorLocation(StartPos);
 	}
 
 	void SetIsBlock(bool _IsBlock)
 	{
-		IsBlock = _IsBlock;
+		Info.IsBlock = _IsBlock;
 	}
 
 	bool GetIsBlock() const
 	{
-		return IsBlock;
+		return Info.IsBlock;
 	}
 
-	void SetActorType(EActorType _Type)
+	void SetActorType(ETileType _TileType)
 	{
-		Type = _Type;
+		Info.TileType = _TileType;
 	}
 
-	EActorType GetActorType() const
+	ETileType GetActorType() const
 	{
-		return Type;
+		return Info.TileType;
 	}
 
-	void SetNounType(ENounType _Type)
+	std::stack<EActorDir> GetMoveHistory() const
 	{
-		NounType = _Type;
+		return MoveHistory;
 	}
 
-	ENounType GetNounType() const
+	bool GetIsMove() const
 	{
-		return NounType;
+		return IsMove;
 	}
 
-	virtual void SetIsTileMove(bool _IsTileMove, EActorDir _Dir)
-	{
-		IsTileMove = _IsTileMove;
-	}
-
-	bool GetIsTileMove() const
-	{
-		return IsTileMove;
-	}
+	bool MoveCheck(EInputType _Input);
+	virtual void MoveSet(EInputType _Input);
+	virtual void BackMoveSet();
+	void Move(float _DeltaTime);
 
 protected:
 	void BeginPlay() override;
@@ -107,20 +122,24 @@ protected:
 
 	USpriteRenderer* Renderer = nullptr;
 	FINT TilePosition = FINT();
-	EActorType Type = EActorType::None;
-	ENounType NounType = ENounType::None;
 
-	// HasController : 키 입력을 받아 움직이는 여부
-	bool HasController = false;
-	// CanMove : 밀었을때 움직이는 여부
-	bool CanMove;
-	// IsBlock : 캐릭터 통과 여부
-	bool IsBlock;
-	
-	// 밀었을때 움직이는지 아닌지 알려주는 변수
-	bool IsTileMove = false;
+	bool NextTileCheck(FINT _NextTilePos, EInputType _Input);
+	bool MoveEndCheck(FINT _TilePos);
 
+	bool IsMove = false;
 	float TileSize = 32.0f;
 
 private:
+	UTileInfo Info;
+
+	FINT PrevPos = FINT();
+	FINT NextPos = FINT();
+
+	float MoveRange = 32.0f;
+	float MoveTime = 0.3f;
+	float CurMoveTime = 0.0f;
+
+	std::stack<EActorDir> MoveHistory;
+
+	FVector Lerp(float _CurMoveTime) const;
 };

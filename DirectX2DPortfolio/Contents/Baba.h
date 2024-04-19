@@ -1,9 +1,9 @@
 #pragma once
-#include "ActorBase.h"
+#include "Tile.h"
 
-class ABaba : public AActorBase
+class ABaba : public ATile
 {
-	GENERATED_BODY(AActorBase)
+	GENERATED_BODY(ATile)
 
 public:
 	ABaba();
@@ -18,15 +18,17 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-	void MoveSet() override;
+	void MoveSet(EInputType _Input) override;
+	void BackMoveSet() override;
 	void ChangeMoveAnimation();
+	void BackChangeMoveAnimation();
 
 private:
-	float4 Color;
-
 	int AnimationIndex = 1;
 
 	EActorDir PrevDir = EActorDir::None;
 	EActorDir NextDir = EActorDir::None;
 	EActorDir PlayerDir = EActorDir::None;
+
+	std::stack<int> AnimationIndexHistory;
 };
