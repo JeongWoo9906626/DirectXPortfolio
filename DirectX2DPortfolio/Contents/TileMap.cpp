@@ -75,18 +75,29 @@ void ATileMap::BeginPlay()
 void ATileMap::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
+	
+	MoveResult = MoveEnd();
+	if (false == MoveResult)
+	{
+		IsBack = false;
+		IsInput = false;
+		IsTileMove = false;
+		Input = EInputType::None;
+	}
 
-	TileInputCheck();
-	TileMoveCheck();
-	TileMoveSet();
-	TileMove(_DeltaTime);
-	TileUpdate();
-	TileSentenceCheck();
+	if (false == IsInput)
+	{
+		TileInputCheck();
+		TileMoveCheck();
+		TileMoveSet();
+		TileUpdate();
+		TileSentenceCheck();
+	}
 }
 
 void ATileMap::TileInputCheck()
 {
-	if (false == IsInput/* && true == UEngineInput::IsAnykeyDown()*/)
+	if (false == IsInput && true == UEngineInput::IsAnykeyDown())
 	{
 		IsInput = true;
 		if (true == UEngineInput::IsDown('Z'))
@@ -127,6 +138,22 @@ void ATileMap::TileMoveCheck()
 
 	if (true == IsBack)
 	{
+		std::map<FINT, std::list<std::shared_ptr<ATile>>> NewTileMap;
+		for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> Iterator : Map)
+		{
+			FINT CurMapTilePos = Iterator.first;
+			std::list<std::shared_ptr<ATile>> TileActorList = Iterator.second;
+
+			for (std::shared_ptr<ATile> TileActor : TileActorList)
+			{
+				if (true == TileActor->GetMoveHistory().empty())
+				{
+					IsTileMove = false;
+					return;
+				}
+			}
+		}
+
 		IsTileMove = true;
 		return;
 	}
@@ -139,8 +166,11 @@ void ATileMap::TileMoveCheck()
 
 		for (std::shared_ptr<ATile> TileActor : TileActorList)
 		{
-			bool Temp = TileActor->MoveCheck(Input);
-			IsTileMove = IsTileMove || Temp;
+			if (true == TileActor->GetTileInfo().IsController)
+			{
+				bool Temp = TileActor->MoveCheck(Input);
+				IsTileMove = IsTileMove || Temp;
+			}
 		}
 	}
 }
@@ -180,37 +210,6 @@ void ATileMap::TileMoveSet()
 			}
 		}
 	}
-
-}
-
-void ATileMap::TileMove(float _DeltaTime)
-{
-	if (false == IsTileMove)
-	{
-		return;
-	}
-
-	bool Temp = false;
-	std::map<FINT, std::list<std::shared_ptr<ATile>>> NewTileMap;
-	for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> Iterator : Map)
-	{
-		FINT CurMapTilePos = Iterator.first;
-		std::list<std::shared_ptr<ATile>> TileActorList = Iterator.second;
-
-		for (std::shared_ptr<ATile> TileActor : TileActorList)
-		{
-			TileActor->Move(_DeltaTime);
-			Temp = Temp || TileActor->GetIsMove();
-		}
-	}
-
-	if (Temp == false) 
-	{
-		IsBack = false;
-		IsInput = false;
-		IsTileMove = false;
-		Input = EInputType::None;
-	}
 }
 
 void ATileMap::TileUpdate()
@@ -245,6 +244,25 @@ void ATileMap::TileSentenceCheck()
 {
 }
 
-void ATileMap::MoveEnd()
+bool ATileMap::MoveEnd()
 {
+	if (false == IsTileMove)
+	{
+		return false;
+	}
+
+	bool Temp = false;
+	std::map<FINT, std::list<std::shared_ptr<ATile>>> NewTileMap;
+	for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> Iterator : Map)
+	{
+		FINT CurMapTilePos = Iterator.first;
+		std::list<std::shared_ptr<ATile>> TileActorList = Iterator.second;
+
+		for (std::shared_ptr<ATile> TileActor : TileActorList)
+		{
+			Temp = Temp || TileActor->GetIsMove();
+		}
+	}
+
+	return Temp;
 }

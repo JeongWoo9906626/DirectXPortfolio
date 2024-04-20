@@ -35,6 +35,11 @@ void ATile::BeginPlay()
 void ATile::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
+
+	if (true == IsMove)
+	{
+		Move(_DeltaTime);
+	}
 }
 
 bool ATile::MoveCheck(EInputType _Input)
@@ -109,23 +114,27 @@ void ATile::MoveSet(EInputType _Input)
 }
 void ATile::BackMoveSet()
 {
+	IsMove = true;
+
 	EActorDir Dir = MoveHistory.top();
-	FINT PrevPos = Info.TilePosition;
-	FINT NextPos = PrevPos;
+	PrevPos = Info.TilePosition;
+	NextPos = PrevPos;
+
+	PrevDir = Dir;
 
 	switch (Dir)
 	{
 	case EActorDir::Left:
-		NextPos = PrevPos + FINT::LEFT;
-		break;
-	case EActorDir::Right:
 		NextPos = PrevPos + FINT::RIGHT;
 		break;
+	case EActorDir::Right:
+		NextPos = PrevPos + FINT::LEFT;
+		break;
 	case EActorDir::Up:
-		NextPos = PrevPos + FINT::UP;
+		NextPos = PrevPos + FINT::DOWN;
 		break;
 	case EActorDir::Down:
-		NextPos = PrevPos + FINT::DOWN;
+		NextPos = PrevPos + FINT::UP;
 		break;
 	case EActorDir::None:
 		NextPos = PrevPos + FINT();

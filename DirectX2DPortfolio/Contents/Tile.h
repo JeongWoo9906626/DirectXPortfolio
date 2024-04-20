@@ -106,6 +106,11 @@ public:
 		return MoveHistory;
 	}
 
+	inline EActorDir GetPrevDir() const
+	{
+		return PrevDir;
+	}
+
 	bool GetIsMove() const
 	{
 		return IsMove;
@@ -134,6 +139,8 @@ private:
 
 	FINT PrevPos = FINT();
 	FINT NextPos = FINT();
+
+	EActorDir PrevDir = EActorDir::None;
 
 	float MoveRange = 32.0f;
 	float MoveTime = 0.5f;

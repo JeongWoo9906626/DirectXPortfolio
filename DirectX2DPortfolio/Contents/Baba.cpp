@@ -134,9 +134,16 @@ void ABaba::MoveSet(EInputType _Input) {
 void ABaba::BackMoveSet()
 {
 	Super::BackMoveSet();
-	EActorDir Dir = GetMoveHistory().top();
+
+	EActorDir Dir = GetPrevDir();
 	NextDir = Dir;
 
+	AnimationIndexHistory.pop();
+	if (true == AnimationIndexHistory.empty())
+	{
+		Renderer->ChangeAnimation("BabaMove_Down0");
+		return;
+	}
 	BackChangeMoveAnimation();
 }
 
@@ -183,14 +190,10 @@ void ABaba::ChangeMoveAnimation()
 
 void ABaba::BackChangeMoveAnimation()
 {
-	if (true == AnimationIndexHistory.empty())
-	{
-		Renderer->ChangeAnimation("BabaMove_Down0");
-		return;
-	}
+	
 
 	int HistoryIndex = AnimationIndexHistory.top();
-
+	
 	switch (NextDir)
 	{
 	case EActorDir::Left:

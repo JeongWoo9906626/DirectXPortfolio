@@ -31,11 +31,10 @@ protected:
 	void TileInputCheck();
 	void TileMoveCheck();
 	void TileMoveSet();
-	void TileMove(float _DeltaTime);
 	void TileUpdate();
 	void TileSentenceCheck();
 
-	void MoveEnd();
+	bool MoveEnd();
 
 private:
 	FINT MapSize = FINT();
@@ -44,4 +43,5 @@ private:
 	bool IsInput = false;
 	bool IsBack = false;
 	bool IsTileMove = false;
+	bool MoveResult = false;
 };
