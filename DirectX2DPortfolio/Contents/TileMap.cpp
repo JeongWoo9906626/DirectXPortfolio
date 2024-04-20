@@ -242,6 +242,19 @@ void ATileMap::TileUpdate()
 
 void ATileMap::TileSentenceCheck()
 {
+	std::map<FINT, std::list<std::shared_ptr<ATile>>> NewTileMap = StaticHelper::CurTileMap;
+	for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> Iterator : NewTileMap)
+	{
+		std::list<std::shared_ptr<ATile>> TileActorList = Iterator.second;
+		for (std::shared_ptr<ATile> TileActor : TileActorList)
+		{
+			if (ETileType::Is == TileActor->GetActorType())
+			{
+				AVerbTile* NewVerbTile = dynamic_cast<AVerbTile*>(TileActor.get());
+				NewVerbTile->WordsCheck();
+			}
+		}
+	}
 }
 
 bool ATileMap::MoveEnd()

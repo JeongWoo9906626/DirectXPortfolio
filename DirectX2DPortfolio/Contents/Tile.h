@@ -7,10 +7,12 @@ class UTileInfo
 {
 public:
 	FINT TilePosition = FINT();
+
 	bool IsPush = false;
 	bool IsBlock = false;
 	bool IsController = false;
 	bool IsAlive = true;
+
 	ETileType TileType = ETileType::None;
 	ENounType NounType = ENounType::None;
 };
@@ -126,7 +128,7 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 	USpriteRenderer* Renderer = nullptr;
-	FINT TilePosition = FINT();
+	//FINT TilePosition = FINT();
 
 	bool NextTileCheck(FINT _NextTilePos, EInputType _Input);
 	bool MoveEndCheck(FINT _TilePos);

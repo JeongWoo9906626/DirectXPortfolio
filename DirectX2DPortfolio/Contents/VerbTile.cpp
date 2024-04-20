@@ -20,13 +20,11 @@ void AVerbTile::BeginPlay()
 void AVerbTile::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
-
-	//WordsCheck();
 }
 
 void AVerbTile::WordsCheck()
 {
-	FINT CurTilePos = TilePosition;
+	FINT CurTilePos = GetTileInfo().TilePosition;
 
 	bool HorizontalResult = HorizontalCheck(CurTilePos);
 	bool VerticalResult = VerticalCheck(CurTilePos);
@@ -91,10 +89,6 @@ bool AVerbTile::HorizontalCheck(FINT _TilePos)
 			{
 				IsCharNoun = true;
 			}
-			/*else
-			{
-				IsCharNoun = false;
-			}*/
 		}
 	}
 	
@@ -109,10 +103,6 @@ bool AVerbTile::HorizontalCheck(FINT _TilePos)
 			{
 				IsNoun = true;
 			}
-			/*else
-			{
-				IsNoun = false;
-			}*/
 		}
 	}
 
@@ -160,7 +150,6 @@ bool AVerbTile::HorizontalCheck(FINT _TilePos)
 					}
 
 					HorizontalLeftType = ActorType;
-
 				}
 			}
 		}
@@ -190,10 +179,6 @@ bool AVerbTile::VerticalCheck(FINT _TilePos)
 			{
 				IsCharNoun = true;
 			}
-			/*else
-			{
-				IsCharNoun = false;
-			}*/
 		}
 	}
 
@@ -207,10 +192,6 @@ bool AVerbTile::VerticalCheck(FINT _TilePos)
 			{
 				IsNoun = true;
 			}
-			/*else
-			{
-				IsNoun = false;
-			}*/
 		}
 	}
 
