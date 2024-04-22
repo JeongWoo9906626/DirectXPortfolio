@@ -29,7 +29,7 @@ void AConnectingTile::WordsCheck()
 	HorizontalResult = HorizontalCheck(CurTilePos);
 	VerticalResult = VerticalCheck(CurTilePos);
 
-	if (false == HorizontalResult)
+	/*if (false == HorizontalResult)
 	{
 		std::map<FINT, std::list<std::shared_ptr<ATile>>> TileMap = StaticHelper::CurTileMap;
 		for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> Iterator : TileMap)
@@ -63,7 +63,7 @@ void AConnectingTile::WordsCheck()
 				}
 			}
 		}
-	}
+	}*/
 }
 
 
@@ -160,10 +160,10 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 					}
 					HorizontalLeftType = ActorType;
 				}
-				else
-				{
-					TileActor->SetIsController(false);
-				}
+				//else
+				//{
+				//	//TileActor->SetIsController(false);
+				//}
 			}
 		}
 	}
@@ -261,14 +261,14 @@ bool AConnectingTile::VerticalCheck(FINT _TilePos)
 					}
 					VerticalLeftType = ActorType;
 				}
-				else
-				{
-					if (false == HorizontalResult)
-					{
-						TileActor->SetIsController(false);
-					}
+				//else
+				//{
+				//	if (false == HorizontalResult)
+				//	{
+				//		//TileActor->SetIsController(false);
+				//	}
 
-				}
+				//}
 			}
 		}
 	}

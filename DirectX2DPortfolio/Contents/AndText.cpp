@@ -37,6 +37,8 @@ void AndText::BeginPlay()
 	SetIsBlock(true);
 	SetIsPush(true);
 	SetIsController(false);
+
+	SetFirstStateInfo(GetTileInfo());
 	*/
 }
 

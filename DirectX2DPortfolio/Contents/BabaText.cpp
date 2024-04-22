@@ -37,6 +37,8 @@ void ABabaText::BeginPlay()
 	SetIsBlock(true);
 	SetIsPush(true);
 	SetIsController(false);
+
+	SetFirstStateInfo(GetTileInfo());
 }
 
 void ABabaText::Tick(float _DeltaTime)

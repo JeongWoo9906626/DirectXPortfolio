@@ -104,6 +104,8 @@ void ABaba::BeginPlay()
 	SetIsPush(false);
 	SetIsController(false);
 
+	SetFirstStateInfo(GetTileInfo());
+
 	Renderer->ChangeAnimation("BabaMove_Down0");
 	Renderer->SetOrder(ERenderOrder::Player);
 }

@@ -36,6 +36,8 @@ void ASelector::BeginPlay()
 	SetIsBlock(true);
 	SetIsPush(true);
 	SetIsController(true);
+
+	SetFirstStateInfo(GetTileInfo());
 }
 
 void ASelector::Tick(float _DeltaTime)

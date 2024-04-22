@@ -32,6 +32,7 @@ protected:
 	void TileMoveCheck();
 	void TileMoveSet();
 	void TileUpdate();
+	void TileStateReset();
 	void TileSentenceCheck();
 
 	bool MoveEnd();

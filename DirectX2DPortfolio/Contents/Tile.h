@@ -6,6 +6,22 @@
 class UTileInfo
 {
 public:
+	UTileInfo& operator=(const UTileInfo& _Other)
+	{
+		TilePosition = _Other.TilePosition;
+
+		IsPush = _Other.IsPush;
+		IsBlock = _Other.IsBlock;
+		IsController = _Other.IsController;
+		IsAlive = _Other.IsAlive;
+
+		TileType = _Other.TileType;
+		NounType = _Other.NounType;
+
+		return *this;
+	}
+
+public:
 	FINT TilePosition = FINT();
 
 	bool IsPush = false;
@@ -31,7 +47,6 @@ public:
 	ATile& operator=(const ATile& _Other) = delete;
 	ATile& operator=(ATile&& _Other) noexcept = delete;
 
-	//void SetTileInfo(FINT _TilePosition, bool _IsPush = false, bool _IsBlock = false, bool _IsController = false, bool _IsAlive = true, ETileType _TileType = ETileType::None, ENounType _NounType = ENounType::None);
 	void SetTilePosition(FINT _TilePosition)
 	{
 		Info.TilePosition = _TilePosition;
@@ -112,6 +127,11 @@ public:
 		return MoveHistory;
 	}
 
+	void SetFirstStateInfo(const UTileInfo _Other)
+	{
+		FirstStateInfo = _Other;
+	}
+	
 	inline EActorDir GetPrevDir() const
 	{
 		return PrevDir;
@@ -121,6 +141,8 @@ public:
 	{
 		return IsMove;
 	}
+
+	void StateReset();
 
 	bool MoveCheck(EInputType _Input);
 	virtual void MoveSet(EInputType _Input);
@@ -155,4 +177,6 @@ private:
 	std::stack<EActorDir> MoveHistory;
 
 	FVector Lerp(float _CurMoveTime) const;
+
+	UTileInfo FirstStateInfo;
 };

@@ -36,6 +36,8 @@ void AIsText::BeginPlay()
 	SetIsBlock(true);
 	SetIsPush(true);
 	SetIsController(false);
+
+	SetFirstStateInfo(GetTileInfo());
 }
 
 void AIsText::Tick(float _DeltaTime)

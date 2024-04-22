@@ -37,6 +37,8 @@ void AWallText::BeginPlay()
 	SetIsBlock(true);
 	SetIsPush(true);
 	SetIsController(false);
+
+	SetFirstStateInfo(GetTileInfo());
 }
 
 void AWallText::Tick(float _DeltaTime)

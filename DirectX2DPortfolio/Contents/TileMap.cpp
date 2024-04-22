@@ -127,6 +127,7 @@ void ATileMap::Tick(float _DeltaTime)
 		TileMoveCheck();
 		TileMoveSet();
 		TileUpdate();
+		TileStateReset();
 		TileSentenceCheck();
 	}
 }
@@ -274,6 +275,19 @@ void ATileMap::TileUpdate()
 	Map = NewTileMap;
 	NewTileMap.clear();
 	StaticHelper::CurTileMap = Map;
+}
+
+void ATileMap::TileStateReset()
+{
+	std::map<FINT, std::list<std::shared_ptr<ATile>>> NewTileMap = StaticHelper::CurTileMap;
+	for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> Iterator : NewTileMap)
+	{
+		std::list<std::shared_ptr<ATile>> TileActorList = Iterator.second;
+		for (std::shared_ptr<ATile> TileActor : TileActorList)
+		{
+			TileActor->StateReset();
+		}
+	}
 }
 
 void ATileMap::TileSentenceCheck()

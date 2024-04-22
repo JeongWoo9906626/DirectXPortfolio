@@ -14,17 +14,6 @@ ATile::~ATile()
 
 }
 
-//void ATile::SetTileInfo(FINT _TilePosition, bool _IsPush, bool _IsBlock, bool _IsController, bool _IsAlive, ETileType _TileType, ENounType _NounType)
-//{
-//	Info.TilePosition = _TilePosition;
-//	Info.IsPush = _IsPush;
-//	Info.IsBlock = _IsBlock;
-//	Info.IsController = _IsController;
-//	Info.IsAlive = _IsAlive;
-//	Info.TileType = _TileType;
-//	Info.NounType = _NounType;
-//}
-
 void ATile::BeginPlay()
 {
 	Super::BeginPlay();
@@ -40,6 +29,13 @@ void ATile::Tick(float _DeltaTime)
 	{
 		Move(_DeltaTime);
 	}
+}
+
+void ATile::StateReset()
+{
+	Info.IsController = FirstStateInfo.IsController;
+	Info.IsBlock = FirstStateInfo.IsBlock;
+	Info.IsPush = FirstStateInfo.IsPush;
 }
 
 bool ATile::MoveCheck(EInputType _Input)

@@ -36,6 +36,8 @@ void AYouText::BeginPlay()
 	SetIsBlock(true);
 	SetIsPush(true);
 	SetIsController(false);
+
+	SetFirstStateInfo(GetTileInfo());
 }
 
 void AYouText::Tick(float _DeltaTime)

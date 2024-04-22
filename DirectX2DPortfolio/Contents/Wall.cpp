@@ -38,6 +38,8 @@ void AWall::BeginPlay()
 	SetIsBlock(false);
 	SetIsPush(false);
 	SetIsController(false);
+
+	SetFirstStateInfo(GetTileInfo());
 }
 
 void AWall::Tick(float _DeltaTime)
