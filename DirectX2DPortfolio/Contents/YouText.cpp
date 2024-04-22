@@ -1,10 +1,10 @@
 #include "PreCompile.h"
-#include "YouNoun.h"
+#include "YouText.h"
 #include <EngineCore/DefaultSceneComponent.h>
 #include <EngineCore/SpriteRenderer.h>
 #include "StaticHelper.h"
 
-AYouNoun::AYouNoun()
+AYouText::AYouText()
 {
 	UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
 
@@ -14,12 +14,12 @@ AYouNoun::AYouNoun()
 	SetRoot(Root);
 }
 
-AYouNoun::~AYouNoun()
+AYouText::~AYouText()
 {
 
 }
 
-void AYouNoun::BeginPlay()
+void AYouText::BeginPlay()
 {
 	Super::BeginPlay();
 
@@ -35,7 +35,7 @@ void AYouNoun::BeginPlay()
 	SetNounType(ENounType::You);
 }
 
-void AYouNoun::Tick(float _DeltaTime)
+void AYouText::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 }

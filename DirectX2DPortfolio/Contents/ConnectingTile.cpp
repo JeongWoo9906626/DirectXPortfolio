@@ -1,28 +1,28 @@
 #include "PreCompile.h"
-#include "VerbTile.h"
+#include "ConnectingTile.h"
 #include "StaticHelper.h"
 
-AVerbTile::AVerbTile()
+AConnectingTile::AConnectingTile()
 {
 
 }
 
-AVerbTile::~AVerbTile()
+AConnectingTile::~AConnectingTile()
 {
 
 }
 
-void AVerbTile::BeginPlay()
+void AConnectingTile::BeginPlay()
 {
 	Super::BeginPlay();
 }
 
-void AVerbTile::Tick(float _DeltaTime)
+void AConnectingTile::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 }
 
-void AVerbTile::WordsCheck()
+void AConnectingTile::WordsCheck()
 {
 	FINT CurTilePos = GetTileInfo().TilePosition;
 
@@ -68,7 +68,7 @@ void AVerbTile::WordsCheck()
 
 
 
-bool AVerbTile::HorizontalCheck(FINT _TilePos)
+bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 {
 	IsCharNoun = false;
 	IsNoun = false;
@@ -85,7 +85,7 @@ bool AVerbTile::HorizontalCheck(FINT _TilePos)
 		for (std::shared_ptr<ATile> LeftTileActor : LeftTileActorList)
 		{
 			TempLeftTileActor = LeftTileActor;
-			if (ETileType::LWord == LeftTileActor->GetActorType())
+			if (ETileType::LWord == TempLeftTileActor->GetActorType())
 			{
 				IsCharNoun = true;
 			}
@@ -99,7 +99,7 @@ bool AVerbTile::HorizontalCheck(FINT _TilePos)
 		for (std::shared_ptr<ATile> RightTileActor : RightTileActorList)
 		{
 			TempRightTileActor = RightTileActor;
-			if (ETileType::RWord == RightTileActor->GetActorType())
+			if (ETileType::RWord == TempRightTileActor->GetActorType())
 			{
 				IsNoun = true;
 			}
@@ -122,6 +122,7 @@ bool AVerbTile::HorizontalCheck(FINT _TilePos)
 				switch (LeftNounType)
 				{
 				case ENounType::Baba:
+					CheckActorType = ETileType::Baba;
 					break;
 				case ENounType::Pillar:
 					CheckActorType = ETileType::Pillar;
@@ -136,9 +137,11 @@ bool AVerbTile::HorizontalCheck(FINT _TilePos)
 
 				if (ActorType == CheckActorType)
 				{
+					TileActor->SetIsController(true);
 					switch (RightNounType)
 					{
 					case ENounType::Baba:
+						TileActor->SetIsController(true);
 						break;
 					case ENounType::Pillar:
 						break;
@@ -148,8 +151,11 @@ bool AVerbTile::HorizontalCheck(FINT _TilePos)
 						TileActor->SetIsController(true);
 						break;
 					}
-
 					HorizontalLeftType = ActorType;
+				}
+				else
+				{
+					TileActor->SetIsController(false);
 				}
 			}
 		}
@@ -158,7 +164,7 @@ bool AVerbTile::HorizontalCheck(FINT _TilePos)
 	return (IsNoun && IsCharNoun);
 }
 
-bool AVerbTile::VerticalCheck(FINT _TilePos)
+bool AConnectingTile::VerticalCheck(FINT _TilePos)
 {
 	IsCharNoun = false;
 	IsNoun = false;
@@ -208,9 +214,11 @@ bool AVerbTile::VerticalCheck(FINT _TilePos)
 			{
 				ETileType ActorType = TileActor->GetActorType();
 				ETileType CheckActorType = ETileType::None;
+
 				switch (UpNounType)
 				{
 				case ENounType::Baba:
+					CheckActorType = ETileType::Baba;
 					break;
 				case ENounType::Pillar:
 					CheckActorType = ETileType::Pillar;
@@ -225,9 +233,11 @@ bool AVerbTile::VerticalCheck(FINT _TilePos)
 
 				if (ActorType == CheckActorType)
 				{
+					TileActor->SetIsController(true);
 					switch (DownNounType)
 					{
 					case ENounType::Baba:
+						TileActor->SetIsController(true);
 						break;
 					case ENounType::Pillar:
 						break;
@@ -239,14 +249,13 @@ bool AVerbTile::VerticalCheck(FINT _TilePos)
 					}
 					VerticalLeftType = ActorType;
 				}
+				else
+				{
+					TileActor->SetIsController(false);
+				}
 			}
 		}
 	}
 
 	return (IsNoun && IsCharNoun);
-}
-
-void AVerbTile::UnLock()
-{
-	int a = 0;
 }

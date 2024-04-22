@@ -7,9 +7,10 @@
 #include "Baba.h"
 #include "Selector.h"
 #include "Wall.h"
-#include "WallNoun.h"
-#include "IsVerb.h"
-#include "YouNoun.h"
+#include "WallText.h"
+#include "IsText.h"
+#include "YouText.h"
+#include "BabaText.h"
 
 ATileMap::ATileMap()
 {
@@ -28,16 +29,25 @@ void ATileMap::BeginPlay()
 	{
 		FINT Pos = FINT(1, 1);
 		std::shared_ptr<ATile> Player = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ABaba>("Baba"));
-		Player->SetTileInfo(Pos, true, true, true, true, ETileType::Baba, ENounType::None);
+		Player->SetTileInfo(Pos, true, true, false, true, ETileType::Baba, ENounType::None);
 		Player->SetTileLocation();
 		//Player->SetActorType(EActorType::Baba);
 		Map[Pos].push_back(Player);
 	}
 
 	{
-		FINT TestPos = FINT(2, 3);
-		std::shared_ptr<ATile> IsText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AIsVerb>("IsVerb"));
+		FINT TestPos = FINT(3, 3);
+		std::shared_ptr<ATile> IsText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AIsText>("IsText"));
 		IsText->SetTileInfo(TestPos, true, true, false, true, ETileType::Is, ENounType::None);
+		IsText->SetTileLocation();
+		//Test2->SetActorType(EActorType::Selector);
+		Map[TestPos].push_back(IsText);
+	}
+
+	{
+		FINT TestPos = FINT(2, 3);
+		std::shared_ptr<ATile> IsText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ABabaText>("BabaText"));
+		IsText->SetTileInfo(TestPos, true, true, false, true, ETileType::LWord, ENounType::Baba);
 		IsText->SetTileLocation();
 		//Test2->SetActorType(EActorType::Selector);
 		Map[TestPos].push_back(IsText);
@@ -53,8 +63,8 @@ void ATileMap::BeginPlay()
 	}
 
 	{
-		FINT TestPos = FINT(3, 3);
-		std::shared_ptr<ATile> YouNoun = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AYouNoun>("YouNoun"));
+		FINT TestPos = FINT(4, 3);
+		std::shared_ptr<ATile> YouNoun = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AYouText>("YouText"));
 		YouNoun->SetTileInfo(TestPos, true, true, false, true, ETileType::RWord, ENounType::You);
 		YouNoun->SetTileLocation();
 		//Wall->SetActorType(EActorType::Pillar);
@@ -62,7 +72,7 @@ void ATileMap::BeginPlay()
 	}
 	{
 		FINT TestPos = FINT(2, 2);
-		std::shared_ptr<ATile> WallText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AWallNoun>("WallNoun"));
+		std::shared_ptr<ATile> WallText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AWallText>("WallText"));
 		WallText->SetTileInfo(TestPos, true, true, false, true, ETileType::LWord, ENounType::Pillar);
 		WallText->SetTileLocation();
 		//Test->SetActorType(EActorType::Selector);
@@ -250,7 +260,7 @@ void ATileMap::TileSentenceCheck()
 		{
 			if (ETileType::Is == TileActor->GetActorType())
 			{
-				AVerbTile* NewVerbTile = dynamic_cast<AVerbTile*>(TileActor.get());
+				AConnectingTile* NewVerbTile = dynamic_cast<AConnectingTile*>(TileActor.get());
 				NewVerbTile->WordsCheck();
 			}
 		}

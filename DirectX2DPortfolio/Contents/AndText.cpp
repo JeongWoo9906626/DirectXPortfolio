@@ -1,10 +1,10 @@
 #include "PreCompile.h"
-#include "WallNoun.h"
+#include "AndText.h"
 #include <EngineCore/DefaultSceneComponent.h>
 #include <EngineCore/SpriteRenderer.h>
 #include "StaticHelper.h"
 
-AWallNoun::AWallNoun()
+AndText::AndText()
 {
 	UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
 
@@ -14,28 +14,28 @@ AWallNoun::AWallNoun()
 	SetRoot(Root);
 }
 
-AWallNoun::~AWallNoun()
+AndText::~AndText()
 {
-	
+
 }
 
-void AWallNoun::BeginPlay()
+void AndText::BeginPlay()
 {
 	Super::BeginPlay();
 
-	SetActorScale3D(FVector(40.0f, 40.0f, 20.0f));
+	/*SetActorScale3D(FVector(40.0f, 40.0f, 20.0f));
 
 	std::vector<int> AnimationFrameIndex = { 0, 18, 36 };
 	std::vector<float> AnimationInterIndex = { 0.1f, 0.1f, 0.1f };
-	Renderer->CreateAnimation("WallText", "Wall.png", AnimationInterIndex, AnimationFrameIndex, true);
-	Renderer->ChangeAnimation("WallText");
+	Renderer->CreateAnimation("AndText", "And.png", AnimationInterIndex, AnimationFrameIndex, true);
+	Renderer->ChangeAnimation("AndText");
 	Renderer->SetOrder(ERenderOrder::Object);
 
-	SetActorType(ETileType::LWord);
-	SetNounType(ENounType::Pillar);
+	SetActorType(ETileType::And);
+	SetNounType(ENounType::None);*/
 }
 
-void AWallNoun::Tick(float _DeltaTime)
+void AndText::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 }

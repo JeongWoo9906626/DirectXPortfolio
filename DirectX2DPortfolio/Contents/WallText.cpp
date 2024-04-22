@@ -1,10 +1,10 @@
 #include "PreCompile.h"
-#include "IsVerb.h"
+#include "WallText.h"
 #include <EngineCore/DefaultSceneComponent.h>
 #include <EngineCore/SpriteRenderer.h>
 #include "StaticHelper.h"
 
-AIsVerb::AIsVerb()
+AWallText::AWallText()
 {
 	UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
 
@@ -12,30 +12,30 @@ AIsVerb::AIsVerb()
 	Renderer->SetupAttachment(Root);
 
 	SetRoot(Root);
-	//InputOn();
 }
 
-AIsVerb::~AIsVerb()
+AWallText::~AWallText()
 {
 	
 }
 
-void AIsVerb::BeginPlay()
+void AWallText::BeginPlay()
 {
 	Super::BeginPlay();
 
 	SetActorScale3D(FVector(40.0f, 40.0f, 20.0f));
 
-	std::vector<int> AnimationFrameIndex = { 0, 2, 4 };
+	std::vector<int> AnimationFrameIndex = { 0, 18, 36 };
 	std::vector<float> AnimationInterIndex = { 0.1f, 0.1f, 0.1f };
-	Renderer->CreateAnimation("IsVerb", "Is.png", AnimationInterIndex, AnimationFrameIndex, true);
-	Renderer->ChangeAnimation("IsVerb");
+	Renderer->CreateAnimation("WallText", "Wall.png", AnimationInterIndex, AnimationFrameIndex, true);
+	Renderer->ChangeAnimation("WallText");
 	Renderer->SetOrder(ERenderOrder::Object);
 
-	SetActorType(ETileType::Is);
+	SetActorType(ETileType::LWord);
+	SetNounType(ENounType::Pillar);
 }
 
-void AIsVerb::Tick(float _DeltaTime)
+void AWallText::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 }

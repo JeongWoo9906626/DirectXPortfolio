@@ -1,18 +1,18 @@
 #pragma once
 #include "Tile.h"
 
-class AVerbTile : public ATile
+class AConnectingTile : public ATile
 {
 	GENERATED_BODY(ATile)
 
 public:
-	AVerbTile();
-	~AVerbTile();
+	AConnectingTile();
+	~AConnectingTile();
 
-	AVerbTile(const AVerbTile& _Other) = delete;
-	AVerbTile(AVerbTile&& _Other) noexcept = delete;
-	AVerbTile& operator=(const AVerbTile& _Other) = delete;
-	AVerbTile& operator=(AVerbTile&& _Other) noexcept = delete;
+	AConnectingTile(const AConnectingTile& _Other) = delete;
+	AConnectingTile(AConnectingTile&& _Other) noexcept = delete;
+	AConnectingTile& operator=(const AConnectingTile& _Other) = delete;
+	AConnectingTile& operator=(AConnectingTile&& _Other) noexcept = delete;
 
 	void WordsCheck();
 
@@ -23,8 +23,6 @@ protected:
 
 	bool HorizontalCheck(FINT _TilePos);
 	bool VerticalCheck(FINT _TilePos);
-
-	void UnLock();
 
 private:
 	ETileType HorizontalLeftType = ETileType::None;

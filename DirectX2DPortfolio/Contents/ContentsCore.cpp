@@ -50,6 +50,7 @@ void UContentsCore::Initialize()
 		UEngineSprite::CreateCutting("CuttingTest.png", 4, 3);
 		UEngineSprite::CreateCutting("Wall.png", 18, 3);
 		UEngineSprite::CreateCutting("Is.png", 2, 3);
+		UEngineSprite::CreateCutting("BabaText.png", 2, 3);
 	}
 
 

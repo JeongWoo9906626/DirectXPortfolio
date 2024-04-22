@@ -161,11 +161,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="ActorBase.h">
+    <ClInclude Include="AndText.h">
       <SubType>
       </SubType>
     </ClInclude>
     <ClInclude Include="Baba.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BabaText.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -179,7 +183,7 @@
     </ClInclude>
     <ClInclude Include="ContentsStruct.h" />
     <ClInclude Include="EnumHelper.h" />
-    <ClInclude Include="IsVerb.h">
+    <ClInclude Include="IsText.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -243,7 +247,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="VerbTile.h">
+    <ClInclude Include="ConnectingTile.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -251,21 +255,25 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="WallNoun.h">
+    <ClInclude Include="WallText.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="YouNoun.h">
+    <ClInclude Include="YouText.h">
       <SubType>
       </SubType>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ActorBase.cpp">
+    <ClCompile Include="AndText.cpp">
       <SubType>
       </SubType>
     </ClCompile>
     <ClCompile Include="Baba.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BabaText.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -278,7 +286,7 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="ContentsStruct.cpp" />
-    <ClCompile Include="IsVerb.cpp">
+    <ClCompile Include="IsText.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -346,7 +354,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="VerbTile.cpp">
+    <ClCompile Include="ConnectingTile.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -354,11 +362,11 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="WallNoun.cpp">
+    <ClCompile Include="WallText.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="YouNoun.cpp">
+    <ClCompile Include="YouText.cpp">
       <SubType>
       </SubType>
     </ClCompile>

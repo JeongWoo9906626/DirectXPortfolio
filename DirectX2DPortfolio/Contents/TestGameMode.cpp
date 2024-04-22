@@ -4,12 +4,6 @@
 #include <EngineCore/Camera.h>
 #include "StaticHelper.h"
 #include "TileMap.h"
-#include "Baba.h"
-#include "Selector.h"
-#include "Wall.h"
-#include "WallNoun.h"
-#include "IsVerb.h"
-#include "YouNoun.h"
 
 
 ATestGameMode::ATestGameMode()

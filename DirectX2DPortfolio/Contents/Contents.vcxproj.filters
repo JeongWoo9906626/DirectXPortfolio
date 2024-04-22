@@ -43,6 +43,33 @@
     <Filter Include="GUI">
       <UniqueIdentifier>{53c3cf39-42dc-486c-b98f-579bac574986}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Actor">
+      <UniqueIdentifier>{31e5294a-8a4f-4706-87a3-e77c27e994f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actor\Text">
+      <UniqueIdentifier>{aaaf0bda-25b6-46eb-817b-c1bac98e2da4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actor\Text\LeftNoun">
+      <UniqueIdentifier>{00bf1607-9349-41a5-98f9-77af1640b559}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actor\Text\RightNoun">
+      <UniqueIdentifier>{88d2d382-e8fc-42ee-b631-4e03b44f63c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actor\Text\Connecting">
+      <UniqueIdentifier>{a529fcf0-1bc2-4470-8a4f-220c1098b9f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actor\Character">
+      <UniqueIdentifier>{0f669d2a-d411-4e9a-adbd-3a12054c5946}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actor\Character\Selector">
+      <UniqueIdentifier>{4b49255d-a42d-4240-bcfb-ebfd66d8c76e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actor\Character\Baba">
+      <UniqueIdentifier>{b5b8615b-057d-448f-8e43-bac49e8ae8ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actor\Character\Wall">
+      <UniqueIdentifier>{7de85214-ddb0-4a2a-80fb-d5e69e193919}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ContentsCore.h">
@@ -72,15 +99,6 @@
     <ClInclude Include="SelectMap.h">
       <Filter>Level\StageSelectLevel\Actor</Filter>
     </ClInclude>
-    <ClInclude Include="Selector.h">
-      <Filter>Level\StageSelectLevel\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="ActorBase.h">
-      <Filter>ActorBase</Filter>
-    </ClInclude>
-    <ClInclude Include="Baba.h">
-      <Filter>Level\PlayLevel\Actor</Filter>
-    </ClInclude>
     <ClInclude Include="Tile.h">
       <Filter>ActorBase</Filter>
     </ClInclude>
@@ -105,23 +123,35 @@
     <ClInclude Include="MapEditorGUI.h">
       <Filter>GUI</Filter>
     </ClInclude>
-    <ClInclude Include="VerbTile.h">
+    <ClInclude Include="ConnectingTile.h">
       <Filter>ActorBase</Filter>
-    </ClInclude>
-    <ClInclude Include="Wall.h">
-      <Filter>Level\PlayLevel\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="IsVerb.h">
-      <Filter>Level\PlayLevel\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="WallNoun.h">
-      <Filter>Level\PlayLevel\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="YouNoun.h">
-      <Filter>Level\PlayLevel\Actor</Filter>
     </ClInclude>
     <ClInclude Include="TileMap.h">
       <Filter>ActorBase</Filter>
+    </ClInclude>
+    <ClInclude Include="Selector.h">
+      <Filter>Actor\Character\Selector</Filter>
+    </ClInclude>
+    <ClInclude Include="Baba.h">
+      <Filter>Actor\Character\Baba</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall.h">
+      <Filter>Actor\Character\Wall</Filter>
+    </ClInclude>
+    <ClInclude Include="WallText.h">
+      <Filter>Actor\Text\LeftNoun</Filter>
+    </ClInclude>
+    <ClInclude Include="YouText.h">
+      <Filter>Actor\Text\RightNoun</Filter>
+    </ClInclude>
+    <ClInclude Include="IsText.h">
+      <Filter>Actor\Text\Connecting</Filter>
+    </ClInclude>
+    <ClInclude Include="AndText.h">
+      <Filter>Actor\Text\Connecting</Filter>
+    </ClInclude>
+    <ClInclude Include="BabaText.h">
+      <Filter>Actor\Text\LeftNoun</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -152,15 +182,6 @@
     <ClCompile Include="SelectMap.cpp">
       <Filter>Level\StageSelectLevel\Actor</Filter>
     </ClCompile>
-    <ClCompile Include="Selector.cpp">
-      <Filter>Level\StageSelectLevel\Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="ActorBase.cpp">
-      <Filter>ActorBase</Filter>
-    </ClCompile>
-    <ClCompile Include="Baba.cpp">
-      <Filter>Level\PlayLevel\Actor</Filter>
-    </ClCompile>
     <ClCompile Include="Tile.cpp">
       <Filter>ActorBase</Filter>
     </ClCompile>
@@ -182,23 +203,35 @@
     <ClCompile Include="MapEditorGUI.cpp">
       <Filter>GUI</Filter>
     </ClCompile>
-    <ClCompile Include="VerbTile.cpp">
+    <ClCompile Include="ConnectingTile.cpp">
       <Filter>ActorBase</Filter>
-    </ClCompile>
-    <ClCompile Include="Wall.cpp">
-      <Filter>Level\PlayLevel\Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="IsVerb.cpp">
-      <Filter>Level\PlayLevel\Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="WallNoun.cpp">
-      <Filter>Level\PlayLevel\Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="YouNoun.cpp">
-      <Filter>Level\PlayLevel\Actor</Filter>
     </ClCompile>
     <ClCompile Include="TileMap.cpp">
       <Filter>ActorBase</Filter>
+    </ClCompile>
+    <ClCompile Include="Selector.cpp">
+      <Filter>Actor\Character\Selector</Filter>
+    </ClCompile>
+    <ClCompile Include="Baba.cpp">
+      <Filter>Actor\Character\Baba</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall.cpp">
+      <Filter>Actor\Character\Wall</Filter>
+    </ClCompile>
+    <ClCompile Include="WallText.cpp">
+      <Filter>Actor\Text\LeftNoun</Filter>
+    </ClCompile>
+    <ClCompile Include="YouText.cpp">
+      <Filter>Actor\Text\RightNoun</Filter>
+    </ClCompile>
+    <ClCompile Include="IsText.cpp">
+      <Filter>Actor\Text\Connecting</Filter>
+    </ClCompile>
+    <ClCompile Include="AndText.cpp">
+      <Filter>Actor\Text\Connecting</Filter>
+    </ClCompile>
+    <ClCompile Include="BabaText.cpp">
+      <Filter>Actor\Text\LeftNoun</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
