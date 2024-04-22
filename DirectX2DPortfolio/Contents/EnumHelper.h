@@ -35,6 +35,7 @@ enum class ENounType
 	LavaText,
 	YouText,
 	StopText,
+	PushText,
 	None,
 };
 

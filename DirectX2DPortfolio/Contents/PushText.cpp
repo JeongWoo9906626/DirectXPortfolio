@@ -1,10 +1,9 @@
 #include "PreCompile.h"
-#include "IsText.h"
-#include <EngineCore/DefaultSceneComponent.h>
+#include "PushText.h"
 #include <EngineCore/SpriteRenderer.h>
-#include "StaticHelper.h"
+#include <EngineCore/DefaultSceneComponent.h>
 
-AIsText::AIsText()
+APushText::APushText()
 {
 	UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
 	SetRoot(Root);
@@ -13,25 +12,25 @@ AIsText::AIsText()
 	Renderer->SetupAttachment(Root);
 }
 
-AIsText::~AIsText()
+APushText::~APushText()
 {
 	
 }
 
-void AIsText::BeginPlay()
+void APushText::BeginPlay()
 {
 	Super::BeginPlay();
 
 	SetActorScale3D(FVector(40.0f, 40.0f, 20.0f));
 
-	std::vector<int> AnimationFrameIndex = { 0, 2, 4 };
+	std::vector<int> AnimationFrameIndex = { 0, 3, 6 };
 	std::vector<float> AnimationInterIndex = { 0.1f, 0.1f, 0.1f };
-	Renderer->CreateAnimation("IsVerb", "IsText.png", AnimationInterIndex, AnimationFrameIndex, true);
-	Renderer->ChangeAnimation("IsVerb");
+	Renderer->CreateAnimation("PushText", "PushText.png", AnimationInterIndex, AnimationFrameIndex, true);
+	Renderer->ChangeAnimation("PushText");
 	Renderer->SetOrder(ERenderOrder::Object);
 
-	SetActorType(ETileType::Is);
-	SetNounType(ENounType::None);
+	SetActorType(ETileType::RWord);
+	SetNounType(ENounType::PushText);
 
 	SetIsBlock(true);
 	SetIsPush(true);
@@ -40,7 +39,7 @@ void AIsText::BeginPlay()
 	SetFirstStateInfo(GetTileInfo());
 }
 
-void AIsText::Tick(float _DeltaTime)
+void APushText::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 }

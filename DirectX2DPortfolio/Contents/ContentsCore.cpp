@@ -49,9 +49,10 @@ void UContentsCore::Initialize()
 		UEngineSprite::CreateCutting("SelectMap.png", 3, 1);
 		UEngineSprite::CreateCutting("CuttingTest.png", 4, 3);
 		UEngineSprite::CreateCutting("Wall.png", 18, 3);
-		UEngineSprite::CreateCutting("Is.png", 2, 3);
+		UEngineSprite::CreateCutting("IsText.png", 2, 3);
 		UEngineSprite::CreateCutting("BabaText.png", 2, 3);
 		UEngineSprite::CreateCutting("StopText.png", 3, 3);
+		UEngineSprite::CreateCutting("PushText.png", 3, 3);
 	}
 
 

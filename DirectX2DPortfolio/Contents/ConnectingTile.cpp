@@ -156,6 +156,13 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 					{
 						TileActor->SetIsBlock(true);
 						TileActor->SetIsPush(false);
+						break;
+					}
+					case ENounType::PushText:
+					{
+						TileActor->SetIsBlock(true);
+						TileActor->SetIsPush(true);
+						break;
 					}
 					}
 					HorizontalLeftType = ActorType;
@@ -257,6 +264,13 @@ bool AConnectingTile::VerticalCheck(FINT _TilePos)
 					{
 						TileActor->SetIsBlock(true);
 						TileActor->SetIsPush(false);
+						break;
+					}
+					case ENounType::PushText:
+					{
+						TileActor->SetIsBlock(true);
+						TileActor->SetIsPush(true);
+						break;
 					}
 					}
 					VerticalLeftType = ActorType;

@@ -12,6 +12,7 @@
 #include "YouText.h"
 #include "BabaText.h"
 #include "StopText.h"
+#include "PushText.h"
 
 ATileMap::ATileMap()
 {
@@ -30,79 +31,71 @@ void ATileMap::BeginPlay()
 	{
 		FINT Pos = FINT(1, 1);
 		std::shared_ptr<ATile> Player = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ABaba>("Baba"));
-		//Player->SetTileInfo(Pos/*, true, true, false, true, ETileType::Baba, ENounType::None*/);
 		Player->SetTilePosition(Pos);
 		Player->SetTileLocation();
-		//Player->SetActorType(EActorType::Baba);
 		Map[Pos].push_back(Player);
 	}
 
 	{
 		FINT Pos = FINT(4, 2);
 		std::shared_ptr<ATile> StopText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AStopText>("StopText"));
-		//Player->SetTileInfo(Pos/*, true, true, false, true, ETileType::Baba, ENounType::None*/);
 		StopText->SetTilePosition(Pos);
 		StopText->SetTileLocation();
-		//Player->SetActorType(EActorType::Baba);
 		Map[Pos].push_back(StopText);
 	}
 
 	{
 		FINT TestPos = FINT(3, 3);
 		std::shared_ptr<ATile> IsText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AIsText>("IsText"));
-		//IsText->SetTileInfo(TestPos/*, true, true, false, true, ETileType::Is, ENounType::None*/);
 		IsText->SetTilePosition(TestPos);
 		IsText->SetTileLocation();
-		//Test2->SetActorType(EActorType::Selector);
 		Map[TestPos].push_back(IsText);
 	}
 
 	{
 		FINT TestPos = FINT(2, 3);
 		std::shared_ptr<ATile> BabaText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ABabaText>("BabaText"));
-		//IsText->SetTileInfo(TestPos/*, true, true, false, true, ETileType::LWord, ENounType::Baba*/);
 		BabaText->SetTilePosition(TestPos);
 		BabaText->SetTileLocation();
-		//Test2->SetActorType(EActorType::Selector);
 		Map[TestPos].push_back(BabaText);
 	}
 
 	{
 		FINT TestPos = FINT(2, 4);
 		std::shared_ptr<ATile> Wall = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AWall>("Wall"));
-		//Wall->SetTileInfo(TestPos/*, true, true, false, true, ETileType::Pillar, ENounType::None*/);
 		Wall->SetTilePosition(TestPos);
 		Wall->SetTileLocation();
-		//Wall->SetActorType(EActorType::Pillar);
 		Map[TestPos].push_back(Wall);
 	}
 
 	{
 		FINT TestPos = FINT(4, 3);
 		std::shared_ptr<ATile> YouNoun = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AYouText>("YouText"));
-		//YouNoun->SetTileInfo(TestPos/*, true, true, false, true, ETileType::RWord, ENounType::You*/);
 		YouNoun->SetTilePosition(TestPos);
 		YouNoun->SetTileLocation();
-		//Wall->SetActorType(EActorType::Pillar);
 		Map[TestPos].push_back(YouNoun);
 	}
 	{
 		FINT TestPos = FINT(5, 3);
 		std::shared_ptr<ATile> YouNoun = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AYouText>("YouText"));
-		//YouNoun->SetTileInfo(TestPos/*, true, true, false, true, ETileType::RWord, ENounType::You*/);
 		YouNoun->SetTilePosition(TestPos);
 		YouNoun->SetTileLocation();
-		//Wall->SetActorType(EActorType::Pillar);
 		Map[TestPos].push_back(YouNoun);
 	}
 	{
 		FINT TestPos = FINT(2, 2);
 		std::shared_ptr<ATile> WallText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AWallText>("WallText"));
-		//WallText->SetTileInfo(TestPos/*, true, true, false, true, ETileType::LWord, ENounType::Pillar*/);
 		WallText->SetTilePosition(TestPos);
 		WallText->SetTileLocation();
-		//Test->SetActorType(EActorType::Selector);
 		Map[TestPos].push_back(WallText);
+	}
+
+	{
+		FINT TestPos = FINT(6, 2);
+		std::shared_ptr<ATile> PushText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<APushText>("WallText"));
+		PushText->SetTilePosition(TestPos);
+		PushText->SetTileLocation();
+		Map[TestPos].push_back(PushText);
 	}
 
 	StaticHelper::CurTileMap = Map;

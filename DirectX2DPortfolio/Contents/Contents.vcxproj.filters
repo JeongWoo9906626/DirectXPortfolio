@@ -156,6 +156,9 @@
     <ClInclude Include="StopText.h">
       <Filter>Actor\Text\RightNoun</Filter>
     </ClInclude>
+    <ClInclude Include="PushText.h">
+      <Filter>Actor\Text\RightNoun</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp">
@@ -237,6 +240,9 @@
       <Filter>Actor\Text\LeftNoun</Filter>
     </ClCompile>
     <ClCompile Include="StopText.cpp">
+      <Filter>Actor\Text\RightNoun</Filter>
+    </ClCompile>
+    <ClCompile Include="PushText.cpp">
       <Filter>Actor\Text\RightNoun</Filter>
     </ClCompile>
   </ItemGroup>
