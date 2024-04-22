@@ -149,40 +149,52 @@ void ABaba::BackMoveSet()
 
 void ABaba::ChangeMoveAnimation()
 {
-	if (true == AnimationIndexHistory.empty())
+	if (false == GetIsController())
 	{
-		AnimationIndexHistory.push(1);
+		int InsertIndexNumber = AnimationIndexHistory.top();
+		AnimationIndexHistory.push(InsertIndexNumber);
 	}
 	else
 	{
-		if (AnimationIndexHistory.top() >= 3)
+		if (true == AnimationIndexHistory.empty())
 		{
-			AnimationIndexHistory.push(0);
+			AnimationIndexHistory.push(1);
 		}
 		else
 		{
-			int InsertIndexNumber = AnimationIndexHistory.top() + 1;
-			AnimationIndexHistory.push(InsertIndexNumber);
+			if (AnimationIndexHistory.top() >= 3)
+			{
+				AnimationIndexHistory.push(0);
+			}
+			else
+			{
+				int InsertIndexNumber = AnimationIndexHistory.top() + 1;
+				AnimationIndexHistory.push(InsertIndexNumber);
+			}
 		}
 	}
 
 	AnimationIndex = AnimationIndexHistory.top();
 
-	switch (NextDir)
+	if (true == GetIsController())
 	{
-	case EActorDir::Left:
-		Renderer->ChangeAnimation("BabaMove_Left" + std::to_string(AnimationIndex));
-		break;
-	case EActorDir::Right:
-		Renderer->ChangeAnimation("BabaMove_Right" + std::to_string(AnimationIndex));
-		break;
-	case EActorDir::Up:
-		Renderer->ChangeAnimation("BabaMove_Up" + std::to_string(AnimationIndex));
-		break;
-	case EActorDir::Down:
-		Renderer->ChangeAnimation("BabaMove_Down" + std::to_string(AnimationIndex));
-		break;
+		switch (NextDir)
+		{
+		case EActorDir::Left:
+			Renderer->ChangeAnimation("BabaMove_Left" + std::to_string(AnimationIndex));
+			break;
+		case EActorDir::Right:
+			Renderer->ChangeAnimation("BabaMove_Right" + std::to_string(AnimationIndex));
+			break;
+		case EActorDir::Up:
+			Renderer->ChangeAnimation("BabaMove_Up" + std::to_string(AnimationIndex));
+			break;
+		case EActorDir::Down:
+			Renderer->ChangeAnimation("BabaMove_Down" + std::to_string(AnimationIndex));
+			break;
+		}
 	}
+	
 
 	PrevDir = NextDir;
 	NextDir = EActorDir::None;
@@ -190,23 +202,23 @@ void ABaba::ChangeMoveAnimation()
 
 void ABaba::BackChangeMoveAnimation()
 {
-	
-
 	int HistoryIndex = AnimationIndexHistory.top();
-	
-	switch (NextDir)
+	if (true == GetIsController())
 	{
-	case EActorDir::Left:
-		Renderer->ChangeAnimation("BabaMove_Left" + std::to_string(HistoryIndex));
-		break;
-	case EActorDir::Right:
-		Renderer->ChangeAnimation("BabaMove_Right" + std::to_string(HistoryIndex));
-		break;
-	case EActorDir::Up:
-		Renderer->ChangeAnimation("BabaMove_Up" + std::to_string(HistoryIndex));
-		break;
-	case EActorDir::Down:
-		Renderer->ChangeAnimation("BabaMove_Down" + std::to_string(HistoryIndex));
-		break;
+		switch (NextDir)
+		{
+		case EActorDir::Left:
+			Renderer->ChangeAnimation("BabaMove_Left" + std::to_string(HistoryIndex));
+			break;
+		case EActorDir::Right:
+			Renderer->ChangeAnimation("BabaMove_Right" + std::to_string(HistoryIndex));
+			break;
+		case EActorDir::Up:
+			Renderer->ChangeAnimation("BabaMove_Up" + std::to_string(HistoryIndex));
+			break;
+		case EActorDir::Down:
+			Renderer->ChangeAnimation("BabaMove_Down" + std::to_string(HistoryIndex));
+			break;
+		}
 	}
 }

@@ -28,8 +28,10 @@ private:
 	ETileType HorizontalLeftType = ETileType::None;
 	ETileType VerticalLeftType = ETileType::None;
 
-	bool IsSentence = false;
+	bool HorizontalResult = false;
+	bool VerticalResult = false;
 
+	bool IsSentence = false;
 	bool IsCharNoun = false;
 	bool IsNoun = false;
 };

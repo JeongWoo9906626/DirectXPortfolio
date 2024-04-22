@@ -26,8 +26,8 @@ void AConnectingTile::WordsCheck()
 {
 	FINT CurTilePos = GetTileInfo().TilePosition;
 
-	bool HorizontalResult = HorizontalCheck(CurTilePos);
-	bool VerticalResult = VerticalCheck(CurTilePos);
+	HorizontalResult = HorizontalCheck(CurTilePos);
+	VerticalResult = VerticalCheck(CurTilePos);
 
 	if (false == HorizontalResult)
 	{
@@ -111,6 +111,23 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 		ENounType LeftNounType = TempLeftTileActor->GetNounType();
 		ENounType RightNounType = TempRightTileActor->GetNounType();
 
+		ETileType CheckActorType = ETileType::None;
+		switch (LeftNounType)
+		{
+		case ENounType::Baba:
+			CheckActorType = ETileType::Baba;
+			break;
+		case ENounType::Pillar:
+			CheckActorType = ETileType::Pillar;
+			break;
+		case ENounType::Lava:
+			break;
+		case ENounType::You:
+			break;
+		case ENounType::None:
+			break;
+		}
+
 		std::map<FINT, std::list<std::shared_ptr<ATile>>> TileActorMap = StaticHelper::CurTileMap;
 		for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> Iterator : TileActorMap)
 		{
@@ -118,30 +135,13 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 			for (std::shared_ptr<ATile> TileActor : TileActorList)
 			{
 				ETileType ActorType = TileActor->GetActorType();
-				ETileType CheckActorType = ETileType::None;
-				switch (LeftNounType)
-				{
-				case ENounType::Baba:
-					CheckActorType = ETileType::Baba;
-					break;
-				case ENounType::Pillar:
-					CheckActorType = ETileType::Pillar;
-					break;
-				case ENounType::Lava:
-					break;
-				case ENounType::You:
-					break;
-				case ENounType::None:
-					break;
-				}
+				
 
 				if (ActorType == CheckActorType)
 				{
-					TileActor->SetIsController(true);
 					switch (RightNounType)
 					{
 					case ENounType::Baba:
-						TileActor->SetIsController(true);
 						break;
 					case ENounType::Pillar:
 						break;
@@ -206,6 +206,24 @@ bool AConnectingTile::VerticalCheck(FINT _TilePos)
 		ENounType UpNounType = TempUpTileActor->GetNounType();
 		ENounType DownNounType = TempDownTileActor->GetNounType();
 
+		ETileType CheckActorType = ETileType::None;
+
+		switch (UpNounType)
+		{
+		case ENounType::Baba:
+			CheckActorType = ETileType::Baba;
+			break;
+		case ENounType::Pillar:
+			CheckActorType = ETileType::Pillar;
+			break;
+		case ENounType::Lava:
+			break;
+		case ENounType::You:
+			break;
+		case ENounType::None:
+			break;
+		}
+
 		std::map<FINT, std::list<std::shared_ptr<ATile>>> TileActorMap = StaticHelper::CurTileMap;
 		for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> Iterator : TileActorMap)
 		{
@@ -213,31 +231,13 @@ bool AConnectingTile::VerticalCheck(FINT _TilePos)
 			for (std::shared_ptr<ATile> TileActor : TileActorList)
 			{
 				ETileType ActorType = TileActor->GetActorType();
-				ETileType CheckActorType = ETileType::None;
-
-				switch (UpNounType)
-				{
-				case ENounType::Baba:
-					CheckActorType = ETileType::Baba;
-					break;
-				case ENounType::Pillar:
-					CheckActorType = ETileType::Pillar;
-					break;
-				case ENounType::Lava:
-					break;
-				case ENounType::You:
-					break;
-				case ENounType::None:
-					break;
-				}
+				
 
 				if (ActorType == CheckActorType)
 				{
-					TileActor->SetIsController(true);
 					switch (DownNounType)
 					{
 					case ENounType::Baba:
-						TileActor->SetIsController(true);
 						break;
 					case ENounType::Pillar:
 						break;
@@ -251,7 +251,11 @@ bool AConnectingTile::VerticalCheck(FINT _TilePos)
 				}
 				else
 				{
-					TileActor->SetIsController(false);
+					if (false == HorizontalResult)
+					{
+						TileActor->SetIsController(false);
+					}
+
 				}
 			}
 		}

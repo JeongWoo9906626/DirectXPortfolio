@@ -71,6 +71,14 @@ void ATileMap::BeginPlay()
 		Map[TestPos].push_back(YouNoun);
 	}
 	{
+		FINT TestPos = FINT(5, 3);
+		std::shared_ptr<ATile> YouNoun = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AYouText>("YouText"));
+		YouNoun->SetTileInfo(TestPos, true, true, false, true, ETileType::RWord, ENounType::You);
+		YouNoun->SetTileLocation();
+		//Wall->SetActorType(EActorType::Pillar);
+		Map[TestPos].push_back(YouNoun);
+	}
+	{
 		FINT TestPos = FINT(2, 2);
 		std::shared_ptr<ATile> WallText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AWallText>("WallText"));
 		WallText->SetTileInfo(TestPos, true, true, false, true, ETileType::LWord, ENounType::Pillar);
