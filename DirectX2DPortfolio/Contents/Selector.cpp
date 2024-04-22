@@ -31,6 +31,11 @@ void ASelector::BeginPlay()
 	Renderer->SetOrder(ERenderOrder::Player);
 
 	SetActorType(ETileType::Selector);
+	SetNounType(ENounType::None);
+
+	SetIsBlock(true);
+	SetIsPush(true);
+	SetIsController(true);
 }
 
 void ASelector::Tick(float _DeltaTime)

@@ -97,6 +97,13 @@ void ABaba::BeginPlay()
 		}
 	}
 
+	SetActorType(ETileType::Baba);
+	SetNounType(ENounType::None);
+
+	SetIsBlock(false);
+	SetIsPush(false);
+	SetIsController(false);
+
 	Renderer->ChangeAnimation("BabaMove_Down0");
 	Renderer->SetOrder(ERenderOrder::Player);
 }

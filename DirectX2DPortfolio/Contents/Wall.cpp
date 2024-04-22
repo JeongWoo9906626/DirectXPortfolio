@@ -33,6 +33,11 @@ void AWall::BeginPlay()
 	Renderer->SetOrder(ERenderOrder::Object);
 
 	SetActorType(ETileType::Pillar);
+	SetNounType(ENounType::None);
+
+	SetIsBlock(false);
+	SetIsPush(false);
+	SetIsController(false);
 }
 
 void AWall::Tick(float _DeltaTime)
