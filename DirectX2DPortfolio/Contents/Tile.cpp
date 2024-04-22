@@ -14,16 +14,16 @@ ATile::~ATile()
 
 }
 
-void ATile::SetTileInfo(FINT _TilePosition, bool _IsPush, bool _IsBlock, bool _IsController, bool _IsAlive, ETileType _TileType, ENounType _NounType)
-{
-	Info.TilePosition = _TilePosition;
-	Info.IsPush = _IsPush;
-	Info.IsBlock = _IsBlock;
-	Info.IsController = _IsController;
-	Info.IsAlive = _IsAlive;
-	Info.TileType = _TileType;
-	Info.NounType = _NounType;
-}
+//void ATile::SetTileInfo(FINT _TilePosition, bool _IsPush, bool _IsBlock, bool _IsController, bool _IsAlive, ETileType _TileType, ENounType _NounType)
+//{
+//	Info.TilePosition = _TilePosition;
+//	Info.IsPush = _IsPush;
+//	Info.IsBlock = _IsBlock;
+//	Info.IsController = _IsController;
+//	Info.IsAlive = _IsAlive;
+//	Info.TileType = _TileType;
+//	Info.NounType = _NounType;
+//}
 
 void ATile::BeginPlay()
 {

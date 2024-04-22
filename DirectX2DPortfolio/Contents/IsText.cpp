@@ -7,12 +7,10 @@
 AIsText::AIsText()
 {
 	UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
+	SetRoot(Root);
 
 	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
 	Renderer->SetupAttachment(Root);
-
-	SetRoot(Root);
-	//InputOn();
 }
 
 AIsText::~AIsText()
@@ -34,6 +32,10 @@ void AIsText::BeginPlay()
 
 	SetActorType(ETileType::Is);
 	SetNounType(ENounType::None);
+
+	SetIsBlock(true);
+	SetIsPush(true);
+	SetIsController(false);
 }
 
 void AIsText::Tick(float _DeltaTime)

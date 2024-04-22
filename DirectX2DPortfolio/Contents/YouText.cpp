@@ -7,11 +7,10 @@
 AYouText::AYouText()
 {
 	UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
+	SetRoot(Root);
 
 	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
 	Renderer->SetupAttachment(Root);
-
-	SetRoot(Root);
 }
 
 AYouText::~AYouText()
@@ -32,7 +31,11 @@ void AYouText::BeginPlay()
 	Renderer->SetOrder(ERenderOrder::Object);
 
 	SetActorType(ETileType::RWord);
-	SetNounType(ENounType::You);
+	SetNounType(ENounType::YouText);
+
+	SetIsBlock(true);
+	SetIsPush(true);
+	SetIsController(false);
 }
 
 void AYouText::Tick(float _DeltaTime)

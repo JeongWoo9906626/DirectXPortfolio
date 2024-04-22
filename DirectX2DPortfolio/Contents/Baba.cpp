@@ -6,11 +6,10 @@
 ABaba::ABaba()
 {
 	UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
+	SetRoot(Root);
 
 	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
 	Renderer->SetupAttachment(Root);
-
-	SetRoot(Root);
 }
 
 ABaba::~ABaba()

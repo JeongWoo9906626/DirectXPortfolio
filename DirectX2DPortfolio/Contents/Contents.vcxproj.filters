@@ -153,6 +153,9 @@
     <ClInclude Include="BabaText.h">
       <Filter>Actor\Text\LeftNoun</Filter>
     </ClInclude>
+    <ClInclude Include="StopText.h">
+      <Filter>Actor\Text\RightNoun</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp">
@@ -232,6 +235,9 @@
     </ClCompile>
     <ClCompile Include="BabaText.cpp">
       <Filter>Actor\Text\LeftNoun</Filter>
+    </ClCompile>
+    <ClCompile Include="StopText.cpp">
+      <Filter>Actor\Text\RightNoun</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

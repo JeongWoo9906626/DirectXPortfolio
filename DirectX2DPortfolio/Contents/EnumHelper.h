@@ -30,10 +30,11 @@ enum class EActorType
 
 enum class ENounType
 {
-	Baba,
-	Pillar,
-	Lava,
-	You,
+	BabaText,
+	PillarText,
+	LavaText,
+	YouText,
+	StopText,
 	None,
 };
 
@@ -57,5 +58,19 @@ enum class ETileType
 	RWord,
 	Is,
 	And,
+	None,
+};
+
+enum class LWordType
+{
+	BabaText,
+	WallText,
+	None,
+};
+
+enum class RWordType
+{
+	StopText,
+	YouText,
 	None,
 };

@@ -31,8 +31,12 @@ public:
 	ATile& operator=(const ATile& _Other) = delete;
 	ATile& operator=(ATile&& _Other) noexcept = delete;
 
-	void SetTileInfo(FINT _TilePosition, bool _IsPush, bool _IsBlock, bool _IsController, bool _IsAlive, ETileType _TileType, ENounType _NounType);
-	inline UTileInfo GetTileInfo()
+	//void SetTileInfo(FINT _TilePosition, bool _IsPush = false, bool _IsBlock = false, bool _IsController = false, bool _IsAlive = true, ETileType _TileType = ETileType::None, ENounType _NounType = ENounType::None);
+	void SetTilePosition(FINT _TilePosition)
+	{
+		Info.TilePosition = _TilePosition;
+	}
+	inline UTileInfo GetTileInfo() const
 	{
 		return Info;
 	}

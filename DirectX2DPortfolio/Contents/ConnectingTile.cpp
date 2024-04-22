@@ -114,15 +114,17 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 		ETileType CheckActorType = ETileType::None;
 		switch (LeftNounType)
 		{
-		case ENounType::Baba:
+		case ENounType::BabaText:
 			CheckActorType = ETileType::Baba;
 			break;
-		case ENounType::Pillar:
+		case ENounType::PillarText:
 			CheckActorType = ETileType::Pillar;
 			break;
-		case ENounType::Lava:
+		case ENounType::LavaText:
 			break;
-		case ENounType::You:
+		case ENounType::YouText:
+			break;
+		case ENounType::StopText:
 			break;
 		case ENounType::None:
 			break;
@@ -141,15 +143,20 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 				{
 					switch (RightNounType)
 					{
-					case ENounType::Baba:
+					case ENounType::BabaText:
 						break;
-					case ENounType::Pillar:
+					case ENounType::PillarText:
 						break;
-					case ENounType::Lava:
+					case ENounType::LavaText:
 						break;
-					case ENounType::You:
+					case ENounType::YouText:
 						TileActor->SetIsController(true);
 						break;
+					case ENounType::StopText:
+					{
+						TileActor->SetIsBlock(true);
+						TileActor->SetIsPush(false);
+					}
 					}
 					HorizontalLeftType = ActorType;
 				}
@@ -210,15 +217,15 @@ bool AConnectingTile::VerticalCheck(FINT _TilePos)
 
 		switch (UpNounType)
 		{
-		case ENounType::Baba:
+		case ENounType::BabaText:
 			CheckActorType = ETileType::Baba;
 			break;
-		case ENounType::Pillar:
+		case ENounType::PillarText:
 			CheckActorType = ETileType::Pillar;
 			break;
-		case ENounType::Lava:
+		case ENounType::LavaText:
 			break;
-		case ENounType::You:
+		case ENounType::YouText:
 			break;
 		case ENounType::None:
 			break;
@@ -237,15 +244,20 @@ bool AConnectingTile::VerticalCheck(FINT _TilePos)
 				{
 					switch (DownNounType)
 					{
-					case ENounType::Baba:
+					case ENounType::BabaText:
 						break;
-					case ENounType::Pillar:
+					case ENounType::PillarText:
 						break;
-					case ENounType::Lava:
+					case ENounType::LavaText:
 						break;
-					case ENounType::You:
+					case ENounType::YouText:
 						TileActor->SetIsController(true);
 						break;
+					case ENounType::StopText:
+					{
+						TileActor->SetIsBlock(true);
+						TileActor->SetIsPush(false);
+					}
 					}
 					VerticalLeftType = ActorType;
 				}

@@ -32,7 +32,12 @@ void AndText::BeginPlay()
 	Renderer->SetOrder(ERenderOrder::Object);
 
 	SetActorType(ETileType::And);
-	SetNounType(ENounType::None);*/
+	SetNounType(ENounType::None);
+	
+	SetIsBlock(true);
+	SetIsPush(true);
+	SetIsController(false);
+	*/
 }
 
 void AndText::Tick(float _DeltaTime)

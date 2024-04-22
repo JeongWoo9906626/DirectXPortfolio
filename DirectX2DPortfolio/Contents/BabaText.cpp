@@ -32,7 +32,11 @@ void ABabaText::BeginPlay()
 	Renderer->SetOrder(ERenderOrder::Object);
 
 	SetActorType(ETileType::LWord);
-	SetNounType(ENounType::Baba);
+	SetNounType(ENounType::BabaText);
+
+	SetIsBlock(true);
+	SetIsPush(true);
+	SetIsController(false);
 }
 
 void ABabaText::Tick(float _DeltaTime)
