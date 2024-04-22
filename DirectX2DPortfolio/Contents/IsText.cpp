@@ -28,7 +28,7 @@ void AIsText::BeginPlay()
 	std::vector<float> AnimationInterIndex = { 0.1f, 0.1f, 0.1f };
 	Renderer->CreateAnimation("IsVerb", "IsText.png", AnimationInterIndex, AnimationFrameIndex, true);
 	Renderer->ChangeAnimation("IsVerb");
-	Renderer->SetOrder(ERenderOrder::Object);
+	Renderer->SetOrder(ERenderOrder::Words);
 
 	SetActorType(ETileType::Is);
 	SetNounType(ENounType::None);

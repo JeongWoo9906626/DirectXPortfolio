@@ -28,7 +28,7 @@ void AStopText::BeginPlay()
 	std::vector<float> AnimationInterIndex = { 0.1f, 0.1f, 0.1f };
 	Renderer->CreateAnimation("StopText", "StopText.png", AnimationInterIndex, AnimationFrameIndex, true);
 	Renderer->ChangeAnimation("StopText");
-	Renderer->SetOrder(ERenderOrder::Object);
+	Renderer->SetOrder(ERenderOrder::Words);
 
 	SetActorType(ETileType::RWord);
 	SetNounType(ENounType::StopText);

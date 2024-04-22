@@ -24,11 +24,11 @@ void AYouText::BeginPlay()
 
 	SetActorScale3D(FVector(40.0f, 40.0f, 20.0f));
 
-	std::vector<int> AnimationFrameIndex = { 4, 22, 40 };
+	std::vector<int> AnimationFrameIndex = { 0, 3, 6 };
 	std::vector<float> AnimationInterIndex = { 0.1f, 0.1f, 0.1f };
-	Renderer->CreateAnimation("YouText", "Wall.png", AnimationInterIndex, AnimationFrameIndex, true);
+	Renderer->CreateAnimation("YouText", "YouText.png", AnimationInterIndex, AnimationFrameIndex, true);
 	Renderer->ChangeAnimation("YouText");
-	Renderer->SetOrder(ERenderOrder::Object);
+	Renderer->SetOrder(ERenderOrder::Words);
 
 	SetActorType(ETileType::RWord);
 	SetNounType(ENounType::YouText);

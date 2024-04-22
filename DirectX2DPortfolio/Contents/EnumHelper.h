@@ -4,7 +4,9 @@ enum class ERenderOrder
 {
 	Map,
 	Object,
+	Words,
 	Player,
+	None,
 };
 
 enum class EActorDir

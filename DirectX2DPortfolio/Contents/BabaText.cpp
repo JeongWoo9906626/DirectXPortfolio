@@ -29,7 +29,7 @@ void ABabaText::BeginPlay()
 	std::vector<float> AnimationInterIndex = { 0.1f, 0.1f, 0.1f };
 	Renderer->CreateAnimation("BabaText", "BabaText.png", AnimationInterIndex, AnimationFrameIndex, true);
 	Renderer->ChangeAnimation("BabaText");
-	Renderer->SetOrder(ERenderOrder::Object);
+	Renderer->SetOrder(ERenderOrder::Words);
 
 	SetActorType(ETileType::LWord);
 	SetNounType(ENounType::BabaText);

@@ -29,7 +29,7 @@ void AWallText::BeginPlay()
 	std::vector<float> AnimationInterIndex = { 0.1f, 0.1f, 0.1f };
 	Renderer->CreateAnimation("WallText", "Wall.png", AnimationInterIndex, AnimationFrameIndex, true);
 	Renderer->ChangeAnimation("WallText");
-	Renderer->SetOrder(ERenderOrder::Object);
+	Renderer->SetOrder(ERenderOrder::Words);
 
 	SetActorType(ETileType::LWord);
 	SetNounType(ENounType::PillarText);

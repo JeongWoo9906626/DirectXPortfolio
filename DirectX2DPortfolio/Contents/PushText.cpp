@@ -27,7 +27,7 @@ void APushText::BeginPlay()
 	std::vector<float> AnimationInterIndex = { 0.1f, 0.1f, 0.1f };
 	Renderer->CreateAnimation("PushText", "PushText.png", AnimationInterIndex, AnimationFrameIndex, true);
 	Renderer->ChangeAnimation("PushText");
-	Renderer->SetOrder(ERenderOrder::Object);
+	Renderer->SetOrder(ERenderOrder::Words);
 
 	SetActorType(ETileType::RWord);
 	SetNounType(ENounType::PushText);
