@@ -182,6 +182,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="ContentsStruct.h" />
+    <ClInclude Include="DefeatText.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="EnumHelper.h" />
     <ClInclude Include="IsText.h">
       <SubType>
@@ -294,6 +298,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="ContentsStruct.cpp" />
+    <ClCompile Include="DefeatText.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="IsText.cpp">
       <SubType>
       </SubType>

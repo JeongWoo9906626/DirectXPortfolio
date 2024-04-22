@@ -54,6 +54,7 @@ void UContentsCore::Initialize()
 		UEngineSprite::CreateCutting("StopText.png", 3, 3);
 		UEngineSprite::CreateCutting("PushText.png", 3, 3);
 		UEngineSprite::CreateCutting("YouText.png", 3, 3);
+		UEngineSprite::CreateCutting("DefeatText.png", 3, 3);
 	}
 
 

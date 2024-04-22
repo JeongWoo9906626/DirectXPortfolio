@@ -18,26 +18,33 @@ enum class EActorDir
 	None
 };
 
-enum class EActorType
-{
-	Baba,
-	Pillar,
-	Lava,
-	Selector,
-	LWord,
-	RWord,
-	Verb,
-	None,
-};
+//enum class EActorType
+//{
+//	Baba,
+//	Pillar,
+//	Lava,
+//	Selector,
+//	LWord,
+//	RWord,
+//	Verb,
+//	None,
+//};
 
 enum class ENounType
 {
+	// LWord
 	BabaText,
 	PillarText,
 	LavaText,
+	RockText,
+	WaterText,
+
+	// RWord
 	YouText,
 	StopText,
 	PushText,
+	DefeatText,
+
 	None,
 };
 
@@ -53,27 +60,39 @@ enum class EInputType
 
 enum class ETileType
 {
+	// Controller Actor
 	Baba,
 	Pillar,
 	Lava,
+	Rock,
+	Water,
 	Selector,
+
+	// Words
 	LWord,
 	RWord,
+	
+	// Connecting
 	Is,
 	And,
 	None,
 };
 
-enum class LWordType
-{
-	BabaText,
-	WallText,
-	None,
-};
-
-enum class RWordType
-{
-	StopText,
-	YouText,
-	None,
-};
+//enum class LWordType
+//{
+//	BabaText,
+//	WallText,
+//	LavaText,
+//	RockText,
+//	WaterText,
+//	None,
+//};
+//
+//enum class RWordType
+//{
+//	StopText,
+//	DefeatText, 
+//	PushText,
+//	YouText,
+//	None,
+//};

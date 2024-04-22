@@ -121,10 +121,13 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 			CheckActorType = ETileType::Pillar;
 			break;
 		case ENounType::LavaText:
+			CheckActorType = ETileType::Lava;
 			break;
-		case ENounType::YouText:
+		case ENounType::RockText:
+			CheckActorType = ETileType::Rock;
 			break;
-		case ENounType::StopText:
+		case ENounType::WaterText:
+			CheckActorType = ETileType::Water;
 			break;
 		case ENounType::None:
 			break;
@@ -143,12 +146,6 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 				{
 					switch (RightNounType)
 					{
-					case ENounType::BabaText:
-						break;
-					case ENounType::PillarText:
-						break;
-					case ENounType::LavaText:
-						break;
 					case ENounType::YouText:
 						TileActor->SetIsController(true);
 						break;
@@ -162,6 +159,10 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 					{
 						TileActor->SetIsBlock(true);
 						TileActor->SetIsPush(true);
+						break;
+					}
+					case ENounType::DefeatText:
+					{
 						break;
 					}
 					}
@@ -231,8 +232,13 @@ bool AConnectingTile::VerticalCheck(FINT _TilePos)
 			CheckActorType = ETileType::Pillar;
 			break;
 		case ENounType::LavaText:
+			CheckActorType = ETileType::Lava;
 			break;
-		case ENounType::YouText:
+		case ENounType::RockText:
+			CheckActorType = ETileType::Rock;
+			break;
+		case ENounType::WaterText:
+			CheckActorType = ETileType::Water;
 			break;
 		case ENounType::None:
 			break;
@@ -251,12 +257,6 @@ bool AConnectingTile::VerticalCheck(FINT _TilePos)
 				{
 					switch (DownNounType)
 					{
-					case ENounType::BabaText:
-						break;
-					case ENounType::PillarText:
-						break;
-					case ENounType::LavaText:
-						break;
 					case ENounType::YouText:
 						TileActor->SetIsController(true);
 						break;
@@ -270,6 +270,10 @@ bool AConnectingTile::VerticalCheck(FINT _TilePos)
 					{
 						TileActor->SetIsBlock(true);
 						TileActor->SetIsPush(true);
+						break;
+					}
+					case ENounType::DefeatText:
+					{
 						break;
 					}
 					}
