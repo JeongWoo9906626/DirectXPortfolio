@@ -34,10 +34,13 @@ void ATile::Tick(float _DeltaTime)
 
 void ATile::StateReset()
 {
-	//if (ETileType::LWord == GetActorType() || ETileType::RWord == GetActorType() /*|| ETileType::Is == GetActorType() || ETileType::And == GetActorType()*/)
-	//{
-	//	AnimationOff();
-	//}
+	if (ETileType::LWord == GetActorType() || ETileType::RWord == GetActorType() || ETileType::Is == GetActorType() || ETileType::And == GetActorType())
+	{
+		if (true == IsAnimationOn)
+		{
+			AnimationOff();
+		}
+	}
 
 	Info.IsController = FirstStateInfo.IsController;
 	Info.IsBlock = FirstStateInfo.IsBlock;
@@ -177,11 +180,13 @@ void ATile::RenderOn()
 
 void ATile::AnimationOn()
 {
+	IsAnimationOn = true;
 	Renderer->ChangeAnimation("On");
 }
 
 void ATile::AnimationOff()
 {
+	IsAnimationOn = false;
 	Renderer->ChangeAnimation("Off");
 }
 

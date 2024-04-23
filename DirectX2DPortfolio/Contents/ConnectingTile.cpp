@@ -72,6 +72,19 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 
 	if (true == IsNoun && true == IsCharNoun)
 	{
+		if (false == this->IsAnimationOn)
+		{
+			this->AnimationOn();
+		}
+		if (false == TempLeftTileActor->IsAnimationOn)
+		{
+			TempLeftTileActor->AnimationOn();
+		}
+		if (false == TempRightTileActor->IsAnimationOn)
+		{
+			TempRightTileActor->AnimationOn();
+		}
+
 		ENounType LeftNounType = TempLeftTileActor->GetNounType();
 		ENounType RightNounType = TempRightTileActor->GetNounType();
 
@@ -184,6 +197,19 @@ bool AConnectingTile::VerticalCheck(FINT _TilePos)
 
 	if (true == IsNoun && true == IsCharNoun)
 	{
+		if (false == this->IsAnimationOn)
+		{
+			this->AnimationOn();
+		}
+		if (false == TempUpTileActor->IsAnimationOn)
+		{
+			TempUpTileActor->AnimationOn();
+		}
+		if (false == TempDownTileActor->IsAnimationOn)
+		{
+			TempDownTileActor->AnimationOn();
+		}
+
 		ENounType UpNounType = TempUpTileActor->GetNounType();
 		ENounType DownNounType = TempDownTileActor->GetNounType();
 

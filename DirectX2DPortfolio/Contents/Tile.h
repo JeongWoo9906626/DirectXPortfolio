@@ -182,6 +182,8 @@ public:
 	void AnimationOn();
 	void AnimationOff();
 
+	bool IsAnimationOn = false;
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -212,4 +214,6 @@ private:
 	FVector Lerp(float _CurMoveTime) const;
 
 	UTileInfo FirstStateInfo;
+
+	
 };

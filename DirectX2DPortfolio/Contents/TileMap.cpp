@@ -392,10 +392,6 @@ void ATileMap::SinkCheck(FINT _TilePosition)
 	}
 	for (std::shared_ptr<ATile> Tile : TileList)
 	{
-		/*if (true == Tile->GetIsDefeat())
-		{
-			continue;
-		}*/
 		if (
 			ETileType::LWord == Tile->GetActorType() ||
 			ETileType::RWord == Tile->GetActorType() ||
