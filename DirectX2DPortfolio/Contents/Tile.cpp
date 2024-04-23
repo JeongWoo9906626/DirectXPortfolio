@@ -152,6 +152,7 @@ void ATile::BackMoveSet()
 	
 	MoveHistory.pop();
 }
+
 void ATile::Move(float _DeltaTime)
 {
 	if (CurMoveTime <= 0.0f)
@@ -160,7 +161,6 @@ void ATile::Move(float _DeltaTime)
 		CurMoveTime = MoveTime;
 		PrevPos = NextPos;
 		Info.TilePosition = NextPos;
-		//함수포인터 저거실행
 	}
 
 	CurMoveTime -= _DeltaTime;
@@ -184,20 +184,17 @@ void ATile::AnimationOn()
 	if (IsAnimationOn == true) {
 		return;
 	}
+
 	IsAnimationOn = true;
 	Renderer->ChangeAnimation("On");
 }
 
 void ATile::AnimationOff()
 {
-	AConnectingTile* a = dynamic_cast<AConnectingTile*>(this);
-	if (a != nullptr) {
-		int asdf = 0;
-	}
-	//connetingtile
 	if (IsAnimationOn == false) {
 		return;
 	}
+
 	IsAnimationOn = false;
 	Renderer->ChangeAnimation("Off");
 }
@@ -234,7 +231,6 @@ bool ATile::NextTileCheck(FINT _NextTilePos, EInputType _Input)
 	std::list<std::shared_ptr<ATile>> NextTileActorList = StaticHelper::CurTileMap[_NextTilePos];
 	if (true == NextTileActorList.empty())
 	{
-		//Temp = true;
 		return true;
 	}
 	else // List가 비어있지 않은 경우 (Tile을 가지고 있는 경우)
