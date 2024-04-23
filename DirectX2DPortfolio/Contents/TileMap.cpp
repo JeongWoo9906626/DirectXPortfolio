@@ -113,14 +113,24 @@ void ATileMap::BeginPlay()
 void ATileMap::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
-	
+
 	MoveResult = MoveEnd();
 	if (false == MoveResult)
 	{
-		IsBack = false;
-		IsInput = false;
-		IsTileMove = false;
-		Input = EInputType::None;
+		if (BeforeResult != MoveResult)
+		{
+			IsBack = false;
+			IsInput = false;
+			IsTileMove = false;
+			Input = EInputType::None;
+
+			BeforeResult = MoveResult;
+			TileStateReset();
+		}
+	}
+	if (true == IsInput && false == BeforeResult)
+	{
+		BeforeResult = true;
 	}
 
 	if (false == IsInput)
@@ -129,7 +139,6 @@ void ATileMap::Tick(float _DeltaTime)
 		TileMoveCheck();
 		TileMoveSet();
 		TileUpdate();
-		TileStateReset();
 		TileSentenceCheck();
 		TileAliveCheck();
 	}
@@ -370,10 +379,10 @@ void ATileMap::DefeatCheck(FINT _TilePosition)
 			continue;
 		}
 		if (
-				ETileType::LWord == Tile->GetActorType() || 
-				ETileType::RWord == Tile->GetActorType() || 
-				ETileType::Is == Tile->GetActorType() || 
-				ETileType::And == Tile->GetActorType()
+			ETileType::LWord == Tile->GetActorType() ||
+			ETileType::RWord == Tile->GetActorType() ||
+			ETileType::Is == Tile->GetActorType() ||
+			ETileType::And == Tile->GetActorType()
 			)
 		{
 			continue;

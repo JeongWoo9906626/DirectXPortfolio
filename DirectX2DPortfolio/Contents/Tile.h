@@ -214,6 +214,4 @@ private:
 	FVector Lerp(float _CurMoveTime) const;
 
 	UTileInfo FirstStateInfo;
-
-	
 };

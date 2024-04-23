@@ -3,6 +3,7 @@
 #include <EngineCore/Renderer.h>
 #include <EngineCore/SpriteRenderer.h>
 #include "StaticHelper.h"
+#include "ConnectingTile.h"
 
 ATile::ATile()
 {
@@ -36,10 +37,10 @@ void ATile::StateReset()
 {
 	if (ETileType::LWord == GetActorType() || ETileType::RWord == GetActorType() || ETileType::Is == GetActorType() || ETileType::And == GetActorType())
 	{
-		if (true == IsAnimationOn)
+		AnimationOff();
+	/*	if (true == IsAnimationOn)
 		{
-			AnimationOff();
-		}
+		}*/
 	}
 
 	Info.IsController = FirstStateInfo.IsController;
@@ -180,12 +181,23 @@ void ATile::RenderOn()
 
 void ATile::AnimationOn()
 {
+	if (IsAnimationOn == true) {
+		return;
+	}
 	IsAnimationOn = true;
 	Renderer->ChangeAnimation("On");
 }
 
 void ATile::AnimationOff()
 {
+	AConnectingTile* a = dynamic_cast<AConnectingTile*>(this);
+	if (a != nullptr) {
+		int asdf = 0;
+	}
+	//connetingtile
+	if (IsAnimationOn == false) {
+		return;
+	}
 	IsAnimationOn = false;
 	Renderer->ChangeAnimation("Off");
 }

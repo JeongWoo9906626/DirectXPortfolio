@@ -44,8 +44,12 @@ private:
 	FINT MapSize = FINT();
 	std::map<FINT, std::list<std::shared_ptr<ATile>>> Map;
 	EInputType Input = EInputType::None;
+
 	bool IsInput = false;
 	bool IsBack = false;
 	bool IsTileMove = false;
 	bool MoveResult = false;
+
+	bool BeforeResult = false;
 };
+
