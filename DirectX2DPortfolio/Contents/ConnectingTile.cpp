@@ -28,42 +28,6 @@ void AConnectingTile::WordsCheck()
 
 	HorizontalResult = HorizontalCheck(CurTilePos);
 	VerticalResult = VerticalCheck(CurTilePos);
-
-	/*if (false == HorizontalResult)
-	{
-		std::map<FINT, std::list<std::shared_ptr<ATile>>> TileMap = StaticHelper::CurTileMap;
-		for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> Iterator : TileMap)
-		{
-			std::list<std::shared_ptr<ATile>> TileActorList = Iterator.second;
-			for (std::shared_ptr<ATile> TileActor : TileActorList)
-			{
-				ETileType ActorType = TileActor->GetActorType();
-				if (ActorType == HorizontalLeftType)
-				{
-					TileActor->SetIsController(false);
-					HorizontalLeftType = ETileType::None;
-				}
-			}
-		}
-	}
-
-	if (false == VerticalResult)
-	{
-		std::map<FINT, std::list<std::shared_ptr<ATile>>> TileMap = StaticHelper::CurTileMap;
-		for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> Iterator : TileMap)
-		{
-			std::list<std::shared_ptr<ATile>> TileActorList = Iterator.second;
-			for (std::shared_ptr<ATile> TileActor : TileActorList)
-			{
-				ETileType ActorType = TileActor->GetActorType();
-				if (ActorType == VerticalLeftType)
-				{
-					TileActor->SetIsController(false);
-					VerticalLeftType = ETileType::None;
-				}
-			}
-		}
-	}*/
 }
 
 
@@ -174,10 +138,6 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 					}
 					HorizontalLeftType = ActorType;
 				}
-				//else
-				//{
-				//	//TileActor->SetIsController(false);
-				//}
 			}
 		}
 	}
@@ -291,14 +251,6 @@ bool AConnectingTile::VerticalCheck(FINT _TilePos)
 					}
 					VerticalLeftType = ActorType;
 				}
-				//else
-				//{
-				//	if (false == HorizontalResult)
-				//	{
-				//		//TileActor->SetIsController(false);
-				//	}
-
-				//}
 			}
 		}
 	}

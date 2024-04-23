@@ -24,10 +24,14 @@ void AStopText::BeginPlay()
 
 	SetActorScale3D(FVector(40.0f, 40.0f, 20.0f));
 
-	std::vector<int> AnimationFrameIndex = { 0, 3, 6 };
+	std::vector<int> AnimationOnFrameIndex = { 1, 4, 7 };
+	std::vector<int> AnimationOffFrameIndex = { 2, 5, 8 };
 	std::vector<float> AnimationInterIndex = { 0.1f, 0.1f, 0.1f };
-	Renderer->CreateAnimation("StopText", "StopText.png", AnimationInterIndex, AnimationFrameIndex, true);
-	Renderer->ChangeAnimation("StopText");
+
+	Renderer->CreateAnimation("Off", "StopText.png", AnimationInterIndex, AnimationOffFrameIndex, true);
+	Renderer->CreateAnimation("On", "StopText.png", AnimationInterIndex, AnimationOnFrameIndex, true);
+
+	Renderer->ChangeAnimation("Off");
 	Renderer->SetOrder(ERenderOrder::Words);
 
 	SetActorType(ETileType::RWord);

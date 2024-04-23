@@ -34,12 +34,17 @@ void ATile::Tick(float _DeltaTime)
 
 void ATile::StateReset()
 {
+	//if (ETileType::LWord == GetActorType() || ETileType::RWord == GetActorType() /*|| ETileType::Is == GetActorType() || ETileType::And == GetActorType()*/)
+	//{
+	//	AnimationOff();
+	//}
+
 	Info.IsController = FirstStateInfo.IsController;
 	Info.IsBlock = FirstStateInfo.IsBlock;
 	Info.IsPush = FirstStateInfo.IsPush;
 	Info.IsSink = FirstStateInfo.IsSink;
 	Info.IsDefeat = FirstStateInfo.IsDefeat;
-	//RenderOn();
+	
 }
 
 bool ATile::MoveCheck(EInputType _Input)
@@ -168,6 +173,16 @@ void ATile::RenderOff()
 void ATile::RenderOn()
 {
 	Renderer->SetActive(true);
+}
+
+void ATile::AnimationOn()
+{
+	Renderer->ChangeAnimation("On");
+}
+
+void ATile::AnimationOff()
+{
+	Renderer->ChangeAnimation("Off");
 }
 
 bool ATile::NextTileCheck(FINT _NextTilePos, EInputType _Input)

@@ -179,6 +179,9 @@ public:
 	void RenderOff();
 	void RenderOn();
 
+	void AnimationOn();
+	void AnimationOff();
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -201,7 +204,7 @@ private:
 	EActorDir PrevDir = EActorDir::None;
 
 	float MoveRange = 32.0f;
-	float MoveTime = 0.5f;
+	float MoveTime = 0.3f;
 	float CurMoveTime = 0.0f;
 
 	std::stack<EActorDir> MoveHistory;

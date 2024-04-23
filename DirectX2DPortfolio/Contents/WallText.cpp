@@ -25,10 +25,13 @@ void AWallText::BeginPlay()
 
 	SetActorScale3D(FVector(40.0f, 40.0f, 20.0f));
 
-	std::vector<int> AnimationFrameIndex = { 0, 18, 36 };
+	std::vector<int> AnimationOffFrameIndex = { 0, 18, 36 };
+	std::vector<int> AnimationOnFrameIndex = { 1, 19, 37 };
 	std::vector<float> AnimationInterIndex = { 0.1f, 0.1f, 0.1f };
-	Renderer->CreateAnimation("WallText", "Wall.png", AnimationInterIndex, AnimationFrameIndex, true);
-	Renderer->ChangeAnimation("WallText");
+	Renderer->CreateAnimation("Off", "Wall.png", AnimationInterIndex, AnimationOffFrameIndex, true);
+	Renderer->CreateAnimation("On", "Wall.png", AnimationInterIndex, AnimationOnFrameIndex, true);
+
+	Renderer->ChangeAnimation("Off");
 	Renderer->SetOrder(ERenderOrder::Words);
 
 	SetActorType(ETileType::LWord);
