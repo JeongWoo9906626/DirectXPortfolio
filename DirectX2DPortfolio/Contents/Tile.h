@@ -14,6 +14,8 @@ public:
 		IsBlock = _Other.IsBlock;
 		IsController = _Other.IsController;
 		IsAlive = _Other.IsAlive;
+		IsSink = _Other.IsSink;
+		IsDefeat = _Other.IsDefeat;
 
 		TileType = _Other.TileType;
 		NounType = _Other.NounType;
@@ -27,6 +29,8 @@ public:
 	bool IsPush = false;
 	bool IsBlock = false;
 	bool IsController = false;
+	bool IsSink = false;
+	bool IsDefeat = false;
 	bool IsAlive = true;
 
 	ETileType TileType = ETileType::None;
@@ -47,54 +51,87 @@ public:
 	ATile& operator=(const ATile& _Other) = delete;
 	ATile& operator=(ATile&& _Other) noexcept = delete;
 
-	void SetTilePosition(FINT _TilePosition)
-	{
-		Info.TilePosition = _TilePosition;
-	}
+	// Get TileInfo
 	inline UTileInfo GetTileInfo() const
 	{
 		return Info;
 	}
 
-	inline void SetNounType(ENounType _NounType)
-	{
-		Info.NounType = _NounType;
-	}
-
-	inline ENounType GetNounType() const
-	{
-		return Info.NounType;
-	}
-
-	inline void SetPosition(FINT _TilePosition)
+	// Get/Set TilePosition
+	inline void SetTilePosition(FINT _TilePosition)
 	{
 		Info.TilePosition = _TilePosition;
 	}
-
 	inline FINT GetTilePosition() const
 	{
 		return Info.TilePosition;
 	}
 
+	// Get/Set NounType
+	inline void SetNounType(ENounType _NounType)
+	{
+		Info.NounType = _NounType;
+	}
+	inline ENounType GetNounType() const
+	{
+		return Info.NounType;
+	}
+
+	/*inline void SetPosition(FINT _TilePosition)
+	{
+		Info.TilePosition = _TilePosition;
+	}*/
+
+	// Get/Set IsPush
 	inline bool GetIsPush() const
 	{
 		return Info.IsPush;
 	}
-
 	inline void SetIsPush(bool _IsPush)
 	{
 		Info.IsPush = _IsPush;
 	}
 
+	// Get/Set IsConroller
 	inline bool GetIsController() const
 	{
 		return Info.IsController;
 	}
-
 	inline void SetIsController(bool _IsController)
 	{
 		Info.IsController = _IsController;
 	}
+
+	// Get/Set IsBlock
+	void SetIsBlock(bool _IsBlock)
+	{
+		Info.IsBlock = _IsBlock;
+	}
+	bool GetIsBlock() const
+	{
+		return Info.IsBlock;
+	}
+
+	// Get/Set IsSink
+	void SetIsSink(bool _IsSink)
+	{
+		Info.IsSink = _IsSink;
+	}
+	bool GetIsSink() const
+	{
+		return Info.IsSink;
+	}
+
+	// Get/Set IsDefeat
+	void SetIsDefeat(bool _IsDefeat)
+	{
+		Info.IsDefeat = _IsDefeat;
+	}
+	bool GetIsDefeat() const
+	{
+		return Info.IsDefeat;
+	}
+
 
 	void SetTileLocation()
 	{
@@ -102,21 +139,11 @@ public:
 		this->SetActorLocation(StartPos);
 	}
 
-	void SetIsBlock(bool _IsBlock)
-	{
-		Info.IsBlock = _IsBlock;
-	}
-
-	bool GetIsBlock() const
-	{
-		return Info.IsBlock;
-	}
-
+	// Get/Set ActorType
 	void SetActorType(ETileType _TileType)
 	{
 		Info.TileType = _TileType;
 	}
-
 	ETileType GetActorType() const
 	{
 		return Info.TileType;
@@ -148,6 +175,9 @@ public:
 	virtual void MoveSet(EInputType _Input);
 	virtual void BackMoveSet();
 	void Move(float _DeltaTime);
+
+	void RenderOff();
+	void RenderOn();
 
 protected:
 	void BeginPlay() override;

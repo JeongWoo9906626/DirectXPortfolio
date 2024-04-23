@@ -3,7 +3,7 @@
 #include <EngineCore/DefaultSceneComponent.h>
 #include <EngineCore/SpriteRenderer.h>
 
-DefeatText::DefeatText()
+ADefeatText::ADefeatText()
 {
 	UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
 	SetRoot(Root);
@@ -12,12 +12,12 @@ DefeatText::DefeatText()
 	Renderer->SetupAttachment(Root);
 }
 
-DefeatText::~DefeatText()
+ADefeatText::~ADefeatText()
 {
 
 }
 
-void DefeatText::BeginPlay()
+void ADefeatText::BeginPlay()
 {
 	Super::BeginPlay();
 
@@ -25,7 +25,7 @@ void DefeatText::BeginPlay()
 
 	std::vector<int> AnimationFrameIndex = { 0, 3, 6 };
 	std::vector<float> AnimationInterIndex = { 0.1f, 0.1f, 0.1f };
-	Renderer->CreateAnimation("DefeatText", "DefeateText.png", AnimationInterIndex, AnimationFrameIndex, true);
+	Renderer->CreateAnimation("DefeatText", "DefeatText.png", AnimationInterIndex, AnimationFrameIndex, true);
 	Renderer->ChangeAnimation("DefeatText");
 	Renderer->SetOrder(ERenderOrder::Words);
 
@@ -35,11 +35,13 @@ void DefeatText::BeginPlay()
 	SetIsBlock(true);
 	SetIsPush(true);
 	SetIsController(false);
+	SetIsSink(false);
+	SetIsDefeat(false);
 
 	SetFirstStateInfo(GetTileInfo());
 }
 
-void DefeatText::Tick(float _DeltaTime)
+void ADefeatText::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 }

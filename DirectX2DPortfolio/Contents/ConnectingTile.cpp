@@ -163,6 +163,12 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 					}
 					case ENounType::DefeatText:
 					{
+						TileActor->SetIsDefeat(true);
+						break;
+					}
+					case ENounType::SinkText:
+					{
+						TileActor->SetIsSink(true);
 						break;
 					}
 					}
@@ -274,6 +280,12 @@ bool AConnectingTile::VerticalCheck(FINT _TilePos)
 					}
 					case ENounType::DefeatText:
 					{
+						TileActor->SetIsDefeat(true);
+						break;
+					}
+					case ENounType::SinkText:
+					{
+						TileActor->SetIsSink(true);
 						break;
 					}
 					}

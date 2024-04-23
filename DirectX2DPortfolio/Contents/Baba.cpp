@@ -103,6 +103,8 @@ void ABaba::BeginPlay()
 	SetIsBlock(false);
 	SetIsPush(false);
 	SetIsController(false);
+	SetIsSink(false);
+	SetIsDefeat(false);
 
 	SetFirstStateInfo(GetTileInfo());
 

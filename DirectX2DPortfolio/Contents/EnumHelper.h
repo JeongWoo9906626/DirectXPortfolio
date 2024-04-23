@@ -44,6 +44,7 @@ enum class ENounType
 	StopText,
 	PushText,
 	DefeatText,
+	SinkText,
 
 	None,
 };

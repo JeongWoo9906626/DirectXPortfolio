@@ -1,18 +1,18 @@
 #pragma once
 #include "Tile.h"
 
-class DefeatText : public ATile
+class ADefeatText : public ATile
 {
 	GENERATED_BODY(ATile)
 
 public:
-	DefeatText();
-	~DefeatText();
+	ADefeatText();
+	~ADefeatText();
 
-	DefeatText(const DefeatText& _Other) = delete;
-	DefeatText(DefeatText&& _Other) noexcept = delete;
-	DefeatText& operator=(const DefeatText& _Other) = delete;
-	DefeatText& operator=(DefeatText&& _Other) noexcept = delete;
+	ADefeatText(const ADefeatText& _Other) = delete;
+	ADefeatText(ADefeatText&& _Other) noexcept = delete;
+	ADefeatText& operator=(const ADefeatText& _Other) = delete;
+	ADefeatText& operator=(ADefeatText&& _Other) noexcept = delete;
 
 protected:
 	void BeginPlay() override;

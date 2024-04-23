@@ -36,6 +36,8 @@ void AStopText::BeginPlay()
 	SetIsBlock(true);
 	SetIsPush(true);
 	SetIsController(false);
+	SetIsSink(false);
+	SetIsDefeat(false);
 
 	SetFirstStateInfo(GetTileInfo());
 }

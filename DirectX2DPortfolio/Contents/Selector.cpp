@@ -36,6 +36,8 @@ void ASelector::BeginPlay()
 	SetIsBlock(true);
 	SetIsPush(true);
 	SetIsController(true);
+	SetIsSink(false);
+	SetIsDefeat(false);
 
 	SetFirstStateInfo(GetTileInfo());
 }

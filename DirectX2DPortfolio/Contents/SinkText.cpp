@@ -1,38 +1,36 @@
 #include "PreCompile.h"
-#include "WallText.h"
+#include "SinkText.h"
 #include <EngineCore/DefaultSceneComponent.h>
 #include <EngineCore/SpriteRenderer.h>
-#include "StaticHelper.h"
 
-AWallText::AWallText()
+ASinkText::ASinkText()
 {
 	UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
+	SetRoot(Root);
 
 	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
 	Renderer->SetupAttachment(Root);
-
-	SetRoot(Root);
 }
 
-AWallText::~AWallText()
+ASinkText::~ASinkText()
 {
-	
+
 }
 
-void AWallText::BeginPlay()
+void ASinkText::BeginPlay()
 {
 	Super::BeginPlay();
 
 	SetActorScale3D(FVector(40.0f, 40.0f, 20.0f));
 
-	std::vector<int> AnimationFrameIndex = { 0, 18, 36 };
+	std::vector<int> AnimationFrameIndex = { 0, 3, 6 };
 	std::vector<float> AnimationInterIndex = { 0.1f, 0.1f, 0.1f };
-	Renderer->CreateAnimation("WallText", "Wall.png", AnimationInterIndex, AnimationFrameIndex, true);
-	Renderer->ChangeAnimation("WallText");
+	Renderer->CreateAnimation("SinkText", "SinkText.png", AnimationInterIndex, AnimationFrameIndex, true);
+	Renderer->ChangeAnimation("SinkText");
 	Renderer->SetOrder(ERenderOrder::Words);
 
-	SetActorType(ETileType::LWord);
-	SetNounType(ENounType::PillarText);
+	SetActorType(ETileType::RWord);
+	SetNounType(ENounType::SinkText);
 
 	SetIsBlock(true);
 	SetIsPush(true);
@@ -43,7 +41,7 @@ void AWallText::BeginPlay()
 	SetFirstStateInfo(GetTileInfo());
 }
 
-void AWallText::Tick(float _DeltaTime)
+void ASinkText::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 }

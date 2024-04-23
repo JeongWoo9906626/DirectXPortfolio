@@ -34,8 +34,11 @@ protected:
 	void TileUpdate();
 	void TileStateReset();
 	void TileSentenceCheck();
+	void TileAliveCheck();
 
 	bool MoveEnd();
+	void DefeatCheck(FINT _TilePosition);
+	void SinkCheck(FINT _TilePosition);
 
 private:
 	FINT MapSize = FINT();

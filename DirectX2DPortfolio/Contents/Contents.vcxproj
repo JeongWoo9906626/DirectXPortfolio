@@ -223,6 +223,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="SinkText.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="StageSelectGameMode.h">
       <SubType>
       </SubType>
@@ -339,6 +343,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Selector.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SinkText.cpp">
       <SubType>
       </SubType>
     </ClCompile>

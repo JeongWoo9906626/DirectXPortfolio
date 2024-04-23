@@ -27,6 +27,7 @@ void ATile::Tick(float _DeltaTime)
 
 	if (true == IsMove)
 	{
+		RenderOn();
 		Move(_DeltaTime);
 	}
 }
@@ -36,6 +37,9 @@ void ATile::StateReset()
 	Info.IsController = FirstStateInfo.IsController;
 	Info.IsBlock = FirstStateInfo.IsBlock;
 	Info.IsPush = FirstStateInfo.IsPush;
+	Info.IsSink = FirstStateInfo.IsSink;
+	Info.IsDefeat = FirstStateInfo.IsDefeat;
+	//RenderOn();
 }
 
 bool ATile::MoveCheck(EInputType _Input)
@@ -154,6 +158,16 @@ void ATile::Move(float _DeltaTime)
 
 	FVector MovePos = Lerp(CurMoveTime);
 	SetActorLocation(MovePos);
+}
+
+void ATile::RenderOff()
+{
+	Renderer->SetActive(false);
+}
+
+void ATile::RenderOn()
+{
+	Renderer->SetActive(true);
 }
 
 bool ATile::NextTileCheck(FINT _NextTilePos, EInputType _Input)

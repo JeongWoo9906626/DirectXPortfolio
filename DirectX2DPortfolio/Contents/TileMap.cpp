@@ -13,6 +13,8 @@
 #include "BabaText.h"
 #include "StopText.h"
 #include "PushText.h"
+#include "DefeatText.h"
+#include "SinkText.h"
 
 ATileMap::ATileMap()
 {
@@ -70,17 +72,17 @@ void ATileMap::BeginPlay()
 
 	{
 		FINT TestPos = FINT(4, 3);
-		std::shared_ptr<ATile> YouNoun = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AYouText>("YouText"));
-		YouNoun->SetTilePosition(TestPos);
-		YouNoun->SetTileLocation();
-		Map[TestPos].push_back(YouNoun);
+		std::shared_ptr<ATile> YouText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AYouText>("YouText"));
+		YouText->SetTilePosition(TestPos);
+		YouText->SetTileLocation();
+		Map[TestPos].push_back(YouText);
 	}
 	{
 		FINT TestPos = FINT(5, 3);
-		std::shared_ptr<ATile> YouNoun = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AYouText>("YouText"));
-		YouNoun->SetTilePosition(TestPos);
-		YouNoun->SetTileLocation();
-		Map[TestPos].push_back(YouNoun);
+		std::shared_ptr<ATile> SinkText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ASinkText>("SinkText"));
+		SinkText->SetTilePosition(TestPos);
+		SinkText->SetTileLocation();
+		Map[TestPos].push_back(SinkText);
 	}
 	{
 		FINT TestPos = FINT(2, 2);
@@ -96,6 +98,13 @@ void ATileMap::BeginPlay()
 		PushText->SetTilePosition(TestPos);
 		PushText->SetTileLocation();
 		Map[TestPos].push_back(PushText);
+	}
+	{
+		FINT TestPos = FINT(6, 3);
+		std::shared_ptr<ATile> DefeatText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ADefeatText>("DefeatText"));
+		DefeatText->SetTilePosition(TestPos);
+		DefeatText->SetTileLocation();
+		Map[TestPos].push_back(DefeatText);
 	}
 
 	StaticHelper::CurTileMap = Map;
@@ -122,6 +131,7 @@ void ATileMap::Tick(float _DeltaTime)
 		TileUpdate();
 		TileStateReset();
 		TileSentenceCheck();
+		TileAliveCheck();
 	}
 }
 
@@ -270,6 +280,28 @@ void ATileMap::TileUpdate()
 	StaticHelper::CurTileMap = Map;
 }
 
+void ATileMap::TileAliveCheck()
+{
+	std::map<FINT, std::list<std::shared_ptr<ATile>>> NewTileMap = StaticHelper::CurTileMap;
+	for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> Iterator : NewTileMap)
+	{
+		std::list<std::shared_ptr<ATile>> TileActorList = Iterator.second;
+		for (std::shared_ptr<ATile> TileActor : TileActorList)
+		{
+			if (true == TileActor->GetIsDefeat())
+			{
+				FINT DefeatPosition = TileActor->GetTilePosition();
+				DefeatCheck(DefeatPosition);
+			}
+			if (true == TileActor->GetIsSink())
+			{
+				FINT SinkPosition = TileActor->GetTilePosition();
+				SinkCheck(SinkPosition);
+			}
+		}
+	}
+}
+
 void ATileMap::TileStateReset()
 {
 	std::map<FINT, std::list<std::shared_ptr<ATile>>> NewTileMap = StaticHelper::CurTileMap;
@@ -321,4 +353,59 @@ bool ATileMap::MoveEnd()
 	}
 
 	return Temp;
+}
+
+void ATileMap::DefeatCheck(FINT _TilePosition)
+{
+	std::list<std::shared_ptr<ATile>> TileList = StaticHelper::CurTileMap[_TilePosition];
+	if (1 == TileList.size())
+	{
+		return;
+	}
+
+	for (std::shared_ptr<ATile> Tile : TileList)
+	{
+		if (true == Tile->GetIsDefeat())
+		{
+			continue;
+		}
+		if (
+				ETileType::LWord == Tile->GetActorType() || 
+				ETileType::RWord == Tile->GetActorType() || 
+				ETileType::Is == Tile->GetActorType() || 
+				ETileType::And == Tile->GetActorType()
+			)
+		{
+			continue;
+		}
+		Tile->SetIsController(false);
+		Tile->RenderOff();
+	}
+}
+
+void ATileMap::SinkCheck(FINT _TilePosition)
+{
+	std::list<std::shared_ptr<ATile>> TileList = StaticHelper::CurTileMap[_TilePosition];
+	if (1 == TileList.size())
+	{
+		return;
+	}
+	for (std::shared_ptr<ATile> Tile : TileList)
+	{
+		/*if (true == Tile->GetIsDefeat())
+		{
+			continue;
+		}*/
+		if (
+			ETileType::LWord == Tile->GetActorType() ||
+			ETileType::RWord == Tile->GetActorType() ||
+			ETileType::Is == Tile->GetActorType() ||
+			ETileType::And == Tile->GetActorType()
+			)
+		{
+			continue;
+		}
+		Tile->SetIsController(false);
+		Tile->RenderOff();
+	}
 }
