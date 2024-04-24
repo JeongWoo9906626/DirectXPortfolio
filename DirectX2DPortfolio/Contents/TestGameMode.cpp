@@ -25,7 +25,7 @@ void ATestGameMode::BeginPlay()
 
 	FINT Pos = FINT(1, 1);
 	std::shared_ptr<ATileMap> TileMap = GetWorld()->SpawnActor<ATileMap>("TM");
-	TileMap->SetTileSize(FINT(10, 10));
+	TileMap->SetTileSize(FINT(20, 20));
 
 	GetWorld()->SpawnActor<ATestMap>("TestMap");
 }

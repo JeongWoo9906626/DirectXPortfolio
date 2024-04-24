@@ -95,7 +95,7 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 			CheckActorType = ETileType::Baba;
 			break;
 		case ENounType::PillarText:
-			CheckActorType = ETileType::Pillar;
+			CheckActorType = ETileType::Wall;
 			break;
 		case ENounType::LavaText:
 			CheckActorType = ETileType::Lava;
@@ -221,7 +221,7 @@ bool AConnectingTile::VerticalCheck(FINT _TilePos)
 			CheckActorType = ETileType::Baba;
 			break;
 		case ENounType::PillarText:
-			CheckActorType = ETileType::Pillar;
+			CheckActorType = ETileType::Wall;
 			break;
 		case ENounType::LavaText:
 			CheckActorType = ETileType::Lava;

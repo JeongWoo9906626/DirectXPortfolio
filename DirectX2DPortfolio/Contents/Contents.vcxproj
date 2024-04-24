@@ -191,6 +191,14 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Lava.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="LavaText.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Water.h">
       <SubType>
       </SubType>
@@ -319,6 +327,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="IsText.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Lava.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="LavaText.cpp">
       <SubType>
       </SubType>
     </ClCompile>

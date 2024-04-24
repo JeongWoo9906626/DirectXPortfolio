@@ -17,6 +17,8 @@
 #include "SinkText.h"
 #include "Water.h"
 #include "WaterText.h"
+#include "Lava.h"
+#include "LavaText.h"
 
 ATileMap::ATileMap()
 {
@@ -142,6 +144,42 @@ void ATileMap::BeginPlay()
 		WaterText->SetTilePosition(TestPos);
 		WaterText->SetTileLocation();
 		Map[TestPos].push_back(WaterText);
+	}
+
+	{
+		FINT TestPos = FINT(10, 5);
+		std::shared_ptr<ATile> Lava = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ALava>("Lava"));
+		Lava->SetTilePosition(TestPos);
+		Lava->SetTileLocation();
+		Map[TestPos].push_back(Lava);
+	}
+	{
+		FINT TestPos = FINT(11, 5);
+		std::shared_ptr<ATile> Lava = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ALava>("Lava"));
+		Lava->SetTilePosition(TestPos);
+		Lava->SetTileLocation();
+		Map[TestPos].push_back(Lava);
+	}
+	{
+		FINT TestPos = FINT(12, 5);
+		std::shared_ptr<ATile> Lava = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ALava>("Lava"));
+		Lava->SetTilePosition(TestPos);
+		Lava->SetTileLocation();
+		Map[TestPos].push_back(Lava);
+	}
+	{
+		FINT TestPos = FINT(12, 6);
+		std::shared_ptr<ATile> Lava = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ALava>("Lava"));
+		Lava->SetTilePosition(TestPos);
+		Lava->SetTileLocation();
+		Map[TestPos].push_back(Lava);
+	}
+	{
+		FINT TestPos = FINT(5, 7);
+		std::shared_ptr<ATile> LavaText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ALavaText>("LavaText"));
+		LavaText->SetTilePosition(TestPos);
+		LavaText->SetTileLocation();
+		Map[TestPos].push_back(LavaText);
 	}
 
 	StaticHelper::CurTileMap = Map;

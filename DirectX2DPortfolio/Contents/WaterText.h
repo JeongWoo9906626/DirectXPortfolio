@@ -4,6 +4,7 @@
 class AWaterText : public ATile
 {
 	GENERATED_BODY(ATile)
+
 public:
 	AWaterText();
 	~AWaterText();

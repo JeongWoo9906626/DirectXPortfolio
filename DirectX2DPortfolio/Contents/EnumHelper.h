@@ -63,7 +63,7 @@ enum class ETileType
 {
 	// Controller Actor
 	Baba,
-	Pillar,
+	Wall,
 	Lava,
 	Rock,
 	Water,

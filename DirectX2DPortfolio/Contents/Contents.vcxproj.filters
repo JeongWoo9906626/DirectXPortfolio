@@ -64,9 +64,6 @@
     <Filter Include="Actor\Character\Baba">
       <UniqueIdentifier>{b5b8615b-057d-448f-8e43-bac49e8ae8ba}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Actor\Character\Wall">
-      <UniqueIdentifier>{7de85214-ddb0-4a2a-80fb-d5e69e193919}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Actor\ActorBase">
       <UniqueIdentifier>{ca6212d7-ddf8-4222-8cec-561069d76beb}</UniqueIdentifier>
     </Filter>
@@ -135,9 +132,6 @@
     <ClInclude Include="Baba.h">
       <Filter>Actor\Character\Baba</Filter>
     </ClInclude>
-    <ClInclude Include="Wall.h">
-      <Filter>Actor\Character\Wall</Filter>
-    </ClInclude>
     <ClInclude Include="WallText.h">
       <Filter>Actor\Text\LeftNoun</Filter>
     </ClInclude>
@@ -175,6 +169,15 @@
       <Filter>Actor\Character\NoAnim</Filter>
     </ClInclude>
     <ClInclude Include="WaterText.h">
+      <Filter>Actor\Text\LeftNoun</Filter>
+    </ClInclude>
+    <ClInclude Include="Lava.h">
+      <Filter>Actor\Character\NoAnim</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall.h">
+      <Filter>Actor\Character\NoAnim</Filter>
+    </ClInclude>
+    <ClInclude Include="LavaText.h">
       <Filter>Actor\Text\LeftNoun</Filter>
     </ClInclude>
   </ItemGroup>
@@ -236,9 +239,6 @@
     <ClCompile Include="Baba.cpp">
       <Filter>Actor\Character\Baba</Filter>
     </ClCompile>
-    <ClCompile Include="Wall.cpp">
-      <Filter>Actor\Character\Wall</Filter>
-    </ClCompile>
     <ClCompile Include="WallText.cpp">
       <Filter>Actor\Text\LeftNoun</Filter>
     </ClCompile>
@@ -276,6 +276,15 @@
       <Filter>Actor\Character\NoAnim</Filter>
     </ClCompile>
     <ClCompile Include="WaterText.cpp">
+      <Filter>Actor\Text\LeftNoun</Filter>
+    </ClCompile>
+    <ClCompile Include="Lava.cpp">
+      <Filter>Actor\Character\NoAnim</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall.cpp">
+      <Filter>Actor\Character\NoAnim</Filter>
+    </ClCompile>
+    <ClCompile Include="LavaText.cpp">
       <Filter>Actor\Text\LeftNoun</Filter>
     </ClCompile>
   </ItemGroup>
