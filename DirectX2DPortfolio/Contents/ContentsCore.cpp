@@ -81,6 +81,6 @@ void UContentsCore::Initialize()
 	GEngine->CreateLevel<AStageSelectGameMode>("SelectLevel");
 	GEngine->CreateLevel<APlayGameMode>("PlayLevel");
 	GEngine->CreateLevel<ATestGameMode>("TestLevel");
-	GEngine->ChangeLevel("TitleLevel");
+	GEngine->ChangeLevel("TestLevel");
 
 }
