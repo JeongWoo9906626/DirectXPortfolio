@@ -6,12 +6,11 @@
 
 ABabaText::ABabaText()
 {
-	UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
+	/*UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
+	SetRoot(Root);
 
 	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
-	Renderer->SetupAttachment(Root);
-
-	SetRoot(Root);
+	Renderer->SetupAttachment(Root);*/
 }
 
 ABabaText::~ABabaText()
@@ -23,7 +22,7 @@ void ABabaText::BeginPlay()
 {
 	Super::BeginPlay();
 
-	SetActorScale3D(FVector(40.0f, 40.0f, 20.0f));
+	//SetActorScale3D(FVector(40.0f, 40.0f, 20.0f));
 
 	std::vector<int> AnimationOffFrameIndex = { 0, 2, 4 };
 	std::vector<int> AnimationOnFrameIndex = { 1, 3, 5 };

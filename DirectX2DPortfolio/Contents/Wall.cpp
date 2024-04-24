@@ -6,12 +6,12 @@
 
 AWall::AWall()
 {
-	UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
+	/*UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
 
 	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
 	Renderer->SetupAttachment(Root);
 
-	SetRoot(Root);
+	SetRoot(Root);*/
 	//InputOn();
 }
 
@@ -24,7 +24,7 @@ void AWall::BeginPlay()
 {
 	Super::BeginPlay();
 
-	SetActorScale3D(FVector(40.0f, 40.0f, 20.0f));
+	//SetActorScale3D(FVector(54.0f, 54.0f, 20.0f));
 
 	std::vector<int> AnimationFrameIndex = { 2, 20, 38 };
 	std::vector<float> AnimationInterIndex = { 0.1f, 0.1f, 0.1f };

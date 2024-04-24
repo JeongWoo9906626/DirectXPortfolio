@@ -6,11 +6,11 @@
 
 AIsText::AIsText()
 {
-	UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
+	/*UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
 	SetRoot(Root);
 
 	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
-	Renderer->SetupAttachment(Root);
+	Renderer->SetupAttachment(Root);*/
 }
 
 AIsText::~AIsText()
@@ -22,7 +22,7 @@ void AIsText::BeginPlay()
 {
 	Super::BeginPlay();
 
-	SetActorScale3D(FVector(40.0f, 40.0f, 20.0f));
+	//SetActorScale3D(FVector(40.0f, 40.0f, 20.0f));
 
 	std::vector<int> AnimationOffFrameIndex = { 1, 3, 5 };
 	std::vector<int> AnimationOnFrameIndex = { 0, 2, 4 };

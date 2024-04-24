@@ -195,7 +195,7 @@ protected:
 	bool MoveEndCheck(FINT _TilePos);
 
 	bool IsMove = false;
-	float TileSize = 32.0f;
+	//float TileSize = 36.0f;
 
 private:
 	UTileInfo Info;

@@ -6,5 +6,6 @@ class StaticHelper
 {
 public:
 	static std::map<FINT, std::list<std::shared_ptr<ATile>>> CurTileMap;
-	static bool TempMove;
+	//static bool TempMove;
+	static float TileSize;
 };

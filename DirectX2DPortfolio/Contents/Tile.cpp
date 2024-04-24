@@ -1,13 +1,19 @@
 #include "PreCompile.h"
 #include "Tile.h"
 #include <EngineCore/Renderer.h>
+#include <EngineCore/DefaultSceneComponent.h>
 #include <EngineCore/SpriteRenderer.h>
 #include "StaticHelper.h"
 #include "ConnectingTile.h"
 
 ATile::ATile()
 {
+	UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
+	Root->SetScale(FVector(54.0f, 54.0f, 20.0f));
+	SetRoot(Root);
 
+	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
+	Renderer->SetupAttachment(Root);
 }
 
 ATile::~ATile()
@@ -308,8 +314,8 @@ FVector ATile::Lerp(float _CurMoveTime) const
 	float t = (MoveTime - _CurMoveTime) / MoveTime;
 
 	FVector CurPos;
-	CurPos.X = PrevPos.X * TileSize * (1 - t) + NextPos.X * TileSize * t;
-	CurPos.Y = PrevPos.Y * TileSize * (1 - t) + NextPos.Y * TileSize * t;
+	CurPos.X = PrevPos.X * StaticHelper::TileSize * (1 - t) + NextPos.X * StaticHelper::TileSize * t;
+	CurPos.Y = PrevPos.Y * StaticHelper::TileSize * (1 - t) + NextPos.Y * StaticHelper::TileSize * t;
 
 	CurPos.X = static_cast<int>(std::lround(CurPos.X));
 	CurPos.Y = static_cast<int>(std::lround(CurPos.Y));
