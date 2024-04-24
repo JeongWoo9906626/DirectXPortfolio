@@ -183,6 +183,7 @@ public:
 	void AnimationOff();
 
 	bool IsAnimationOn = false;
+	bool IsRender = true;
 
 protected:
 	void BeginPlay() override;

@@ -177,11 +177,13 @@ void ATile::Move(float _DeltaTime)
 
 void ATile::RenderOff()
 {
+	IsRender = false;
 	Renderer->SetActive(false);
 }
 
 void ATile::RenderOn()
 {
+	IsRender = true;
 	Renderer->SetActive(true);
 }
 

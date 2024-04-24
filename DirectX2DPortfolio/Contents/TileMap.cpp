@@ -469,6 +469,7 @@ void ATileMap::DefeatCheck(FINT _TilePosition)
 
 void ATileMap::SinkCheck(FINT _TilePosition)
 {
+	bool Check = false;
 	std::list<std::shared_ptr<ATile>> TileList = StaticHelper::CurTileMap[_TilePosition];
 	if (1 == TileList.size())
 	{
@@ -483,9 +484,28 @@ void ATileMap::SinkCheck(FINT _TilePosition)
 			ETileType::And == Tile->GetTileType()
 			)
 		{
+			Check = false;
 			continue;
 		}
-		Tile->SetIsController(false);
-		Tile->RenderOff();
+
+		if (
+			ETileType::Baba == Tile->GetTileType() ||
+			ETileType::Wall == Tile->GetTileType() ||
+			ETileType::Rock == Tile->GetTileType() 
+			)
+		{
+			Check = true;
+			Tile->SetIsController(false);
+			Tile->RenderOff();
+		}
+
+		if (ETileType::Water == Tile->GetTileType() || ETileType::Lava == Tile->GetTileType())
+		{
+			if (true == Check)
+			{
+				Tile->SetIsController(false);
+				Tile->RenderOff();
+			}
+		}
 	}
 }

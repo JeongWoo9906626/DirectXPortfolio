@@ -51,6 +51,10 @@ bool ANoAnimTile::NextTileTypeCheck(FINT _Position)
 	{
 		if (this->GetTileType() == Tile->GetTileType())
 		{
+			if (false == Tile->IsRender)
+			{
+				return false;
+			}
 			return true;
 		}
 	}
