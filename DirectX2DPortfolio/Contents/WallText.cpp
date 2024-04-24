@@ -6,11 +6,7 @@
 
 AWallText::AWallText()
 {
-	/*UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
-	SetRoot(Root);
-
-	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
-	Renderer->SetupAttachment(Root);*/
+	
 }
 
 AWallText::~AWallText()
@@ -21,8 +17,6 @@ AWallText::~AWallText()
 void AWallText::BeginPlay()
 {
 	Super::BeginPlay();
-
-	//SetActorScale3D(FVector(40.0f, 40.0f, 20.0f));
 
 	std::vector<int> AnimationOffFrameIndex = { 0, 18, 36 };
 	std::vector<int> AnimationOnFrameIndex = { 1, 19, 37 };

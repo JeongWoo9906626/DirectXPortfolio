@@ -16,6 +16,7 @@
 #include "DefeatText.h"
 #include "SinkText.h"
 #include "Water.h"
+#include "WaterText.h"
 
 ATileMap::ATileMap()
 {
@@ -134,6 +135,13 @@ void ATileMap::BeginPlay()
 		Water->SetTilePosition(TestPos);
 		Water->SetTileLocation();
 		Map[TestPos].push_back(Water);
+	}
+	{
+		FINT TestPos = FINT(5, 5);
+		std::shared_ptr<ATile> WaterText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AWaterText>("WaterText"));
+		WaterText->SetTilePosition(TestPos);
+		WaterText->SetTileLocation();
+		Map[TestPos].push_back(WaterText);
 	}
 
 	StaticHelper::CurTileMap = Map;

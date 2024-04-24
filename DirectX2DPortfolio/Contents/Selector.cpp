@@ -6,13 +6,7 @@
 
 ASelector::ASelector()
 {
-	//UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
-
-	//Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
-	//Renderer->SetupAttachment(Root);
-
-	//SetRoot(Root);
-	//InputOn();
+	
 }
 
 ASelector::~ASelector()
@@ -24,8 +18,6 @@ void ASelector::BeginPlay()
 {
 	Super::BeginPlay();
 
-	//SetActorScale3D(FVector(54.0f, 54.0f, 20.0f));
-	
 	Renderer->CreateAnimation("SelectMove", "Selector.png", 0.1f, true);
 	Renderer->ChangeAnimation("SelectMove");
 	Renderer->SetOrder(ERenderOrder::Player);

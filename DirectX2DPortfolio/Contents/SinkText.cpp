@@ -5,11 +5,7 @@
 
 ASinkText::ASinkText()
 {
-	/*UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
-	SetRoot(Root);
 
-	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
-	Renderer->SetupAttachment(Root);*/
 }
 
 ASinkText::~ASinkText()
@@ -20,8 +16,6 @@ ASinkText::~ASinkText()
 void ASinkText::BeginPlay()
 {
 	Super::BeginPlay();
-
-	//SetActorScale3D(FVector(40.0f, 40.0f, 20.0f));
 
 	std::vector<int> AnimationOffFrameIndex = { 1, 4, 7 };
 	std::vector<int> AnimationOnFrameIndex = { 2, 5, 8 };

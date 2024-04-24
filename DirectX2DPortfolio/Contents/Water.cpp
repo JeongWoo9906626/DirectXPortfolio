@@ -6,12 +6,7 @@
 
 AWater::AWater()
 {
-	/*UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
 
-	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
-	Renderer->SetupAttachment(Root);
-
-	SetRoot(Root);*/
 }
 
 AWater::~AWater()
@@ -22,8 +17,6 @@ AWater::~AWater()
 void AWater::BeginPlay()
 {
 	Super::BeginPlay();
-
-	//SetActorScale3D(FVector(54.0f, 54.0f, 20.0f));
 
 	std::vector<float> AnimationInterIndex = { 0.1f, 0.1f, 0.1f };
 

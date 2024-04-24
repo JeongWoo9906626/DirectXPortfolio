@@ -5,11 +5,7 @@
 
 ABaba::ABaba()
 {
-	/*UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
-	SetRoot(Root);
 
-	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
-	Renderer->SetupAttachment(Root);*/
 }
 
 ABaba::~ABaba()
@@ -22,8 +18,6 @@ void ABaba::BeginPlay()
 	Super::BeginPlay();
 
 	SetActorType(ETileType::Baba);
-	//HasController = true;
-	//SetActorScale3D(FVector(200.0f, 200.0f, 20.0f));
 
 	// Move_Right 0 ~ 4
 	{
