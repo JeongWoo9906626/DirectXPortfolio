@@ -70,6 +70,9 @@
     <Filter Include="Actor\ActorBase">
       <UniqueIdentifier>{ca6212d7-ddf8-4222-8cec-561069d76beb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Actor\Character\NoAnim">
+      <UniqueIdentifier>{ad4689db-b490-4edb-a0ac-4a15fa587470}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ContentsCore.h">
@@ -126,9 +129,6 @@
     <ClInclude Include="ConnectingTile.h">
       <Filter>Actor\ActorBase</Filter>
     </ClInclude>
-    <ClInclude Include="TileMap.h">
-      <Filter>Actor\ActorBase</Filter>
-    </ClInclude>
     <ClInclude Include="Selector.h">
       <Filter>Actor\Character\Selector</Filter>
     </ClInclude>
@@ -164,6 +164,15 @@
     </ClInclude>
     <ClInclude Include="SinkText.h">
       <Filter>Actor\Text\RightNoun</Filter>
+    </ClInclude>
+    <ClInclude Include="TileMap.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="NoAnimTile.h">
+      <Filter>Actor\ActorBase</Filter>
+    </ClInclude>
+    <ClInclude Include="Lava.h">
+      <Filter>Actor\Character\NoAnim</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -218,9 +227,6 @@
     <ClCompile Include="ConnectingTile.cpp">
       <Filter>Actor\ActorBase</Filter>
     </ClCompile>
-    <ClCompile Include="TileMap.cpp">
-      <Filter>Actor\ActorBase</Filter>
-    </ClCompile>
     <ClCompile Include="Selector.cpp">
       <Filter>Actor\Character\Selector</Filter>
     </ClCompile>
@@ -256,6 +262,15 @@
     </ClCompile>
     <ClCompile Include="SinkText.cpp">
       <Filter>Actor\Text\RightNoun</Filter>
+    </ClCompile>
+    <ClCompile Include="TileMap.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="NoAnimTile.cpp">
+      <Filter>Actor\ActorBase</Filter>
+    </ClCompile>
+    <ClCompile Include="Lava.cpp">
+      <Filter>Actor\Character\NoAnim</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

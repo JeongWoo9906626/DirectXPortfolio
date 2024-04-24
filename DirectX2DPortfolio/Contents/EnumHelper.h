@@ -79,6 +79,34 @@ enum class ETileType
 	None,
 };
 
+// 옆 방향에 없는 것 표시
+enum class ENoNext
+{
+	// 아무것도 없는 것
+	Nothing,
+	// 단일만 없는 것
+	Left,
+	Right,
+	Top,
+	Bottom,
+	// 2개가 없는 것
+	LeftRight,
+	LeftTop,
+	LeftBottom,
+	RightTop,
+	RightBottom,
+	TopBottom, 
+	// 3개가 없는 것
+	LeftRightTop,
+	LeftRightBottom,
+	LeftTopBottom,
+	RightTopBottom,
+	// 4개 모두 없는 것
+	LeftRightTopBottom,
+
+	None,
+};
+
 //enum class LWordType
 //{
 //	BabaText,
@@ -97,3 +125,4 @@ enum class ETileType
 //	YouText,
 //	None,
 //};
+

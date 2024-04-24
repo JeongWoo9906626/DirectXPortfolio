@@ -35,7 +35,7 @@ void ATile::Tick(float _DeltaTime)
 
 void ATile::StateReset()
 {
-	if (ETileType::LWord == GetActorType() || ETileType::RWord == GetActorType() || ETileType::Is == GetActorType() || ETileType::And == GetActorType())
+	if (ETileType::LWord == GetTileType() || ETileType::RWord == GetTileType() || ETileType::Is == GetTileType() || ETileType::And == GetTileType())
 	{
 		AnimationOff();
 	/*	if (true == IsAnimationOn)

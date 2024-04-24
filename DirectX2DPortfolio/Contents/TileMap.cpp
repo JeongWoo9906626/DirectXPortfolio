@@ -332,7 +332,7 @@ void ATileMap::TileSentenceCheck()
 		std::list<std::shared_ptr<ATile>> TileActorList = Iterator.second;
 		for (std::shared_ptr<ATile> TileActor : TileActorList)
 		{
-			if (ETileType::Is == TileActor->GetActorType())
+			if (ETileType::Is == TileActor->GetTileType())
 			{
 				AConnectingTile* NewVerbTile = dynamic_cast<AConnectingTile*>(TileActor.get());
 				NewVerbTile->WordsCheck();
@@ -379,10 +379,10 @@ void ATileMap::DefeatCheck(FINT _TilePosition)
 			continue;
 		}
 		if (
-			ETileType::LWord == Tile->GetActorType() ||
-			ETileType::RWord == Tile->GetActorType() ||
-			ETileType::Is == Tile->GetActorType() ||
-			ETileType::And == Tile->GetActorType()
+			ETileType::LWord == Tile->GetTileType() ||
+			ETileType::RWord == Tile->GetTileType() ||
+			ETileType::Is == Tile->GetTileType() ||
+			ETileType::And == Tile->GetTileType()
 			)
 		{
 			continue;
@@ -402,10 +402,10 @@ void ATileMap::SinkCheck(FINT _TilePosition)
 	for (std::shared_ptr<ATile> Tile : TileList)
 	{
 		if (
-			ETileType::LWord == Tile->GetActorType() ||
-			ETileType::RWord == Tile->GetActorType() ||
-			ETileType::Is == Tile->GetActorType() ||
-			ETileType::And == Tile->GetActorType()
+			ETileType::LWord == Tile->GetTileType() ||
+			ETileType::RWord == Tile->GetTileType() ||
+			ETileType::Is == Tile->GetTileType() ||
+			ETileType::And == Tile->GetTileType()
 			)
 		{
 			continue;

@@ -49,7 +49,7 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 		for (std::shared_ptr<ATile> LeftTileActor : LeftTileActorList)
 		{
 			TempLeftTileActor = LeftTileActor;
-			if (ETileType::LWord == TempLeftTileActor->GetActorType())
+			if (ETileType::LWord == TempLeftTileActor->GetTileType())
 			{
 				IsCharNoun = true;
 			}
@@ -63,7 +63,7 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 		for (std::shared_ptr<ATile> RightTileActor : RightTileActorList)
 		{
 			TempRightTileActor = RightTileActor;
-			if (ETileType::RWord == TempRightTileActor->GetActorType())
+			if (ETileType::RWord == TempRightTileActor->GetTileType())
 			{
 				IsNoun = true;
 			}
@@ -116,7 +116,7 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 			std::list<std::shared_ptr<ATile>> TileActorList = Iterator.second;
 			for (std::shared_ptr<ATile> TileActor : TileActorList)
 			{
-				ETileType ActorType = TileActor->GetActorType();
+				ETileType ActorType = TileActor->GetTileType();
 				
 
 				if (ActorType == CheckActorType)
@@ -175,7 +175,7 @@ bool AConnectingTile::VerticalCheck(FINT _TilePos)
 		for (std::shared_ptr<ATile> UpTileActor : UpTileActorList)
 		{
 			TempUpTileActor = UpTileActor;
-			if (ETileType::LWord == UpTileActor->GetActorType())
+			if (ETileType::LWord == UpTileActor->GetTileType())
 			{
 				IsCharNoun = true;
 			}
@@ -188,7 +188,7 @@ bool AConnectingTile::VerticalCheck(FINT _TilePos)
 		for (std::shared_ptr<ATile> DownTileActor : DownTileActorList)
 		{
 			TempDownTileActor = DownTileActor;
-			if (ETileType::RWord == DownTileActor->GetActorType())
+			if (ETileType::RWord == DownTileActor->GetTileType())
 			{
 				IsNoun = true;
 			}
@@ -242,7 +242,7 @@ bool AConnectingTile::VerticalCheck(FINT _TilePos)
 			std::list<std::shared_ptr<ATile>> TileActorList = Iterator.second;
 			for (std::shared_ptr<ATile> TileActor : TileActorList)
 			{
-				ETileType ActorType = TileActor->GetActorType();
+				ETileType ActorType = TileActor->GetTileType();
 				
 
 				if (ActorType == CheckActorType)

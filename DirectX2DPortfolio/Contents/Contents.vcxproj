@@ -191,7 +191,15 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Lava.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="MapEditorGUI.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="NoAnimTile.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -310,7 +318,15 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Lava.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="MapEditorGUI.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="NoAnimTile.cpp">
       <SubType>
       </SubType>
     </ClCompile>

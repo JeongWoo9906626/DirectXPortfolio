@@ -144,7 +144,7 @@ public:
 	{
 		Info.TileType = _TileType;
 	}
-	ETileType GetActorType() const
+	ETileType GetTileType() const
 	{
 		return Info.TileType;
 	}
