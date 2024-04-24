@@ -15,6 +15,7 @@
 #include "PushText.h"
 #include "DefeatText.h"
 #include "SinkText.h"
+#include "Water.h"
 
 ATileMap::ATileMap()
 {
@@ -105,6 +106,34 @@ void ATileMap::BeginPlay()
 		DefeatText->SetTilePosition(TestPos);
 		DefeatText->SetTileLocation();
 		Map[TestPos].push_back(DefeatText);
+	}
+	{
+		FINT TestPos = FINT(6, 4);
+		std::shared_ptr<ATile> Water = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AWater>("Water"));
+		Water->SetTilePosition(TestPos);
+		Water->SetTileLocation();
+		Map[TestPos].push_back(Water);
+	}
+	{
+		FINT TestPos = FINT(7, 4);
+		std::shared_ptr<ATile> Water = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AWater>("Water"));
+		Water->SetTilePosition(TestPos);
+		Water->SetTileLocation();
+		Map[TestPos].push_back(Water);
+	}
+	{
+		FINT TestPos = FINT(6, 5);
+		std::shared_ptr<ATile> Water = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AWater>("Water"));
+		Water->SetTilePosition(TestPos);
+		Water->SetTileLocation();
+		Map[TestPos].push_back(Water);
+	}
+	{
+		FINT TestPos = FINT(7, 5);
+		std::shared_ptr<ATile> Water = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AWater>("Water"));
+		Water->SetTilePosition(TestPos);
+		Water->SetTileLocation();
+		Map[TestPos].push_back(Water);
 	}
 
 	StaticHelper::CurTileMap = Map;

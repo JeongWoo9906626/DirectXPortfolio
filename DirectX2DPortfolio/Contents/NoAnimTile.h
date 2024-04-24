@@ -1,18 +1,18 @@
 #pragma once
 #include "Tile.h"
 
-class NoAnimTile : public ATile
+class ANoAnimTile : public ATile
 {
 	GENERATED_BODY(ATile)
 
 public:
-	NoAnimTile();
-	~NoAnimTile();
+	ANoAnimTile();
+	~ANoAnimTile();
 
-	NoAnimTile(const NoAnimTile& _Other) = delete;
-	NoAnimTile(NoAnimTile&& _Other) noexcept = delete;
-	NoAnimTile& operator=(const NoAnimTile& _Other) = delete;
-	NoAnimTile& operator=(NoAnimTile&& _Other) noexcept = delete;
+	ANoAnimTile(const ANoAnimTile& _Other) = delete;
+	ANoAnimTile(ANoAnimTile&& _Other) noexcept = delete;
+	ANoAnimTile& operator=(const ANoAnimTile& _Other) = delete;
+	ANoAnimTile& operator=(ANoAnimTile&& _Other) noexcept = delete;
 
 protected:
 	void BeginPlay() override;
@@ -28,6 +28,6 @@ private:
 	bool IsTop = false;
 	bool IsBottom = false;
 
-	ENoNext PrevNo = ENoNext::None;
-	ENoNext NextNo = ENoNext::None;
+	ELinkNext PrevLink = ELinkNext::None;
+	ELinkNext NextLink = ELinkNext::None;
 };

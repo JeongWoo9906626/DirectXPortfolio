@@ -191,7 +191,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Lava.h">
+    <ClInclude Include="Water.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -318,7 +318,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Lava.cpp">
+    <ClCompile Include="Water.cpp">
       <SubType>
       </SubType>
     </ClCompile>

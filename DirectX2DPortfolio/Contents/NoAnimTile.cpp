@@ -4,22 +4,22 @@
 #include <EngineCore/SpriteRenderer.h>
 #include <EngineCore/DefaultSceneComponent.h>
 
-NoAnimTile::NoAnimTile()
+ANoAnimTile::ANoAnimTile()
 {
 
 }
 
-NoAnimTile::~NoAnimTile()
+ANoAnimTile::~ANoAnimTile()
 {
 
 }
 
-void NoAnimTile::BeginPlay()
+void ANoAnimTile::BeginPlay()
 {
 	Super::BeginPlay();
 }
 
-void NoAnimTile::Tick(float _DeltaTime)
+void ANoAnimTile::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
@@ -27,7 +27,7 @@ void NoAnimTile::Tick(float _DeltaTime)
 	TileAnimationChange();
 }
 
-void NoAnimTile::NextCheck()
+void ANoAnimTile::NextCheck()
 {
 	FINT MyTilePosition = this->GetTilePosition();
 
@@ -44,7 +44,7 @@ void NoAnimTile::NextCheck()
 	IsBottom = NextTileTypeCheck(BottomTilePosition);
 }
 
-bool NoAnimTile::NextTileTypeCheck(FINT _Position)
+bool ANoAnimTile::NextTileTypeCheck(FINT _Position)
 {
 	std::list<std::shared_ptr<ATile>> TileList = StaticHelper::CurTileMap[_Position];
 	for (std::shared_ptr<ATile> Tile : TileList)
@@ -57,130 +57,130 @@ bool NoAnimTile::NextTileTypeCheck(FINT _Position)
 	return false;
 }
 
-void NoAnimTile::TileAnimationChange()
+void ANoAnimTile::TileAnimationChange()
 {
 	if (true == IsLeft && true == IsRight && true == IsTop && true == IsBottom)
 	{
-		NextNo = ENoNext::Nothing;
+		NextLink = ELinkNext::LeftRightTopBottom;
 	}
 	else if (true == IsLeft && false == IsRight && false == IsTop && false == IsBottom)
 	{
-		NextNo = ENoNext::Left;
+		NextLink = ELinkNext::Left;
 	}
 	else if (false == IsLeft && true == IsRight && false == IsTop && false == IsBottom)
 	{
-		NextNo = ENoNext::Right;
+		NextLink = ELinkNext::Right;
 	}
 	else if (false == IsLeft && false == IsRight && true == IsTop && false == IsBottom)
 	{
-		NextNo = ENoNext::Top;
+		NextLink = ELinkNext::Top;
 	}
 	else if (false == IsLeft && false == IsRight && false == IsTop && true == IsBottom)
 	{
-		NextNo = ENoNext::Bottom;
+		NextLink = ELinkNext::Bottom;
 	}
 	else if (true == IsLeft && true == IsRight && false == IsTop && false == IsBottom)
 	{
-		NextNo = ENoNext::LeftRight;
+		NextLink = ELinkNext::LeftRight;
 	}
 	else if (true == IsLeft && false == IsRight && true == IsTop && false == IsBottom)
 	{
-		NextNo = ENoNext::LeftTop;
+		NextLink = ELinkNext::LeftTop;
 	}
 	else if (true == IsLeft && false == IsRight && false == IsTop && true == IsBottom)
 	{
-		NextNo = ENoNext::LeftBottom;
+		NextLink = ELinkNext::LeftBottom;
 	}
 	else if (false == IsLeft && true == IsRight && true == IsTop && false == IsBottom)
 	{
-		NextNo = ENoNext::RightTop;
+		NextLink = ELinkNext::RightTop;
 	}
 	else if (false == IsLeft && true == IsRight && false == IsTop && true == IsBottom)
 	{
-		NextNo = ENoNext::RightBottom;
+		NextLink = ELinkNext::RightBottom;
 	}
 	else if (false == IsLeft && false == IsRight && true == IsTop && true == IsBottom)
 	{
-		NextNo = ENoNext::TopBottom;
+		NextLink = ELinkNext::TopBottom;
 	}
 	else if (true == IsLeft && true == IsRight && true == IsTop && false == IsBottom)
 	{
-		NextNo = ENoNext::LeftRightTop;
+		NextLink = ELinkNext::LeftRightTop;
 	}
 	else if(true == IsLeft && true == IsRight && false == IsTop && true == IsBottom)
 	{
-		NextNo = ENoNext::LeftRightBottom;
+		NextLink = ELinkNext::LeftRightBottom;
 	}
 	else if (true == IsLeft && false == IsRight && true == IsTop && true == IsBottom)
 	{
-		NextNo = ENoNext::LeftTopBottom;
+		NextLink = ELinkNext::LeftTopBottom;
 	}
 	else if (false == IsLeft && true == IsRight && true == IsTop && true == IsBottom)
 	{
-		NextNo = ENoNext::RightTopBottom;
+		NextLink = ELinkNext::RightTopBottom;
 	}
 	else if (false == IsLeft && false == IsRight && false == IsTop && false == IsBottom)
 	{
-		NextNo = ENoNext::LeftRightTopBottom;
+		NextLink = ELinkNext::Nothing;
 	}
 
-	if (PrevNo != NextNo)
+	if (PrevLink != NextLink)
 	{
 		std::string AnimationName = "";
-		switch (NextNo)
+		switch (NextLink)
 		{
-		case ENoNext::Nothing:
+		case ELinkNext::Nothing:
 			AnimationName = "Nothing";
 			break;
-		case ENoNext::Left:
+		case ELinkNext::Left:
 			AnimationName = "Left";
 			break;
-		case ENoNext::Right:
+		case ELinkNext::Right:
 			AnimationName = "Right";
 			break;
-		case ENoNext::Top:
+		case ELinkNext::Top:
 			AnimationName = "Top";
 			break;
-		case ENoNext::Bottom:
+		case ELinkNext::Bottom:
 			AnimationName = "Bottom";
 			break;
-		case ENoNext::LeftRight:
+		case ELinkNext::LeftRight:
 			AnimationName = "LeftRight";
 			break;
-		case ENoNext::LeftTop:
+		case ELinkNext::LeftTop:
 			AnimationName = "LeftTop";
 			break;
-		case ENoNext::LeftBottom:
+		case ELinkNext::LeftBottom:
 			AnimationName = "LeftBottom";
 			break;
-		case ENoNext::RightTop:
+		case ELinkNext::RightTop:
 			AnimationName = "RightTop";
 			break;
-		case ENoNext::RightBottom:
+		case ELinkNext::RightBottom:
 			AnimationName = "RightBottom";
 			break;
-		case ENoNext::TopBottom:
+		case ELinkNext::TopBottom:
 			AnimationName = "TopBottom";
 			break;
-		case ENoNext::LeftRightTop:
+		case ELinkNext::LeftRightTop:
 			AnimationName = "LeftRightTop";
 			break;
-		case ENoNext::LeftRightBottom:
+		case ELinkNext::LeftRightBottom:
 			AnimationName = "LeftRightBottom";
 			break;
-		case ENoNext::LeftTopBottom:
+		case ELinkNext::LeftTopBottom:
 			AnimationName = "LeftTopBottom";
 			break;
-		case ENoNext::RightTopBottom:
+		case ELinkNext::RightTopBottom:
 			AnimationName = "RightTopBottom";
 			break;
-		case ENoNext::LeftRightTopBottom:
+		case ELinkNext::LeftRightTopBottom:
 			AnimationName = "LeftRightTopBottom";
 			break;
 		}
 
 		Renderer->ChangeAnimation(AnimationName);
-		PrevNo = NextNo;
-		NextNo = ENoNext::None;
+		PrevLink = NextLink;
+		NextLink = ELinkNext::None;
 	}
 }

@@ -171,7 +171,7 @@
     <ClInclude Include="NoAnimTile.h">
       <Filter>Actor\ActorBase</Filter>
     </ClInclude>
-    <ClInclude Include="Lava.h">
+    <ClInclude Include="Water.h">
       <Filter>Actor\Character\NoAnim</Filter>
     </ClInclude>
   </ItemGroup>
@@ -269,7 +269,7 @@
     <ClCompile Include="NoAnimTile.cpp">
       <Filter>Actor\ActorBase</Filter>
     </ClCompile>
-    <ClCompile Include="Lava.cpp">
+    <ClCompile Include="Water.cpp">
       <Filter>Actor\Character\NoAnim</Filter>
     </ClCompile>
   </ItemGroup>

@@ -80,28 +80,28 @@ enum class ETileType
 };
 
 // 옆 방향에 없는 것 표시
-enum class ENoNext
+enum class ELinkNext
 {
 	// 아무것도 없는 것
 	Nothing,
-	// 단일만 없는 것
+	// 단일만 연결인 것
 	Left,
 	Right,
 	Top,
 	Bottom,
-	// 2개가 없는 것
+	// 2개가 연결인 것
 	LeftRight,
 	LeftTop,
 	LeftBottom,
 	RightTop,
 	RightBottom,
 	TopBottom, 
-	// 3개가 없는 것
+	// 3개가 연결인 것
 	LeftRightTop,
 	LeftRightBottom,
 	LeftTopBottom,
 	RightTopBottom,
-	// 4개 모두 없는 것
+	// 4개 모두 연결인 것
 	LeftRightTopBottom,
 
 	None,
