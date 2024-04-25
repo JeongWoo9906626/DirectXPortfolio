@@ -16,6 +16,7 @@ public:
 		IsAlive = _Other.IsAlive;
 		IsSink = _Other.IsSink;
 		IsDefeat = _Other.IsDefeat;
+		IsWin = _Other.IsWin;
 
 		TileType = _Other.TileType;
 		NounType = _Other.NounType;
@@ -32,6 +33,7 @@ public:
 	bool IsSink = false;
 	bool IsDefeat = false;
 	bool IsAlive = true;
+	bool IsWin = false;
 
 	ETileType TileType = ETileType::None;
 	ENounType NounType = ENounType::None;
@@ -130,6 +132,16 @@ public:
 	bool GetIsDefeat() const
 	{
 		return Info.IsDefeat;
+	}
+
+	// Get/Set IsWin
+	void SetIsWin(bool _IsWin)
+	{
+		Info.IsWin = _IsWin;
+	}
+	bool GetIsWin() const
+	{
+		return Info.IsWin;
 	}
 
 

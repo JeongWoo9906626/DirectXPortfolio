@@ -21,6 +21,7 @@
 #include "LavaText.h"
 #include "Flag.h"
 #include "FlagText.h"
+#include "WinText.h"
 
 ATileMap::ATileMap()
 {
@@ -198,6 +199,13 @@ void ATileMap::BeginPlay()
 		Flag->SetTileLocation();
 		Map[TestPos].push_back(Flag);
 	}
+	{
+		FINT TestPos = FINT(6, 8);
+		std::shared_ptr<ATile> WinText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AWinText>("WinText"));
+		WinText->SetTilePosition(TestPos);
+		WinText->SetTileLocation();
+		Map[TestPos].push_back(WinText);
+	}
 
 	StaticHelper::CurTileMap = Map;
 }
@@ -205,6 +213,13 @@ void ATileMap::BeginPlay()
 void ATileMap::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
+
+	if (true == GameWin)
+	{
+		GameWin = false;
+		GEngine->ChangeLevel("SelectLevel");
+	}
+
 
 	MoveResult = MoveEnd();
 	if (false == MoveResult)
@@ -231,6 +246,7 @@ void ATileMap::Tick(float _DeltaTime)
 		TileMoveCheck();
 		TileMoveSet();
 		TileUpdate();
+		TileWinCheck();
 		TileSentenceCheck();
 		TileAliveCheck();
 	}
@@ -381,6 +397,23 @@ void ATileMap::TileUpdate()
 	StaticHelper::CurTileMap = Map;
 }
 
+void ATileMap::TileWinCheck()
+{
+	std::map<FINT, std::list<std::shared_ptr<ATile>>> NewTileMap = StaticHelper::CurTileMap;
+	for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> Iterator : NewTileMap)
+	{
+		std::list<std::shared_ptr<ATile>> TileActorList = Iterator.second;
+		for (std::shared_ptr<ATile> TileActor : TileActorList)
+		{
+			if (true == TileActor->GetIsWin())
+			{
+				FINT WinPosition = TileActor->GetTilePosition();
+				WinCheck(WinPosition);
+			}
+		}
+	}
+}
+
 void ATileMap::TileAliveCheck()
 {
 	std::map<FINT, std::list<std::shared_ptr<ATile>>> NewTileMap = StaticHelper::CurTileMap;
@@ -524,6 +557,37 @@ void ATileMap::SinkCheck(FINT _TilePosition)
 				Tile->SetIsController(false);
 				Tile->RenderOff();
 			}
+		}
+	}
+}
+
+void ATileMap::WinCheck(FINT _TilePosition)
+{
+	std::list<std::shared_ptr<ATile>> TileList = StaticHelper::CurTileMap[_TilePosition];
+	if (1 == TileList.size())
+	{
+		return;
+	}
+
+	for (std::shared_ptr<ATile> Tile : TileList)
+	{
+		/*if (true == Tile->GetIsWin())
+		{
+			continue;
+		}*/
+		if (
+			ETileType::LWord == Tile->GetTileType() ||
+			ETileType::RWord == Tile->GetTileType() ||
+			ETileType::Is == Tile->GetTileType() ||
+			ETileType::And == Tile->GetTileType()
+			)
+		{
+			continue;
+		}
+
+		if (true == Tile->GetIsController())
+		{
+			GameWin = true;
 		}
 	}
 }

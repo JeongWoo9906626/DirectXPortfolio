@@ -67,6 +67,8 @@ void UContentsCore::Initialize()
 		UEngineSprite::CreateCutting("YouText.png", 3, 3);
 		UEngineSprite::CreateCutting("DefeatText.png", 3, 3);
 		UEngineSprite::CreateCutting("SinkText.png", 3, 3);
+		UEngineSprite::CreateCutting("HotText.png", 3, 3);
+		UEngineSprite::CreateCutting("WinText.png", 3, 3);
 
 	}
 

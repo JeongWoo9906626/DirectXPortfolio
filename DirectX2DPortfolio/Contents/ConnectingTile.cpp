@@ -283,6 +283,7 @@ bool AConnectingTile::VerticalCheck(FINT _TilePos)
 						break;
 					}
 					case ENounType::WinText:
+						TileActor->SetIsWin(true);
 						break;
 					}
 					VerticalLeftType = ActorType;

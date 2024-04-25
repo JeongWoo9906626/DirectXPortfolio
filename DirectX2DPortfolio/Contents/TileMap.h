@@ -32,6 +32,7 @@ protected:
 	void TileMoveCheck();
 	void TileMoveSet();
 	void TileUpdate();
+	void TileWinCheck();
 	void TileStateReset();
 	void TileSentenceCheck();
 	void TileAliveCheck();
@@ -39,6 +40,7 @@ protected:
 	bool MoveEnd();
 	void DefeatCheck(FINT _TilePosition);
 	void SinkCheck(FINT _TilePosition);
+	void WinCheck(FINT _TilePosition);
 
 private:
 	FINT MapSize = FINT();
@@ -51,5 +53,6 @@ private:
 	bool MoveResult = false;
 
 	bool BeforeResult = false;
+	bool GameWin = false;
 };
 

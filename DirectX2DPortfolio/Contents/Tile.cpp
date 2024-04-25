@@ -44,9 +44,6 @@ void ATile::StateReset()
 	if (ETileType::LWord == GetTileType() || ETileType::RWord == GetTileType() || ETileType::Is == GetTileType() || ETileType::And == GetTileType())
 	{
 		AnimationOff();
-	/*	if (true == IsAnimationOn)
-		{
-		}*/
 	}
 
 	Info.IsController = FirstStateInfo.IsController;
@@ -54,7 +51,7 @@ void ATile::StateReset()
 	Info.IsPush = FirstStateInfo.IsPush;
 	Info.IsSink = FirstStateInfo.IsSink;
 	Info.IsDefeat = FirstStateInfo.IsDefeat;
-	
+	Info.IsWin = FirstStateInfo.IsWin;
 }
 
 bool ATile::MoveCheck(EInputType _Input)

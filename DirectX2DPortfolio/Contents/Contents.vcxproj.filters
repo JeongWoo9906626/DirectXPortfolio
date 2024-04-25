@@ -186,6 +186,9 @@
     <ClInclude Include="FlagText.h">
       <Filter>Actor\Text\LeftNoun</Filter>
     </ClInclude>
+    <ClInclude Include="WinText.h">
+      <Filter>Actor\Text\RightNoun</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp">
@@ -298,6 +301,9 @@
     </ClCompile>
     <ClCompile Include="FlagText.cpp">
       <Filter>Actor\Text\LeftNoun</Filter>
+    </ClCompile>
+    <ClCompile Include="WinText.cpp">
+      <Filter>Actor\Text\RightNoun</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
