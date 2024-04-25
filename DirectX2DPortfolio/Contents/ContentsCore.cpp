@@ -44,23 +44,30 @@ void UContentsCore::Initialize()
 		// 이미 이 이름을 가진 스프라이트가 존재한다.
 		// 그러면 기존의 스프라이트 데이터는 날려버리고
 		// 자른 스프라이트 데이터 변경한다.
+		// Object
 		UEngineSprite::CreateCutting("Baba.png", 17, 3);
 		UEngineSprite::CreateCutting("Selector.png", 3, 1);
 		UEngineSprite::CreateCutting("SelectMap.png", 3, 1);
+		UEngineSprite::CreateCutting("Flag.png", 2, 3);
 		UEngineSprite::CreateCutting("CuttingTest.png", 4, 3);
 
+		// LText + Object
 		UEngineSprite::CreateCutting("Wall.png", 18, 3);
 		UEngineSprite::CreateCutting("Water.png", 18, 3);
 		UEngineSprite::CreateCutting("Lava.png", 18, 3);
 
+		// LText
 		UEngineSprite::CreateCutting("IsText.png", 2, 3);
 		UEngineSprite::CreateCutting("BabaText.png", 2, 3);
+		UEngineSprite::CreateCutting("FlagText.png", 3, 3);
 
+		// RText
 		UEngineSprite::CreateCutting("StopText.png", 3, 3);
 		UEngineSprite::CreateCutting("PushText.png", 3, 3);
 		UEngineSprite::CreateCutting("YouText.png", 3, 3);
 		UEngineSprite::CreateCutting("DefeatText.png", 3, 3);
 		UEngineSprite::CreateCutting("SinkText.png", 3, 3);
+
 	}
 
 

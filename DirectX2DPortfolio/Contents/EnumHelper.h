@@ -38,6 +38,7 @@ enum class ENounType
 	LavaText,
 	RockText,
 	WaterText,
+	FlagText,
 
 	// RWord
 	YouText,
@@ -45,6 +46,7 @@ enum class ENounType
 	PushText,
 	DefeatText,
 	SinkText,
+	WinText,
 
 	None,
 };
@@ -68,6 +70,7 @@ enum class ETileType
 	Rock,
 	Water,
 	Selector,
+	Flag,
 
 	// Words
 	LWord,

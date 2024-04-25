@@ -2,7 +2,7 @@
 #include "BabaText.h"
 #include <EngineCore/DefaultSceneComponent.h>
 #include <EngineCore/SpriteRenderer.h>
-#include "StaticHelper.h"
+//#include "StaticHelper.h"
 
 ABabaText::ABabaText()
 {

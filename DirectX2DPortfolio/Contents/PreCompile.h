@@ -10,3 +10,4 @@
 #include <EngineCore/StateManager.h>
 
 #include "EnumHelper.h"
+#include "StaticHelper.h"

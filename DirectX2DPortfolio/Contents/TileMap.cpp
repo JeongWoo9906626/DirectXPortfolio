@@ -19,6 +19,8 @@
 #include "WaterText.h"
 #include "Lava.h"
 #include "LavaText.h"
+#include "Flag.h"
+#include "FlagText.h"
 
 ATileMap::ATileMap()
 {
@@ -180,6 +182,21 @@ void ATileMap::BeginPlay()
 		LavaText->SetTilePosition(TestPos);
 		LavaText->SetTileLocation();
 		Map[TestPos].push_back(LavaText);
+	}
+
+	{
+		FINT TestPos = FINT(7, 7);
+		std::shared_ptr<ATile> FlagText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AFlagText>("FlagText"));
+		FlagText->SetTilePosition(TestPos);
+		FlagText->SetTileLocation();
+		Map[TestPos].push_back(FlagText);
+	}
+	{
+		FINT TestPos = FINT(7, 8);
+		std::shared_ptr<ATile> Flag = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AFlag>("Flag"));
+		Flag->SetTilePosition(TestPos);
+		Flag->SetTileLocation();
+		Map[TestPos].push_back(Flag);
 	}
 
 	StaticHelper::CurTileMap = Map;
@@ -491,7 +508,8 @@ void ATileMap::SinkCheck(FINT _TilePosition)
 		if (
 			ETileType::Baba == Tile->GetTileType() ||
 			ETileType::Wall == Tile->GetTileType() ||
-			ETileType::Rock == Tile->GetTileType() 
+			ETileType::Rock == Tile->GetTileType() ||
+			ETileType::Flag == Tile->GetTileType()
 			)
 		{
 			Check = true;

@@ -58,9 +58,6 @@
     <Filter Include="Actor\Character">
       <UniqueIdentifier>{0f669d2a-d411-4e9a-adbd-3a12054c5946}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Actor\Character\Selector">
-      <UniqueIdentifier>{4b49255d-a42d-4240-bcfb-ebfd66d8c76e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Actor\Character\Baba">
       <UniqueIdentifier>{b5b8615b-057d-448f-8e43-bac49e8ae8ba}</UniqueIdentifier>
     </Filter>
@@ -69,6 +66,9 @@
     </Filter>
     <Filter Include="Actor\Character\NoAnim">
       <UniqueIdentifier>{ad4689db-b490-4edb-a0ac-4a15fa587470}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actor\Character\SingleAnim">
+      <UniqueIdentifier>{4b49255d-a42d-4240-bcfb-ebfd66d8c76e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -127,7 +127,7 @@
       <Filter>Actor\ActorBase</Filter>
     </ClInclude>
     <ClInclude Include="Selector.h">
-      <Filter>Actor\Character\Selector</Filter>
+      <Filter>Actor\Character\SingleAnim</Filter>
     </ClInclude>
     <ClInclude Include="Baba.h">
       <Filter>Actor\Character\Baba</Filter>
@@ -178,6 +178,12 @@
       <Filter>Actor\Character\NoAnim</Filter>
     </ClInclude>
     <ClInclude Include="LavaText.h">
+      <Filter>Actor\Text\LeftNoun</Filter>
+    </ClInclude>
+    <ClInclude Include="Flag.h">
+      <Filter>Actor\Character\SingleAnim</Filter>
+    </ClInclude>
+    <ClInclude Include="FlagText.h">
       <Filter>Actor\Text\LeftNoun</Filter>
     </ClInclude>
   </ItemGroup>
@@ -234,7 +240,7 @@
       <Filter>Actor\ActorBase</Filter>
     </ClCompile>
     <ClCompile Include="Selector.cpp">
-      <Filter>Actor\Character\Selector</Filter>
+      <Filter>Actor\Character\SingleAnim</Filter>
     </ClCompile>
     <ClCompile Include="Baba.cpp">
       <Filter>Actor\Character\Baba</Filter>
@@ -285,6 +291,12 @@
       <Filter>Actor\Character\NoAnim</Filter>
     </ClCompile>
     <ClCompile Include="LavaText.cpp">
+      <Filter>Actor\Text\LeftNoun</Filter>
+    </ClCompile>
+    <ClCompile Include="Flag.cpp">
+      <Filter>Actor\Character\SingleAnim</Filter>
+    </ClCompile>
+    <ClCompile Include="FlagText.cpp">
       <Filter>Actor\Text\LeftNoun</Filter>
     </ClCompile>
   </ItemGroup>

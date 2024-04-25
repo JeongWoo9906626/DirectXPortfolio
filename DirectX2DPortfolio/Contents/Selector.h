@@ -1,7 +1,6 @@
 #pragma once
 #include "Tile.h"
 
-class USpriteRenderer;
 class ASelector : public ATile
 {
 	GENERATED_BODY(ATile)

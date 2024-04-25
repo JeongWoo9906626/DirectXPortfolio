@@ -106,6 +106,9 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 		case ENounType::WaterText:
 			CheckActorType = ETileType::Water;
 			break;
+		case ENounType::FlagText:
+			CheckActorType = ETileType::Flag;
+			break;
 		case ENounType::None:
 			break;
 		}
@@ -148,6 +151,8 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 						TileActor->SetIsSink(true);
 						break;
 					}
+					case ENounType::WinText:
+						break;
 					}
 					HorizontalLeftType = ActorType;
 				}
@@ -232,6 +237,9 @@ bool AConnectingTile::VerticalCheck(FINT _TilePos)
 		case ENounType::WaterText:
 			CheckActorType = ETileType::Water;
 			break;
+		case ENounType::FlagText:
+			CheckActorType = ETileType::Flag;
+			break;
 		case ENounType::None:
 			break;
 		}
@@ -274,6 +282,8 @@ bool AConnectingTile::VerticalCheck(FINT _TilePos)
 						TileActor->SetIsSink(true);
 						break;
 					}
+					case ENounType::WinText:
+						break;
 					}
 					VerticalLeftType = ActorType;
 				}
