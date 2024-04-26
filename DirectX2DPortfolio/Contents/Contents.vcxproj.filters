@@ -70,6 +70,9 @@
     <Filter Include="Actor\Character\CombineAnim">
       <UniqueIdentifier>{ad4689db-b490-4edb-a0ac-4a15fa587470}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Level\TileMapEditLevel">
+      <UniqueIdentifier>{beaa0ed5-9757-427b-b6e4-11cc30ca136d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ContentsCore.h">
@@ -195,6 +198,9 @@
     <ClInclude Include="RockText.h">
       <Filter>Actor\Text\LeftNoun</Filter>
     </ClInclude>
+    <ClInclude Include="TileMapEditorGameMode.h">
+      <Filter>Level\TileMapEditLevel</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp">
@@ -316,6 +322,9 @@
     </ClCompile>
     <ClCompile Include="RockText.cpp">
       <Filter>Actor\Text\LeftNoun</Filter>
+    </ClCompile>
+    <ClCompile Include="TileMapEditorGameMode.cpp">
+      <Filter>Level\TileMapEditLevel</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

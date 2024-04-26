@@ -23,7 +23,6 @@ void ATestGameMode::BeginPlay()
 	std::shared_ptr<UCamera> Camera = GetWorld()->GetMainCamera();
 	Camera->SetActorLocation(FVector(0.0f, 0.0f, -100.0f));
 
-	FINT Pos = FINT(1, 1);
 	std::shared_ptr<ATileMap> TileMap = GetWorld()->SpawnActor<ATileMap>("TM");
 	TileMap->SetTileSize(FINT(20, 20));
 

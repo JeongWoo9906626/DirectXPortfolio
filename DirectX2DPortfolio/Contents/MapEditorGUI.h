@@ -1,9 +1,13 @@
 #pragma once
 #include <EngineCore/EngineEditorWindow.h>
+#include <EngineBase/EngineDirectory.h>
 
-
+class ATileMapEditorGameMode;
+class ATile;
 class MapEditorGUI : public UEngineEditorWindow
 {
+	GENERATED_BODY(UEngineEditorWindow)
+
 public:
 	MapEditorGUI();
 	~MapEditorGUI();
@@ -14,9 +18,20 @@ public:
 	MapEditorGUI& operator=(MapEditorGUI&& _Other) noexcept = delete;
 
 protected:
-	virtual void Init();
-	virtual void OnGui(float _DeltaTime);
+	void Init() override;
+	void Tick(ULevel* _Level, float _DeltaTime) override;
+	void OnGui(ULevel* _Level, float _DeltaTime) override;
 
+	ATileMapEditorGameMode* GameMode = nullptr;
+	UEngineDirectory Dir;
+	std::string str = "";
+
+	int TilePos[2] = { 0, };
+	char FileName[255] = "";
+	std::vector<int> TilePositionData;
+	//std::vector<ATile> Tiles;
 private:
+	void SpawnTileActor(int _X, int _Y, ESpawnType _Type);
 
+	bool MessageOn = false;
 };

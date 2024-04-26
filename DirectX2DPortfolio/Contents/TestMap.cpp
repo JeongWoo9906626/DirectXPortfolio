@@ -6,11 +6,10 @@
 ATestMap::ATestMap()
 {
 	UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
+	SetRoot(Root);
 
 	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
 	Renderer->SetupAttachment(Root);
-
-	SetRoot(Root);
 }
 
 ATestMap::~ATestMap()

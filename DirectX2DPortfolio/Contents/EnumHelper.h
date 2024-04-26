@@ -110,6 +110,34 @@ enum class ELinkNext
 	None,
 };
 
+enum class ESpawnType
+{
+	Baba,
+	Lava,
+	Wall,
+	Water,
+	Flag,
+	Rock,
+
+	BabaText,
+	LavaText,
+	WallText,
+	WaterText,
+	FlagText,
+	RockText,
+
+	DefeatText,
+	PushText,
+	SinkText,
+	StopText,
+	WinText,
+	YouText,
+
+	Is,
+
+	None,
+};
+
 //enum class LWordType
 //{
 //	BabaText,
