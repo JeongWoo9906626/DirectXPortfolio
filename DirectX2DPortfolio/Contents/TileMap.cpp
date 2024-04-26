@@ -22,6 +22,8 @@
 #include "Flag.h"
 #include "FlagText.h"
 #include "WinText.h"
+#include "Rock.h"
+#include "RockText.h"
 
 ATileMap::ATileMap()
 {
@@ -205,6 +207,20 @@ void ATileMap::BeginPlay()
 		WinText->SetTilePosition(TestPos);
 		WinText->SetTileLocation();
 		Map[TestPos].push_back(WinText);
+	}
+	{
+		FINT TestPos = FINT(5, 8);
+		std::shared_ptr<ATile> Rock = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ARock>("Rock"));
+		Rock->SetTilePosition(TestPos);
+		Rock->SetTileLocation();
+		Map[TestPos].push_back(Rock);
+	}
+	{
+		FINT TestPos = FINT(4, 8);
+		std::shared_ptr<ATile> RockText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ARockText>("RockText"));
+		RockText->SetTilePosition(TestPos);
+		RockText->SetTileLocation();
+		Map[TestPos].push_back(RockText);
 	}
 
 	StaticHelper::CurTileMap = Map;

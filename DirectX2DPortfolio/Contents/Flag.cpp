@@ -2,7 +2,6 @@
 #include "Flag.h"
 #include <EngineCore/DefaultSceneComponent.h>
 #include <EngineCore/SpriteRenderer.h>
-#include "StaticHelper.h"
 
 AFlag::AFlag()
 {

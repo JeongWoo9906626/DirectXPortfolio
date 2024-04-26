@@ -50,6 +50,7 @@ void UContentsCore::Initialize()
 		UEngineSprite::CreateCutting("SelectMap.png", 3, 1);
 		UEngineSprite::CreateCutting("Flag.png", 2, 3);
 		UEngineSprite::CreateCutting("CuttingTest.png", 4, 3);
+		UEngineSprite::CreateCutting("Rock.png", 1, 3);
 
 		// LText + Object
 		UEngineSprite::CreateCutting("Wall.png", 18, 3);
@@ -59,6 +60,7 @@ void UContentsCore::Initialize()
 		// LText
 		UEngineSprite::CreateCutting("IsText.png", 2, 3);
 		UEngineSprite::CreateCutting("BabaText.png", 2, 3);
+		UEngineSprite::CreateCutting("RockText.png", 2, 3);
 		UEngineSprite::CreateCutting("FlagText.png", 3, 3);
 
 		// RText

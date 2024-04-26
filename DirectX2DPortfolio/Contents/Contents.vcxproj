@@ -207,6 +207,14 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Rock.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="RockText.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Water.h">
       <SubType>
       </SubType>
@@ -355,6 +363,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="LavaText.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Rock.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="RockText.cpp">
       <SubType>
       </SubType>
     </ClCompile>
