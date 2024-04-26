@@ -38,8 +38,10 @@ public:
 
 // Ό³Έν :
 class UEngineTexture;
+class USpriteInstancingRender;
 class USpriteRenderer : public URenderer
 {
+	friend USpriteInstancingRender;
 	GENERATED_BODY(URenderer);
 
 public:
@@ -60,18 +62,24 @@ public:
 
 	void CreateAnimation(std::string_view _AnimationName, std::string_view _SpriteName, std::vector<float> _Inter, std::vector<int> _Frame, bool _Loop = true);
 	
-	void ChangeAnimation(std::string_view _AnimationName);
+	void ChangeAnimation(std::string_view _AnimationName, int StartFrame = 0);
 
 	void SetAutoSize(float _ScaleRatio, bool _AutoSize);
 	void SetSpriteInfo(const FSpriteInfo& _Info);
 
 	void SetFrameCallback(std::string_view _AnimationName, int _Index, std::function<void()> _Function);
+	void SetLastFrameCallback(std::string_view _AnimationName, std::function<void()> _Function);
 
 	void SetDir(EEngineDir _Dir);
 
 	inline EEngineDir GetDir() const
 	{
 		return Dir;
+	}
+
+	inline void AnimationReset()
+	{
+		CurAnimation = nullptr;
 	}
 
 	bool IsCurAnimationEnd();
@@ -96,6 +104,17 @@ public:
 		Pivot = _Pivot;
 	}
 
+	inline FSpriteInfo GetCurInfo() const
+	{
+		return CurInfo;
+	}
+
+	void SetCurInfo(FSpriteInfo _CurInfo)
+	{
+		CurInfo = _CurInfo;
+		SetSpriteInfo(CurInfo);
+		CurAnimation = nullptr;
+	}
 	
 protected:
 	void Tick(float _DeltaTime) override;
@@ -107,12 +126,12 @@ private:
 	FSpriteInfo CurInfo;
 	EPivot Pivot = EPivot::MAX;
 	EEngineDir Dir = EEngineDir::MAX;
-	ResultColorValue ColorData;
-	FCuttingData CuttingDataValue;
 	std::shared_ptr<UEngineTexture> CurTexture = nullptr;
 	std::map<std::string, std::shared_ptr<USpriteAnimation>> Animations;
 	std::shared_ptr<USpriteAnimation> CurAnimation = nullptr;
 	ETextureSampling SamplingValue = ETextureSampling::POINT;
 
+	FResultColorValue ColorData;
+	FCuttingData CuttingDataValue;
 };
 

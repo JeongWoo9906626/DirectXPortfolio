@@ -39,7 +39,7 @@ protected:
 
 	bool MoveEnd();
 	void DefeatCheck(FINT _TilePosition);
-	void SinkCheck(FINT _TilePosition);
+	void SinkCheck(FINT _TilePosition, ETileType _TileType);
 	void WinCheck(FINT _TilePosition);
 
 private:

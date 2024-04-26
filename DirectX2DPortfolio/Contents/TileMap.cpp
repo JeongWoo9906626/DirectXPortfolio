@@ -430,7 +430,8 @@ void ATileMap::TileAliveCheck()
 			if (true == TileActor->GetIsSink())
 			{
 				FINT SinkPosition = TileActor->GetTilePosition();
-				SinkCheck(SinkPosition);
+				ETileType SinkTileType = TileActor->GetTileType();
+				SinkCheck(SinkPosition, SinkTileType);
 			}
 		}
 	}
@@ -517,9 +518,10 @@ void ATileMap::DefeatCheck(FINT _TilePosition)
 	}
 }
 
-void ATileMap::SinkCheck(FINT _TilePosition)
+void ATileMap::SinkCheck(FINT _TilePosition, ETileType _TileType)
 {
 	bool Check = false;
+	std::shared_ptr<ATile> SinkTile;
 	std::list<std::shared_ptr<ATile>> TileList = StaticHelper::CurTileMap[_TilePosition];
 	if (1 == TileList.size())
 	{
@@ -534,11 +536,16 @@ void ATileMap::SinkCheck(FINT _TilePosition)
 			ETileType::And == Tile->GetTileType()
 			)
 		{
-			Check = false;
+			Check = false; 
 			continue;
 		}
-
-		if (
+		if (_TileType != Tile->GetTileType())
+		{
+			Check = true; 
+			Tile->SetIsController(false);
+			Tile->RenderOff();
+		}
+		/*if (
 			ETileType::Baba == Tile->GetTileType() ||
 			ETileType::Wall == Tile->GetTileType() ||
 			ETileType::Rock == Tile->GetTileType() ||
@@ -548,16 +555,17 @@ void ATileMap::SinkCheck(FINT _TilePosition)
 			Check = true;
 			Tile->SetIsController(false);
 			Tile->RenderOff();
-		}
+		}*/
 
-		if (ETileType::Water == Tile->GetTileType() || ETileType::Lava == Tile->GetTileType())
+		if (_TileType == Tile->GetTileType())
 		{
-			if (true == Check)
-			{
-				Tile->SetIsController(false);
-				Tile->RenderOff();
-			}
+			SinkTile = Tile;
 		}
+	}
+	if (true == Check)
+	{
+		SinkTile->SetIsController(false);
+		SinkTile->RenderOff();
 	}
 }
 

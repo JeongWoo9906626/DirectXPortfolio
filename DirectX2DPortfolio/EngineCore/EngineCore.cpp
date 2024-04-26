@@ -92,12 +92,16 @@ void UEngineCore::EngineOptionInit()
 
 void UEngineCore::EngineEnd()
 {
+	Levels.clear();
 	EngineDevice.EngineResourcesRelease();
 }
 
 void UEngineCore::EngineFrameUpdate()
 {
 	float DeltaTime = MainTimer.TimeCheck();
+
+	DeltaTime *= GlobalTimeScale;
+
 	UEngineInput::KeyCheckTick(DeltaTime);
 
 	GEngine->EngineWindow.CalculateMouseUpdate(DeltaTime);
@@ -125,7 +129,7 @@ void UEngineCore::EngineFrameUpdate()
 	// 게임에 요소들을 그리고
 
 	CurLevel->Render(DeltaTime);
-	UDebugRenderClass::DebugRender();
+	UDebugRenderClass::DebugRender(CurLevel.get());
 	UEngineEditorGUI::GUIRender(CurLevel.get(), DeltaTime);
 	EngineDevice.RenderEnd();
 

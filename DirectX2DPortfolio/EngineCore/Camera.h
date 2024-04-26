@@ -5,10 +5,12 @@
 
 // Ό³Έν :
 class ULevel;
+class UEngineRenderTarget;
 class UCamera : public AActor
 {
 	friend ULevel;
 	friend URenderer;
+	GENERATED_BODY(AActor)
 
 public:
 	// constrcuter destructer
@@ -31,6 +33,11 @@ public:
 		Far = _Value;
 	}
 
+	inline void SetProjectionType(ECameraType _ProjectionType)
+	{
+		ProjectionType = _ProjectionType;
+	}
+
 	inline FMatrix GetView()
 	{
 		return View;
@@ -39,14 +46,24 @@ public:
 	{
 		return Projection;
 	}
-
+	
 	void ViewPortSetting();
+	float4 ScreenPosToWorldPos(float4 _ScreenPos);
+
+	void CamTargetSetting();
+
+	std::shared_ptr<UEngineRenderTarget> GetCameraTarget()
+	{
+		return CameraTarget;
+	}
 
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
 private:
+	std::shared_ptr<UEngineRenderTarget> CameraTarget;
+
 	bool IsFreeCamera = false;
 
 	float Near = 1.0f;
@@ -57,6 +74,7 @@ private:
 
 	FMatrix View;
 	FMatrix Projection;
+	FMatrix ViewPortMat;
 	D3D11_VIEWPORT ViewPort;
 
 	FTransform PrevTransform;

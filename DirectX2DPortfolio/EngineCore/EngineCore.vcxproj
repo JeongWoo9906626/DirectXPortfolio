@@ -175,6 +175,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="BlurEffect.h" />
     <ClInclude Include="Camera.h">
       <SubType>
       </SubType>
@@ -237,6 +238,7 @@
     <ClInclude Include="EngineShaderResources.h" />
     <ClInclude Include="EngineSprite.h" />
     <ClInclude Include="EngineStruct.h" />
+    <ClInclude Include="EngineStructuredBuffer.h" />
     <ClInclude Include="EngineTexture.h">
       <SubType>
       </SubType>
@@ -246,6 +248,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Image.h" />
     <ClInclude Include="imconfig.h" />
     <ClInclude Include="imgui.h" />
     <ClInclude Include="imgui_impl_dx11.h" />
@@ -254,6 +257,7 @@
     <ClInclude Include="imstb_rectpack.h" />
     <ClInclude Include="imstb_textedit.h" />
     <ClInclude Include="imstb_truetype.h" />
+    <ClInclude Include="InstancingRender.h" />
     <ClInclude Include="PreCompile.h">
       <SubType>
       </SubType>
@@ -266,6 +270,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="RenderUnit.h" />
     <ClInclude Include="SceneComponent.h">
       <SubType>
       </SubType>
@@ -274,6 +279,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="SpriteInstancingRender.h" />
     <ClInclude Include="SpriteRenderer.h" />
     <ClInclude Include="StateManager.h" />
     <ClInclude Include="ThirdParty\DirectxTex\inc\DirectXTex.h" />
@@ -298,6 +304,7 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="TileRenderer.h" />
+    <ClInclude Include="Widget.h" />
     <ClInclude Include="WorldObject.h">
       <SubType>
       </SubType>
@@ -308,6 +315,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BlurEffect.cpp" />
     <ClCompile Include="Camera.cpp">
       <SubType>
       </SubType>
@@ -369,6 +377,7 @@
     <ClCompile Include="EngineShaderResources.cpp" />
     <ClCompile Include="EngineSprite.cpp" />
     <ClCompile Include="EngineStruct.cpp" />
+    <ClCompile Include="EngineStructuredBuffer.cpp" />
     <ClCompile Include="EngineTexture.cpp">
       <SubType>
       </SubType>
@@ -378,6 +387,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Image.cpp" />
     <ClCompile Include="imgui.cpp" />
     <ClCompile Include="imgui_demo.cpp" />
     <ClCompile Include="imgui_draw.cpp" />
@@ -385,6 +395,7 @@
     <ClCompile Include="imgui_impl_win32.cpp" />
     <ClCompile Include="imgui_tables.cpp" />
     <ClCompile Include="imgui_widgets.cpp" />
+    <ClCompile Include="InstancingRender.cpp" />
     <ClCompile Include="PreCompile.cpp">
       <SubType>
       </SubType>
@@ -401,6 +412,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="RenderUnit.cpp" />
     <ClCompile Include="SceneComponent.cpp">
       <SubType>
       </SubType>
@@ -409,6 +421,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="SpriteInstancingRender.cpp" />
     <ClCompile Include="SpriteRenderer.cpp" />
     <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="TickObject.cpp">
@@ -432,6 +445,7 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="TileRenderer.cpp" />
+    <ClCompile Include="Widget.cpp" />
     <ClCompile Include="WorldObject.cpp">
       <SubType>
       </SubType>
