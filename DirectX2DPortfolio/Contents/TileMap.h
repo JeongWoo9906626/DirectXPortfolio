@@ -24,7 +24,7 @@ public:
 		FINT::MapSize = MapSize;
 	}
 
-	std::map<FINT, std::list<std::shared_ptr<ATile>>> Map;
+	static std::map<FINT, std::list<std::shared_ptr<ATile>>> Map;
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;

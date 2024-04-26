@@ -5,6 +5,9 @@
 #include "StageSelectGameMode.h"
 #include "TestGameMode.h"
 #include <EngineCore/EngineSprite.h>
+#include <EngineCore/EngineEditorGUI.h>
+#include "MapEditorGUI.h"
+#include "TileMapEditorGameMode.h"
 
 UContentsCore::UContentsCore()
 {
@@ -92,10 +95,17 @@ void UContentsCore::Initialize()
 		// UEngineSound::SoundPlay("anipang_ingame_wav.wav");
 	}
 
+	{
+		UEngineEditorGUI::CreateEditorWindow<MapEditorGUI>("MapEditor");
+		//GEngine->CreateLevel<MapEditorGUI>("EditorGUI");
+	}
+
 	GEngine->CreateLevel<ATitleGameMode>("TitleLevel");
 	GEngine->CreateLevel<AStageSelectGameMode>("SelectLevel");
 	GEngine->CreateLevel<APlayGameMode>("PlayLevel");
 	GEngine->CreateLevel<ATestGameMode>("TestLevel");
+	GEngine->CreateLevel<ATileMapEditorGameMode>("TileMapEditorGameMode");
+	//GEngine->ChangeLevel("TileMapEditorGameMode");
 	GEngine->ChangeLevel("TestLevel");
 
 }

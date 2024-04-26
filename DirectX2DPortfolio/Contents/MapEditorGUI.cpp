@@ -27,7 +27,7 @@ void MapEditorGUI::Tick(ULevel* _Level, float _DeltaTime)
 
 	std::string str = _Level->GetName();
 	
-	if (true == str._Equal("PlayLevel")) 
+	if (true == str._Equal("TileMapEditorGameMode")) 
 	{
 		On();
 		if (GameMode == nullptr) 
@@ -43,8 +43,6 @@ void MapEditorGUI::Tick(ULevel* _Level, float _DeltaTime)
 
 void MapEditorGUI::OnGui(ULevel* _Level, float _DeltaTime)
 {
-	Super::OnGui(_Level, _DeltaTime);
-
 	ImGui::InputInt2("TileSize", TilePos);
 
 	float4 MousePos = GEngine->EngineWindow.GetScreenMousePos();
@@ -72,7 +70,7 @@ void MapEditorGUI::OnGui(ULevel* _Level, float _DeltaTime)
 		TilePositionData.push_back(TilePosY);
 		TilePositionData.push_back(InsertNumber);
 
-		SpawnTileActor(TilePosX, TilePosY, SpawnType);
+		SpawnTile(TilePosX, TilePosY, SpawnType);
 	}
 	ImGui::SameLine();
 	if (true == ImGui::Button("Lava"))
@@ -86,7 +84,7 @@ void MapEditorGUI::OnGui(ULevel* _Level, float _DeltaTime)
 		TilePositionData.push_back(TilePosY);
 		TilePositionData.push_back(InsertNumber);
 
-		SpawnTileActor(TilePosX, TilePosY, SpawnType);
+		SpawnTile(TilePosX, TilePosY, SpawnType);
 	}
 	ImGui::SameLine();
 	if (true == ImGui::Button("Wall"))
@@ -100,7 +98,7 @@ void MapEditorGUI::OnGui(ULevel* _Level, float _DeltaTime)
 		TilePositionData.push_back(TilePosY);
 		TilePositionData.push_back(InsertNumber);
 
-		SpawnTileActor(TilePosX, TilePosY, SpawnType);
+		SpawnTile(TilePosX, TilePosY, SpawnType);
 	}
 	ImGui::SameLine();
 	if (true == ImGui::Button("Water"))
@@ -114,7 +112,7 @@ void MapEditorGUI::OnGui(ULevel* _Level, float _DeltaTime)
 		TilePositionData.push_back(TilePosY);
 		TilePositionData.push_back(InsertNumber);
 
-		SpawnTileActor(TilePosX, TilePosY, SpawnType);
+		SpawnTile(TilePosX, TilePosY, SpawnType);
 	}
 	ImGui::SameLine();
 	if (true == ImGui::Button("Flag"))
@@ -128,7 +126,7 @@ void MapEditorGUI::OnGui(ULevel* _Level, float _DeltaTime)
 		TilePositionData.push_back(TilePosY);
 		TilePositionData.push_back(InsertNumber);
 
-		SpawnTileActor(TilePosX, TilePosY, SpawnType);
+		SpawnTile(TilePosX, TilePosY, SpawnType);
 	}
 	ImGui::SameLine();
 	if (true == ImGui::Button("Rock"))
@@ -142,7 +140,7 @@ void MapEditorGUI::OnGui(ULevel* _Level, float _DeltaTime)
 		TilePositionData.push_back(TilePosY);
 		TilePositionData.push_back(InsertNumber);
 
-		SpawnTileActor(TilePosX, TilePosY, SpawnType);
+		SpawnTile(TilePosX, TilePosY, SpawnType);
 	}
 	// LeftNoun GUI
 	ImGui::Text("\n< LeftNoun >");
@@ -157,7 +155,7 @@ void MapEditorGUI::OnGui(ULevel* _Level, float _DeltaTime)
 		TilePositionData.push_back(TilePosY);
 		TilePositionData.push_back(InsertNumber);
 
-		SpawnTileActor(TilePosX, TilePosY, SpawnType);
+		SpawnTile(TilePosX, TilePosY, SpawnType);
 	}
 	ImGui::SameLine();
 	if (true == ImGui::Button("LavaText"))
@@ -171,7 +169,7 @@ void MapEditorGUI::OnGui(ULevel* _Level, float _DeltaTime)
 		TilePositionData.push_back(TilePosY);
 		TilePositionData.push_back(InsertNumber);
 
-		SpawnTileActor(TilePosX, TilePosY, SpawnType);
+		SpawnTile(TilePosX, TilePosY, SpawnType);
 	}
 	ImGui::SameLine();
 	if (true == ImGui::Button("WallText"))
@@ -185,7 +183,7 @@ void MapEditorGUI::OnGui(ULevel* _Level, float _DeltaTime)
 		TilePositionData.push_back(TilePosY);
 		TilePositionData.push_back(InsertNumber);
 
-		SpawnTileActor(TilePosX, TilePosY, SpawnType);
+		SpawnTile(TilePosX, TilePosY, SpawnType);
 	}
 	ImGui::SameLine();
 	if (true == ImGui::Button("WaterText"))
@@ -199,7 +197,7 @@ void MapEditorGUI::OnGui(ULevel* _Level, float _DeltaTime)
 		TilePositionData.push_back(TilePosY);
 		TilePositionData.push_back(InsertNumber);
 
-		SpawnTileActor(TilePosX, TilePosY, SpawnType);
+		SpawnTile(TilePosX, TilePosY, SpawnType);
 	}
 	ImGui::SameLine();
 	if (true == ImGui::Button("FlagText"))
@@ -213,7 +211,7 @@ void MapEditorGUI::OnGui(ULevel* _Level, float _DeltaTime)
 		TilePositionData.push_back(TilePosY);
 		TilePositionData.push_back(InsertNumber);
 
-		SpawnTileActor(TilePosX, TilePosY, SpawnType);
+		SpawnTile(TilePosX, TilePosY, SpawnType);
 	}
 	ImGui::SameLine();
 	if (true == ImGui::Button("RockText"))
@@ -227,7 +225,7 @@ void MapEditorGUI::OnGui(ULevel* _Level, float _DeltaTime)
 		TilePositionData.push_back(TilePosY);
 		TilePositionData.push_back(InsertNumber);
 
-		SpawnTileActor(TilePosX, TilePosY, SpawnType);
+		SpawnTile(TilePosX, TilePosY, SpawnType);
 	}
 
 	// RightNoun GUI
@@ -243,7 +241,7 @@ void MapEditorGUI::OnGui(ULevel* _Level, float _DeltaTime)
 		TilePositionData.push_back(TilePosY);
 		TilePositionData.push_back(InsertNumber);
 
-		SpawnTileActor(TilePosX, TilePosY, SpawnType);
+		SpawnTile(TilePosX, TilePosY, SpawnType);
 	}
 	ImGui::SameLine();
 	if (true == ImGui::Button("PushText"))
@@ -257,7 +255,7 @@ void MapEditorGUI::OnGui(ULevel* _Level, float _DeltaTime)
 		TilePositionData.push_back(TilePosY);
 		TilePositionData.push_back(InsertNumber);
 
-		SpawnTileActor(TilePosX, TilePosY, SpawnType);
+		SpawnTile(TilePosX, TilePosY, SpawnType);
 	}
 	ImGui::SameLine();
 	if (true == ImGui::Button("SinkText"))
@@ -271,7 +269,7 @@ void MapEditorGUI::OnGui(ULevel* _Level, float _DeltaTime)
 		TilePositionData.push_back(TilePosY);
 		TilePositionData.push_back(InsertNumber);
 
-		SpawnTileActor(TilePosX, TilePosY, SpawnType);
+		SpawnTile(TilePosX, TilePosY, SpawnType);
 	}
 	ImGui::SameLine();
 	if (true == ImGui::Button("StopText"))
@@ -285,7 +283,7 @@ void MapEditorGUI::OnGui(ULevel* _Level, float _DeltaTime)
 		TilePositionData.push_back(TilePosY);
 		TilePositionData.push_back(InsertNumber);
 
-		SpawnTileActor(TilePosX, TilePosY, SpawnType);
+		SpawnTile(TilePosX, TilePosY, SpawnType);
 	}
 	ImGui::SameLine();
 	if (true == ImGui::Button("WinText"))
@@ -299,7 +297,7 @@ void MapEditorGUI::OnGui(ULevel* _Level, float _DeltaTime)
 		TilePositionData.push_back(TilePosY);
 		TilePositionData.push_back(InsertNumber);
 
-		SpawnTileActor(TilePosX, TilePosY, SpawnType);
+		SpawnTile(TilePosX, TilePosY, SpawnType);
 	}
 	ImGui::SameLine();
 	if (true == ImGui::Button("YouText"))
@@ -313,7 +311,7 @@ void MapEditorGUI::OnGui(ULevel* _Level, float _DeltaTime)
 		TilePositionData.push_back(TilePosY);
 		TilePositionData.push_back(InsertNumber);
 
-		SpawnTileActor(TilePosX, TilePosY, SpawnType);
+		SpawnTile(TilePosX, TilePosY, SpawnType);
 	}
 
 	// Connecting Text GUI
@@ -329,7 +327,7 @@ void MapEditorGUI::OnGui(ULevel* _Level, float _DeltaTime)
 		TilePositionData.push_back(TilePosY);
 		TilePositionData.push_back(InsertNumber);
 
-		SpawnTileActor(TilePosX, TilePosY, SpawnType);
+		SpawnTile(TilePosX, TilePosY, SpawnType);
 	}
 	/*ImGui::SameLine();
 	if (true == ImGui::Button("And"))
@@ -340,11 +338,12 @@ void MapEditorGUI::OnGui(ULevel* _Level, float _DeltaTime)
 	ImGui::Text("\n< All Tiles Clear >");
 	if (true == ImGui::Button("Clear"))
 	{
+		// 클리어 만들기
 	}
 
 	ImGui::Text("\n< Save TileData >");
 	ImGui::InputText("Save As FileName", FileName, 25);
-	if (true == ImGui::Button("Save"));
+	if (true == ImGui::Button("Save"))
 	{
 		if (true == TilePositionData.empty())
 		{
@@ -364,7 +363,7 @@ void MapEditorGUI::OnGui(ULevel* _Level, float _DeltaTime)
 
 	ImGui::Text("\n< Load TileData >");
 	ImGui::InputText("Load Data By FileName", FileName, 25);
-	if (true == ImGui::Button("Load"));
+	if (true == ImGui::Button("Load"))
 	{
 		UEngineSerializer Ser;
 		std::string Str = FileName;
@@ -396,7 +395,7 @@ void MapEditorGUI::OnGui(ULevel* _Level, float _DeltaTime)
 	}
 }
 
-void MapEditorGUI::SpawnTileActor(int _X, int _Y, ESpawnType _Type)
+void MapEditorGUI::SpawnTile(int _X, int _Y, ESpawnType _Type)
 {
 	FINT TilePos = { _X, _Y };
 

@@ -20,7 +20,7 @@ public:
 protected:
 	void Init() override;
 	void Tick(ULevel* _Level, float _DeltaTime) override;
-	void OnGui(ULevel* _Level, float _DeltaTime) override;
+	void OnGui(ULevel* Level, float _Delta) override;
 
 	ATileMapEditorGameMode* GameMode = nullptr;
 	UEngineDirectory Dir;
@@ -31,7 +31,7 @@ protected:
 	std::vector<int> TilePositionData;
 	//std::vector<ATile> Tiles;
 private:
-	void SpawnTileActor(int _X, int _Y, ESpawnType _Type);
+	void SpawnTile(int _X, int _Y, ESpawnType _Type);
 
 	bool MessageOn = false;
 };

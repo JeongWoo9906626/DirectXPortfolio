@@ -25,6 +25,8 @@
 #include "Rock.h"
 #include "RockText.h"
 
+std::map<FINT, std::list<std::shared_ptr<ATile>>> ATileMap::Map;
+
 ATileMap::ATileMap()
 {
 	InputOn();
@@ -39,7 +41,7 @@ void ATileMap::BeginPlay()
 {
 	Super::BeginPlay();
 
-	{
+	/*{
 		FINT Pos = FINT(1, 1);
 		std::shared_ptr<ATile> Player = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ABaba>("Baba"));
 		Player->SetTilePosition(Pos);
@@ -221,7 +223,7 @@ void ATileMap::BeginPlay()
 		RockText->SetTilePosition(TestPos);
 		RockText->SetTileLocation();
 		Map[TestPos].push_back(RockText);
-	}
+	}*/
 
 	StaticHelper::CurTileMap = Map;
 }
