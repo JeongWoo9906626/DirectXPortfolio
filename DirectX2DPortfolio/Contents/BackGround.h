@@ -1,6 +1,7 @@
 #pragma once
 #include <EngineCore/Actor.h>
 
+// TileMap¿« µﬁ πË∞Ê
 class USpriteRenderer;
 class ABackGround : public AActor
 {

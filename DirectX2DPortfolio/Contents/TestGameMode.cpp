@@ -54,9 +54,9 @@ void ATestGameMode::BeginPlay()
 
 	//맵의 BackGround
 	std::shared_ptr<ABackGround> BackGround = GetWorld()->SpawnActor<ABackGround>("BackGround");
-	BackGround->SetActorLocation(FVector(X / 2 - 120.0f	, Y / 2 - 55.0f, 100.0f));
+	BackGround->SetActorLocation(FVector(X / 2 - 120.0f, Y / 2 - 55.0f, 100.0f));
 
-	LoadTileMap("Test");
+	//LoadTileMap("Stage00");
 	std::shared_ptr<ATileMap> TileMap = GetWorld()->SpawnActor<ATileMap>("TileMap");
 	TileMap->SetTileSize(FINT(33, 18));
 
@@ -73,23 +73,30 @@ void ATestGameMode::LevelEnd(ULevel* _NextLevel)
 {
 	Super::LevelEnd(_NextLevel);
 
-	for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> CurTileMap : TileMap)
 	{
-		std::list<std::shared_ptr<ATile>> CurTileList = CurTileMap.second;
-		for (std::shared_ptr<ATile> CurTile : CurTileList)
+		for (std::pair<FINT, std::list<ATile*>> Iterator : StaticHelper::CurTileMap)
 		{
-			CurTile.reset();
+			std::list<ATile*> IteratorList = Iterator.second;
+			for (ATile* IteratorTile : IteratorList)
+			{
+				IteratorTile->Destroy();
+			}
+			IteratorList.clear();
 		}
+		StaticHelper::CurTileMap.clear();
 	}
 
-	for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> Pair : StaticHelper::CurTileMap)
 	{
-		std::list<std::shared_ptr<ATile>> CurTileList = Pair.second;
-		for (std::shared_ptr<ATile> CurTile : CurTileList)
+		for (std::pair<FINT, std::list<ATile*>> Iterator : ATileMap::Map)
 		{
-			CurTile->Destroy();
+			std::list<ATile*> IteratorList = Iterator.second;
+			for (ATile* IteratorTile : IteratorList)
+			{
+				IteratorTile->Destroy();
+			}
+			IteratorList.clear();
 		}
-		CurTileList.clear();
+		ATileMap::Map.clear();
 	}
 }
 
@@ -105,7 +112,8 @@ void ATestGameMode::LevelStart(ULevel* _PrevLevel)
 	Fade->SetActorLocation({ X / 2, Y / 2, 400.0f });
 
 	// 다을레벨 이름 넘겨주기
-	LoadTileMap("Test");
+	
+	LoadTileMap(StaticHelper::StageName);
 }
 
 void ATestGameMode::LoadTileMap(std::string _LevelName)
@@ -117,6 +125,11 @@ void ATestGameMode::LoadTileMap(std::string _LevelName)
 	{
 		MsgBoxAssert("존재하지 않는 파일 데이터로 맵을 로드하려고 했습니다.");
 		return;
+	}
+
+	if (0 != TileData.size())
+	{
+		TileData.clear();
 	}
 
 	File.Open(EIOOpenMode::Read, EIODataType::Binary);
@@ -156,7 +169,7 @@ void ATestGameMode::InLevelSpawnTileActor(FINT _TilePos, ESpawnType _Type)
 		std::shared_ptr<ATile> Player = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ABaba>("Baba"));
 		Player->SetTilePosition(Pos);
 		Player->SetTileLocation();
-		ATileMap::Map[Pos].push_back(Player);
+		ATileMap::Map[Pos].push_back(Player.get());
 		break;
 	}
 	case ESpawnType::Lava:
@@ -165,7 +178,7 @@ void ATestGameMode::InLevelSpawnTileActor(FINT _TilePos, ESpawnType _Type)
 		std::shared_ptr<ATile> Lava = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ALava>("Lava"));
 		Lava->SetTilePosition(Pos);
 		Lava->SetTileLocation();
-		ATileMap::Map[Pos].push_back(Lava);
+		ATileMap::Map[Pos].push_back(Lava.get());
 		break;
 	}
 	case ESpawnType::Wall:
@@ -174,7 +187,7 @@ void ATestGameMode::InLevelSpawnTileActor(FINT _TilePos, ESpawnType _Type)
 		std::shared_ptr<ATile> Wall = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AWall>("Wall"));
 		Wall->SetTilePosition(Pos);
 		Wall->SetTileLocation();
-		ATileMap::Map[Pos].push_back(Wall);
+		ATileMap::Map[Pos].push_back(Wall.get());
 		break;
 	}
 	case ESpawnType::Water:
@@ -183,7 +196,7 @@ void ATestGameMode::InLevelSpawnTileActor(FINT _TilePos, ESpawnType _Type)
 		std::shared_ptr<ATile> Water = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AWater>("Water"));
 		Water->SetTilePosition(Pos);
 		Water->SetTileLocation();
-		ATileMap::Map[Pos].push_back(Water);
+		ATileMap::Map[Pos].push_back(Water.get());
 		break;
 	}
 	case ESpawnType::Flag:
@@ -192,7 +205,7 @@ void ATestGameMode::InLevelSpawnTileActor(FINT _TilePos, ESpawnType _Type)
 		std::shared_ptr<ATile> Flag = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AFlag>("Flag"));
 		Flag->SetTilePosition(Pos);
 		Flag->SetTileLocation();
-		ATileMap::Map[Pos].push_back(Flag);
+		ATileMap::Map[Pos].push_back(Flag.get());
 		break;
 	}
 	case ESpawnType::Rock:
@@ -201,7 +214,7 @@ void ATestGameMode::InLevelSpawnTileActor(FINT _TilePos, ESpawnType _Type)
 		std::shared_ptr<ATile> Rock = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ARock>("Rock"));
 		Rock->SetTilePosition(Pos);
 		Rock->SetTileLocation();
-		ATileMap::Map[Pos].push_back(Rock);
+		ATileMap::Map[Pos].push_back(Rock.get());
 		break;
 	}
 	case ESpawnType::BabaText:
@@ -210,7 +223,7 @@ void ATestGameMode::InLevelSpawnTileActor(FINT _TilePos, ESpawnType _Type)
 		std::shared_ptr<ATile> BabaText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ABabaText>("BabaText"));
 		BabaText->SetTilePosition(Pos);
 		BabaText->SetTileLocation();
-		ATileMap::Map[Pos].push_back(BabaText);
+		ATileMap::Map[Pos].push_back(BabaText.get());
 		break;
 	}
 	case ESpawnType::LavaText:
@@ -219,7 +232,7 @@ void ATestGameMode::InLevelSpawnTileActor(FINT _TilePos, ESpawnType _Type)
 		std::shared_ptr<ATile> LavaText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ALavaText>("LavaText"));
 		LavaText->SetTilePosition(Pos);
 		LavaText->SetTileLocation();
-		ATileMap::Map[Pos].push_back(LavaText);
+		ATileMap::Map[Pos].push_back(LavaText.get());
 		break;
 	}
 	case ESpawnType::WallText:
@@ -228,7 +241,7 @@ void ATestGameMode::InLevelSpawnTileActor(FINT _TilePos, ESpawnType _Type)
 		std::shared_ptr<ATile> WallText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AWallText>("WallText"));
 		WallText->SetTilePosition(Pos);
 		WallText->SetTileLocation();
-		ATileMap::Map[Pos].push_back(WallText);
+		ATileMap::Map[Pos].push_back(WallText.get());
 		break;
 	}
 	case ESpawnType::WaterText:
@@ -237,7 +250,7 @@ void ATestGameMode::InLevelSpawnTileActor(FINT _TilePos, ESpawnType _Type)
 		std::shared_ptr<ATile> WaterText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AWaterText>("WaterText"));
 		WaterText->SetTilePosition(Pos);
 		WaterText->SetTileLocation();
-		ATileMap::Map[Pos].push_back(WaterText);
+		ATileMap::Map[Pos].push_back(WaterText.get());
 		break;
 	}
 	case ESpawnType::FlagText:
@@ -246,7 +259,7 @@ void ATestGameMode::InLevelSpawnTileActor(FINT _TilePos, ESpawnType _Type)
 		std::shared_ptr<ATile> FlagText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AFlagText>("FlagText"));
 		FlagText->SetTilePosition(Pos);
 		FlagText->SetTileLocation();
-		ATileMap::Map[Pos].push_back(FlagText);
+		ATileMap::Map[Pos].push_back(FlagText.get());
 		break;
 	}
 	case ESpawnType::RockText:
@@ -255,7 +268,7 @@ void ATestGameMode::InLevelSpawnTileActor(FINT _TilePos, ESpawnType _Type)
 		std::shared_ptr<ATile> RockText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ARockText>("RockText"));
 		RockText->SetTilePosition(Pos);
 		RockText->SetTileLocation();
-		ATileMap::Map[Pos].push_back(RockText);
+		ATileMap::Map[Pos].push_back(RockText.get());
 		break;
 	}
 	case ESpawnType::DefeatText:
@@ -264,7 +277,7 @@ void ATestGameMode::InLevelSpawnTileActor(FINT _TilePos, ESpawnType _Type)
 		std::shared_ptr<ATile> DefeatText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ADefeatText>("DefeatText"));
 		DefeatText->SetTilePosition(Pos);
 		DefeatText->SetTileLocation();
-		ATileMap::Map[Pos].push_back(DefeatText);
+		ATileMap::Map[Pos].push_back(DefeatText.get());
 		break;
 	}
 	case ESpawnType::PushText:
@@ -273,7 +286,7 @@ void ATestGameMode::InLevelSpawnTileActor(FINT _TilePos, ESpawnType _Type)
 		std::shared_ptr<ATile> PushText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<APushText>("WallText"));
 		PushText->SetTilePosition(Pos);
 		PushText->SetTileLocation();
-		ATileMap::Map[Pos].push_back(PushText);
+		ATileMap::Map[Pos].push_back(PushText.get());
 		break;
 	}
 	case ESpawnType::SinkText:
@@ -282,7 +295,7 @@ void ATestGameMode::InLevelSpawnTileActor(FINT _TilePos, ESpawnType _Type)
 		std::shared_ptr<ATile> SinkText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ASinkText>("SinkText"));
 		SinkText->SetTilePosition(Pos);
 		SinkText->SetTileLocation();
-		ATileMap::Map[Pos].push_back(SinkText);
+		ATileMap::Map[Pos].push_back(SinkText.get());
 		break;
 	}
 	case ESpawnType::StopText:
@@ -291,7 +304,7 @@ void ATestGameMode::InLevelSpawnTileActor(FINT _TilePos, ESpawnType _Type)
 		std::shared_ptr<ATile> StopText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AStopText>("StopText"));
 		StopText->SetTilePosition(Pos);
 		StopText->SetTileLocation();
-		ATileMap::Map[Pos].push_back(StopText);
+		ATileMap::Map[Pos].push_back(StopText.get());
 		break;
 	}
 	case ESpawnType::WinText:
@@ -300,7 +313,7 @@ void ATestGameMode::InLevelSpawnTileActor(FINT _TilePos, ESpawnType _Type)
 		std::shared_ptr<ATile> WinText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AWinText>("WinText"));
 		WinText->SetTilePosition(Pos);
 		WinText->SetTileLocation();
-		ATileMap::Map[Pos].push_back(WinText);
+		ATileMap::Map[Pos].push_back(WinText.get());
 		break;
 	}
 	case ESpawnType::YouText:
@@ -309,7 +322,7 @@ void ATestGameMode::InLevelSpawnTileActor(FINT _TilePos, ESpawnType _Type)
 		std::shared_ptr<ATile> YouText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AYouText>("YouText"));
 		YouText->SetTilePosition(Pos);
 		YouText->SetTileLocation();
-		ATileMap::Map[Pos].push_back(YouText);
+		ATileMap::Map[Pos].push_back(YouText.get());
 		break;
 	}
 	case ESpawnType::Is:
@@ -318,7 +331,7 @@ void ATestGameMode::InLevelSpawnTileActor(FINT _TilePos, ESpawnType _Type)
 		std::shared_ptr<ATile> IsText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AIsText>("IsText"));
 		IsText->SetTilePosition(Pos);
 		IsText->SetTileLocation();
-		ATileMap::Map[Pos].push_back(IsText);
+		ATileMap::Map[Pos].push_back(IsText.get());
 		break;
 	}
 	case ESpawnType::None:

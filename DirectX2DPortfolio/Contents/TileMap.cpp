@@ -25,7 +25,7 @@
 #include "Rock.h"
 #include "RockText.h"
 
-std::map<FINT, std::list<std::shared_ptr<ATile>>> ATileMap::Map;
+std::map<FINT, std::list<ATile*>> ATileMap::Map;
 
 ATileMap::ATileMap()
 {
@@ -236,6 +236,7 @@ void ATileMap::Tick(float _DeltaTime)
 	{
 		GameWin = false;
 		GEngine->ChangeLevel("SelectLevel");
+		return;
 	}
 
 
@@ -313,13 +314,13 @@ void ATileMap::TileMoveCheck()
 
 	if (true == IsBack)
 	{
-		std::map<FINT, std::list<std::shared_ptr<ATile>>> NewTileMap;
-		for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> Iterator : Map)
+		std::map<FINT, std::list<ATile*>> NewTileMap;
+		for (std::pair<FINT, std::list<ATile*>> Iterator : Map)
 		{
 			FINT CurMapTilePos = Iterator.first;
-			std::list<std::shared_ptr<ATile>> TileActorList = Iterator.second;
+			std::list<ATile*> TileActorList = Iterator.second;
 
-			for (std::shared_ptr<ATile> TileActor : TileActorList)
+			for (ATile* TileActor : TileActorList)
 			{
 				if (true == TileActor->GetMoveHistory().empty())
 				{
@@ -333,13 +334,13 @@ void ATileMap::TileMoveCheck()
 		return;
 	}
 
-	std::map<FINT, std::list<std::shared_ptr<ATile>>> NewTileMap;
-	for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> Iterator : Map)
+	std::map<FINT, std::list<ATile*>> NewTileMap;
+	for (std::pair<FINT, std::list<ATile*>> Iterator : Map)
 	{
 		FINT CurMapTilePos = Iterator.first;
-		std::list<std::shared_ptr<ATile>> TileActorList = Iterator.second;
+		std::list<ATile*> TileActorList = Iterator.second;
 
-		for (std::shared_ptr<ATile> TileActor : TileActorList)
+		for (ATile* TileActor : TileActorList)
 		{
 			if (true == TileActor->GetTileInfo().IsController)
 			{
@@ -359,13 +360,13 @@ void ATileMap::TileMoveSet()
 
 	if (true == IsBack)
 	{
-		std::map<FINT, std::list<std::shared_ptr<ATile>>> NewTileMap;
-		for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> Iterator : Map)
+		std::map<FINT, std::list<ATile*>> NewTileMap;
+		for (std::pair<FINT, std::list<ATile*>> Iterator : Map)
 		{
 			FINT CurMapTilePos = Iterator.first;
-			std::list<std::shared_ptr<ATile>> TileActorList = Iterator.second;
+			std::list<ATile*> TileActorList = Iterator.second;
 
-			for (std::shared_ptr<ATile> TileActor : TileActorList)
+			for (ATile* TileActor : TileActorList)
 			{
 				TileActor->BackMoveSet();
 			}
@@ -373,13 +374,13 @@ void ATileMap::TileMoveSet()
 	}
 	else
 	{
-		std::map<FINT, std::list<std::shared_ptr<ATile>>> NewTileMap;
-		for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> Iterator : Map)
+		std::map<FINT, std::list<ATile*>> NewTileMap;
+		for (std::pair<FINT, std::list<ATile*>> Iterator : Map)
 		{
 			FINT CurMapTilePos = Iterator.first;
-			std::list<std::shared_ptr<ATile>> TileActorList = Iterator.second;
+			std::list<ATile*> TileActorList = Iterator.second;
 
-			for (std::shared_ptr<ATile> TileActor : TileActorList)
+			for (ATile* TileActor : TileActorList)
 			{
 				TileActor->MoveSet(Input);
 			}
@@ -389,13 +390,13 @@ void ATileMap::TileMoveSet()
 
 void ATileMap::TileUpdate()
 {
-	std::map<FINT, std::list<std::shared_ptr<ATile>>> NewTileMap;
-	for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> Iterator : Map)
+	std::map<FINT, std::list<ATile*>> NewTileMap;
+	for (std::pair<FINT, std::list<ATile*>> Iterator : Map)
 	{
 		FINT CurMapTilePos = Iterator.first;
-		std::list<std::shared_ptr<ATile>> TileActorList = Iterator.second;
+		std::list<ATile*> TileActorList = Iterator.second;
 
-		for (std::shared_ptr<ATile> TileActor : TileActorList)
+		for (ATile* TileActor : TileActorList)
 		{
 			FINT TilePos = TileActor->GetTilePosition();
 			if (TilePos != CurMapTilePos)
@@ -417,11 +418,11 @@ void ATileMap::TileUpdate()
 
 void ATileMap::TileWinCheck()
 {
-	std::map<FINT, std::list<std::shared_ptr<ATile>>> NewTileMap = StaticHelper::CurTileMap;
-	for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> Iterator : NewTileMap)
+	std::map<FINT, std::list<ATile*>> NewTileMap = StaticHelper::CurTileMap;
+	for (std::pair<FINT, std::list<ATile*>> Iterator : NewTileMap)
 	{
-		std::list<std::shared_ptr<ATile>> TileActorList = Iterator.second;
-		for (std::shared_ptr<ATile> TileActor : TileActorList)
+		std::list<ATile*> TileActorList = Iterator.second;
+		for (ATile* TileActor : TileActorList)
 		{
 			if (true == TileActor->GetIsWin())
 			{
@@ -434,11 +435,11 @@ void ATileMap::TileWinCheck()
 
 void ATileMap::TileAliveCheck()
 {
-	std::map<FINT, std::list<std::shared_ptr<ATile>>> NewTileMap = StaticHelper::CurTileMap;
-	for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> Iterator : NewTileMap)
+	std::map<FINT, std::list<ATile*>> NewTileMap = StaticHelper::CurTileMap;
+	for (std::pair<FINT, std::list<ATile*>> Iterator : NewTileMap)
 	{
-		std::list<std::shared_ptr<ATile>> TileActorList = Iterator.second;
-		for (std::shared_ptr<ATile> TileActor : TileActorList)
+		std::list<ATile*> TileActorList = Iterator.second;
+		for (ATile* TileActor : TileActorList)
 		{
 			if (true == TileActor->GetIsDefeat())
 			{
@@ -457,11 +458,11 @@ void ATileMap::TileAliveCheck()
 
 void ATileMap::TileStateReset()
 {
-	std::map<FINT, std::list<std::shared_ptr<ATile>>> NewTileMap = StaticHelper::CurTileMap;
-	for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> Iterator : NewTileMap)
+	std::map<FINT, std::list<ATile*>> NewTileMap = StaticHelper::CurTileMap;
+	for (std::pair<FINT, std::list<ATile*>> Iterator : NewTileMap)
 	{
-		std::list<std::shared_ptr<ATile>> TileActorList = Iterator.second;
-		for (std::shared_ptr<ATile> TileActor : TileActorList)
+		std::list<ATile*> TileActorList = Iterator.second;
+		for (ATile* TileActor : TileActorList)
 		{
 			TileActor->StateReset();
 		}
@@ -470,15 +471,15 @@ void ATileMap::TileStateReset()
 
 void ATileMap::TileSentenceCheck()
 {
-	std::map<FINT, std::list<std::shared_ptr<ATile>>> NewTileMap = StaticHelper::CurTileMap;
-	for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> Iterator : NewTileMap)
+	std::map<FINT, std::list<ATile*>> NewTileMap = StaticHelper::CurTileMap;
+	for (std::pair<FINT, std::list<ATile*>> Iterator : NewTileMap)
 	{
-		std::list<std::shared_ptr<ATile>> TileActorList = Iterator.second;
-		for (std::shared_ptr<ATile> TileActor : TileActorList)
+		std::list<ATile*> TileActorList = Iterator.second;
+		for (ATile* TileActor : TileActorList)
 		{
 			if (ETileType::Is == TileActor->GetTileType())
 			{
-				AConnectingTile* NewVerbTile = dynamic_cast<AConnectingTile*>(TileActor.get());
+				AConnectingTile* NewVerbTile = dynamic_cast<AConnectingTile*>(TileActor);
 				NewVerbTile->WordsCheck();
 			}
 		}
@@ -493,13 +494,13 @@ bool ATileMap::MoveEnd()
 	}
 
 	bool Temp = false;
-	std::map<FINT, std::list<std::shared_ptr<ATile>>> NewTileMap;
-	for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> Iterator : Map)
+	std::map<FINT, std::list<ATile*>> NewTileMap;
+	for (std::pair<FINT, std::list<ATile*>> Iterator : Map)
 	{
 		FINT CurMapTilePos = Iterator.first;
-		std::list<std::shared_ptr<ATile>> TileActorList = Iterator.second;
+		std::list<ATile*> TileActorList = Iterator.second;
 
-		for (std::shared_ptr<ATile> TileActor : TileActorList)
+		for (ATile* TileActor : TileActorList)
 		{
 			Temp = Temp || TileActor->GetIsMove();
 		}
@@ -510,13 +511,13 @@ bool ATileMap::MoveEnd()
 
 void ATileMap::DefeatCheck(FINT _TilePosition)
 {
-	std::list<std::shared_ptr<ATile>> TileList = StaticHelper::CurTileMap[_TilePosition];
+	std::list<ATile*> TileList = StaticHelper::CurTileMap[_TilePosition];
 	if (1 == TileList.size())
 	{
 		return;
 	}
 
-	for (std::shared_ptr<ATile> Tile : TileList)
+	for (ATile* Tile : TileList)
 	{
 		if (true == Tile->GetIsDefeat())
 		{
@@ -539,13 +540,13 @@ void ATileMap::DefeatCheck(FINT _TilePosition)
 void ATileMap::SinkCheck(FINT _TilePosition, ETileType _TileType)
 {
 	bool Check = false;
-	std::shared_ptr<ATile> SinkTile;
-	std::list<std::shared_ptr<ATile>> TileList = StaticHelper::CurTileMap[_TilePosition];
+	ATile* SinkTile = nullptr;
+	std::list<ATile*> TileList = StaticHelper::CurTileMap[_TilePosition];
 	if (1 == TileList.size())
 	{
 		return;
 	}
-	for (std::shared_ptr<ATile> Tile : TileList)
+	for (ATile* Tile : TileList)
 	{
 		if (
 			ETileType::LWord == Tile->GetTileType() ||
@@ -589,13 +590,13 @@ void ATileMap::SinkCheck(FINT _TilePosition, ETileType _TileType)
 
 void ATileMap::WinCheck(FINT _TilePosition)
 {
-	std::list<std::shared_ptr<ATile>> TileList = StaticHelper::CurTileMap[_TilePosition];
+	std::list<ATile*> TileList = StaticHelper::CurTileMap[_TilePosition];
 	if (1 == TileList.size())
 	{
 		return;
 	}
 
-	for (std::shared_ptr<ATile> Tile : TileList)
+	for (ATile* Tile : TileList)
 	{
 		/*if (true == Tile->GetIsWin())
 		{

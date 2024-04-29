@@ -1,6 +1,7 @@
 #pragma once
 #include <EngineCore/Actor.h>
 
+// ∏ ¿« µﬁ πË∞Ê
 class USpriteRenderer;
 class ATestMap : public AActor
 {

@@ -31,15 +31,21 @@ void AStageSelectGameMode::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
-	if (true == UEngineInput::IsDown(VK_SPACE))
+	/*if (true == UEngineInput::IsDown(VK_SPACE))
 	{
 		GEngine->ChangeLevel("PlayLevel");
+	}*/
+
+	if (true == UEngineInput::IsDown('Q'))
+	{
+		StaticHelper::StageName = "Stage00";
+		GEngine->ChangeLevel("TestLevel");
 	}
 
-	if (true == UEngineInput::IsDown('O'))
+	if (true == UEngineInput::IsDown('W'))
 	{
+		StaticHelper::StageName = "Test";
 		GEngine->ChangeLevel("TestLevel");
-		StaticHelper::StageName = "Stage00";
 	}
 }
 

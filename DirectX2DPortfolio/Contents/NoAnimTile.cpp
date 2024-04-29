@@ -46,8 +46,8 @@ void ANoAnimTile::NextCheck()
 
 bool ANoAnimTile::NextTileTypeCheck(FINT _Position)
 {
-	std::list<std::shared_ptr<ATile>> TileList = StaticHelper::CurTileMap[_Position];
-	for (std::shared_ptr<ATile> Tile : TileList)
+	std::list<ATile*> TileList = StaticHelper::CurTileMap[_Position];
+	for (ATile* Tile : TileList)
 	{
 		if (this->GetTileType() == Tile->GetTileType())
 		{

@@ -233,14 +233,14 @@ bool ATile::NextTileCheck(FINT _NextTilePos, EInputType _Input)
 		return false;
 	}
 
-	std::list<std::shared_ptr<ATile>> NextTileActorList = StaticHelper::CurTileMap[_NextTilePos];
+	std::list<ATile*> NextTileActorList = StaticHelper::CurTileMap[_NextTilePos];
 	if (true == NextTileActorList.empty())
 	{
 		return true;
 	}
 	else // List가 비어있지 않은 경우 (Tile을 가지고 있는 경우)
 	{
-		for (std::shared_ptr<ATile> NextTileActor : NextTileActorList)
+		for (ATile* NextTileActor : NextTileActorList)
 		{
 			//bool Result = false;
 			// Controller 를 가지고 있는 경우 (직접 움직일 수 있음)

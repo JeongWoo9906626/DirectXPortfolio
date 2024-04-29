@@ -40,13 +40,13 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 	FINT LeftTilePos = _TilePos + FINT::LEFT;
 	FINT RightTilePos = _TilePos + FINT::RIGHT;
 
-	std::shared_ptr<ATile> TempLeftTileActor;
-	std::shared_ptr<ATile> TempRightTileActor;
+	ATile* TempLeftTileActor = nullptr;
+	ATile* TempRightTileActor = nullptr;
 
-	std::list<std::shared_ptr<ATile>> LeftTileActorList = StaticHelper::CurTileMap[LeftTilePos];
+	std::list<ATile*> LeftTileActorList = StaticHelper::CurTileMap[LeftTilePos];
 	if (false == LeftTileActorList.empty())
 	{
-		for (std::shared_ptr<ATile> LeftTileActor : LeftTileActorList)
+		for (ATile* LeftTileActor : LeftTileActorList)
 		{
 			TempLeftTileActor = LeftTileActor;
 			if (ETileType::LWord == TempLeftTileActor->GetTileType())
@@ -57,10 +57,10 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 	}
 	
 
-	std::list<std::shared_ptr<ATile>> RightTileActorList = StaticHelper::CurTileMap[RightTilePos];
+	std::list<ATile*> RightTileActorList = StaticHelper::CurTileMap[RightTilePos];
 	if (false == RightTileActorList.empty())
 	{
-		for (std::shared_ptr<ATile> RightTileActor : RightTileActorList)
+		for (ATile* RightTileActor : RightTileActorList)
 		{
 			TempRightTileActor = RightTileActor;
 			if (ETileType::RWord == TempRightTileActor->GetTileType())
@@ -113,11 +113,11 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 			break;
 		}
 
-		std::map<FINT, std::list<std::shared_ptr<ATile>>> TileActorMap = StaticHelper::CurTileMap;
-		for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> Iterator : TileActorMap)
+		std::map<FINT, std::list<ATile*>> TileActorMap = StaticHelper::CurTileMap;
+		for (std::pair<FINT, std::list<ATile*>> Iterator : TileActorMap)
 		{
-			std::list<std::shared_ptr<ATile>> TileActorList = Iterator.second;
-			for (std::shared_ptr<ATile> TileActor : TileActorList)
+			std::list<ATile*> TileActorList = Iterator.second;
+			for (ATile* TileActor : TileActorList)
 			{
 				ETileType ActorType = TileActor->GetTileType();
 				
@@ -172,13 +172,13 @@ bool AConnectingTile::VerticalCheck(FINT _TilePos)
 	FINT UpTilePos = _TilePos + FINT::UP;
 	FINT DownTilePos = _TilePos + FINT::DOWN;
 
-	std::shared_ptr<ATile> TempUpTileActor;
-	std::shared_ptr<ATile> TempDownTileActor;
+	ATile* TempUpTileActor = nullptr;
+	ATile* TempDownTileActor = nullptr;
 
-	std::list<std::shared_ptr<ATile>> UpTileActorList = StaticHelper::CurTileMap[UpTilePos];
+	std::list<ATile*> UpTileActorList = StaticHelper::CurTileMap[UpTilePos];
 	if (false == UpTileActorList.empty())
 	{
-		for (std::shared_ptr<ATile> UpTileActor : UpTileActorList)
+		for (ATile* UpTileActor : UpTileActorList)
 		{
 			TempUpTileActor = UpTileActor;
 			if (ETileType::LWord == UpTileActor->GetTileType())
@@ -188,10 +188,10 @@ bool AConnectingTile::VerticalCheck(FINT _TilePos)
 		}
 	}
 
-	std::list<std::shared_ptr<ATile>> DownTileActorList = StaticHelper::CurTileMap[DownTilePos];
+	std::list<ATile*> DownTileActorList = StaticHelper::CurTileMap[DownTilePos];
 	if (false == UpTileActorList.empty())
 	{
-		for (std::shared_ptr<ATile> DownTileActor : DownTileActorList)
+		for (ATile* DownTileActor : DownTileActorList)
 		{
 			TempDownTileActor = DownTileActor;
 			if (ETileType::RWord == DownTileActor->GetTileType())
@@ -245,11 +245,11 @@ bool AConnectingTile::VerticalCheck(FINT _TilePos)
 			break;
 		}
 
-		std::map<FINT, std::list<std::shared_ptr<ATile>>> TileActorMap = StaticHelper::CurTileMap;
-		for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> Iterator : TileActorMap)
+		std::map<FINT, std::list<ATile*>> TileActorMap = StaticHelper::CurTileMap;
+		for (std::pair<FINT, std::list<ATile*>> Iterator : TileActorMap)
 		{
-			std::list<std::shared_ptr<ATile>> TileActorList = Iterator.second;
-			for (std::shared_ptr<ATile> TileActor : TileActorList)
+			std::list<ATile*> TileActorList = Iterator.second;
+			for (ATile* TileActor : TileActorList)
 			{
 				ETileType ActorType = TileActor->GetTileType();
 				

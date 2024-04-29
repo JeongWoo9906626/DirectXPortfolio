@@ -6,8 +6,7 @@
 class StaticHelper
 {
 public:
-	static std::map<FINT, std::list<std::shared_ptr<ATile>>> CurTileMap;
+	static std::map<FINT, std::list<ATile*>> CurTileMap;
 	static float TileSize;
-	static class ATileMap* NewTileMap;
 	static std::string StageName;
 };

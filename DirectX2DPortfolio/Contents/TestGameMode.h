@@ -28,7 +28,6 @@ protected:
 	void ChangeStage(std::string _LevelName);
 
 private:
-	std::map<FINT, std::list<std::shared_ptr<ATile>>> TileMap;
 	UEngineDirectory Dir;
 	void InLevelSpawnTileActor(FINT _TilePos, ESpawnType _Type);
 	std::vector<int> TileData;

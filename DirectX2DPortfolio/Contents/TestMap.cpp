@@ -21,8 +21,6 @@ void ATestMap::BeginPlay()
 {
 	Super::BeginPlay();
 
-	//std::shared_ptr<ABackGround> BackGround = GetWorld()->SpawnActor<ABackGround>("BG");
-
 	float ScreenX = GEngine->EngineWindow.GetWindowScale().X;
 	float ScreenY = GEngine->EngineWindow.GetWindowScale().Y;
 

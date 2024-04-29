@@ -46,6 +46,9 @@ public:
 
 	inline FVector GetFINTToVector()
 	{
+		FINT::MapSize.X / 2;
+		FINT::MapSize.Y / 2;
+
 		FINT TilePos = *this;
 		FVector Result = FVector::Zero;
 		Result.X = TilePos.X * 36;
