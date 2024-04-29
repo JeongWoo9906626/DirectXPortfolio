@@ -152,6 +152,7 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 						break;
 					}
 					case ENounType::WinText:
+						TileActor->SetIsWin(true);
 						break;
 					}
 					HorizontalLeftType = ActorType;

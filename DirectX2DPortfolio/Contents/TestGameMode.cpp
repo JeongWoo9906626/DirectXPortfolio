@@ -44,11 +44,14 @@ void ATestGameMode::BeginPlay()
 	Super::BeginPlay();
 
 	std::shared_ptr<UCamera> Camera = GetWorld()->GetMainCamera();
-	Camera->SetActorLocation(FVector(0.0f, 0.0f, -100.0f));
+	FVector WindowScale = GEngine->EngineWindow.GetWindowScale();
+	float X = WindowScale.X;
+	float Y = WindowScale.Y;
+	Camera->SetActorLocation(FVector(X / 2, Y / 2, -100.0f));
 
-	LoadTileMap("Test");
+	LoadTileMap("Stage00");
 	std::shared_ptr<ATileMap> TileMap = GetWorld()->SpawnActor<ATileMap>("TM");
-	TileMap->SetTileSize(FINT(20, 20));
+	TileMap->SetTileSize(FINT(33, 18));
 
 	GetWorld()->SpawnActor<ATestMap>("TestMap");
 }
@@ -57,10 +60,10 @@ void ATestGameMode::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
-	if (true == UEngineInput::IsDown('O'))
+	/*if (true == UEngineInput::IsDown('O'))
 	{
 		GEngine->ChangeLevel("SelectLevel");
-	}
+	}*/
 }
 
 void ATestGameMode::LevelEnd(ULevel* _NextLevel)

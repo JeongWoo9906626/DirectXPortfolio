@@ -8,6 +8,7 @@
 #include <EngineCore/EngineEditorGUI.h>
 #include "MapEditorGUI.h"
 #include "TileMapEditorGameMode.h"
+#include "ContentsGUI.h"
 
 UContentsCore::UContentsCore()
 {
@@ -96,8 +97,8 @@ void UContentsCore::Initialize()
 	}
 
 	{
+		UEngineEditorGUI::CreateEditorWindow<ContentsGUI>("ContentsEditor");
 		UEngineEditorGUI::CreateEditorWindow<MapEditorGUI>("MapEditor");
-		//GEngine->CreateLevel<MapEditorGUI>("EditorGUI");
 	}
 
 	GEngine->CreateLevel<ATitleGameMode>("TitleLevel");
@@ -106,6 +107,6 @@ void UContentsCore::Initialize()
 	GEngine->CreateLevel<ATestGameMode>("TestLevel");
 	GEngine->CreateLevel<ATileMapEditorGameMode>("TileMapEditorGameMode");
 	//GEngine->ChangeLevel("TileMapEditorGameMode");
-	GEngine->ChangeLevel("TestLevel");
+	GEngine->ChangeLevel("TitleLevel");
 
 }

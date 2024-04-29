@@ -20,7 +20,7 @@ public:
 protected:
 	void Init() override;
 	void Tick(ULevel* _Level, float _DeltaTime) override;
-	void OnGui(ULevel* Level, float _Delta) override;
+	void OnGui(ULevel* Level, float _DeltaTime) override;
 
 	ATileMapEditorGameMode* GameMode = nullptr;
 	UEngineDirectory Dir;

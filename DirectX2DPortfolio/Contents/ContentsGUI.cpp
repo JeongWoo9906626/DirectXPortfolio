@@ -13,13 +13,24 @@ ContentsGUI::~ContentsGUI()
 
 void ContentsGUI::Init()
 {
+	Super::Init();
 }
 
-void ContentsGUI::OnGui(float _DeltaTime)
+void ContentsGUI::Tick(ULevel* _Level, float _DeltaTime)
 {
-	if (true == ImGui::Button("PlayLevel"))
+	Super::Tick(_Level, _DeltaTime); 
+}
+
+void ContentsGUI::OnGui(ULevel* Level, float _DeltaTime)
+{
+	if (true == ImGui::Button("TitleLevel"))
 	{
-		GEngine->ChangeLevel("PlayLevel");
+		GEngine->ChangeLevel("TitleLevel");
+	}
+
+	if (true == ImGui::Button("SelectLevel"))
+	{
+		GEngine->ChangeLevel("SelectLevel");
 	}
 
 	if (true == ImGui::Button("TestLevel"))
@@ -27,4 +38,8 @@ void ContentsGUI::OnGui(float _DeltaTime)
 		GEngine->ChangeLevel("TestLevel");
 	}
 
+	if (true == ImGui::Button("TileMapEditorGameMode"))
+	{
+		GEngine->ChangeLevel("TileMapEditorGameMode");
+	}
 }

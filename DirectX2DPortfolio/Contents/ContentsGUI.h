@@ -3,6 +3,7 @@
 
 class ContentsGUI : public UEngineEditorWindow
 {
+	GENERATED_BODY(UEngineEditorWindow)
 public:
 	ContentsGUI();
 	~ContentsGUI();
@@ -14,7 +15,8 @@ public:
 
 protected:
 	virtual void Init();
-	virtual void OnGui(float _DeltaTime);
+	void Tick(ULevel* _Level, float _DeltaTime) override;
+	void OnGui(ULevel* Level, float _DeltaTime) override;
 
 
 private:
