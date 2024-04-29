@@ -308,13 +308,18 @@ bool ATile::MoveEndCheck(FINT _TilePos)
 	}
 }
 
-FVector ATile::Lerp(float _CurMoveTime) const
+FVector ATile::Lerp(float _CurMoveTime) 
 {
+	FVector PrevVector = PrevPos.GetFINTToVector();
+	FVector NextVector = NextPos.GetFINTToVector();
 	float t = (MoveTime - _CurMoveTime) / MoveTime;
 
 	FVector CurPos;
-	CurPos.X = PrevPos.X * StaticHelper::TileSize * (1 - t) + NextPos.X * StaticHelper::TileSize * t;
-	CurPos.Y = PrevPos.Y * StaticHelper::TileSize * (1 - t) + NextPos.Y * StaticHelper::TileSize * t;
+	/*CurPos.X = PrevPos.X * StaticHelper::TileSize * (1 - t) + NextPos.X * StaticHelper::TileSize * t;
+	CurPos.Y = PrevPos.Y * StaticHelper::TileSize * (1 - t) + NextPos.Y * StaticHelper::TileSize * t;*/
+
+	CurPos.X = PrevVector.X * (1 - t) + NextVector.X * t;
+	CurPos.Y = PrevVector.Y * (1 - t) + NextVector.Y * t;
 
 	CurPos.X = static_cast<int>(std::lround(CurPos.X));
 	CurPos.Y = static_cast<int>(std::lround(CurPos.Y));

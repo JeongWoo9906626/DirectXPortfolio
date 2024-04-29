@@ -223,7 +223,7 @@ private:
 
 	std::stack<EActorDir> MoveHistory;
 
-	FVector Lerp(float _CurMoveTime) const;
+	FVector Lerp(float _CurMoveTime);
 
 	UTileInfo FirstStateInfo;
 };
