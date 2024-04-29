@@ -2,10 +2,12 @@
 
 enum class ERenderOrder
 {
+	BackGround,
 	Map,
 	Object,
 	Words,
 	Player,
+	Effect,
 	None,
 };
 

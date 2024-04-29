@@ -73,6 +73,12 @@
     <Filter Include="Level\TileMapEditLevel">
       <UniqueIdentifier>{beaa0ed5-9757-427b-b6e4-11cc30ca136d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Effect">
+      <UniqueIdentifier>{cadc8e95-aa31-47a4-8db1-cab39984c08d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Effect\Actor">
+      <UniqueIdentifier>{635caed2-91e0-444e-a344-cacd910d662c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ContentsCore.h">
@@ -201,6 +207,18 @@
     <ClInclude Include="TileMapEditorGameMode.h">
       <Filter>Level\TileMapEditLevel</Filter>
     </ClInclude>
+    <ClInclude Include="FadeInEffect.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="FadeOutEffect.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="FadeActor.h">
+      <Filter>Effect\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="BackGround.h">
+      <Filter>Level\TestLevel\TestMap</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp">
@@ -325,6 +343,18 @@
     </ClCompile>
     <ClCompile Include="TileMapEditorGameMode.cpp">
       <Filter>Level\TileMapEditLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="FadeInEffect.cpp">
+      <Filter>Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="FadeOutEffect.cpp">
+      <Filter>Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="FadeActor.cpp">
+      <Filter>Effect\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="BackGround.cpp">
+      <Filter>Level\TestLevel\TestMap</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

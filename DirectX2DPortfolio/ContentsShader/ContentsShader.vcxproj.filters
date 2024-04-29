@@ -1,2 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" />
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="FadeInOut">
+      <UniqueIdentifier>{d57aa0c8-27e7-46d9-ac2e-a58c9cd48ef9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="ContentsShaderBase.hlsli">
+      <Filter>FadeInOut</Filter>
+    </FxCompile>
+    <FxCompile Include="CircleFadeOutShader.fx">
+      <Filter>FadeInOut</Filter>
+    </FxCompile>
+    <FxCompile Include="CircleFadeInShader.fx">
+      <Filter>FadeInOut</Filter>
+    </FxCompile>
+  </ItemGroup>
+</Project>

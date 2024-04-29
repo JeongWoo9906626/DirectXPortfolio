@@ -101,6 +101,22 @@ void UContentsCore::Initialize()
 		UEngineEditorGUI::CreateEditorWindow<MapEditorGUI>("MapEditor");
 	}
 
+	{
+		UEngineDirectory Dir;
+		Dir.MoveToSearchChild("ContentsShader");
+		UEngineShader::AutoCompile(Dir);
+	}
+	{
+		std::shared_ptr<UEngineMaterial> Mat = UEngineMaterial::Create("CircleFadeIn");
+		Mat->SetPixelShader("CircleFadeInShader.fx");
+		Mat->SetVertexShader("CircleFadeInShader.fx");
+	}
+	{
+		std::shared_ptr<UEngineMaterial> Mat = UEngineMaterial::Create("CircleFadeOut");
+		Mat->SetPixelShader("CircleFadeOutShader.fx");
+		Mat->SetVertexShader("CircleFadeOutShader.fx");
+	}
+
 	GEngine->CreateLevel<ATitleGameMode>("TitleLevel");
 	GEngine->CreateLevel<AStageSelectGameMode>("SelectLevel");
 	GEngine->CreateLevel<APlayGameMode>("PlayLevel");
@@ -108,5 +124,4 @@ void UContentsCore::Initialize()
 	GEngine->CreateLevel<ATileMapEditorGameMode>("TileMapEditorGameMode");
 	//GEngine->ChangeLevel("TileMapEditorGameMode");
 	GEngine->ChangeLevel("TitleLevel");
-
 }

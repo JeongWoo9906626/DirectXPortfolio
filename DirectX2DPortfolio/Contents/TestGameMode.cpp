@@ -3,8 +3,9 @@
 #include "TestMap.h"
 #include <EngineCore/Camera.h>
 #include "StaticHelper.h"
-#include "TileMap.h"
+#include "FadeActor.h"
 
+#include "TileMap.h"
 #include "Tile.h"
 #include "Baba.h"
 #include "Selector.h"
@@ -27,6 +28,8 @@
 #include "Rock.h"
 #include "RockText.h"
 
+#include "BackGround.h"
+
 ATestGameMode::ATestGameMode()
 {
 	Dir.MoveParent();
@@ -47,7 +50,11 @@ void ATestGameMode::BeginPlay()
 	FVector WindowScale = GEngine->EngineWindow.GetWindowScale();
 	float X = WindowScale.X;
 	float Y = WindowScale.Y;
-	Camera->SetActorLocation(FVector(X / 2, Y / 2, -100.0f));
+	Camera->SetActorLocation(FVector(X / 2 - 120.0f, Y / 2 - 55.0f, -100.0f));
+
+	std::shared_ptr<ABackGround> BackGround = GetWorld()->SpawnActor<ABackGround>("BG");
+	BackGround->SetActorLocation(FVector(X / 2 - 120.0f	, Y / 2 - 55.0f, 100.0f));
+	//BackGround
 
 	LoadTileMap("Stage00");
 	std::shared_ptr<ATileMap> TileMap = GetWorld()->SpawnActor<ATileMap>("TM");
@@ -69,11 +76,20 @@ void ATestGameMode::Tick(float _DeltaTime)
 void ATestGameMode::LevelEnd(ULevel* _NextLevel)
 {
 	Super::LevelEnd(_NextLevel);
+
+
 }
 
 void ATestGameMode::LevelStart(ULevel* _PrevLevel)
 {
 	Super::LevelStart(_PrevLevel);
+
+	std::shared_ptr<AFadeActor> Fade = GetWorld()->SpawnActor<AFadeActor>("cover");
+	Fade->SetActorScale3D(FVector(1280, 720));
+	FVector WindowScale = GEngine->EngineWindow.GetWindowScale();
+	float X = WindowScale.X;
+	float Y = WindowScale.Y;
+	Fade->SetActorLocation({ X / 2, Y / 2, 400.0f });
 }
 
 void ATestGameMode::LoadTileMap(std::string _LevelName)
