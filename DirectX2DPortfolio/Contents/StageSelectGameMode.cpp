@@ -39,6 +39,7 @@ void AStageSelectGameMode::Tick(float _DeltaTime)
 	if (true == UEngineInput::IsDown('O'))
 	{
 		GEngine->ChangeLevel("TestLevel");
+		StaticHelper::StageName = "Stage00";
 	}
 }
 

@@ -3,8 +3,6 @@
 #include <EngineCore/SpriteRenderer.h>
 #include <EngineCore/DefaultSceneComponent.h>
 
-
-
 ATestMap::ATestMap()
 {
 	UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");

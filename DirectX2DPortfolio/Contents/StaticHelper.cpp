@@ -5,3 +5,4 @@
 std::map<FINT, std::list<std::shared_ptr<ATile>>> StaticHelper::CurTileMap;
 float StaticHelper::TileSize = 36.0f;
 ATileMap* StaticHelper::NewTileMap = nullptr;
+std::string StaticHelper::StageName = "";

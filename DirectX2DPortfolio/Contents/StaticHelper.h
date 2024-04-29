@@ -9,4 +9,5 @@ public:
 	static std::map<FINT, std::list<std::shared_ptr<ATile>>> CurTileMap;
 	static float TileSize;
 	static class ATileMap* NewTileMap;
+	static std::string StageName;
 };

@@ -25,6 +25,8 @@ protected:
 
 	void LoadTileMap(std::string _LevelName);
 
+	void ChangeStage(std::string _LevelName);
+
 private:
 	std::map<FINT, std::list<std::shared_ptr<ATile>>> TileMap;
 	UEngineDirectory Dir;

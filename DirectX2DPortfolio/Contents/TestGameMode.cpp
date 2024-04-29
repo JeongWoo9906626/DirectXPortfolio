@@ -52,32 +52,45 @@ void ATestGameMode::BeginPlay()
 	float Y = WindowScale.Y;
 	Camera->SetActorLocation(FVector(X / 2 - 120.0f, Y / 2 - 55.0f, -100.0f));
 
-	std::shared_ptr<ABackGround> BackGround = GetWorld()->SpawnActor<ABackGround>("BG");
+	//맵의 BackGround
+	std::shared_ptr<ABackGround> BackGround = GetWorld()->SpawnActor<ABackGround>("BackGround");
 	BackGround->SetActorLocation(FVector(X / 2 - 120.0f	, Y / 2 - 55.0f, 100.0f));
-	//BackGround
 
-	LoadTileMap("Stage00");
-	std::shared_ptr<ATileMap> TileMap = GetWorld()->SpawnActor<ATileMap>("TM");
+	LoadTileMap("Test");
+	std::shared_ptr<ATileMap> TileMap = GetWorld()->SpawnActor<ATileMap>("TileMap");
 	TileMap->SetTileSize(FINT(33, 18));
 
-	GetWorld()->SpawnActor<ATestMap>("TestMap");
+	// 뒷 배경
+	//GetWorld()->SpawnActor<ATestMap>("TestMap");
 }
 
 void ATestGameMode::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
-
-	/*if (true == UEngineInput::IsDown('O'))
-	{
-		GEngine->ChangeLevel("SelectLevel");
-	}*/
 }
 
 void ATestGameMode::LevelEnd(ULevel* _NextLevel)
 {
 	Super::LevelEnd(_NextLevel);
 
+	for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> CurTileMap : TileMap)
+	{
+		std::list<std::shared_ptr<ATile>> CurTileList = CurTileMap.second;
+		for (std::shared_ptr<ATile> CurTile : CurTileList)
+		{
+			CurTile.reset();
+		}
+	}
 
+	for (std::pair<FINT, std::list<std::shared_ptr<ATile>>> Pair : StaticHelper::CurTileMap)
+	{
+		std::list<std::shared_ptr<ATile>> CurTileList = Pair.second;
+		for (std::shared_ptr<ATile> CurTile : CurTileList)
+		{
+			CurTile->Destroy();
+		}
+		CurTileList.clear();
+	}
 }
 
 void ATestGameMode::LevelStart(ULevel* _PrevLevel)
@@ -90,6 +103,9 @@ void ATestGameMode::LevelStart(ULevel* _PrevLevel)
 	float X = WindowScale.X;
 	float Y = WindowScale.Y;
 	Fade->SetActorLocation({ X / 2, Y / 2, 400.0f });
+
+	// 다을레벨 이름 넘겨주기
+	LoadTileMap("Test");
 }
 
 void ATestGameMode::LoadTileMap(std::string _LevelName)
@@ -120,6 +136,13 @@ void ATestGameMode::LoadTileMap(std::string _LevelName)
 		ESpawnType SpawnType = static_cast<ESpawnType>(Type);
 		InLevelSpawnTileActor(Pos, SpawnType);
 	}
+}
+
+void ATestGameMode::ChangeStage(std::string _LevelName)
+{
+	LoadTileMap(StaticHelper::StageName);
+	std::shared_ptr<ATileMap> TileMap = GetWorld()->SpawnActor<ATileMap>("TM");
+	TileMap->SetTileSize(FINT(33, 18));
 }
 
 
