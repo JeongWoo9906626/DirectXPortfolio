@@ -1,9 +1,9 @@
 #pragma once
-#include "Tile.h"
+#include <EngineCore/Actor.h>
 
-class ASelector : public ATile
+class ASelector : public AActor
 {
-	GENERATED_BODY(ATile)
+	GENERATED_BODY(AActor)
 
 public:
 	ASelector();
@@ -18,6 +18,8 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
+	USpriteRenderer* Renderer = nullptr;
+	
 private:
 	
 };

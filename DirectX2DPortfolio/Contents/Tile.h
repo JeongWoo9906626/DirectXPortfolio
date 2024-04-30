@@ -211,19 +211,17 @@ protected:
 
 private:
 	UTileInfo Info;
+	UTileInfo FirstStateInfo;
 
 	FINT PrevPos = FINT();
 	FINT NextPos = FINT();
 
 	EActorDir PrevDir = EActorDir::None;
 
-	float MoveRange = 32.0f;
 	float MoveTime = 0.3f;
 	float CurMoveTime = 0.0f;
 
 	std::stack<EActorDir> MoveHistory;
 
 	FVector Lerp(float _CurMoveTime);
-
-	UTileInfo FirstStateInfo;
 };

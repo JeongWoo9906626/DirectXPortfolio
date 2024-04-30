@@ -4,6 +4,7 @@
 
 
 FINT FINT::MapSize = FINT();
+FINT FINT::SelectMapSize = FINT();
 
 const FINT FINT::LEFT = FINT(-1, 0);
 const FINT FINT::RIGHT = FINT(1, 0);

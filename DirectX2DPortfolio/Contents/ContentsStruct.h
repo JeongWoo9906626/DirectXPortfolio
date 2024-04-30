@@ -26,6 +26,7 @@ public:
 
 public:
 	static FINT MapSize;
+	static FINT SelectMapSize;
 
 	inline FINT GetTilePos()
 	{

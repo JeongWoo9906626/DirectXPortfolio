@@ -219,6 +219,12 @@
     <ClInclude Include="BackGround.h">
       <Filter>Level\TestLevel\TestMap</Filter>
     </ClInclude>
+    <ClInclude Include="SelectTileMap.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectTile.h">
+      <Filter>Actor\ActorBase</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp">
@@ -355,6 +361,12 @@
     </ClCompile>
     <ClCompile Include="BackGround.cpp">
       <Filter>Level\TestLevel\TestMap</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectTileMap.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectTile.cpp">
+      <Filter>Actor\ActorBase</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

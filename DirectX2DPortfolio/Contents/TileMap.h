@@ -25,6 +25,7 @@ public:
 	}
 
 	static std::map<FINT, std::list<ATile*>> Map;
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;

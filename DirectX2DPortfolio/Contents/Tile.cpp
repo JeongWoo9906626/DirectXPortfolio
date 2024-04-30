@@ -1,6 +1,5 @@
 #include "PreCompile.h"
 #include "Tile.h"
-#include <EngineCore/Renderer.h>
 #include <EngineCore/DefaultSceneComponent.h>
 #include <EngineCore/SpriteRenderer.h>
 #include "StaticHelper.h"

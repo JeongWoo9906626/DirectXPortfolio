@@ -60,6 +60,7 @@ enum class EInputType
 	U,
 	D,
 	Z,
+	Space,
 	None,
 };
 

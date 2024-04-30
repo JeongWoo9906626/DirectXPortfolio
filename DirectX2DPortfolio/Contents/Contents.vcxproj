@@ -231,6 +231,14 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="SelectTile.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SelectTileMap.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="TileMapEditorGameMode.h">
       <SubType>
       </SubType>
@@ -407,6 +415,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="RockText.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SelectTile.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SelectTileMap.cpp">
       <SubType>
       </SubType>
     </ClCompile>

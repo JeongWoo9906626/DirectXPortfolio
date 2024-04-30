@@ -6,7 +6,11 @@
 
 ASelector::ASelector()
 {
-	
+	UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
+	SetRoot(Root);
+
+	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
+	Renderer->SetupAttachment(Root);
 }
 
 ASelector::~ASelector()
@@ -21,52 +25,32 @@ void ASelector::BeginPlay()
 	Renderer->CreateAnimation("SelectMove", "Selector.png", 0.1f, true);
 	Renderer->ChangeAnimation("SelectMove");
 	Renderer->SetOrder(ERenderOrder::Player);
-
-	SetActorType(ETileType::Selector);
-	SetNounType(ENounType::None);
-
-	SetIsBlock(true);
-	SetIsPush(true);
-	SetIsController(true);
-	SetIsSink(false);
-	SetIsDefeat(false);
-
-	SetFirstStateInfo(GetTileInfo());
 }
 
 void ASelector::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
-	/*if (false == HasController)
+	if (true == UEngineInput::IsDown(VK_LEFT))
 	{
-		if (true == UEngineInput::IsDown('T'))
-		{
-			FINT CurTilePos = GetTilePosition();
-			std::list<std::shared_ptr<ATile>> TileActorList = StaticHelper::CurTileMap[CurTilePos];
-			for (std::shared_ptr<ATile> TileActor : TileActorList)
-			{
-				if (EActorType::Selector == TileActor->GetActorType())
-				{
-					TileActor->SetHasController(true);
-				}
-			}
-		}
+
 	}
-	else
+	if (true == UEngineInput::IsDown(VK_RIGHT))
 	{
-		if (true == UEngineInput::IsDown('T'))
-		{
-			FINT CurTilePos = GetTilePosition();
-			std::list<std::shared_ptr<ATile>> TileActorList = StaticHelper::CurTileMap[CurTilePos];
-			for (std::shared_ptr<ATile> TileActor : TileActorList)
-			{
-				if (EActorType::Selector == TileActor->GetActorType())
-				{
-					TileActor->SetHasController(false);
-				}
-			}
-		}
-	}*/
+
+	}
+	if (true == UEngineInput::IsDown(VK_UP))
+	{
+
+	}
+	if (true == UEngineInput::IsDown(VK_DOWN))
+	{
+
+	}
+	if (true == UEngineInput::IsDown(VK_SPACE))
+	{
+
+	}
+
 }
 
