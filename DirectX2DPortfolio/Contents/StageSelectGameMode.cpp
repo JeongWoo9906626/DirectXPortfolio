@@ -83,13 +83,13 @@ void AStageSelectGameMode::StageTileMapUpdate()
 			{
 				if (Up.Y < FINT::SelectMapSize.Y)
 				{
-					ASelectTile* UpCheck = StaticHelper::CurSelectTileMap[Current + Up];
+					ASelectTile* UpCheck = StaticHelper::CurSelectTileMap[Up];
 					UpCheck->SelectInfo.IsEnter = true;
 					UpCheck->ShowOn();
 				}
 				if (Right.X < FINT::SelectMapSize.X)
 				{
-					ASelectTile* RightCheck = StaticHelper::CurSelectTileMap[Current + Right];
+					ASelectTile* RightCheck = StaticHelper::CurSelectTileMap[Right];
 					RightCheck->SelectInfo.IsEnter = true;
 					RightCheck->ShowOn();
 				}
