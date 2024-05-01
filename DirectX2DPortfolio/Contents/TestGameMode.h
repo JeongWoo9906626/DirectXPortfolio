@@ -2,7 +2,7 @@
 #include <EngineCore/GameMode.h>
 #include "ContentsStruct.h"
 
-class ATile;
+class ATileMap;
 class ATestGameMode : public AGameMode
 {
 	GENERATED_BODY(AGameMode)
@@ -31,4 +31,5 @@ private:
 	UEngineDirectory Dir;
 	void InLevelSpawnTileActor(FINT _TilePos, ESpawnType _Type);
 	std::vector<int> TileData;
+	ATileMap* CurTileMap = nullptr;
 };

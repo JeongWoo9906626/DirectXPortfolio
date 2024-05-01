@@ -58,8 +58,8 @@ void ATestGameMode::BeginPlay()
 	BackGround->SetActorLocation(/*FVector(X / 2 - 120.0f, Y / 2 - 55.0f, 100.0f)*/FVector(0.0f, 0.0f, 100.0f));
 
 	//LoadTileMap("Stage00");
-	std::shared_ptr<ATileMap> TileMap = GetWorld()->SpawnActor<ATileMap>("TileMap");
-	TileMap->SetTileSize(FINT(33, 18));
+	CurTileMap = GetWorld()->SpawnActor<ATileMap>("TileMap").get();
+	CurTileMap->SetTileSize(FINT(33, 18));
 
 	// µÞ ¹è°æ
 	//GetWorld()->SpawnActor<ATestMap>("TestMap");
@@ -150,6 +150,24 @@ void ATestGameMode::LoadTileMap(std::string _LevelName)
 		ESpawnType SpawnType = static_cast<ESpawnType>(Type);
 		InLevelSpawnTileActor(Pos, SpawnType);
 	}
+
+	FINT CurTileSize = FINT();
+	int StageNumber = stoi(Str.substr(6, 1));
+	switch (StageNumber)
+	{
+	case 0:
+		CurTileSize = FINT(33, 18);
+		break;
+	case 1:
+		CurTileSize = FINT(24, 18);
+		break;
+	case 2:
+		CurTileSize = FINT(24, 18);
+		break;
+	default:
+		break;
+	}
+	CurTileMap->SetTileSize(CurTileSize);
 }
 
 void ATestGameMode::ChangeStage(std::string _LevelName)
