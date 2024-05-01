@@ -26,5 +26,4 @@ protected:
 	void StageChangeCheck();
 
 private:
-	
 };

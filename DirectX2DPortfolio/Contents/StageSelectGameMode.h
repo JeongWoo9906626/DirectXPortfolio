@@ -1,6 +1,8 @@
 #pragma once
 #include <EngineCore/GameMode.h>
 
+class ASelector;
+class ASelectTileMap;
 class AStageSelectGameMode : public AGameMode
 {
 	GENERATED_BODY(AGameMode)
@@ -21,6 +23,11 @@ protected:
 	void LevelEnd(ULevel* _NextLevel) override;
 	void LevelStart(ULevel* _PrevLevel) override;
 
-private:
+	void SetSelectTileMapSize(FINT _SelectTileMapSize);
 
+	std::string FINTToStageName(FINT _MapPosition);
+
+private:
+	ASelectTileMap* SelectTileMap = nullptr;
+	ASelector* Selector = nullptr;
 };

@@ -8,6 +8,7 @@ public:
 	bool IsEnter = false;
 	bool IsPrevStageClear = false;
 	bool IsStageClear = false;
+	std::string Stage = "";
 };
 
 class USpriteRenderer;

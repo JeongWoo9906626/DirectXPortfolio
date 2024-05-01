@@ -46,6 +46,7 @@ public:
 	}
 
 	FVector GetFINTToVector();
+	FVector GetSelectFINTToVector();
 
 	inline FINT& operator= (const FINT& _Other)
 	{

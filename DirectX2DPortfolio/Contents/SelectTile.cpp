@@ -37,14 +37,27 @@ void ASelectTile::SettingAnimation()
 	std::vector<float> AnimationInterIndex = { 0.1f, 0.1f, 0.1f };
 
 	int i = 0;
+	int Index = -1;
+	std::vector<int> AnimationOnFrameIndex;
+	std::vector<int> AnimationOffFrameIndex;
+
 	while (i < 10)
 	{
-		int Index = i;
+		Index += 1; 
 		std::string Number = std::to_string(i);
 
-		std::vector<int> AnimationOnFrameIndex = { Index, Index + 10, Index + 20 };
-		Index++;
-		std::vector<int> AnimationOffFrameIndex = { Index, Index + 10, Index + 20 };
+		if (i < 5)
+		{
+			AnimationOnFrameIndex = { Index, Index + 10, Index + 20 };
+			Index++;
+			AnimationOffFrameIndex = { Index, Index + 10, Index + 20 };
+		}
+		else
+		{
+			AnimationOnFrameIndex = { Index + 20, Index + 30, Index + 40 };
+			Index++;
+			AnimationOffFrameIndex = { Index + 20, Index + 30, Index + 40 };
+		}
 
 		Renderer->CreateAnimation(Number + "On", "Number.png", AnimationInterIndex, AnimationOnFrameIndex, true);
 		Renderer->CreateAnimation(Number + "Off", "Number.png", AnimationInterIndex, AnimationOffFrameIndex, true);
