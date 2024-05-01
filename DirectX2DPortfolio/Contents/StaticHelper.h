@@ -11,4 +11,5 @@ public:
 	static float TileSize;
 	static std::string StageName;
 	static bool IsStageChange;
+	static class ASelector* CurSelector;
 };

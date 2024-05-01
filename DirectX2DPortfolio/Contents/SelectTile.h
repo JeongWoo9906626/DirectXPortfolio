@@ -27,6 +27,7 @@ public:
 
 	void SettingAnimation();
 	void SetAnimation(int _StageNumber, bool _IsClear);
+	void ShowOn();
 
 	SelectTileInfo SelectInfo;
 protected:

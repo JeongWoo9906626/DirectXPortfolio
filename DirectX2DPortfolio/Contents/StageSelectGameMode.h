@@ -24,8 +24,7 @@ protected:
 	void LevelStart(ULevel* _PrevLevel) override;
 
 	void SetSelectTileMapSize(FINT _SelectTileMapSize);
-
-	std::string FINTToStageName(FINT _MapPosition);
+	void StageTileMapUpdate();
 
 private:
 	ASelectTileMap* SelectTileMap = nullptr;

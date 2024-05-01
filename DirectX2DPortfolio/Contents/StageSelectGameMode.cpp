@@ -46,22 +46,7 @@ void AStageSelectGameMode::Tick(float _DeltaTime)
 		StaticHelper::IsStageChange = false;
 	}
 
-	/*if (true == UEngineInput::IsDown(VK_SPACE))
-	{
-		GEngine->ChangeLevel("PlayLevel");
-	}*/
-
-	/*if (true == UEngineInput::IsDown('Q'))
-	{
-		StaticHelper::StageName = "Stage00";
-		GEngine->ChangeLevel("TestLevel");
-	}
-
-	if (true == UEngineInput::IsDown('E'))
-	{
-		StaticHelper::StageName = "Test";
-		GEngine->ChangeLevel("TestLevel");
-	}*/
+	StageTileMapUpdate();
 }
 
 void AStageSelectGameMode::LevelEnd(ULevel* _NextLevel)
@@ -80,7 +65,36 @@ void AStageSelectGameMode::SetSelectTileMapSize(FINT _SelectTileMapSize)
 	FINT::SelectMapSize = _SelectTileMapSize;
 }
 
-std::string AStageSelectGameMode::FINTToStageName(FINT _MapPosition)
+void AStageSelectGameMode::StageTileMapUpdate()
 {
-	return std::string();
+	FINT::SelectMapSize;
+	StaticHelper::CurSelectTileMap;
+
+	for (int X = 0; X < FINT::SelectMapSize.X; X++)
+	{
+		for (int Y = 0; Y < FINT::SelectMapSize.Y; Y++)
+		{
+			FINT Current = FINT(X, Y);
+			FINT Up = Current + FINT(0, 1);
+			FINT Right = Current + FINT(1, 0);
+
+			ASelectTile* CurCheck= StaticHelper::CurSelectTileMap[Current];
+			if (true == CurCheck->SelectInfo.IsStageClear)
+			{
+				if (Up.Y < FINT::SelectMapSize.Y)
+				{
+					ASelectTile* UpCheck = StaticHelper::CurSelectTileMap[Current + Up];
+					UpCheck->SelectInfo.IsEnter = true;
+					UpCheck->ShowOn();
+				}
+				if (Right.X < FINT::SelectMapSize.X)
+				{
+					ASelectTile* RightCheck = StaticHelper::CurSelectTileMap[Current + Right];
+					RightCheck->SelectInfo.IsEnter = true;
+					RightCheck->ShowOn();
+				}
+			}
+		}
+	}
 }
+

@@ -29,6 +29,8 @@ void ASelector::BeginPlay()
 
 	FVector StartPos = FINT(0, 0).GetSelectFINTToVector();
 	SetActorLocation(StartPos);
+
+	StaticHelper::CurSelector = this;
 }
 
 void ASelector::Tick(float _DeltaTime)
@@ -37,6 +39,7 @@ void ASelector::Tick(float _DeltaTime)
 
 	if (true == StaticHelper::IsStageChange)
 	{
+		StaticHelper::CurSelector = this;
 		return;
 	}
 
@@ -54,6 +57,7 @@ void ASelector::Tick(float _DeltaTime)
 				IsInput = false;
 				CurMoveTime = 0.0f;
 				TilePosition = NextPos;
+				StaticHelper::CurSelector = this;
 				return;
 			}
 

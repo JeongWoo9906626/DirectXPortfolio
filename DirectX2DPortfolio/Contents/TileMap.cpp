@@ -24,6 +24,7 @@
 #include "WinText.h"
 #include "Rock.h"
 #include "RockText.h"
+#include "SelectTile.h"
 
 std::map<FINT, std::list<ATile*>> ATileMap::Map;
 
@@ -236,6 +237,7 @@ void ATileMap::Tick(float _DeltaTime)
 	{
 		GameWin = false;
 		GEngine->ChangeLevel("SelectLevel");
+		StaticHelper::CurSelectTileMap[StaticHelper::CurSelector->GetTilePosition()]->SelectInfo.IsStageClear = true;
 		return;
 	}
 

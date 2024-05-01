@@ -32,15 +32,16 @@ void ASelectTileMap::BeginPlay()
 	SelectMap[FINT(0, 0)]->SetActorLocation(FINT(0, 0).GetSelectFINTToVector());
 	SelectMap[FINT(0, 0)]->SelectInfo.IsEnter = true;
 	SelectMap[FINT(0, 0)]->SelectInfo.Stage = "Stage0" + std::to_string(0);
+	SelectMap[FINT(0, 0)]->ShowOn();
 
 	SelectMap[FINT(0, 1)]->SetAnimation(1, false);
 	SelectMap[FINT(0, 1)]->SetActorLocation(FINT(0, 1).GetSelectFINTToVector());
-	SelectMap[FINT(0, 1)]->SelectInfo.IsEnter = true;
+	SelectMap[FINT(0, 1)]->SelectInfo.IsEnter = false;
 	SelectMap[FINT(0, 1)]->SelectInfo.Stage = "Stage0" + std::to_string(1);
 	
 	SelectMap[FINT(1, 0)]->SetAnimation(2, false);
 	SelectMap[FINT(1, 0)]->SetActorLocation(FINT(1, 0).GetSelectFINTToVector());
-	SelectMap[FINT(1, 0)]->SelectInfo.IsEnter = true;
+	SelectMap[FINT(1, 0)]->SelectInfo.IsEnter = false;
 	SelectMap[FINT(1, 0)]->SelectInfo.Stage = "Stage0" + std::to_string(2);
 	
 	SelectMap[FINT(1, 1)]->SetAnimation(3, false);

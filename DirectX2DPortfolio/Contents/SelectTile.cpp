@@ -61,7 +61,7 @@ void ASelectTile::SettingAnimation()
 
 		Renderer->CreateAnimation(Number + "On", "Number.png", AnimationInterIndex, AnimationOnFrameIndex, true);
 		Renderer->CreateAnimation(Number + "Off", "Number.png", AnimationInterIndex, AnimationOffFrameIndex, true);
-
+		Renderer->SetActive(false);
 		i++;
 	}
 }
@@ -80,4 +80,9 @@ void ASelectTile::SetAnimation(int _StageNumber, bool _IsClear)
 	}
 
 	Renderer->ChangeAnimation(StageNumber + IsClear);
+}
+
+void ASelectTile::ShowOn()
+{
+	Renderer->SetActive(true);
 }
