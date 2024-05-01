@@ -22,5 +22,5 @@ protected:
 	USpriteRenderer* Renderer;
 
 private:
-
+	bool IsIn = false;
 };

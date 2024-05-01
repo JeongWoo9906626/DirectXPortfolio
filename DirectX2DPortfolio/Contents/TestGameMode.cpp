@@ -30,6 +30,9 @@
 
 #include "BackGround.h"
 
+#include "FadeOutEffect.h"
+#include "FadeInEffect.h"
+
 ATestGameMode::ATestGameMode()
 {
 	Dir.MoveParent();
@@ -74,6 +77,9 @@ void ATestGameMode::LevelEnd(ULevel* _NextLevel)
 {
 	Super::LevelEnd(_NextLevel);
 
+	FadeOut = GetWorld()->GetLastTarget()->AddEffect<UFadeOutEffect>();
+	FadeOut.get()->EffectON();
+
 	{
 		for (std::pair<FINT, std::list<ATile*>> Iterator : StaticHelper::CurTileMap)
 		{
@@ -105,15 +111,10 @@ void ATestGameMode::LevelStart(ULevel* _PrevLevel)
 {
 	Super::LevelStart(_PrevLevel);
 
-	std::shared_ptr<AFadeActor> Fade = GetWorld()->SpawnActor<AFadeActor>("Fade");
-	Fade->SetActorScale3D(FVector(1280, 720));
-	FVector WindowScale = GEngine->EngineWindow.GetWindowScale();
-	float X = WindowScale.X;
-	float Y = WindowScale.Y;
-	
+	FadeIn = GetWorld()->GetLastTarget()->AddEffect<UFadeInEffect>();
+	FadeIn.get()->EffectON();
 
 	// 다을레벨 이름 넘겨주기
-	
 	LoadTileMap(StaticHelper::StageName);
 }
 

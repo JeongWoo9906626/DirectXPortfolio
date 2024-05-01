@@ -3,6 +3,8 @@
 #include "ContentsStruct.h"
 
 class ATileMap;
+class UFadeOutEffect;
+class UFadeInEffect;
 class ATestGameMode : public AGameMode
 {
 	GENERATED_BODY(AGameMode)
@@ -32,4 +34,7 @@ private:
 	void InLevelSpawnTileActor(FINT _TilePos, ESpawnType _Type);
 	std::vector<int> TileData;
 	ATileMap* CurTileMap = nullptr;
+
+	std::shared_ptr<UFadeOutEffect> FadeOut;
+	std::shared_ptr<UFadeInEffect> FadeIn;
 };
