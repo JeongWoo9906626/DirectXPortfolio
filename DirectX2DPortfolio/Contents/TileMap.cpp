@@ -548,34 +548,52 @@ void ATileMap::SinkCheck(FINT _TilePosition, ETileType _TileType)
 	{
 		return;
 	}
-	for (ATile* Tile : TileList)
+	else if (2 == TileList.size())
 	{
-		if (
-			ETileType::LWord == Tile->GetTileType() ||
-			ETileType::RWord == Tile->GetTileType() ||
-			ETileType::Is == Tile->GetTileType() ||
-			ETileType::And == Tile->GetTileType()
-			)
+		for (ATile* Tile : TileList)
 		{
-			Check = false; 
-			continue;
-		}
-		if (_TileType != Tile->GetTileType())
-		{
-			Check = true; 
-			Tile->SetIsController(false);
-			Tile->RenderOff();
-		}
+			if (
+				ETileType::LWord == Tile->GetTileType() ||
+				ETileType::RWord == Tile->GetTileType() ||
+				ETileType::Is == Tile->GetTileType() ||
+				ETileType::And == Tile->GetTileType()
+				)
+			{
+				Check = false;
+				continue;
+			}
+			if (_TileType != Tile->GetTileType())
+			{
+				Check = true;
+				Tile->SetIsController(false);
+				Tile->SetIsBlock(false);
+				Tile->SetIsPush(false);
+				Tile->RenderOff();
+			}
 
-		if (_TileType == Tile->GetTileType())
+			if (_TileType == Tile->GetTileType())
+			{
+				SinkTile = Tile;
+			}
+		}
+		if (true == Check)
 		{
-			SinkTile = Tile;
+			SinkTile->SetIsController(false);
+			SinkTile->RenderOff();
 		}
 	}
-	if (true == Check)
+	else
 	{
-		SinkTile->SetIsController(false);
-		SinkTile->RenderOff();
+		for (ATile* Tile : TileList)
+		{
+			if (false == Tile->IsRender)
+			{
+				Tile->SetIsController(false);
+				Tile->SetIsBlock(false);
+				Tile->SetIsPush(false);
+				Tile->RenderOff();
+			}
+		}
 	}
 }
 
