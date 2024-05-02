@@ -52,6 +52,7 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 			if (ETileType::LWord == TempLeftTileActor->GetTileType())
 			{
 				IsCharNoun = true;
+				break;
 			}
 		}
 	}
@@ -66,6 +67,7 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 			if (ETileType::RWord == TempRightTileActor->GetTileType())
 			{
 				IsNoun = true;
+				break;
 			}
 		}
 	}
@@ -184,6 +186,7 @@ bool AConnectingTile::VerticalCheck(FINT _TilePos)
 			if (ETileType::LWord == UpTileActor->GetTileType())
 			{
 				IsCharNoun = true;
+				break;
 			}
 		}
 	}
@@ -197,6 +200,7 @@ bool AConnectingTile::VerticalCheck(FINT _TilePos)
 			if (ETileType::RWord == DownTileActor->GetTileType())
 			{
 				IsNoun = true;
+				break;
 			}
 		}
 	}

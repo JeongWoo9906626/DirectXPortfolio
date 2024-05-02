@@ -566,17 +566,6 @@ void ATileMap::SinkCheck(FINT _TilePosition, ETileType _TileType)
 			Tile->SetIsController(false);
 			Tile->RenderOff();
 		}
-		/*if (
-			ETileType::Baba == Tile->GetTileType() ||
-			ETileType::Wall == Tile->GetTileType() ||
-			ETileType::Rock == Tile->GetTileType() ||
-			ETileType::Flag == Tile->GetTileType()
-			)
-		{
-			Check = true;
-			Tile->SetIsController(false);
-			Tile->RenderOff();
-		}*/
 
 		if (_TileType == Tile->GetTileType())
 		{
