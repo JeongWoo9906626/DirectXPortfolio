@@ -242,13 +242,14 @@ void ATileMap::Tick(float _DeltaTime)
 		{
 			if (false == AnimationEndInit)
 			{
-				std::shared_ptr<UFadeOutEffect> FadeOut = GetWorld()->GetLastTarget()->AddEffect<UFadeOutEffect>();
+				FadeOut = GetWorld()->GetLastTarget()->AddEffect<UFadeOutEffect>();
 				FadeOut->ResetTime();
 				FadeOut.get()->Active(true);
 				AnimationEndInit = true;
 			}
 			while (CurEndEffectTime >= EndEffectTime)
 			{
+				FadeOut.get()->Active(false);
 				AnimationEnd = true;
 				AnimationEndInit = false;
 				CurEndEffectTime = 0.0f;

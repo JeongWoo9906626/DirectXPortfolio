@@ -5,6 +5,7 @@
 #include "StaticHelper.h"
 
 class ATile;
+class UFadeOutEffect;
 class ATileMap : public AActor
 {
 	GENERATED_BODY(AActor)
@@ -61,5 +62,6 @@ private:
 
 	bool AnimationEnd = false;
 	bool AnimationEndInit = false;
+	std::shared_ptr<UFadeOutEffect> FadeOut;
 };
 
