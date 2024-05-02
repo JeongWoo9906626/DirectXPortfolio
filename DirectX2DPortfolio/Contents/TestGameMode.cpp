@@ -3,7 +3,6 @@
 #include "TestMap.h"
 #include <EngineCore/Camera.h>
 #include "StaticHelper.h"
-#include "FadeActor.h"
 
 #include "TileMap.h"
 #include "Tile.h"
@@ -78,7 +77,7 @@ void ATestGameMode::LevelEnd(ULevel* _NextLevel)
 	Super::LevelEnd(_NextLevel);
 
 	FadeOut = GetWorld()->GetLastTarget()->AddEffect<UFadeOutEffect>();
-	FadeOut.get()->EffectON();
+	FadeOut.get()->Active(true);
 
 	{
 		for (std::pair<FINT, std::list<ATile*>> Iterator : StaticHelper::CurTileMap)
@@ -112,7 +111,7 @@ void ATestGameMode::LevelStart(ULevel* _PrevLevel)
 	Super::LevelStart(_PrevLevel);
 
 	FadeIn = GetWorld()->GetLastTarget()->AddEffect<UFadeInEffect>();
-	FadeIn.get()->EffectON();
+	FadeIn.get()->Active(true);
 
 	// 다을레벨 이름 넘겨주기
 	LoadTileMap(StaticHelper::StageName);
@@ -134,24 +133,6 @@ void ATestGameMode::LoadTileMap(std::string _LevelName)
 		TileData.clear();
 	}
 
-	File.Open(EIOOpenMode::Read, EIODataType::Binary);
-	File.Load(Ser);
-	Ser >> TileData;
-	//MessageOn = true;
-	//str = "File Load Success";
-
-	int Index = 0;
-	while (TileData.size() > Index)
-	{
-		int X = TileData[Index++];
-		int Y = TileData[Index++];
-		int Type = TileData[Index++];
-
-		FINT Pos = { X, Y };
-		ESpawnType SpawnType = static_cast<ESpawnType>(Type);
-		InLevelSpawnTileActor(Pos, SpawnType);
-	}
-
 	FINT CurTileSize = FINT();
 	int StageNumber = stoi(Str.substr(6, 1));
 	switch (StageNumber)
@@ -169,6 +150,24 @@ void ATestGameMode::LoadTileMap(std::string _LevelName)
 		break;
 	}
 	CurTileMap->SetTileSize(CurTileSize);
+
+	File.Open(EIOOpenMode::Read, EIODataType::Binary);
+	File.Load(Ser);
+	Ser >> TileData;
+	//MessageOn = true;
+	//str = "File Load Success";
+
+	int Index = 0;
+	while (TileData.size() > Index)
+	{
+		int X = TileData[Index++];
+		int Y = TileData[Index++];
+		int Type = TileData[Index++];
+
+		FINT Pos = { X, Y };
+		ESpawnType SpawnType = static_cast<ESpawnType>(Type);
+		InLevelSpawnTileActor(Pos, SpawnType);
+	}
 }
 
 void ATestGameMode::ChangeStage(std::string _LevelName)

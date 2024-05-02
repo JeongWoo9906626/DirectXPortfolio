@@ -191,10 +191,6 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="EnumHelper.h" />
-    <ClInclude Include="FadeActor.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="FadeInEffect.h">
       <SubType>
       </SubType>
@@ -375,10 +371,6 @@
     </ClCompile>
     <ClCompile Include="ContentsStruct.cpp" />
     <ClCompile Include="DefeatText.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="FadeActor.cpp">
       <SubType>
       </SubType>
     </ClCompile>

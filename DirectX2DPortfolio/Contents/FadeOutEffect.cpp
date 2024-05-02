@@ -8,6 +8,10 @@ UFadeOutEffect::UFadeOutEffect()
 
 UFadeOutEffect::~UFadeOutEffect()
 {
+}
+
+void UFadeOutEffect::Init()
+{
 	SetMaterial("CircleFadeOUT");
 
 	Target = UEngineRenderTarget::Create();
