@@ -595,6 +595,10 @@ void ATileMap::WinCheck(FINT _TilePosition)
 	std::list<ATile*> TileList = StaticHelper::CurTileMap[_TilePosition];
 	if (1 == TileList.size())
 	{
+		if (true == TileList.front()->GetIsController())
+		{
+			GameWin = true;
+		}
 		return;
 	}
 
