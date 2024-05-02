@@ -37,6 +37,7 @@ ATileMapEditorGameMode::~ATileMapEditorGameMode()
 
 void ATileMapEditorGameMode::SpawnTileActor(FINT _TilePos, ESpawnType _Type)
 {
+	FINT::MapSize = FINT(33, 18);
 	switch (_Type)
 	{
 	case ESpawnType::Baba:
