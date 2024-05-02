@@ -55,5 +55,11 @@ private:
 
 	bool BeforeResult = false;
 	bool GameWin = false;
+	
+	float CurEndEffectTime = 0.0f;
+	float EndEffectTime = 2.0f;
+
+	bool AnimationEnd = false;
+	bool AnimationEndInit = false;
 };
 

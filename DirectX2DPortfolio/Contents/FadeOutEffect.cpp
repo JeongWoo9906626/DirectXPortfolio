@@ -12,7 +12,7 @@ UFadeOutEffect::~UFadeOutEffect()
 
 void UFadeOutEffect::Init()
 {
-	SetMaterial("CircleFadeOUT");
+	SetMaterial("CircleFadeOut");
 
 	Target = UEngineRenderTarget::Create();
 	// 내가 바라보는 애들을 모아서 그릴수 있는 랜더타겟을 만들고 싶어.
@@ -29,5 +29,4 @@ void UFadeOutEffect::Effect(std::shared_ptr<UEngineRenderTarget> EffectTarget)
 	Resources->SettingTexture("Image", Target->GetTexture(), "POINT");
 
 	Render(0.0f);
-
 }

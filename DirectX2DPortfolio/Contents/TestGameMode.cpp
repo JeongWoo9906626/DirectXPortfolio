@@ -29,7 +29,6 @@
 
 #include "BackGround.h"
 
-#include "FadeOutEffect.h"
 #include "FadeInEffect.h"
 
 ATestGameMode::ATestGameMode()
@@ -76,9 +75,6 @@ void ATestGameMode::LevelEnd(ULevel* _NextLevel)
 {
 	Super::LevelEnd(_NextLevel);
 
-	FadeOut = GetWorld()->GetLastTarget()->AddEffect<UFadeOutEffect>();
-	FadeOut.get()->Active(true);
-
 	{
 		for (std::pair<FINT, std::list<ATile*>> Iterator : StaticHelper::CurTileMap)
 		{
@@ -109,8 +105,9 @@ void ATestGameMode::LevelEnd(ULevel* _NextLevel)
 void ATestGameMode::LevelStart(ULevel* _PrevLevel)
 {
 	Super::LevelStart(_PrevLevel);
-
-	FadeIn = GetWorld()->GetLastTarget()->AddEffect<UFadeInEffect>();
+	
+	std::shared_ptr<UFadeInEffect> FadeIn = GetWorld()->GetLastTarget()->AddEffect<UFadeInEffect>();
+	FadeIn->ResetTime();
 	FadeIn.get()->Active(true);
 
 	// 다을레벨 이름 넘겨주기

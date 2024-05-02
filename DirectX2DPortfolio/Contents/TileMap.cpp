@@ -25,6 +25,8 @@
 #include "Rock.h"
 #include "RockText.h"
 #include "SelectTile.h"
+#include "FadeOutEffect.h"
+
 
 std::map<FINT, std::list<ATile*>> ATileMap::Map;
 
@@ -233,12 +235,35 @@ void ATileMap::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
+
 	if (true == GameWin)
 	{
-		GameWin = false;
-		GEngine->ChangeLevel("SelectLevel");
-		StaticHelper::CurSelectTileMap[StaticHelper::CurSelector->GetTilePosition()]->SelectInfo.IsStageClear = true;
-		return;
+		if (false == AnimationEnd)
+		{
+			if (false == AnimationEndInit)
+			{
+				std::shared_ptr<UFadeOutEffect> FadeOut = GetWorld()->GetLastTarget()->AddEffect<UFadeOutEffect>();
+				FadeOut->ResetTime();
+				FadeOut.get()->Active(true);
+				AnimationEndInit = true;
+			}
+			while (CurEndEffectTime >= EndEffectTime)
+			{
+				AnimationEnd = true;
+				AnimationEndInit = false;
+				CurEndEffectTime = 0.0f;
+				return;
+			}
+			CurEndEffectTime += _DeltaTime;
+		}
+		else
+		{
+			AnimationEnd = false;
+			GameWin = false;
+			GEngine->ChangeLevel("SelectLevel");
+			StaticHelper::CurSelectTileMap[StaticHelper::CurSelector->GetTilePosition()]->SelectInfo.IsStageClear = true;
+			return;
+		}
 	}
 
 

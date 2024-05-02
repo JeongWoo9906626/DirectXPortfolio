@@ -34,7 +34,4 @@ private:
 	void InLevelSpawnTileActor(FINT _TilePos, ESpawnType _Type);
 	std::vector<int> TileData;
 	ATileMap* CurTileMap = nullptr;
-
-	std::shared_ptr<UFadeOutEffect> FadeOut;
-	std::shared_ptr<UFadeInEffect> FadeIn;
 };
