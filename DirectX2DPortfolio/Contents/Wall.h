@@ -1,9 +1,9 @@
 #pragma once
-#include "Tile.h"
+#include "NoAnimTile.h"
 
-class AWall : public ATile
+class AWall : public ANoAnimTile
 {
-	GENERATED_BODY(ATile)
+	GENERATED_BODY(ANoAnimTile)
 
 public:
 	AWall();
