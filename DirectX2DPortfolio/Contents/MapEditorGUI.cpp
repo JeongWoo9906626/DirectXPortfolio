@@ -156,6 +156,34 @@ void MapEditorGUI::OnGui(ULevel* _Level, float _DeltaTime)
 
 		SpawnTile(TilePosX, TilePosY, SpawnType);
 	}
+	ImGui::SameLine();
+	if (true == ImGui::Button("Grass"))
+	{
+		int TilePosX = TilePos[0];
+		int TilePosY = TilePos[1];
+		ESpawnType SpawnType = ESpawnType::Grass;
+		int InsertNumber = static_cast<int>(SpawnType);
+
+		TilePositionData.push_back(TilePosX);
+		TilePositionData.push_back(TilePosY);
+		TilePositionData.push_back(InsertNumber);
+
+		SpawnTile(TilePosX, TilePosY, SpawnType);
+	}
+	ImGui::SameLine();
+	if (true == ImGui::Button("MapTile"))
+	{
+		int TilePosX = TilePos[0];
+		int TilePosY = TilePos[1];
+		ESpawnType SpawnType = ESpawnType::MapTile;
+		int InsertNumber = static_cast<int>(SpawnType);
+
+		TilePositionData.push_back(TilePosX);
+		TilePositionData.push_back(TilePosY);
+		TilePositionData.push_back(InsertNumber);
+
+		SpawnTile(TilePosX, TilePosY, SpawnType);
+	}
 	// LeftNoun GUI
 	ImGui::Text("\n< LeftNoun >");
 	if (true == ImGui::Button("BabaText"))
@@ -247,6 +275,34 @@ void MapEditorGUI::OnGui(ULevel* _Level, float _DeltaTime)
 		int TilePosX = TilePos[0];
 		int TilePosY = TilePos[1];
 		ESpawnType SpawnType = ESpawnType::SkullText;
+		int InsertNumber = static_cast<int>(SpawnType);
+
+		TilePositionData.push_back(TilePosX);
+		TilePositionData.push_back(TilePosY);
+		TilePositionData.push_back(InsertNumber);
+
+		SpawnTile(TilePosX, TilePosY, SpawnType);
+	}
+	ImGui::SameLine();
+	if (true == ImGui::Button("GrassText"))
+	{
+		int TilePosX = TilePos[0];
+		int TilePosY = TilePos[1];
+		ESpawnType SpawnType = ESpawnType::GrassText;
+		int InsertNumber = static_cast<int>(SpawnType);
+
+		TilePositionData.push_back(TilePosX);
+		TilePositionData.push_back(TilePosY);
+		TilePositionData.push_back(InsertNumber);
+
+		SpawnTile(TilePosX, TilePosY, SpawnType);
+	}
+	ImGui::SameLine();
+	if (true == ImGui::Button("MapTileText"))
+	{
+		int TilePosX = TilePos[0];
+		int TilePosY = TilePos[1];
+		ESpawnType SpawnType = ESpawnType::MapTileText;
 		int InsertNumber = static_cast<int>(SpawnType);
 
 		TilePositionData.push_back(TilePosX);

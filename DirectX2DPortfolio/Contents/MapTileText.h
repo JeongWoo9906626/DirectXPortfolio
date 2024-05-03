@@ -1,18 +1,18 @@
 #pragma once
 #include "Tile.h"
 
-class MapTileText : public ATile
+class AMapTileText : public ATile
 {
 	GENERATED_BODY(ATile)
 
 public:
-	MapTileText();
-	~MapTileText();
+	AMapTileText();
+	~AMapTileText();
 
-	MapTileText(const MapTileText& _Other) = delete;
-	MapTileText(MapTileText&& _Other) noexcept = delete;
-	MapTileText& operator=(const MapTileText& _Other) = delete;
-	MapTileText& operator=(MapTileText&& _Other) noexcept = delete;
+	AMapTileText(const AMapTileText& _Other) = delete;
+	AMapTileText(AMapTileText&& _Other) noexcept = delete;
+	AMapTileText& operator=(const AMapTileText& _Other) = delete;
+	AMapTileText& operator=(AMapTileText&& _Other) noexcept = delete;
 
 protected:
 	void BeginPlay() override;

@@ -114,6 +114,12 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 		case ENounType::SkullText:
 			CheckActorType = ETileType::Skull;
 			break;
+		case ENounType::GrassText:
+			CheckActorType = ETileType::Grass;
+			break;
+		case ENounType::MapTileText:
+			CheckActorType = ETileType::MapTile;
+			break;
 		case ENounType::None:
 			break;
 		}
@@ -262,6 +268,12 @@ bool AConnectingTile::VerticalCheck(FINT _TilePos)
 			break;
 		case ENounType::SkullText:
 			CheckActorType = ETileType::Skull;
+			break;
+		case ENounType::GrassText:
+			CheckActorType = ETileType::Grass;
+			break;
+		case ENounType::MapTileText:
+			CheckActorType = ETileType::MapTile;
 			break;
 		case ENounType::None:
 			break;

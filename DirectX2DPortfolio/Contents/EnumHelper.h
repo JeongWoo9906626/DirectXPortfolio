@@ -153,6 +153,10 @@ enum class ESpawnType
 	SkullText,
 	HotText,
 	MeltText,
+	Grass,
+	GrassText,
+	MapTile,
+	MapTileText,
 
 	None,
 };

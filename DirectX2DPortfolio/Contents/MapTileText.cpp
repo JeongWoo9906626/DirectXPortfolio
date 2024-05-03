@@ -3,17 +3,17 @@
 #include <EngineCore/DefaultSceneComponent.h>	
 #include <EngineCore/SpriteRenderer.h>
 
-MapTileText::MapTileText()
+AMapTileText::AMapTileText()
 {
 
 }
 
-MapTileText::~MapTileText()
+AMapTileText::~AMapTileText()
 {
 
 }
 
-void MapTileText::BeginPlay()
+void AMapTileText::BeginPlay()
 {
 	Super::BeginPlay();
 
@@ -38,7 +38,7 @@ void MapTileText::BeginPlay()
 	SetFirstStateInfo(GetTileInfo());
 }
 
-void MapTileText::Tick(float _DeltaTime)
+void AMapTileText::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 }

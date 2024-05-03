@@ -30,6 +30,10 @@
 #include "SkullText.h"	
 #include "HotText.h"
 #include "MeltText.h"
+#include "Grass.h"
+#include "GrassText.h"
+#include "MapTile.h"	
+#include "MapTileText.h"
 
 #include "BackGround.h"
 
@@ -147,8 +151,8 @@ void ATestGameMode::LoadTileMap(std::string _LevelName)
 	case 2:
 		CurTileSize = FINT(24, 18);
 		break;
-	case 7:
-		CurTileSize = FINT(33, 18);
+	case 3:
+		CurTileSize = FINT(22, 16);
 		break;
 	default:
 		break;
@@ -240,6 +244,24 @@ void ATestGameMode::InLevelSpawnTileActor(FINT _TilePos, ESpawnType _Type)
 		ATileMap::Map[Pos].push_back(Rock.get());
 		break;
 	}
+	case ESpawnType::Grass:
+	{
+		FINT Pos = _TilePos;
+		std::shared_ptr<ATile> Grass = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AGrass>("Grass"));
+		Grass->SetTilePosition(Pos);
+		Grass->SetTileLocation();
+		ATileMap::Map[Pos].push_back(Grass.get());
+		break;
+	}
+	case ESpawnType::MapTile:
+	{
+		FINT Pos = _TilePos;
+		std::shared_ptr<ATile> MapTile = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AMapTile>("MapTile"));
+		MapTile->SetTilePosition(Pos);
+		MapTile->SetTileLocation();
+		ATileMap::Map[Pos].push_back(MapTile.get());
+		break;
+	}
 	case ESpawnType::BabaText:
 	{
 		FINT Pos = _TilePos;
@@ -292,6 +314,24 @@ void ATestGameMode::InLevelSpawnTileActor(FINT _TilePos, ESpawnType _Type)
 		RockText->SetTilePosition(Pos);
 		RockText->SetTileLocation();
 		ATileMap::Map[Pos].push_back(RockText.get());
+		break;
+	}
+	case ESpawnType::GrassText:
+	{
+		FINT Pos = _TilePos;
+		std::shared_ptr<ATile> GrassText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AGrassText>("GrassText"));
+		GrassText->SetTilePosition(Pos);
+		GrassText->SetTileLocation();
+		ATileMap::Map[Pos].push_back(GrassText.get());
+		break;
+	}
+	case ESpawnType::MapTileText:
+	{
+		FINT Pos = _TilePos;
+		std::shared_ptr<ATile> MapTileText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AMapTileText>("MapTileText"));
+		MapTileText->SetTilePosition(Pos);
+		MapTileText->SetTileLocation();
+		ATileMap::Map[Pos].push_back(MapTileText.get());
 		break;
 	}
 	case ESpawnType::DefeatText:
