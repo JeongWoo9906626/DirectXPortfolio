@@ -593,6 +593,7 @@ void ATileMap::SinkCheck(FINT _TilePosition, ETileType _TileType)
 				Tile->SetIsController(false);
 				Tile->SetIsBlock(false);
 				Tile->SetIsPush(false);
+				Tile->SetIsWin(false);
 				Tile->RenderOff();
 			}
 
@@ -616,6 +617,7 @@ void ATileMap::SinkCheck(FINT _TilePosition, ETileType _TileType)
 				Tile->SetIsController(false);
 				Tile->SetIsBlock(false);
 				Tile->SetIsPush(false);
+				Tile->SetIsWin(false);
 				Tile->RenderOff();
 			}
 		}
