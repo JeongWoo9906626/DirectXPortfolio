@@ -53,6 +53,8 @@ enum class ENounType
 	SkullText,
 	HotText,
 	MeltText,
+	GrassText,
+	MapTileText,
 
 	None,
 };
@@ -88,6 +90,8 @@ enum class ETileType
 	And,
 
 	Skull,
+	Grass,
+	MapTile,
 
 	None,
 };

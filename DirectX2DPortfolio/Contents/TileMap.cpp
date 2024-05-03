@@ -587,16 +587,6 @@ void ATileMap::SinkCheck(FINT _TilePosition, ETileType _TileType)
 	{
 		for (ATile* Tile : TileList)
 		{
-			/*if (
-				ETileType::LWord == Tile->GetTileType() ||
-				ETileType::RWord == Tile->GetTileType() ||
-				ETileType::Is == Tile->GetTileType() ||
-				ETileType::And == Tile->GetTileType()
-				)
-			{
-				Check = false;
-				continue;
-			}*/
 			if (_TileType != Tile->GetTileType())
 			{
 				Check = true;

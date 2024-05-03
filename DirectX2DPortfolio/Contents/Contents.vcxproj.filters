@@ -234,6 +234,18 @@
     <ClInclude Include="MeltText.h">
       <Filter>Actor\Text\RightNoun</Filter>
     </ClInclude>
+    <ClInclude Include="Grass.h">
+      <Filter>Actor\Character\CombineAnim</Filter>
+    </ClInclude>
+    <ClInclude Include="GrassText.h">
+      <Filter>Actor\Text\LeftNoun</Filter>
+    </ClInclude>
+    <ClInclude Include="MapTile.h">
+      <Filter>Actor\Character\SingleAnim</Filter>
+    </ClInclude>
+    <ClInclude Include="MapTileText.h">
+      <Filter>Actor\Text\LeftNoun</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp">
@@ -388,6 +400,18 @@
     </ClCompile>
     <ClCompile Include="MeltText.cpp">
       <Filter>Actor\Text\RightNoun</Filter>
+    </ClCompile>
+    <ClCompile Include="Grass.cpp">
+      <Filter>Actor\Character\CombineAnim</Filter>
+    </ClCompile>
+    <ClCompile Include="GrassText.cpp">
+      <Filter>Actor\Text\LeftNoun</Filter>
+    </ClCompile>
+    <ClCompile Include="MapTile.cpp">
+      <Filter>Actor\Character\SingleAnim</Filter>
+    </ClCompile>
+    <ClCompile Include="MapTileText.cpp">
+      <Filter>Actor\Text\LeftNoun</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

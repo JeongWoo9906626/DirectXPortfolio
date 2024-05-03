@@ -207,6 +207,14 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Grass.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="GrassText.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="HotText.h" />
     <ClInclude Include="IsText.h">
       <SubType>
@@ -217,6 +225,14 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="LavaText.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="MapTile.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="MapTileText.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -401,6 +417,14 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Grass.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="GrassText.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="HotText.cpp" />
     <ClCompile Include="IsText.cpp">
       <SubType>
@@ -411,6 +435,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="LavaText.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="MapTile.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="MapTileText.cpp">
       <SubType>
       </SubType>
     </ClCompile>
