@@ -238,6 +238,7 @@ void ATileMap::Tick(float _DeltaTime)
 
 	if (true == GameWin)
 	{
+		IsInput = true;
 		if (false == AnimationEnd)
 		{
 			if (false == AnimationEndInit)
@@ -672,6 +673,7 @@ void ATileMap::WinCheck(FINT _TilePosition)
 		if (true == TileList.front()->GetIsController())
 		{
 			GameWin = true;
+			TileList.front()->SetIsController(false);
 		}
 		return;
 	}
@@ -691,6 +693,7 @@ void ATileMap::WinCheck(FINT _TilePosition)
 		if (true == Tile->GetIsController())
 		{
 			GameWin = true;
+			Tile->SetIsController(false);
 		}
 	}
 }

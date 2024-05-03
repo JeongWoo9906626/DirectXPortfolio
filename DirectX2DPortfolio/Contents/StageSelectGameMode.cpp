@@ -41,8 +41,8 @@ void AStageSelectGameMode::Tick(float _DeltaTime)
 	if (true == StaticHelper::IsStageChange)
 	{
 		FINT MapPosition = Selector->GetTilePosition();
-		StaticHelper::StageName = "Tests07";
-		//StaticHelper::StageName = StaticHelper::CurSelectTileMap[MapPosition]->SelectInfo.Stage;
+		//StaticHelper::StageName = "Tests07";
+		StaticHelper::StageName = StaticHelper::CurSelectTileMap[MapPosition]->SelectInfo.Stage;
 		GEngine->ChangeLevel("TestLevel");
 		StaticHelper::IsStageChange = false;
 	}
