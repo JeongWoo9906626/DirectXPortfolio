@@ -17,6 +17,8 @@ public:
 		IsSink = _Other.IsSink;
 		IsDefeat = _Other.IsDefeat;
 		IsWin = _Other.IsWin;
+		IsHot = _Other.IsHot;
+		IsMelt = _Other.IsMelt;
 
 		TileType = _Other.TileType;
 		NounType = _Other.NounType;
@@ -33,6 +35,8 @@ public:
 	bool IsSink = false;
 	bool IsDefeat = false;
 	bool IsAlive = true;
+	bool IsHot = false;
+	bool IsMelt = false;
 	bool IsWin = false;
 
 	ETileType TileType = ETileType::None;
@@ -144,6 +148,25 @@ public:
 		return Info.IsWin;
 	}
 
+	// Get/Set IsHot
+	void SetIsHot(bool _IsHot)
+	{
+		Info.IsHot = _IsHot;
+	}
+	bool GetIsHot() const
+	{
+		return Info.IsHot;
+	}
+
+	// Get/Set IsMelt
+	void SetIsMelt(bool _IsMelt)
+	{
+		Info.IsMelt = _IsMelt;
+	}
+	bool GetIsMelt() const
+	{
+		return Info.IsMelt;
+	}
 
 	void SetTileLocation()
 	{

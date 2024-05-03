@@ -480,6 +480,11 @@ void ATileMap::TileAliveCheck()
 				ETileType SinkTileType = TileActor->GetTileType();
 				SinkCheck(SinkPosition, SinkTileType);
 			}
+			if (true == TileActor->GetIsHot())
+			{
+				FINT HotPosition = TileActor->GetTilePosition();
+				HotCheck(HotPosition);
+			}
 		}
 	}
 }
@@ -560,8 +565,11 @@ void ATileMap::DefeatCheck(FINT _TilePosition)
 		{
 			continue;
 		}
-		Tile->SetIsController(false);
-		Tile->RenderOff();
+		if (true == Tile->GetIsController())
+		{
+			Tile->SetIsController(false);
+			Tile->RenderOff();
+		}
 	}
 }
 
@@ -578,7 +586,7 @@ void ATileMap::SinkCheck(FINT _TilePosition, ETileType _TileType)
 	{
 		for (ATile* Tile : TileList)
 		{
-			if (
+			/*if (
 				ETileType::LWord == Tile->GetTileType() ||
 				ETileType::RWord == Tile->GetTileType() ||
 				ETileType::Is == Tile->GetTileType() ||
@@ -587,7 +595,7 @@ void ATileMap::SinkCheck(FINT _TilePosition, ETileType _TileType)
 			{
 				Check = false;
 				continue;
-			}
+			}*/
 			if (_TileType != Tile->GetTileType())
 			{
 				Check = true;
@@ -623,6 +631,39 @@ void ATileMap::SinkCheck(FINT _TilePosition, ETileType _TileType)
 	}
 }
 
+void ATileMap::HotCheck(FINT _TilePosition)
+{
+	std::list<ATile*> TileList = StaticHelper::CurTileMap[_TilePosition];
+	if (1 == TileList.size())
+	{
+		return;
+	}
+
+	for (ATile* Tile : TileList)
+	{
+		if (true == Tile->GetIsHot())
+		{
+			continue;
+		}
+		if (
+			ETileType::LWord == Tile->GetTileType() ||
+			ETileType::RWord == Tile->GetTileType() ||
+			ETileType::Is == Tile->GetTileType() ||
+			ETileType::And == Tile->GetTileType()
+			)
+		{
+			continue;
+		}
+		if (true == Tile->GetIsMelt())
+		{
+			Tile->SetIsController(false);
+			Tile->SetIsPush(false);
+			Tile->SetIsBlock(false);
+			Tile->RenderOff();
+		}
+	}
+}
+
 void ATileMap::WinCheck(FINT _TilePosition)
 {
 	std::list<ATile*> TileList = StaticHelper::CurTileMap[_TilePosition];
@@ -637,10 +678,6 @@ void ATileMap::WinCheck(FINT _TilePosition)
 
 	for (ATile* Tile : TileList)
 	{
-		/*if (true == Tile->GetIsWin())
-		{
-			continue;
-		}*/
 		if (
 			ETileType::LWord == Tile->GetTileType() ||
 			ETileType::RWord == Tile->GetTileType() ||

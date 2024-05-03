@@ -52,6 +52,7 @@ enum class ENounType
 
 	SkullText,
 	HotText,
+	MeltText,
 
 	None,
 };
@@ -147,7 +148,7 @@ enum class ESpawnType
 	Skull,
 	SkullText,
 	HotText,
-
+	MeltText,
 
 	None,
 };

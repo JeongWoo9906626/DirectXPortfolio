@@ -1,19 +1,19 @@
 #include "PreCompile.h"
-#include "HotText.h"
+#include "MeltText.h"
 #include <EngineCore/DefaultSceneComponent.h>
 #include <EngineCore/SpriteRenderer.h>
 
-AHotText::AHotText()
+AMeltText::AMeltText()
 {
 
 }
 
-AHotText::~AHotText()
+AMeltText::~AMeltText()
 {
 
 }
 
-void AHotText::BeginPlay()
+void AMeltText::BeginPlay()
 {
 	Super::BeginPlay();
 
@@ -21,14 +21,14 @@ void AHotText::BeginPlay()
 	std::vector<int> AnimationOnFrameIndex = { 2, 5, 8 };
 	std::vector<float> AnimationInterIndex = { 0.1f, 0.1f, 0.1f };
 
-	Renderer->CreateAnimation("Off", "HotText.png", AnimationInterIndex, AnimationOffFrameIndex, true);
-	Renderer->CreateAnimation("On", "HotText.png", AnimationInterIndex, AnimationOnFrameIndex, true);
+	Renderer->CreateAnimation("Off", "MeltText.png", AnimationInterIndex, AnimationOffFrameIndex, true);
+	Renderer->CreateAnimation("On", "MeltText.png", AnimationInterIndex, AnimationOnFrameIndex, true);
 
 	Renderer->ChangeAnimation("Off");
 	Renderer->SetOrder(ERenderOrder::Words);
 
 	SetActorType(ETileType::RWord);
-	SetNounType(ENounType::HotText);
+	SetNounType(ENounType::MeltText);
 
 	SetIsBlock(true);
 	SetIsPush(true);
@@ -39,7 +39,7 @@ void AHotText::BeginPlay()
 	SetFirstStateInfo(GetTileInfo());
 }
 
-void AHotText::Tick(float _DeltaTime)
+void AMeltText::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 }

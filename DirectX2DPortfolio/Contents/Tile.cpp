@@ -52,6 +52,8 @@ void ATile::StateReset()
 	Info.IsSink = FirstStateInfo.IsSink;
 	Info.IsDefeat = FirstStateInfo.IsDefeat;
 	Info.IsWin = FirstStateInfo.IsWin;
+	Info.IsHot = FirstStateInfo.IsHot;
+	Info.IsMelt = FirstStateInfo.IsMelt;
 }
 
 bool ATile::MoveCheck(EInputType _Input)

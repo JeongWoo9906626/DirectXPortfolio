@@ -354,6 +354,20 @@ void MapEditorGUI::OnGui(ULevel* _Level, float _DeltaTime)
 
 		SpawnTile(TilePosX, TilePosY, SpawnType);
 	}
+	ImGui::SameLine();
+	if (true == ImGui::Button("MeltText"))
+	{
+		int TilePosX = TilePos[0];
+		int TilePosY = TilePos[1];
+		ESpawnType SpawnType = ESpawnType::MeltText;
+		int InsertNumber = static_cast<int>(SpawnType);
+
+		TilePositionData.push_back(TilePosX);
+		TilePositionData.push_back(TilePosY);
+		TilePositionData.push_back(InsertNumber);
+
+		SpawnTile(TilePosX, TilePosY, SpawnType);
+	}
 
 	// Connecting Text GUI
 	ImGui::Text("\n< Connecting Text >");

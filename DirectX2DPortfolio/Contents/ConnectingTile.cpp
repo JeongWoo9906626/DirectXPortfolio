@@ -163,7 +163,12 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 					}
 					case ENounType::HotText:
 					{
-						TileActor->SetIsDefeat(true);
+						TileActor->SetIsHot(true);
+						break;
+					}
+					case ENounType::MeltText:
+					{
+						TileActor->SetIsMelt(true);
 						break;
 					}
 					}
@@ -307,7 +312,12 @@ bool AConnectingTile::VerticalCheck(FINT _TilePos)
 					}
 					case ENounType::HotText:
 					{
-						TileActor->SetIsDefeat(true);
+						TileActor->SetIsHot(true);
+						break;
+					}
+					case ENounType::MeltText:
+					{
+						TileActor->SetIsMelt(true);
 						break;
 					}
 					}

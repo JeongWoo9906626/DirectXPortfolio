@@ -28,6 +28,7 @@
 #include "Skull.h"	
 #include "SkullText.h"	
 #include "HotText.h"
+#include "MeltText.h"
 
 
 ATileMapEditorGameMode::ATileMapEditorGameMode()
@@ -240,6 +241,15 @@ void ATileMapEditorGameMode::SpawnTileActor(FINT _TilePos, ESpawnType _Type)
 		HotText->SetTilePosition(Pos);
 		HotText->SetTileLocation();
 		ATileMap::Map[Pos].push_back(HotText.get());
+		break;
+	}
+	case ESpawnType::MeltText:
+	{
+		FINT Pos = _TilePos;
+		std::shared_ptr<ATile> MeltText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AMeltText>("MeltText"));
+		MeltText->SetTilePosition(Pos);
+		MeltText->SetTileLocation();
+		ATileMap::Map[Pos].push_back(MeltText.get());
 		break;
 	}
 	case ESpawnType::None:
