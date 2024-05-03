@@ -209,6 +209,8 @@ protected:
 
 	bool IsMove = false;
 
+	void SpawnMoveEffect(FINT _PrevPos);
+
 private:
 	UTileInfo Info;
 	UTileInfo FirstStateInfo;
@@ -218,10 +220,11 @@ private:
 
 	EActorDir PrevDir = EActorDir::None;
 
-	float MoveTime = 0.3f;
+	float MoveTime = 0.1f;
 	float CurMoveTime = 0.0f;
 
 	std::stack<EActorDir> MoveHistory;
 
 	FVector Lerp(float _CurMoveTime);
+	EInputType InputType = EInputType::None;
 };

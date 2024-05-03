@@ -4,6 +4,7 @@
 #include <EngineCore/SpriteRenderer.h>
 #include "StaticHelper.h"
 #include "ConnectingTile.h"
+#include "MoveEffect.h"
 
 ATile::ATile()
 {
@@ -57,6 +58,8 @@ bool ATile::MoveCheck(EInputType _Input)
 {
 	FINT CurTilePos = Info.TilePosition;
 	FINT NextTilePos = CurTilePos;
+
+	InputType = _Input;
 
 	switch (_Input)
 	{
@@ -159,6 +162,8 @@ void ATile::Move(float _DeltaTime)
 {
 	if (CurMoveTime <= 0.0f)
 	{
+		SpawnMoveEffect(PrevPos);
+		InputType = EInputType::None;
 		IsMove = false;
 		CurMoveTime = MoveTime;
 		PrevPos = NextPos;
@@ -305,6 +310,19 @@ bool ATile::MoveEndCheck(FINT _TilePos)
 			return true;
 		}
 	}
+}
+
+void ATile::SpawnMoveEffect(FINT _PrevPos)
+{
+	if (EInputType::None == InputType)
+	{
+		return;
+	}
+
+	AMoveEffect* MoveEffect = GetWorld()->SpawnActor<AMoveEffect>("MoveEffect").get();
+	MoveEffect->SetInput(InputType);
+	FVector SpawnPos = _PrevPos.GetFINTToVector();
+	MoveEffect->SetActorLocation(SpawnPos);
 }
 
 FVector ATile::Lerp(float _CurMoveTime) 

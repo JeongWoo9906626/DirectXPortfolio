@@ -228,6 +228,9 @@
     <ClInclude Include="HotText.h">
       <Filter>Actor\Text\RightNoun</Filter>
     </ClInclude>
+    <ClInclude Include="MoveEffect.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp">
@@ -376,6 +379,9 @@
     </ClCompile>
     <ClCompile Include="HotText.cpp">
       <Filter>Actor\Text\RightNoun</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveEffect.cpp">
+      <Filter>Effect</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
