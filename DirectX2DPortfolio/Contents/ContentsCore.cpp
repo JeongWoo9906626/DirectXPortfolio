@@ -57,6 +57,7 @@ void UContentsCore::Initialize()
 		UEngineSprite::CreateCutting("Selector.png", 3, 1);
 		UEngineSprite::CreateCutting("SelectMap.png", 3, 1);
 		UEngineSprite::CreateCutting("Flag.png", 2, 3);
+		UEngineSprite::CreateCutting("Skull.png", 4, 3);
 		UEngineSprite::CreateCutting("CuttingTest.png", 4, 3);
 		UEngineSprite::CreateCutting("Rock.png", 1, 3);
 
@@ -70,6 +71,7 @@ void UContentsCore::Initialize()
 		UEngineSprite::CreateCutting("BabaText.png", 2, 3);
 		UEngineSprite::CreateCutting("RockText.png", 2, 3);
 		UEngineSprite::CreateCutting("FlagText.png", 3, 3);
+		UEngineSprite::CreateCutting("SkullText.png", 2, 3);
 
 		// RText
 		UEngineSprite::CreateCutting("StopText.png", 3, 3);
@@ -79,7 +81,7 @@ void UContentsCore::Initialize()
 		UEngineSprite::CreateCutting("SinkText.png", 3, 3);
 		UEngineSprite::CreateCutting("HotText.png", 3, 3);
 		UEngineSprite::CreateCutting("WinText.png", 3, 3);
-
+		UEngineSprite::CreateCutting("HotText.png", 3, 3);
 	}
 
 

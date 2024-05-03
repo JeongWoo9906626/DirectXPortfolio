@@ -207,6 +207,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="HotText.h" />
     <ClInclude Include="IsText.h">
       <SubType>
       </SubType>
@@ -235,6 +236,8 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Skull.h" />
+    <ClInclude Include="SkullText.h" />
     <ClInclude Include="TileMapEditorGameMode.h">
       <SubType>
       </SubType>
@@ -390,6 +393,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="HotText.cpp" />
     <ClCompile Include="IsText.cpp">
       <SubType>
       </SubType>
@@ -418,6 +422,8 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Skull.cpp" />
+    <ClCompile Include="SkullText.cpp" />
     <ClCompile Include="TileMapEditorGameMode.cpp">
       <SubType>
       </SubType>

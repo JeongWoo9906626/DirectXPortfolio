@@ -26,6 +26,9 @@
 #include "WinText.h"
 #include "Rock.h"
 #include "RockText.h"
+#include "Skull.h"	
+#include "SkullText.h"	
+#include "HotText.h"
 
 #include "BackGround.h"
 
@@ -142,6 +145,9 @@ void ATestGameMode::LoadTileMap(std::string _LevelName)
 		break;
 	case 2:
 		CurTileSize = FINT(24, 18);
+		break;
+	case 7:
+		CurTileSize = FINT(33, 18);
 		break;
 	default:
 		break;
@@ -348,6 +354,33 @@ void ATestGameMode::InLevelSpawnTileActor(FINT _TilePos, ESpawnType _Type)
 		IsText->SetTilePosition(Pos);
 		IsText->SetTileLocation();
 		ATileMap::Map[Pos].push_back(IsText.get());
+		break;
+	}
+	case ESpawnType::Skull:
+	{
+		FINT Pos = _TilePos;
+		std::shared_ptr<ATile> Skull = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ASkull>("Skull"));
+		Skull->SetTilePosition(Pos);
+		Skull->SetTileLocation();
+		ATileMap::Map[Pos].push_back(Skull.get());
+		break;
+	}
+	case ESpawnType::SkullText:
+	{
+		FINT Pos = _TilePos;
+		std::shared_ptr<ATile> SkullText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<ASkullText>("SkullText"));
+		SkullText->SetTilePosition(Pos);
+		SkullText->SetTileLocation();
+		ATileMap::Map[Pos].push_back(SkullText.get());
+		break;
+	}
+	case ESpawnType::HotText:
+	{
+		FINT Pos = _TilePos;
+		std::shared_ptr<ATile> HotText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AHotText>("HotText"));
+		HotText->SetTilePosition(Pos);
+		HotText->SetTileLocation();
+		ATileMap::Map[Pos].push_back(HotText.get());
 		break;
 	}
 	case ESpawnType::None:

@@ -111,6 +111,9 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 		case ENounType::FlagText:
 			CheckActorType = ETileType::Flag;
 			break;
+		case ENounType::SkullText:
+			CheckActorType = ETileType::Skull;
+			break;
 		case ENounType::None:
 			break;
 		}
@@ -154,8 +157,15 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 						break;
 					}
 					case ENounType::WinText:
+					{
 						TileActor->SetIsWin(true);
 						break;
+					}
+					case ENounType::HotText:
+					{
+						TileActor->SetIsDefeat(true);
+						break;
+					}
 					}
 					HorizontalLeftType = ActorType;
 				}
@@ -245,6 +255,9 @@ bool AConnectingTile::VerticalCheck(FINT _TilePos)
 		case ENounType::FlagText:
 			CheckActorType = ETileType::Flag;
 			break;
+		case ENounType::SkullText:
+			CheckActorType = ETileType::Skull;
+			break;
 		case ENounType::None:
 			break;
 		}
@@ -288,8 +301,15 @@ bool AConnectingTile::VerticalCheck(FINT _TilePos)
 						break;
 					}
 					case ENounType::WinText:
+					{
 						TileActor->SetIsWin(true);
 						break;
+					}
+					case ENounType::HotText:
+					{
+						TileActor->SetIsDefeat(true);
+						break;
+					}
 					}
 					VerticalLeftType = ActorType;
 				}

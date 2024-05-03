@@ -50,6 +50,9 @@ enum class ENounType
 	SinkText,
 	WinText,
 
+	SkullText,
+	HotText,
+
 	None,
 };
 
@@ -82,6 +85,9 @@ enum class ETileType
 	// Connecting
 	Is,
 	And,
+
+	Skull,
+
 	None,
 };
 
@@ -137,6 +143,11 @@ enum class ESpawnType
 	YouText,
 
 	Is,
+
+	Skull,
+	SkullText,
+	HotText,
+
 
 	None,
 };

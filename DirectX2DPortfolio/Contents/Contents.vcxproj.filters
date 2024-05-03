@@ -219,6 +219,15 @@
     <ClInclude Include="SelectTile.h">
       <Filter>Actor\ActorBase</Filter>
     </ClInclude>
+    <ClInclude Include="Skull.h">
+      <Filter>Actor\Character\SingleAnim</Filter>
+    </ClInclude>
+    <ClInclude Include="SkullText.h">
+      <Filter>Actor\Text\LeftNoun</Filter>
+    </ClInclude>
+    <ClInclude Include="HotText.h">
+      <Filter>Actor\Text\RightNoun</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp">
@@ -358,6 +367,15 @@
     </ClCompile>
     <ClCompile Include="SelectTile.cpp">
       <Filter>Actor\ActorBase</Filter>
+    </ClCompile>
+    <ClCompile Include="Skull.cpp">
+      <Filter>Actor\Character\SingleAnim</Filter>
+    </ClCompile>
+    <ClCompile Include="SkullText.cpp">
+      <Filter>Actor\Text\LeftNoun</Filter>
+    </ClCompile>
+    <ClCompile Include="HotText.cpp">
+      <Filter>Actor\Text\RightNoun</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

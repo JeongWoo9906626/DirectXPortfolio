@@ -142,6 +142,20 @@ void MapEditorGUI::OnGui(ULevel* _Level, float _DeltaTime)
 
 		SpawnTile(TilePosX, TilePosY, SpawnType);
 	}
+	ImGui::SameLine();
+	if (true == ImGui::Button("Skull"))
+	{
+		int TilePosX = TilePos[0];
+		int TilePosY = TilePos[1];
+		ESpawnType SpawnType = ESpawnType::Skull;
+		int InsertNumber = static_cast<int>(SpawnType);
+
+		TilePositionData.push_back(TilePosX);
+		TilePositionData.push_back(TilePosY);
+		TilePositionData.push_back(InsertNumber);
+
+		SpawnTile(TilePosX, TilePosY, SpawnType);
+	}
 	// LeftNoun GUI
 	ImGui::Text("\n< LeftNoun >");
 	if (true == ImGui::Button("BabaText"))
@@ -227,7 +241,20 @@ void MapEditorGUI::OnGui(ULevel* _Level, float _DeltaTime)
 
 		SpawnTile(TilePosX, TilePosY, SpawnType);
 	}
+	ImGui::SameLine();
+	if (true == ImGui::Button("SkullText"))
+	{
+		int TilePosX = TilePos[0];
+		int TilePosY = TilePos[1];
+		ESpawnType SpawnType = ESpawnType::SkullText;
+		int InsertNumber = static_cast<int>(SpawnType);
 
+		TilePositionData.push_back(TilePosX);
+		TilePositionData.push_back(TilePosY);
+		TilePositionData.push_back(InsertNumber);
+
+		SpawnTile(TilePosX, TilePosY, SpawnType);
+	}
 	// RightNoun GUI
 	ImGui::Text("\n< RightNoun >");
 	if (true == ImGui::Button("DefeatText"))
@@ -305,6 +332,20 @@ void MapEditorGUI::OnGui(ULevel* _Level, float _DeltaTime)
 		int TilePosX = TilePos[0];
 		int TilePosY = TilePos[1];
 		ESpawnType SpawnType = ESpawnType::YouText;
+		int InsertNumber = static_cast<int>(SpawnType);
+
+		TilePositionData.push_back(TilePosX);
+		TilePositionData.push_back(TilePosY);
+		TilePositionData.push_back(InsertNumber);
+
+		SpawnTile(TilePosX, TilePosY, SpawnType);
+	}
+	ImGui::SameLine();
+	if (true == ImGui::Button("HotText"))
+	{
+		int TilePosX = TilePos[0];
+		int TilePosY = TilePos[1];
+		ESpawnType SpawnType = ESpawnType::HotText;
 		int InsertNumber = static_cast<int>(SpawnType);
 
 		TilePositionData.push_back(TilePosX);
