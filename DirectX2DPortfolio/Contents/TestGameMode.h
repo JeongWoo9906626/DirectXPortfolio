@@ -2,6 +2,7 @@
 #include <EngineCore/GameMode.h>
 #include "ContentsStruct.h"
 
+class ABackGround;
 class ATileMap;
 class UFadeOutEffect;
 class UFadeInEffect;
@@ -34,4 +35,5 @@ private:
 	void InLevelSpawnTileActor(FINT _TilePos, ESpawnType _Type);
 	std::vector<int> TileData;
 	ATileMap* CurTileMap = nullptr;
+	std::shared_ptr<ABackGround> BackGround;
 };
