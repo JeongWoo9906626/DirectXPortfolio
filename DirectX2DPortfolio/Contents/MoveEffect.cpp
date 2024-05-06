@@ -19,6 +19,11 @@ AMoveEffect::~AMoveEffect()
 
 }
 
+void AMoveEffect::SetColorByTile(float4 _MulColor)
+{
+	Renderer->SetMulColor(_MulColor);
+}
+
 void AMoveEffect::BeginPlay()
 {
 	Super::BeginPlay();
@@ -69,7 +74,6 @@ void AMoveEffect::PositionSetting()
 
 	CurPos = GetActorLocation();
 	NextPos = CurPos + MediatePos;
-	int a = 0;
 }
 
 void AMoveEffect::MoveEffectOn(float _CurEffectTime)

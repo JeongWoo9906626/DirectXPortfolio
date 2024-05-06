@@ -220,6 +220,10 @@ public:
 	bool IsAnimationOn = false;
 	bool IsRender = true;
 
+	float4 GetMulColorByTileType();
+	float4 GetMulColorBytNounType();
+	float4 RGBToFloat4(int _R, int _G, int _B);
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;

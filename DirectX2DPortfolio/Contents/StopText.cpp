@@ -18,8 +18,8 @@ void AStopText::BeginPlay()
 {
 	Super::BeginPlay();
 
-	std::vector<int> AnimationOnFrameIndex = { 1, 4, 7 };
-	std::vector<int> AnimationOffFrameIndex = { 2, 5, 8 };
+	std::vector<int> AnimationOffFrameIndex = { 1, 4, 7 };
+	std::vector<int> AnimationOnFrameIndex = { 2, 5, 8 };
 	std::vector<float> AnimationInterIndex = { 0.1f, 0.1f, 0.1f };
 
 	Renderer->CreateAnimation("Off", "StopText.png", AnimationInterIndex, AnimationOffFrameIndex, true);

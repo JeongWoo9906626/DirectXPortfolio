@@ -13,9 +13,6 @@ const FINT FINT::DOWN = FINT(0, -1);
 
 FVector FINT::GetFINTToVector()
 {
-	FINT::MapSize.X / 2;
-	FINT::MapSize.Y / 2;
-
 	FINT TilePos = *this;
 	FVector Result = FVector::Zero;
 	Result.X = StaticHelper::TileSize * ((FINT::MapSize.X / -2.0f) + (TilePos.X));
@@ -25,9 +22,6 @@ FVector FINT::GetFINTToVector()
 
 FVector FINT::GetSelectFINTToVector()
 {
-	FINT::SelectMapSize.X / 2;
-	FINT::SelectMapSize.Y / 2;
-
 	FINT TilePos = *this;
 	FVector Result = FVector::Zero;
 	Result.X = StaticHelper::TileSize * ((FINT::SelectMapSize.X / -2.0f) + (TilePos.X));

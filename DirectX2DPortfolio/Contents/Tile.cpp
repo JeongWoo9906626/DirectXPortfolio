@@ -21,6 +21,228 @@ ATile::~ATile()
 
 }
 
+float4 ATile::GetMulColorByTileType()
+{
+	float4 MulColorByTile = float4();
+
+	ETileType CurTileTYpe = Info.TileType;
+	if (ETileType::LWord == CurTileTYpe || ETileType::RWord == CurTileTYpe)
+	{
+		MulColorByTile = GetMulColorBytNounType();
+	}
+	else
+	{
+		switch (CurTileTYpe)
+		{
+		case ETileType::Baba:
+			MulColorByTile = RGBToFloat4(255, 255, 255);
+			break;
+		case ETileType::Wall:
+			MulColorByTile = RGBToFloat4(41, 49, 65);
+			break;
+		case ETileType::Lava:
+			MulColorByTile = RGBToFloat4(228, 153, 80);
+			break;
+		case ETileType::Rock:
+			MulColorByTile = RGBToFloat4(194, 158, 70);
+			break;
+		case ETileType::Water:
+			MulColorByTile = RGBToFloat4(95, 157, 209);
+			break;
+		case ETileType::Flag:
+			MulColorByTile = RGBToFloat4(237, 226, 133);
+			break;
+		case ETileType::Is:
+		{
+			if (true == IsAnimationOn)
+			{
+				MulColorByTile = RGBToFloat4(255, 255, 255);
+			}
+			else
+			{
+				MulColorByTile = RGBToFloat4(115, 115, 115);
+			}
+			break;
+		}
+		/*case ETileType::And:
+		{
+			if (true == IsRender)
+			{
+				MulColorByTile = RGBToFloat4();
+			}
+			else
+			{
+				MulColorByTile = RGBToFloat4();
+			}
+			break;
+		}*/
+		case ETileType::Skull:
+			MulColorByTile = RGBToFloat4(130, 38, 28);
+			break;
+		case ETileType::Grass:
+			MulColorByTile = RGBToFloat4(48, 56, 36);
+			break;
+		case ETileType::MapTile:
+			MulColorByTile = RGBToFloat4(31, 31, 31);
+			break;
+		}
+	}
+
+	return MulColorByTile;
+}
+
+float4 ATile::GetMulColorBytNounType()
+{
+	float4 MulColorByTile = float4();
+
+	ENounType NType = Info.NounType;
+	switch (NType)
+	{
+	case ENounType::BabaText:
+	case ENounType::YouText:
+	{
+		if (true == IsAnimationOn)
+		{
+			MulColorByTile = RGBToFloat4(217, 57, 106);
+		}
+		else
+		{
+			MulColorByTile = RGBToFloat4(104, 46, 76);
+		}
+		break;
+	}
+	case ENounType::PillarText:
+	{
+		if (true == IsAnimationOn)
+		{
+			MulColorByTile = RGBToFloat4(115, 115, 115);
+		}
+		else
+		{
+			MulColorByTile = RGBToFloat4(41, 49, 65);
+		}
+		break;
+	}
+	case ENounType::LavaText:
+	case ENounType::HotText:
+	{
+		if (true == IsAnimationOn)
+		{
+			MulColorByTile = RGBToFloat4(228, 153, 80);
+		}
+		else
+		{
+			MulColorByTile = RGBToFloat4(229, 83, 59);
+		}
+		break;
+	}
+	case ENounType::RockText:
+	case ENounType::PushText:
+	{
+		if (true == IsAnimationOn)
+		{
+			MulColorByTile = RGBToFloat4(144, 103, 62);
+		}
+		else
+		{
+			MulColorByTile = RGBToFloat4(80, 63, 36);
+		}
+		break;
+	}
+	case ENounType::WaterText:
+	case ENounType::SinkText:
+	case ENounType::MeltText:
+	{
+		if (true == IsAnimationOn)
+		{
+			MulColorByTile = RGBToFloat4(95, 157, 209);
+		}
+		else
+		{
+			MulColorByTile = RGBToFloat4(62, 118, 136);
+		}
+		break;
+	}
+	case ENounType::FlagText:
+	case ENounType::WinText:
+	{
+		if (true == IsAnimationOn)
+		{
+			MulColorByTile = RGBToFloat4(237, 226, 133);
+		}
+		else
+		{
+			MulColorByTile = RGBToFloat4(144, 103, 62);
+		}
+		break;
+	}
+	
+	case ENounType::StopText:
+	{
+		if (true == IsAnimationOn)
+		{
+			MulColorByTile = RGBToFloat4(75, 92, 28);
+		}
+		else
+		{
+			MulColorByTile = RGBToFloat4(48, 56, 36);
+		}
+		break;
+	}
+
+	case ENounType::SkullText:
+	case ENounType::DefeatText:
+	{
+		if (true == IsAnimationOn)
+		{
+			MulColorByTile = RGBToFloat4(130, 38, 28);
+		}
+		else
+		{
+			MulColorByTile = RGBToFloat4(66, 25, 16);
+		}
+		break;
+	}
+		
+	case ENounType::GrassText:
+	{
+		if (true == IsAnimationOn)
+		{
+			MulColorByTile = RGBToFloat4(165, 177, 63);
+		}
+		else
+		{
+			MulColorByTile = RGBToFloat4(75, 92, 28);
+		}
+		break;
+	}
+	case ENounType::MapTileText:
+	{
+		if (true == IsAnimationOn)
+		{
+			MulColorByTile = RGBToFloat4(116, 116, 116);
+		}
+		else
+		{
+			MulColorByTile = RGBToFloat4(36, 45, 63);
+		}
+		break;
+	}
+	}
+
+	return MulColorByTile;
+}
+
+float4 ATile::RGBToFloat4(int _R, int _G, int _B)
+{
+	float4 Result = float4();
+	Result.X = static_cast<float>(_R) / 255.f;
+	Result.Y = static_cast<float>(_G) / 255.f;
+	Result.Z = static_cast<float>(_B) / 255.f;
+	Result.W = 1.f;
+	return Result;
+}
+
 void ATile::BeginPlay()
 {
 	Super::BeginPlay();
@@ -78,7 +300,7 @@ bool ATile::MoveCheck(EInputType _Input)
 		NextTilePos.Y -= 1;
 		break;
 	}
-	
+
 	bool CanMove = NextTileCheck(NextTilePos, _Input);
 	IsMove = CanMove;
 	return CanMove;
@@ -156,7 +378,7 @@ void ATile::BackMoveSet()
 		NextPos = PrevPos + FINT();
 		break;
 	}
-	
+
 	MoveHistory.pop();
 }
 
@@ -233,7 +455,7 @@ bool ATile::NextTileCheck(FINT _NextTilePos, EInputType _Input)
 
 	bool Temp = true;
 
- 	if (false == MoveEndCheck(_NextTilePos))
+	if (false == MoveEndCheck(_NextTilePos))
 	{
 		//Temp = false;
 		return false;
@@ -322,12 +544,14 @@ void ATile::SpawnMoveEffect(FINT _PrevPos)
 	}
 
 	AMoveEffect* MoveEffect = GetWorld()->SpawnActor<AMoveEffect>("MoveEffect").get();
+	float4 MulColorByTile = GetMulColorByTileType();
+	MoveEffect->SetColorByTile(MulColorByTile);
 	MoveEffect->SetInput(InputType);
 	FVector SpawnPos = _PrevPos.GetFINTToVector();
 	MoveEffect->SetActorLocation(SpawnPos);
 }
 
-FVector ATile::Lerp(float _CurMoveTime) 
+FVector ATile::Lerp(float _CurMoveTime)
 {
 	FVector PrevVector = PrevPos.GetFINTToVector();
 	FVector NextVector = NextPos.GetFINTToVector();

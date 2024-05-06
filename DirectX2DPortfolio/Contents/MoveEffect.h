@@ -20,6 +20,8 @@ public:
 		Input = _Input;	
 	}
 
+	void SetColorByTile(float4 _MulColor);
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
