@@ -34,7 +34,6 @@ void ATile::Tick(float _DeltaTime)
 
 	if (true == IsMove)
 	{
-		RenderOn();
 		Move(_DeltaTime);
 	}
 }
@@ -54,6 +53,7 @@ void ATile::StateReset()
 	Info.IsWin = FirstStateInfo.IsWin;
 	Info.IsHot = FirstStateInfo.IsHot;
 	Info.IsMelt = FirstStateInfo.IsMelt;
+	RenderOn();
 }
 
 bool ATile::MoveCheck(EInputType _Input)

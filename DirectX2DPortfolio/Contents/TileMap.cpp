@@ -610,15 +610,21 @@ void ATileMap::SinkCheck(FINT _TilePosition, ETileType _TileType)
 	}
 	else
 	{
+		int Count = 0;
 		for (ATile* Tile : TileList)
 		{
-			if (false == Tile->IsRender)
+
+			if (false == Tile->GetIsController())
 			{
-				Tile->SetIsController(false);
-				Tile->SetIsBlock(false);
-				Tile->SetIsPush(false);
-				Tile->SetIsWin(false);
-				Tile->RenderOff();
+				if (Count < 2)
+				{
+					Count++;
+					Tile->SetIsController(false);
+					Tile->SetIsBlock(false);
+					Tile->SetIsPush(false);
+					Tile->SetIsWin(false);
+					Tile->RenderOff();
+				}
 			}
 		}
 	}
