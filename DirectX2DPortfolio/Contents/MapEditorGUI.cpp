@@ -54,8 +54,11 @@ void MapEditorGUI::OnGui(ULevel* _Level, float _DeltaTime)
 	ImGui::Text(("Mouse X : " + (std::to_string(MousePos.X))).c_str());
 	ImGui::Text(("Mouse Y : " + (std::to_string(MousePos.Y))).c_str());
 
-	ImGui::Text(("TilePos X : " + (std::to_string(static_cast<int>(WorldTilePositionX)))).c_str());
-	ImGui::Text(("TilePos Y : " + (std::to_string(static_cast<int>(WorldTilePositionY)))).c_str());
+	int HalfScaleX = FINT::MapSize.X / 2.0f;
+	int HalfScaleY = FINT::MapSize.Y / 2.0f;
+
+	ImGui::Text(("TilePos X : " + (std::to_string(HalfScaleX + static_cast<int>(WorldTilePositionX)))).c_str());
+	ImGui::Text(("TilePos Y : " + (std::to_string(HalfScaleY + static_cast<int>(WorldTilePositionY)))).c_str());
 
 	// Character GUI
 	ImGui::Text("\n< Character >");
