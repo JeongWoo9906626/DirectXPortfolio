@@ -55,7 +55,7 @@ void AWater::BeginPlay()
 	Renderer->CreateAnimation("Nothing", "Water.png", AnimationInterIndex, NothingIndex, true);
 
 	Renderer->ChangeAnimation("Nothing");
-	Renderer->SetOrder(ERenderOrder::Object);
+	Renderer->SetOrder(ERenderOrder::BackObject);
 
 	SetActorType(ETileType::Water);
 	SetNounType(ENounType::None);

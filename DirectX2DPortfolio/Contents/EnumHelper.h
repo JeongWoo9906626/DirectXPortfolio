@@ -4,6 +4,7 @@ enum class ERenderOrder
 {
 	BackGround,
 	Map,
+	BackObject,
 	Object,
 	Words,
 	Player,

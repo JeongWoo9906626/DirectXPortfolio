@@ -66,7 +66,7 @@ void UContentsCore::Initialize()
 		UEngineSprite::CreateCutting("Water.png", 18, 3);
 		UEngineSprite::CreateCutting("Lava.png", 18, 3);
 		UEngineSprite::CreateCutting("Grass.png", 18, 3);
-		UEngineSprite::CreateCutting("MapTile.png", 3, 4);
+		UEngineSprite::CreateCutting("MapTile.png", 3, 3);
 
 		// Connecting
 		UEngineSprite::CreateCutting("IsText.png", 2, 3);

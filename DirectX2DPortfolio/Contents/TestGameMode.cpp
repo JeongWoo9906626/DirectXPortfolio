@@ -159,6 +159,18 @@ void ATestGameMode::LoadTileMap(std::string _LevelName)
 	case 3:
 		CurTileSize = FINT(22, 16);
 		break;
+	case 4:
+		CurTileSize = FINT(24, 14);
+		break;
+	case 5:
+		CurTileSize = FINT(33, 18);
+		break;
+	case 6:
+		CurTileSize = FINT(24, 14);
+		break;
+	case 7:
+		CurTileSize = FINT(24, 14);
+		break;
 	default:
 		CurTileSize = FINT(33, 18);
 		break;

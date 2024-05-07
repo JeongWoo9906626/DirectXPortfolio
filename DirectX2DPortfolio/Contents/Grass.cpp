@@ -55,7 +55,7 @@ void AGrass::BeginPlay()
 	Renderer->CreateAnimation("Nothing", "Grass.png", AnimationInterIndex, NothingIndex, true);
 
 	Renderer->ChangeAnimation("Nothing");
-	Renderer->SetOrder(ERenderOrder::Object);
+	Renderer->SetOrder(ERenderOrder::BackObject);
 
 	SetActorType(ETileType::Grass);
 	SetNounType(ENounType::None);

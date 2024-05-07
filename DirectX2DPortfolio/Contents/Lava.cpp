@@ -55,7 +55,7 @@ void ALava::BeginPlay()
 	Renderer->CreateAnimation("Nothing", "Lava.png", AnimationInterIndex, NothingIndex, true);
 
 	Renderer->ChangeAnimation("Nothing");
-	Renderer->SetOrder(ERenderOrder::Object);
+	Renderer->SetOrder(ERenderOrder::BackObject);
 
 	SetActorType(ETileType::Lava);
 	SetNounType(ENounType::None);

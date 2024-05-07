@@ -21,8 +21,8 @@ void AMapTile::BeginPlay()
 	std::vector<int> AnimationFrameIndex = { 2, 5, 8 };
 	Renderer->CreateAnimation("MapTile", "MapTile.png", AnimationInterIndex, AnimationFrameIndex, true);
 
-	Renderer->ChangeAnimation("On");
-	Renderer->SetOrder(ERenderOrder::Object);
+	Renderer->ChangeAnimation("MapTile");
+	Renderer->SetOrder(ERenderOrder::BackObject);
 
 	SetActorType(ETileType::MapTile);
 	SetNounType(ENounType::None);

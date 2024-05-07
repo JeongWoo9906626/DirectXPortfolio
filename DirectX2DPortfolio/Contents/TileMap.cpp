@@ -50,6 +50,10 @@ void ATileMap::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
+	if (UEngineInput::IsDown('E'))
+	{
+		GameWin = true;
+	}
 
 	if (true == GameWin)
 	{
