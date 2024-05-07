@@ -29,9 +29,13 @@ protected:
 	int TilePos[2] = { 0, };
 	char FileName[255] = "";
 	std::vector<int> TilePositionData;
+
+	void ClearMap();
+	void ClearTile(FINT _TilePos);
+
 	//std::vector<ATile> Tiles;
 private:
 	void SpawnTile(int _X, int _Y, ESpawnType _Type);
-
+	ESpawnType SpawnType = ESpawnType::None;
 	bool MessageOn = false;
 };
