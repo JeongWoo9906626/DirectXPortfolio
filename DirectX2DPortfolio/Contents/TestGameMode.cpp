@@ -59,7 +59,6 @@ void ATestGameMode::BeginPlay()
 	FVector WindowScale = GEngine->EngineWindow.GetWindowScale();
 	float X = WindowScale.X;
 	float Y = WindowScale.Y;
-	//Camera->SetActorLocation(FVector(X / 2 - 120.0f, Y / 2 - 55.0f, -100.0f));
 	Camera->SetActorLocation(FVector(0.0f, 0.0f, -100.0f));
 
 	//∏ ¿« BackGround

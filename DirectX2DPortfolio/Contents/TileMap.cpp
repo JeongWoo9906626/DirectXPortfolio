@@ -429,10 +429,14 @@ void ATileMap::SinkCheck(FINT _TilePosition, ETileType _TileType)
 		int Count = 0;
 		for (ATile* Tile : TileList)
 		{
-
 			if (false == Tile->GetIsController())
 			{
-				if (Count < 2)
+				if (true == Tile->GetIsSink())
+				{
+					Tile->SetIsController(false);
+					Tile->RenderOff();
+				}
+				else if (Count < 1)
 				{
 					Count++;
 					Tile->SetIsController(false);

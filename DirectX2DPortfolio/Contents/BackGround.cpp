@@ -27,7 +27,6 @@ void ABackGround::BeginPlay()
 	float X = WindowScale.X;
 	float Y = WindowScale.Y;
 
-	//Renderer->SetScale(FVector(1100.0f, 656.0f, 400.0f));
 	Renderer->SetSprite("BackGround.png");
 }
 
