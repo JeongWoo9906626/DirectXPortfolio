@@ -390,6 +390,20 @@ void ATile::Move(float _DeltaTime)
 		InputType = EInputType::None;
 		IsMove = false;
 		CurMoveTime = MoveTime;
+		std::list<ATile*>& TileList = StaticHelper::CurTileMap[PrevPos];
+		std::list<ATile*>::iterator StartIter = TileList.begin();
+		std::list<ATile*>::iterator EndIter = TileList.end();
+		for (; StartIter != EndIter;)
+		{
+			if (*StartIter == this)
+			{
+				StartIter = TileList.erase(StartIter);
+				continue;
+			}
+			++StartIter;
+		}
+		StaticHelper::CurTileMap[NextPos].push_back(this);
+
 		PrevPos = NextPos;
 		Info.TilePosition = NextPos;
 	}

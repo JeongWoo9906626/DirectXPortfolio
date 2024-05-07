@@ -25,7 +25,6 @@ public:
 		FINT::MapSize = MapSize;
 	}
 
-	static std::map<FINT, std::list<ATile*>> Map;
 
 protected:
 	void BeginPlay() override;
@@ -34,7 +33,6 @@ protected:
 	void TileInputCheck();
 	void TileMoveCheck();
 	void TileMoveSet();
-	void TileUpdate();
 	void TileWinCheck();
 	void TileStateReset();
 	void TileSentenceCheck();

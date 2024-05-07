@@ -28,7 +28,6 @@
 #include "FadeOutEffect.h"
 
 
-std::map<FINT, std::list<ATile*>> ATileMap::Map;
 
 ATileMap::ATileMap()
 {
@@ -44,7 +43,7 @@ void ATileMap::BeginPlay()
 {
 	Super::BeginPlay();
 
-	StaticHelper::CurTileMap = Map;
+	//StaticHelper::CurTileMap = Map;
 }
 
 void ATileMap::Tick(float _DeltaTime)
@@ -109,7 +108,6 @@ void ATileMap::Tick(float _DeltaTime)
 		TileInputCheck();
 		TileMoveCheck();
 		TileMoveSet();
-		TileUpdate();
 		TileWinCheck();
 		TileSentenceCheck();
 		TileAliveCheck();
@@ -160,7 +158,7 @@ void ATileMap::TileMoveCheck()
 	if (true == IsBack)
 	{
 		std::map<FINT, std::list<ATile*>> NewTileMap;
-		for (std::pair<FINT, std::list<ATile*>> Iterator : Map)
+		for (std::pair<FINT, std::list<ATile*>> Iterator : StaticHelper::CurTileMap)
 		{
 			FINT CurMapTilePos = Iterator.first;
 			std::list<ATile*> TileActorList = Iterator.second;
@@ -180,7 +178,7 @@ void ATileMap::TileMoveCheck()
 	}
 
 	std::map<FINT, std::list<ATile*>> NewTileMap;
-	for (std::pair<FINT, std::list<ATile*>> Iterator : Map)
+	for (std::pair<FINT, std::list<ATile*>> Iterator : StaticHelper::CurTileMap)
 	{
 		FINT CurMapTilePos = Iterator.first;
 		std::list<ATile*> TileActorList = Iterator.second;
@@ -206,7 +204,7 @@ void ATileMap::TileMoveSet()
 	if (true == IsBack)
 	{
 		std::map<FINT, std::list<ATile*>> NewTileMap;
-		for (std::pair<FINT, std::list<ATile*>> Iterator : Map)
+		for (std::pair<FINT, std::list<ATile*>> Iterator : StaticHelper::CurTileMap)
 		{
 			FINT CurMapTilePos = Iterator.first;
 			std::list<ATile*> TileActorList = Iterator.second;
@@ -220,7 +218,7 @@ void ATileMap::TileMoveSet()
 	else
 	{
 		std::map<FINT, std::list<ATile*>> NewTileMap;
-		for (std::pair<FINT, std::list<ATile*>> Iterator : Map)
+		for (std::pair<FINT, std::list<ATile*>> Iterator : StaticHelper::CurTileMap)
 		{
 			FINT CurMapTilePos = Iterator.first;
 			std::list<ATile*> TileActorList = Iterator.second;
@@ -231,34 +229,6 @@ void ATileMap::TileMoveSet()
 			}
 		}
 	}
-}
-
-void ATileMap::TileUpdate()
-{
-	std::map<FINT, std::list<ATile*>> NewTileMap;
-	for (std::pair<FINT, std::list<ATile*>> Iterator : Map)
-	{
-		FINT CurMapTilePos = Iterator.first;
-		std::list<ATile*> TileActorList = Iterator.second;
-
-		for (ATile* TileActor : TileActorList)
-		{
-			FINT TilePos = TileActor->GetTilePosition();
-			if (TilePos != CurMapTilePos)
-			{
-				NewTileMap[TilePos].push_back(TileActor);
-			}
-			else
-			{
-				NewTileMap[TilePos].push_back(TileActor);
-			}
-		}
-	}
-
-	Map.clear();
-	Map = NewTileMap;
-	NewTileMap.clear();
-	StaticHelper::CurTileMap = Map;
 }
 
 void ATileMap::TileWinCheck()
@@ -345,7 +315,7 @@ bool ATileMap::MoveEnd()
 
 	bool Temp = false;
 	std::map<FINT, std::list<ATile*>> NewTileMap;
-	for (std::pair<FINT, std::list<ATile*>> Iterator : Map)
+	for (std::pair<FINT, std::list<ATile*>> Iterator : StaticHelper::CurTileMap)
 	{
 		FINT CurMapTilePos = Iterator.first;
 		std::list<ATile*> TileActorList = Iterator.second;
