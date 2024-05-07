@@ -33,6 +33,7 @@
 #include "GrassText.h"
 #include "MapTile.h"	
 #include "MapTileText.h"
+#include "AndText.h"
 
 ATileMapEditorGameMode::ATileMapEditorGameMode()
 {
@@ -289,6 +290,15 @@ void ATileMapEditorGameMode::SpawnTileActor(FINT _TilePos, ESpawnType _Type)
 		MeltText->SetTilePosition(Pos);
 		MeltText->SetTileLocation();
 		ATileMap::Map[Pos].push_back(MeltText.get());
+		break;
+	}
+	case ESpawnType::And:
+	{
+		FINT Pos = _TilePos;
+		std::shared_ptr<ATile> AndText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AAndText>("AndText"));
+		AndText->SetTilePosition(Pos);
+		AndText->SetTileLocation();
+		ATileMap::Map[Pos].push_back(AndText.get());
 		break;
 	}
 	case ESpawnType::None:

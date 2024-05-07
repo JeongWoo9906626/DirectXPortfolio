@@ -157,6 +157,7 @@ enum class ESpawnType
 	GrassText,
 	MapTile,
 	MapTileText,
+	And,
 
 	None,
 };

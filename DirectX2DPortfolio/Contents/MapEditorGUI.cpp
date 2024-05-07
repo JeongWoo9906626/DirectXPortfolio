@@ -440,11 +440,20 @@ void MapEditorGUI::OnGui(ULevel* _Level, float _DeltaTime)
 
 		SpawnTile(TilePosX, TilePosY, SpawnType);
 	}
-	/*ImGui::SameLine();
+	ImGui::SameLine();
 	if (true == ImGui::Button("And"))
 	{
+		int TilePosX = TilePos[0];
+		int TilePosY = TilePos[1];
+		ESpawnType SpawnType = ESpawnType::And;
+		int InsertNumber = static_cast<int>(SpawnType);
 
-	}*/
+		TilePositionData.push_back(TilePosX);
+		TilePositionData.push_back(TilePosY);
+		TilePositionData.push_back(InsertNumber);
+
+		SpawnTile(TilePosX, TilePosY, SpawnType);
+	}
 	
 	ImGui::Text("\n< All Tiles Clear >");
 	if (true == ImGui::Button("Clear"))

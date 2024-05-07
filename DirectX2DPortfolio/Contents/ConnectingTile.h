@@ -21,17 +21,17 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 
-	bool HorizontalCheck(FINT _TilePos);
-	bool VerticalCheck(FINT _TilePos);
+	bool HorizontalIsCheck(FINT _TilePos);
+	bool VerticalIsCheck(FINT _TilePos);
+	
+	void HorizontalAndCheck(FINT _TilePos);
+	void  VerticalAndCheck(FINT _TilePos);
+
 
 private:
-	ETileType HorizontalLeftType = ETileType::None;
-	ETileType VerticalLeftType = ETileType::None;
+	ETileType HorizontalCharType = ETileType::None;
+	ENounType HorizontalTextType = ENounType::None;
 
-	bool HorizontalResult = false;
-	bool VerticalResult = false;
-
-	bool IsSentence = false;
-	bool IsCharNoun = false;
-	bool IsNoun = false;
+	ETileType VerticalCharType = ETileType::None;
+	ENounType VerticalTextType = ENounType::None;
 };

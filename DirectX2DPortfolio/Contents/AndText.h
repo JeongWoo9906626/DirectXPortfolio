@@ -1,18 +1,18 @@
 #pragma once
 #include "Tile.h"
 
-class AndText : public ATile
+class AAndText : public ATile
 {
 	GENERATED_BODY(ATile)
 
 public:
-	AndText();
-	~AndText();
+	AAndText();
+	~AAndText();
 
-	AndText(const AndText& _Other) = delete;
-	AndText(AndText&& _Other) noexcept = delete;
-	AndText& operator=(const AndText& _Other) = delete;
-	AndText& operator=(AndText&& _Other) noexcept = delete;
+	AAndText(const AAndText& _Other) = delete;
+	AAndText(AAndText&& _Other) noexcept = delete;
+	AAndText& operator=(const AAndText& _Other) = delete;
+	AAndText& operator=(AAndText&& _Other) noexcept = delete;
 
 protected:
 	void BeginPlay() override;

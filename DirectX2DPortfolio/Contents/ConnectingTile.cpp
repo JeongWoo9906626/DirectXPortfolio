@@ -26,16 +26,26 @@ void AConnectingTile::WordsCheck()
 {
 	FINT CurTilePos = GetTileInfo().TilePosition;
 
-	HorizontalResult = HorizontalCheck(CurTilePos);
-	VerticalResult = VerticalCheck(CurTilePos);
+	bool HorizontalResult = HorizontalIsCheck(CurTilePos);
+	bool VerticalResult = VerticalIsCheck(CurTilePos);
+
+	if (true == HorizontalResult)
+	{
+		HorizontalAndCheck(CurTilePos);
+	}
+
+	if (true == VerticalResult)
+	{
+		VerticalAndCheck(CurTilePos);
+	}
 }
 
 
 
-bool AConnectingTile::HorizontalCheck(FINT _TilePos)
+bool AConnectingTile::HorizontalIsCheck(FINT _TilePos)
 {
-	IsCharNoun = false;
-	IsNoun = false;
+	bool IsCharNoun = false;
+	bool IsNoun = false;
 
 	FINT LeftTilePos = _TilePos + FINT::LEFT;
 	FINT RightTilePos = _TilePos + FINT::RIGHT;
@@ -56,7 +66,7 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 			}
 		}
 	}
-	
+
 
 	std::list<ATile*> RightTileActorList = StaticHelper::CurTileMap[RightTilePos];
 	if (false == RightTileActorList.empty())
@@ -89,6 +99,7 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 
 		ENounType LeftNounType = TempLeftTileActor->GetNounType();
 		ENounType RightNounType = TempRightTileActor->GetNounType();
+		HorizontalTextType = RightNounType;
 
 		ETileType CheckActorType = ETileType::None;
 		switch (LeftNounType)
@@ -124,6 +135,8 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 			break;
 		}
 
+		HorizontalCharType = CheckActorType;
+
 		std::map<FINT, std::list<ATile*>> TileActorMap = StaticHelper::CurTileMap;
 		for (std::pair<FINT, std::list<ATile*>> Iterator : TileActorMap)
 		{
@@ -131,7 +144,7 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 			for (ATile* TileActor : TileActorList)
 			{
 				ETileType ActorType = TileActor->GetTileType();
-				
+
 
 				if (ActorType == CheckActorType)
 				{
@@ -178,7 +191,6 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 						break;
 					}
 					}
-					HorizontalLeftType = ActorType;
 				}
 			}
 		}
@@ -187,10 +199,10 @@ bool AConnectingTile::HorizontalCheck(FINT _TilePos)
 	return (IsNoun && IsCharNoun);
 }
 
-bool AConnectingTile::VerticalCheck(FINT _TilePos)
+bool AConnectingTile::VerticalIsCheck(FINT _TilePos)
 {
-	IsCharNoun = false;
-	IsNoun = false;
+	bool IsCharNoun = false;
+	bool IsNoun = false;
 
 	FINT UpTilePos = _TilePos + FINT::UP;
 	FINT DownTilePos = _TilePos + FINT::DOWN;
@@ -243,6 +255,7 @@ bool AConnectingTile::VerticalCheck(FINT _TilePos)
 
 		ENounType UpNounType = TempUpTileActor->GetNounType();
 		ENounType DownNounType = TempDownTileActor->GetNounType();
+		VerticalTextType = DownNounType;	
 
 		ETileType CheckActorType = ETileType::None;
 
@@ -279,6 +292,8 @@ bool AConnectingTile::VerticalCheck(FINT _TilePos)
 			break;
 		}
 
+		VerticalCharType = CheckActorType;
+
 		std::map<FINT, std::list<ATile*>> TileActorMap = StaticHelper::CurTileMap;
 		for (std::pair<FINT, std::list<ATile*>> Iterator : TileActorMap)
 		{
@@ -286,7 +301,7 @@ bool AConnectingTile::VerticalCheck(FINT _TilePos)
 			for (ATile* TileActor : TileActorList)
 			{
 				ETileType ActorType = TileActor->GetTileType();
-				
+
 
 				if (ActorType == CheckActorType)
 				{
@@ -333,7 +348,6 @@ bool AConnectingTile::VerticalCheck(FINT _TilePos)
 						break;
 					}
 					}
-					VerticalLeftType = ActorType;
 				}
 			}
 		}

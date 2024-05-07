@@ -34,6 +34,7 @@
 #include "GrassText.h"
 #include "MapTile.h"	
 #include "MapTileText.h"
+#include "AndText.h"
 
 #include "BackGround.h"
 
@@ -159,6 +160,7 @@ void ATestGameMode::LoadTileMap(std::string _LevelName)
 		CurTileSize = FINT(22, 16);
 		break;
 	default:
+		CurTileSize = FINT(33, 18);
 		break;
 	}
 	CurTileMap->SetTileSize(CurTileSize);
@@ -435,6 +437,15 @@ void ATestGameMode::InLevelSpawnTileActor(FINT _TilePos, ESpawnType _Type)
 		MeltText->SetTilePosition(Pos);
 		MeltText->SetTileLocation();
 		ATileMap::Map[Pos].push_back(MeltText.get());
+		break;
+	}
+	case ESpawnType::And:
+	{
+		FINT Pos = _TilePos;
+		std::shared_ptr<ATile> AndText = static_pointer_cast<ATile>(GetWorld()->SpawnActor<AAndText>("AndText"));
+		AndText->SetTilePosition(Pos);
+		AndText->SetTileLocation();
+		ATileMap::Map[Pos].push_back(AndText.get());
 		break;
 	}
 	case ESpawnType::None:
