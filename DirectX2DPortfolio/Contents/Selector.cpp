@@ -105,7 +105,11 @@ void ASelector::InputCheck()
 	}
 	if (true == UEngineInput::IsDown(VK_SPACE))
 	{
-		StaticHelper::IsStageChange = true;
+		if (ESelectTileType::Stage == StaticHelper::CurSelectTileMap[TilePosition]->SelectInfo.Type)
+		{
+			StaticHelper::IsStageChange = true;
+			
+		}
 		IsInput = false;
 		return;
 	}

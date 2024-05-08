@@ -10,9 +10,18 @@ ASelectTile::ASelectTile()
 	Root->SetScale(FVector(54.0f, 54.0f, 20.0f));
 	SetRoot(Root);
 
-	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
-	Renderer->SetupAttachment(Root);
-	Renderer->SetOrder(ERenderOrder::Object);
+	LeftRenderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
+	LeftRenderer->SetupAttachment(Root);
+	LeftRenderer->SetOrder(ERenderOrder::Object);
+	LeftRenderer->AddPosition(FVector::Left * 0.07f);
+	LeftRenderer->SetScale(FVector(0.5f, 1.0f));
+
+
+	RightRenderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
+	RightRenderer->SetupAttachment(Root);
+	RightRenderer->SetOrder(ERenderOrder::Object);
+	RightRenderer->AddPosition(FVector::Right * 0.07f);
+	RightRenderer->SetScale(FVector(0.5f, 1.0f));
 }
 
 ASelectTile::~ASelectTile()
@@ -35,6 +44,12 @@ void ASelectTile::Tick(float _DeltaTime)
 void ASelectTile::SettingAnimation()
 {
 	std::vector<float> AnimationInterIndex = { 0.1f, 0.1f, 0.1f };
+
+	std::vector<int> AnimationZeroOnFrame = { 0, 10, 20 };
+	std::vector<int> AnimationZeroOffFrame = { 1, 11, 21 };
+	LeftRenderer->CreateAnimation(static_cast<std::string>("0") + "On", "Number.png", AnimationInterIndex, AnimationZeroOnFrame);
+	LeftRenderer->CreateAnimation(static_cast<std::string>("0") + "Off", "Number.png", AnimationInterIndex, AnimationZeroOffFrame);
+	LeftRenderer->SetActive(false);
 
 	int i = 0;
 	int Index = -1;
@@ -59,9 +74,9 @@ void ASelectTile::SettingAnimation()
 			AnimationOffFrameIndex = { Index + 20, Index + 30, Index + 40 };
 		}
 
-		Renderer->CreateAnimation(Number + "On", "Number.png", AnimationInterIndex, AnimationOnFrameIndex, true);
-		Renderer->CreateAnimation(Number + "Off", "Number.png", AnimationInterIndex, AnimationOffFrameIndex, true);
-		Renderer->SetActive(false);
+		RightRenderer->CreateAnimation(Number + "On", "Number.png", AnimationInterIndex, AnimationOnFrameIndex, true);
+		RightRenderer->CreateAnimation(Number + "Off", "Number.png", AnimationInterIndex, AnimationOffFrameIndex, true);
+		RightRenderer->SetActive(false);
 		i++;
 	}
 }
@@ -79,10 +94,12 @@ void ASelectTile::SetAnimation(int _StageNumber, bool _IsClear)
 		IsClear = "On";
 	}
 
-	Renderer->ChangeAnimation(StageNumber + IsClear);
+	LeftRenderer->ChangeAnimation(static_cast<std::string>("0") + IsClear);
+	RightRenderer->ChangeAnimation(StageNumber + IsClear);
 }
 
 void ASelectTile::ShowOn()
 {
-	Renderer->SetActive(true);
+	LeftRenderer->SetActive(true);
+	RightRenderer->SetActive(true);
 }

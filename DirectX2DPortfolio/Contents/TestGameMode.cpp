@@ -122,9 +122,6 @@ void ATestGameMode::LevelStart(ULevel* _PrevLevel)
 	FINT::MapSize;
 	FVector BackGroundSize = { FINT::MapSize.X * StaticHelper::TileSize, FINT::MapSize.Y * StaticHelper::TileSize };
 	BackGround->SetActorScale3D(BackGroundSize);
-	BackGround->SetActorLocation(FVector(-StaticHelper::TileSize / 2, -StaticHelper::TileSize / 2, 100.0f));
-		//BackGround->SetActorLocation(/*FVector(X / 2 - 120.0f, Y / 2 - 55.0f, 100.0f)*/FVector(0.0f, 0.0f, 100.0f));
-
 }
 
 void ATestGameMode::LoadTileMap(std::string _LevelName)

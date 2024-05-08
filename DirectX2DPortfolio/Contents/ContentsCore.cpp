@@ -60,6 +60,7 @@ void UContentsCore::Initialize()
 		UEngineSprite::CreateCutting("Skull.png", 4, 3);
 		UEngineSprite::CreateCutting("CuttingTest.png", 4, 3);
 		UEngineSprite::CreateCutting("Rock.png", 1, 3);
+		UEngineSprite::CreateCutting("MapTileOnly.png", 3, 1); 
 
 		// LText + Object
 		UEngineSprite::CreateCutting("Wall.png", 18, 3);

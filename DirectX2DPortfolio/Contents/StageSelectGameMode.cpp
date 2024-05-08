@@ -25,10 +25,11 @@ void AStageSelectGameMode::BeginPlay()
 	Camera->SetActorLocation(FVector(0.0f, 0.0f, -100.0f));
 
 	std::shared_ptr<ASelectMap>SelectMap = GetWorld()->SpawnActor<ASelectMap>("SelectMap");
-	
-	SetSelectTileMapSize(FINT(13, 10));
+	SelectMap->SetActorScale3D(FVector(1280.f * 1.5f, 720.f * 1.5f));
+
+	SetSelectTileMapSize(FINT(16, 14));
 	SelectTileMap = GetWorld()->SpawnActor<ASelectTileMap>("SelectTileMap").get();
-	
+
 	Selector = GetWorld()->SpawnActor<ASelector>("Selector").get();
 	Selector->AddActorLocation(FVector(0.0f, 7.0f, 0.0f));
 	Selector->SetActorScale3D(FVector(36.0f, 36.0f, 20.0f));
@@ -47,7 +48,7 @@ void AStageSelectGameMode::Tick(float _DeltaTime)
 		StaticHelper::IsStageChange = false;
 	}
 
-	StageTileMapUpdate();
+	StageTileMapUpdate(_DeltaTime);
 }
 
 void AStageSelectGameMode::LevelEnd(ULevel* _NextLevel)
@@ -66,7 +67,7 @@ void AStageSelectGameMode::SetSelectTileMapSize(FINT _SelectTileMapSize)
 	FINT::SelectMapSize = _SelectTileMapSize;
 }
 
-void AStageSelectGameMode::StageTileMapUpdate()
+void AStageSelectGameMode::StageTileMapUpdate(float _DeltaTime)
 {
 	FINT::SelectMapSize;
 	StaticHelper::CurSelectTileMap;
@@ -79,21 +80,59 @@ void AStageSelectGameMode::StageTileMapUpdate()
 			FINT Up = Current + FINT(0, 1);
 			FINT Right = Current + FINT(1, 0);
 
-			ASelectTile* CurCheck= StaticHelper::CurSelectTileMap[Current];
+			ASelectTile* CurCheck = StaticHelper::CurSelectTileMap[Current];
+			std::string StageName = CurCheck->SelectInfo.Stage;
 			if (true == CurCheck->SelectInfo.IsStageClear)
 			{
-				if (Up.Y < FINT::SelectMapSize.Y)
+				if (ESelectTileType::Stage == CurCheck->SelectInfo.Type)
 				{
-					ASelectTile* UpCheck = StaticHelper::CurSelectTileMap[Up];
-					UpCheck->SelectInfo.IsEnter = true;
-					UpCheck->ShowOn();
+					int StageNumber = stoi(StageName.substr(6, 1));
+					CurCheck->SetAnimation(StageNumber, CurCheck->SelectInfo.IsStageClear);
 				}
-				if (Right.X < FINT::SelectMapSize.X)
+				if (CurStageOpenTime >= StageOpenTime)
 				{
-					ASelectTile* RightCheck = StaticHelper::CurSelectTileMap[Right];
-					RightCheck->SelectInfo.IsEnter = true;
-					RightCheck->ShowOn();
+					if (ESelectTileType::Walk == StaticHelper::CurSelectTileMap[Up]->SelectInfo.Type)
+					{
+						if (Up.Y < FINT::SelectMapSize.Y)
+						{
+							ASelectTile* UpCheck = StaticHelper::CurSelectTileMap[Up];
+							UpCheck->SelectInfo.IsEnter = true;
+							UpCheck->SelectInfo.IsStageClear = true;
+							UpCheck->ShowOn();
+						}
+					}
+					if (ESelectTileType::Walk == StaticHelper::CurSelectTileMap[Right]->SelectInfo.Type)
+					{
+						if (Right.X < FINT::SelectMapSize.X)
+						{
+							ASelectTile* RightCheck = StaticHelper::CurSelectTileMap[Right];
+							RightCheck->SelectInfo.IsEnter = true;
+							RightCheck->SelectInfo.IsStageClear = true;
+							RightCheck->ShowOn();
+						}
+					}
+
+					if (ESelectTileType::Stage == StaticHelper::CurSelectTileMap[Up]->SelectInfo.Type)
+					{
+						if (Up.Y < FINT::SelectMapSize.Y)
+						{
+							ASelectTile* UpCheck = StaticHelper::CurSelectTileMap[Up];
+							UpCheck->SelectInfo.IsEnter = true;
+							UpCheck->ShowOn();
+						}
+					}
+					if (ESelectTileType::Stage == StaticHelper::CurSelectTileMap[Right]->SelectInfo.Type)
+					{
+						if (Right.X < FINT::SelectMapSize.X)
+						{
+							ASelectTile* RightCheck = StaticHelper::CurSelectTileMap[Right];
+							RightCheck->SelectInfo.IsEnter = true;
+							RightCheck->ShowOn();
+						}
+					}
+					CurStageOpenTime = 0.0f;
 				}
+				CurStageOpenTime += _DeltaTime;
 			}
 		}
 	}

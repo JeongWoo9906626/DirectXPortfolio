@@ -8,6 +8,9 @@ public:
 	bool IsEnter = false;
 	bool IsPrevStageClear = false;
 	bool IsStageClear = false;
+
+	ESelectTileType Type = ESelectTileType::None;
+	std::string StageText = "";
 	std::string Stage = "";
 };
 
@@ -34,7 +37,8 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-	USpriteRenderer* Renderer = nullptr;
+	USpriteRenderer* LeftRenderer = nullptr;
+	USpriteRenderer* RightRenderer = nullptr;
 
 private:
 
