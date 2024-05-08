@@ -29,7 +29,7 @@ public:
 	ASelectTile& operator=(ASelectTile&& _Other) noexcept = delete;
 
 	void SettingAnimation();
-	void SetAnimation(int _StageNumber, bool _IsClear);
+	void SetAnimation(int _StageNumber, bool _IsClear, FINT _TilePos = FINT(0, 0));
 	void ShowOn();
 
 	SelectTileInfo SelectInfo;
@@ -39,7 +39,15 @@ protected:
 
 	USpriteRenderer* LeftRenderer = nullptr;
 	USpriteRenderer* RightRenderer = nullptr;
+	USpriteRenderer* LineRenderer = nullptr;
+
+	void NextLineCheck(FINT _TilePos);
+	bool NextSelectTileTypeCheck(FINT _Position);
+	void LineAnimationChange();
 
 private:
-
+	bool IsLeft = false;
+	bool IsRight = false;
+	bool IsTop = false;
+	bool IsBottom = false;
 };
