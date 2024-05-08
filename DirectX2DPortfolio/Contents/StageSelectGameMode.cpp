@@ -31,8 +31,8 @@ void AStageSelectGameMode::BeginPlay()
 	SelectTileMap = GetWorld()->SpawnActor<ASelectTileMap>("SelectTileMap").get();
 
 	Selector = GetWorld()->SpawnActor<ASelector>("Selector").get();
-	Selector->AddActorLocation(FVector(0.0f, 7.0f, 0.0f));
-	Selector->SetActorScale3D(FVector(36.0f, 36.0f, 20.0f));
+	Selector->AddActorLocation(FVector(0.0f, 11.0f, 0.0f));
+	Selector->SetActorScale3D(FVector(50.0f, 50.0f, 20.0f));
 }
 
 void AStageSelectGameMode::Tick(float _DeltaTime)

@@ -7,21 +7,21 @@
 ASelectTile::ASelectTile()
 {
 	UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
-	Root->SetScale(FVector(54.0f, 54.0f, 20.0f));
+	Root->SetScale(FVector(86.0f, 86.0f, 20.0f));
 	SetRoot(Root);
 
 	LeftRenderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
 	LeftRenderer->SetupAttachment(Root);
 	LeftRenderer->SetOrder(ERenderOrder::Object);
 	LeftRenderer->AddPosition(FVector::Left * 0.07f);
-	LeftRenderer->SetScale(FVector(0.5f, 1.0f));
+	LeftRenderer->SetScale(FVector(0.6f, 1.0f));
 
 
 	RightRenderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
 	RightRenderer->SetupAttachment(Root);
 	RightRenderer->SetOrder(ERenderOrder::Object);
 	RightRenderer->AddPosition(FVector::Right * 0.07f);
-	RightRenderer->SetScale(FVector(0.5f, 1.0f));
+	RightRenderer->SetScale(FVector(0.6f, 1.0f));
 }
 
 ASelectTile::~ASelectTile()
