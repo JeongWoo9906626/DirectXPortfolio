@@ -105,7 +105,11 @@ void ASelector::InputCheck()
 	}
 	if (true == UEngineInput::IsDown(VK_SPACE))
 	{
-		StaticHelper::IsStageChange = true;
+		if (ESelectTileType::Stage == StaticHelper::CurSelectTileMap[TilePosition]->SelectInfo.Type)
+		{
+			StaticHelper::IsStageChange = true;
+			
+		}
 		IsInput = false;
 		return;
 	}
@@ -173,7 +177,7 @@ FVector ASelector::Lerp(float _CurMoveTime)
 
 	FVector CurPos;
 	CurPos.X = PrevVector.X * (1 - t) + NextVector.X * t;
-	CurPos.Y = PrevVector.Y * (1 - t) + NextVector.Y * t + 7.0f;
+	CurPos.Y = PrevVector.Y * (1 - t) + NextVector.Y * t + 11.0f;
 
 	CurPos.X = static_cast<int>(std::lround(CurPos.X));
 	CurPos.Y = static_cast<int>(std::lround(CurPos.Y));

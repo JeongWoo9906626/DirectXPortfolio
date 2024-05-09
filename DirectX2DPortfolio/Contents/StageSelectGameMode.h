@@ -24,9 +24,12 @@ protected:
 	void LevelStart(ULevel* _PrevLevel) override;
 
 	void SetSelectTileMapSize(FINT _SelectTileMapSize);
-	void StageTileMapUpdate();
+	void StageTileMapUpdate(float _DeltaTime);
 
 private:
 	ASelectTileMap* SelectTileMap = nullptr;
 	ASelector* Selector = nullptr;
+
+	float StageOpenTime = 0.3f;
+	float CurStageOpenTime = 0.0f;
 };

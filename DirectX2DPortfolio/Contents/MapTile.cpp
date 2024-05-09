@@ -18,8 +18,8 @@ void AMapTile::BeginPlay()
 	Super::BeginPlay();
 
 	std::vector<float> AnimationInterIndex = { 0.1f, 0.1f, 0.1f };
-	std::vector<int> AnimationFrameIndex = { 2, 5, 8 };
-	Renderer->CreateAnimation("MapTile", "MapTile.png", AnimationInterIndex, AnimationFrameIndex, true);
+	std::vector<int> AnimationFrameIndex = { 0, 1, 2 };
+	Renderer->CreateAnimation("MapTile", "MapTileOnly.png", AnimationInterIndex, AnimationFrameIndex, true);
 
 	Renderer->ChangeAnimation("MapTile");
 	Renderer->SetOrder(ERenderOrder::BackObject);

@@ -25,7 +25,7 @@ void ASelectMap::BeginPlay()
 	float ScreenX = GEngine->EngineWindow.GetWindowScale().X;
 	float ScreenY = GEngine->EngineWindow.GetWindowScale().Y;
 
-	SetActorScale3D(FVector(ScreenX * 1.295f, ScreenY * 2.37f, 100.0f));
+	//SetActorScale3D(FVector(1280.0f, 720.0f, 100.0f));
 
 	Renderer->CreateAnimation("SelectMap", "SelectMap.png", 0.1f, true);
 	Renderer->ChangeAnimation("SelectMap");

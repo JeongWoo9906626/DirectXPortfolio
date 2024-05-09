@@ -17,7 +17,7 @@ public:
 	ASelectTileMap& operator=(const ASelectTileMap& _Other) = delete;
 	ASelectTileMap& operator=(ASelectTileMap&& _Other) noexcept = delete;
 
-	static std::map<FINT, ASelectTile*> SelectMap;
+	//static std::map<FINT, ASelectTile*> SelectMap;
 
 protected:
 	void BeginPlay() override;

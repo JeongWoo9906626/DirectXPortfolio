@@ -20,6 +20,8 @@ enum class ETextureSampling
 	NONE,
 	LINEAR,
 	POINT,
+	LINEARCLAMP,
+	POINTCLAMP,
 };
 
 enum class EPivot
@@ -29,6 +31,7 @@ enum class EPivot
 	LEFTTOP,
 	LEFTBOTTOM,
 	RIGHTBOTTOM,
+	RIGHTTOP,
 	MAX,
 };
 
@@ -36,6 +39,8 @@ enum class EEngineDir
 {
 	Left,
 	Right,
+	Up,
+	Down,
 	MAX,
 };
 

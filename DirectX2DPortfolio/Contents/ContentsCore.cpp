@@ -60,12 +60,14 @@ void UContentsCore::Initialize()
 		UEngineSprite::CreateCutting("Skull.png", 4, 3);
 		UEngineSprite::CreateCutting("CuttingTest.png", 4, 3);
 		UEngineSprite::CreateCutting("Rock.png", 1, 3);
+		UEngineSprite::CreateCutting("MapTileOnly.png", 3, 1); 
 
 		// LText + Object
 		UEngineSprite::CreateCutting("Wall.png", 18, 3);
 		UEngineSprite::CreateCutting("Water.png", 18, 3);
 		UEngineSprite::CreateCutting("Lava.png", 18, 3);
 		UEngineSprite::CreateCutting("Grass.png", 18, 3);
+		UEngineSprite::CreateCutting("Line.png", 18, 3);
 		UEngineSprite::CreateCutting("MapTile.png", 3, 3);
 
 		// Connecting
@@ -87,6 +89,9 @@ void UContentsCore::Initialize()
 		UEngineSprite::CreateCutting("HotText.png", 3, 3);
 		UEngineSprite::CreateCutting("WinText.png", 3, 3);
 		UEngineSprite::CreateCutting("MeltText.png", 3, 3);
+
+		// Alphabet
+		UEngineSprite::CreateCutting("WhiteAlphabet.png", 7, 12);
 	}
 
 

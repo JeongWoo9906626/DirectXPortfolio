@@ -182,3 +182,9 @@ enum class ESpawnType
 //	None,
 //};
 
+enum class ESelectTileType
+{
+	Walk,
+	Stage,
+	None,
+};
