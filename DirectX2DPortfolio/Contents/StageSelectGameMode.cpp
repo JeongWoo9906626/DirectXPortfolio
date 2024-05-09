@@ -6,6 +6,7 @@
 #include "SelectTileMap.h"
 #include "SelectTile.h"
 #include <EngineCore/Camera.h>
+#include "StageText.h"
 
 AStageSelectGameMode::AStageSelectGameMode()
 {
@@ -24,7 +25,10 @@ void AStageSelectGameMode::BeginPlay()
 	std::shared_ptr<UCamera> Camera = GetWorld()->GetMainCamera();
 	Camera->SetActorLocation(FVector(0.0f, 0.0f, -100.0f));
 
-	std::shared_ptr<ASelectMap>SelectMap = GetWorld()->SpawnActor<ASelectMap>("SelectMap");
+	std::shared_ptr<AStageText> StageText = GetWorld()->SpawnActor<AStageText>("StageText");
+	StageText->SetActorScale3D(FVector(1280.f * 1.5f, 720.f * 1.5f));
+
+	std::shared_ptr<ASelectMap> SelectMap = GetWorld()->SpawnActor<ASelectMap>("SelectMap");
 	SelectMap->SetActorScale3D(FVector(1280.f * 1.5f, 720.f * 1.5f));
 
 	SetSelectTileMapSize(FINT(16, 14));

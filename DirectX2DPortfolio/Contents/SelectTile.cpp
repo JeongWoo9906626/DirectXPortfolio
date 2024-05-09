@@ -26,7 +26,6 @@ ASelectTile::ASelectTile()
 	LineRenderer->SetupAttachment(Root);
 	LineRenderer->SetOrder(ERenderOrder::Object);
 	LineRenderer->SetScale(FVector(0.8f, 0.8f));
-	//LineRenderer->AddPosition(FVector::Left * 0.07f);
 }
 
 ASelectTile::~ASelectTile()

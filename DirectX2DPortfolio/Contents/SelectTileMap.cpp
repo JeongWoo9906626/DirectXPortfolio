@@ -35,6 +35,7 @@ void ASelectTileMap::BeginPlay()
 	StaticHelper::CurSelectTileMap[FINT(0, 0)]->SelectInfo.IsEnter = true;
 	StaticHelper::CurSelectTileMap[FINT(0, 0)]->SelectInfo.Type = ESelectTileType::Stage;
 	StaticHelper::CurSelectTileMap[FINT(0, 0)]->SelectInfo.Stage = "Stage0" + std::to_string(0);
+	StaticHelper::CurSelectTileMap[FINT(0, 0)]->SelectInfo.StageText = "BABA IS YOU";
 	StaticHelper::CurSelectTileMap[FINT(0, 0)]->ShowOn();
 
 	StaticHelper::CurSelectTileMap[FINT(1, 2)]->SetAnimation(1, false);
@@ -42,37 +43,50 @@ void ASelectTileMap::BeginPlay()
 	StaticHelper::CurSelectTileMap[FINT(1, 2)]->SelectInfo.IsEnter = false;
 	StaticHelper::CurSelectTileMap[FINT(1, 2)]->SelectInfo.Type = ESelectTileType::Stage;
 	StaticHelper::CurSelectTileMap[FINT(1, 2)]->SelectInfo.Stage = "Stage0" + std::to_string(1);
+	StaticHelper::CurSelectTileMap[FINT(1, 2)]->SelectInfo.StageText = "WHERE DO I GO";
+
 	StaticHelper::CurSelectTileMap[FINT(1, 3)]->SetAnimation(2, false);
 	StaticHelper::CurSelectTileMap[FINT(1, 3)]->SetActorLocation(FINT(1, 3).GetSelectFINTToVector());
 	StaticHelper::CurSelectTileMap[FINT(1, 3)]->SelectInfo.IsEnter = false;
 	StaticHelper::CurSelectTileMap[FINT(1, 3)]->SelectInfo.Type = ESelectTileType::Stage;
 	StaticHelper::CurSelectTileMap[FINT(1, 3)]->SelectInfo.Stage = "Stage0" + std::to_string(2);
-	
+	StaticHelper::CurSelectTileMap[FINT(1, 3)]->SelectInfo.StageText = "NOW WHAT IS THIS";
+
 	StaticHelper::CurSelectTileMap[FINT(2, 2)]->SetAnimation(3, false);
 	StaticHelper::CurSelectTileMap[FINT(2, 2)]->SetActorLocation(FINT(2, 2).GetSelectFINTToVector());
 	StaticHelper::CurSelectTileMap[FINT(2, 2)]->SelectInfo.IsEnter = false;
 	StaticHelper::CurSelectTileMap[FINT(2, 2)]->SelectInfo.Type = ESelectTileType::Stage;
 	StaticHelper::CurSelectTileMap[FINT(2, 2)]->SelectInfo.Stage = "Stage0" + std::to_string(3);
+	StaticHelper::CurSelectTileMap[FINT(2, 2)]->SelectInfo.StageText = "OUT OF REACH";
+
 	StaticHelper::CurSelectTileMap[FINT(2, 3)]->SetAnimation(4, false);
 	StaticHelper::CurSelectTileMap[FINT(2, 3)]->SetActorLocation(FINT(2, 3).GetSelectFINTToVector());
 	StaticHelper::CurSelectTileMap[FINT(2, 3)]->SelectInfo.IsEnter = false;
 	StaticHelper::CurSelectTileMap[FINT(2, 3)]->SelectInfo.Type = ESelectTileType::Stage;
 	StaticHelper::CurSelectTileMap[FINT(2, 3)]->SelectInfo.Stage = "Stage0" + std::to_string(4);
+	StaticHelper::CurSelectTileMap[FINT(2, 3)]->SelectInfo.StageText = "STILL OUT OF REACH";
+
 	StaticHelper::CurSelectTileMap[FINT(1, 4)]->SetAnimation(5, false);
 	StaticHelper::CurSelectTileMap[FINT(1, 4)]->SetActorLocation(FINT(1, 4).GetSelectFINTToVector());
 	StaticHelper::CurSelectTileMap[FINT(1, 4)]->SelectInfo.IsEnter = false;
 	StaticHelper::CurSelectTileMap[FINT(1, 4)]->SelectInfo.Type = ESelectTileType::Stage;
 	StaticHelper::CurSelectTileMap[FINT(1, 4)]->SelectInfo.Stage = "Stage0" + std::to_string(5);
+	StaticHelper::CurSelectTileMap[FINT(1, 4)]->SelectInfo.StageText = "VOLCANO";
+
 	StaticHelper::CurSelectTileMap[FINT(3, 3)]->SetAnimation(6, false);
 	StaticHelper::CurSelectTileMap[FINT(3, 3)]->SetActorLocation(FINT(3, 3).GetSelectFINTToVector());
 	StaticHelper::CurSelectTileMap[FINT(3, 3)]->SelectInfo.IsEnter = false;
 	StaticHelper::CurSelectTileMap[FINT(3, 3)]->SelectInfo.Type = ESelectTileType::Stage;
 	StaticHelper::CurSelectTileMap[FINT(3, 3)]->SelectInfo.Stage = "Stage0" + std::to_string(6);
+	StaticHelper::CurSelectTileMap[FINT(3, 3)]->SelectInfo.StageText = "OFF LIMITS";
+
 	StaticHelper::CurSelectTileMap[FINT(2, 4)]->SetAnimation(7, false);
 	StaticHelper::CurSelectTileMap[FINT(2, 4)]->SetActorLocation(FINT(2, 4).GetSelectFINTToVector());
 	StaticHelper::CurSelectTileMap[FINT(2, 4)]->SelectInfo.IsEnter = false;
 	StaticHelper::CurSelectTileMap[FINT(2, 4)]->SelectInfo.Type = ESelectTileType::Stage;
 	StaticHelper::CurSelectTileMap[FINT(2, 4)]->SelectInfo.Stage = "Stage0" + std::to_string(7);
+	StaticHelper::CurSelectTileMap[FINT(2, 4)]->SelectInfo.StageText = "GRASS YARD";
+
 	StaticHelper::CurSelectTileMap[FINT(6, 6)]->SetAnimation(8, false);
 	StaticHelper::CurSelectTileMap[FINT(6, 6)]->SetActorLocation(FINT(6, 6).GetSelectFINTToVector());
 	StaticHelper::CurSelectTileMap[FINT(6, 6)]->SelectInfo.IsEnter = false;
