@@ -76,6 +76,9 @@
     <Filter Include="Effect">
       <UniqueIdentifier>{cadc8e95-aa31-47a4-8db1-cab39984c08d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{ef3b8676-ccf8-41fe-8d38-d7054e887ae6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ContentsCore.h">
@@ -246,6 +249,9 @@
     <ClInclude Include="MapTileText.h">
       <Filter>Actor\Text\LeftNoun</Filter>
     </ClInclude>
+    <ClInclude Include="SelectLevelWidget.h">
+      <Filter>UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp">
@@ -412,6 +418,9 @@
     </ClCompile>
     <ClCompile Include="MapTileText.cpp">
       <Filter>Actor\Text\LeftNoun</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectLevelWidget.cpp">
+      <Filter>UI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -89,6 +89,9 @@ void UContentsCore::Initialize()
 		UEngineSprite::CreateCutting("HotText.png", 3, 3);
 		UEngineSprite::CreateCutting("WinText.png", 3, 3);
 		UEngineSprite::CreateCutting("MeltText.png", 3, 3);
+
+		// Alphabet
+		UEngineSprite::CreateCutting("WhiteAlphabet.png", 7, 12);
 	}
 
 
