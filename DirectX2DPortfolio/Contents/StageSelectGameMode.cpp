@@ -26,7 +26,6 @@ void AStageSelectGameMode::BeginPlay()
 	Camera->SetActorLocation(FVector(0.0f, 0.0f, -100.0f));
 
 	std::shared_ptr<AStageText> StageText = GetWorld()->SpawnActor<AStageText>("StageText");
-	StageText->SetActorScale3D(FVector(1280.f * 1.5f, 720.f * 1.5f));
 
 	std::shared_ptr<ASelectMap> SelectMap = GetWorld()->SpawnActor<ASelectMap>("SelectMap");
 	SelectMap->SetActorScale3D(FVector(1280.f * 1.5f, 720.f * 1.5f));

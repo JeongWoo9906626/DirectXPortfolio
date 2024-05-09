@@ -11,10 +11,8 @@ AStageText::AStageText()
 	UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
 	SetRoot(Root);
 
-	FVector ActorPosition = this->GetActorLocation();
 	for (int i = 0; i < SentenceSize; i++)
 	{
-		ActorPosition.X += i * 100.0f;
 		USpriteRenderer* TextAnimationRenderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
 		TextAnimationRenderer->SetOrder(1000);
 		TextAnimationRenderer->SetScale(FVector(36.0f, 36.0f));
