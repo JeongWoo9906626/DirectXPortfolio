@@ -1,7 +1,7 @@
 #include "PreCompile.h"
 #include "SelectLevelWidget.h"
 
-#include <EngineCore/TextWidget.h>
+//#include <EngineCore/TextWidget.h>
 #include <EngineCore/Image.h>
 
 #include "Selector.h"

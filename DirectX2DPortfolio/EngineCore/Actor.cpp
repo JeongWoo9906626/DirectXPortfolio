@@ -62,7 +62,7 @@ void AActor::PushComponent(std::shared_ptr<UActorComponent> _Component, std::str
 
 	_Component->SetActor(this);
 	_Component->SetName(_Name);
-	//_Component->BeginPlay();
+	_Component->BeginPlay();
 
 	Components.push_back(_Component);
 
@@ -354,5 +354,6 @@ void AActor::WidgetInit(std::shared_ptr<UWidget> _Widget, std::string_view _Name
 {
 	_Widget->SetWorld(GetWorld());
 	_Widget->SetName(_Name);
+	_Widget->BeginPlay();
 	GetWorld()->WidgetInits.push_back(_Widget);
 }

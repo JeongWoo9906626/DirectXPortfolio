@@ -13,6 +13,8 @@
 
 #include "EngineVertexBuffer.h"
 
+ULevel* UEngineCore::CurCreateLevel;
+
 UEngineCore::UEngineCore() 
 {
 }
@@ -37,9 +39,11 @@ void UEngineCore::EngineStart(HINSTANCE _Inst)
 	LeakCheck;
 	GEngine = this;
 
+	JobWorker.Initialize("Engine Thread");
+
 	EngineOptionInit();
 
-	EngineWindow.Open(EngineOption.WindowTitle);
+	EngineWindow.Open(EngineOption.WindowTitle, WindowIconPath);
 	// 디바이스 초기화전에 크기가 다정해지면 해상도가 이미 결정 된거에요.
 	// EngineOption.WindowScale 해상도
 	// 해상도는 윈도우 크기와 관련이 없습니다.
@@ -53,7 +57,7 @@ void UEngineCore::EngineStart(HINSTANCE _Inst)
 	{
 		UserCorePtr->Initialize();
 		MainTimer.TimeCheckStart();
-	}
+	} 
 
 
 	UEngineWindow::WindowMessageLoop(
@@ -87,11 +91,11 @@ void UEngineCore::EngineOptionInit()
 		File.Load(Ser);
 		EngineOption.DeSerialize(Ser);
 	}
-
 }
 
 void UEngineCore::EngineEnd()
 {
+	JobWorker.End();
 	Levels.clear();
 	EngineDevice.EngineResourcesRelease();
 }
@@ -100,11 +104,28 @@ void UEngineCore::EngineFrameUpdate()
 {
 	float DeltaTime = MainTimer.TimeCheck();
 
+	UEngineSound::Update();
+
 	DeltaTime *= GlobalTimeScale;
 
 	UEngineInput::KeyCheckTick(DeltaTime);
 
 	GEngine->EngineWindow.CalculateMouseUpdate(DeltaTime);
+
+	for (size_t i = 0; i < DestroyLevelName.size(); i++)
+	{
+		std::string UpperName = UEngineString::ToUpper(DestroyLevelName[i]);
+
+		std::shared_ptr<ULevel> Level = Levels[UpperName];
+
+		Levels.erase(DestroyLevelName[i]);
+
+		if (Level == CurLevel)
+		{
+			CurLevel = nullptr;
+		}
+	}
+	DestroyLevelName.clear();
 
 	if (nullptr != NextLevel)
 	{
@@ -149,9 +170,11 @@ std::shared_ptr<ULevel> UEngineCore::NewLevelCreate(std::string_view _Name, std:
 	}
 
 	std::shared_ptr<ULevel> Level = std::make_shared<ULevel>();
+	CurCreateLevel = Level.get();
 	Level->SetGameMode(GameModePtr);
 	Level->SetName(_Name);
 	Level->PushActor(_GameMode);
 	Levels[UpperName] = Level;
+	CurCreateLevel = nullptr;
 	return Level;
 }
