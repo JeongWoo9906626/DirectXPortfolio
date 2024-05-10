@@ -34,8 +34,7 @@ ImagePSOutPut CircleFadeIn_PS(ImageVSOutPut _Input)
     
 	if (Len > 0.5f * AccTime)
 	{
-		Out.COLOR.rgba = float4(1.f, 1.f, 0.f, 1.f);
-
+        Out.COLOR.rgba = float4(0.08f, 0.094f, 0.12f, 1.f);
 	}
     
 	return Out;

@@ -25,7 +25,8 @@ TextureSet(Image, 0);
 ImagePSOutPut CircleFadeOut_PS(ImageVSOutPut _Input)
 {
 	ImagePSOutPut Out = (ImagePSOutPut) 0;
-    Out.COLOR.rgba = float4(0.f, 1.f, 1.f, 1.f);
+    
+    Out.COLOR.rgba = float4(0.08f, 0.094f, 0.12f, 1.f);
 	
 	float2 Center = float2(0.5f, 0.5f);
 	float2 Dir = Center - _Input.TEXCOORD.xy;
