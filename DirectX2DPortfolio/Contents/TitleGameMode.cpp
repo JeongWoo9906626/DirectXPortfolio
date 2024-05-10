@@ -3,6 +3,9 @@
 #include "TitleLogo.h"
 #include <EngineCore/Camera.h>
 #include "EngineCore/Image.h"
+#include "FadeInEffect.h"
+
+#include "FadeOutEffect.h"
 
 ATitleGameMode::ATitleGameMode()
 {
@@ -46,23 +49,30 @@ void ATitleGameMode::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
-	if (true == UEngineInput::IsDown(VK_UP))
+	if (true == IsLevelChange)
 	{
-		TitleBaba->SetPosition(FVector(-330, -100));
+		LevelChangeEffect(_DeltaTime);
 	}
-	if (true == UEngineInput::IsDown(VK_DOWN))
+	else
 	{
-		TitleBaba->SetPosition(FVector(-330, -200));
-	}
-	if (true == UEngineInput::IsDown(VK_SPACE))
-	{
-		if (-100 == static_cast<int>(TitleBaba->GetLocalPosition().Y))
+		if (true == UEngineInput::IsDown(VK_UP))
 		{
-			GEngine->ChangeLevel("SelectLevel");
+			TitleBaba->SetPosition(FVector(-330, -100));
 		}
-		if (-200 == static_cast<int>(TitleBaba->GetLocalPosition().Y))
+		if (true == UEngineInput::IsDown(VK_DOWN))
 		{
-			GEngine->EngineWindow.Off();
+			TitleBaba->SetPosition(FVector(-330, -200));
+		}
+		if (true == UEngineInput::IsDown(VK_SPACE))
+		{
+			if (-100 == static_cast<int>(TitleBaba->GetLocalPosition().Y))
+			{
+				IsLevelChange = true;
+			}
+			if (-200 == static_cast<int>(TitleBaba->GetLocalPosition().Y))
+			{
+				GEngine->EngineWindow.Off();
+			}
 		}
 	}
 }
@@ -75,5 +85,30 @@ void ATitleGameMode::LevelEnd(ULevel* _NextLevel)
 void ATitleGameMode::LevelStart(ULevel* _PrevLevel)
 {
 	Super::LevelStart(_PrevLevel);
+}
 
+void ATitleGameMode::LevelChangeEffect(float _DeltaTime)
+{
+	
+	if (false == AnimationEnd)
+	{
+		if (false == AnimationEndInit)
+		{
+			FadeOut = GetWorld()->GetLastTarget()->AddEffect<UFadeOutEffect>();
+			FadeOut->ResetTime();
+			FadeOut.get()->Active(true);
+			AnimationEndInit = true;
+		}
+		while (CurEndEffectTime >= EndEffectTime)
+		{
+			FadeOut.get()->Active(false);
+			AnimationEnd = true;
+			AnimationEndInit = false;
+			CurEndEffectTime = 0.0f;
+			IsLevelChange = false;
+			GEngine->ChangeLevel("SelectLevel");
+			return;
+		}
+		CurEndEffectTime += _DeltaTime;
+	}
 }

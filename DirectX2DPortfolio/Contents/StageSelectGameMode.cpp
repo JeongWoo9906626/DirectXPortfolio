@@ -7,6 +7,9 @@
 #include "SelectTile.h"
 #include <EngineCore/Camera.h>
 #include "StageText.h"
+#include "FadeOutEffect.h"
+
+#include "FadeInEffect.h"
 
 AStageSelectGameMode::AStageSelectGameMode()
 {
@@ -63,6 +66,13 @@ void AStageSelectGameMode::LevelStart(ULevel* _PrevLevel)
 {
 	Super::LevelStart(_PrevLevel);
 
+	std::shared_ptr<UFadeInEffect> FadeIn = GetWorld()->GetLastTarget()->AddEffect<UFadeInEffect>();
+	FadeIn->ResetTime();
+	FadeIn.get()->Active(true);
+
+	/*std::shared_ptr<UFadeOutEffect> FadeOut = GetWorld()->GetLastTarget()->AddEffect<UFadeOutEffect>();
+	FadeOut->ResetTime();
+	FadeOut.get()->Active(true);*/
 }
 
 void AStageSelectGameMode::SetSelectTileMapSize(FINT _SelectTileMapSize)
