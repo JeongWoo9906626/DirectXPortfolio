@@ -2,6 +2,7 @@
 #include <EngineCore/GameMode.h>
 
 // Ό³Έν :
+class UImage;
 class ATitleGameMode : public AGameMode
 {
 	GENERATED_BODY(AGameMode)
@@ -25,6 +26,6 @@ protected:
 	void LevelStart(ULevel* _PrevLevel) override;
 
 private:
-
+	UImage* TitleBaba = nullptr;
 };
 
