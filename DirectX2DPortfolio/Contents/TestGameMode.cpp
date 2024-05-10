@@ -76,6 +76,12 @@ void ATestGameMode::BeginPlay()
 void ATestGameMode::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
+
+	if (true == UEngineInput::IsDown('R'))
+	{
+		LevelEnd(GetWorld());
+		LevelStart(GetWorld());
+	}
 }
 
 void ATestGameMode::LevelEnd(ULevel* _NextLevel)
