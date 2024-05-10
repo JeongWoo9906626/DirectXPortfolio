@@ -76,6 +76,9 @@
     <Filter Include="Effect">
       <UniqueIdentifier>{cadc8e95-aa31-47a4-8db1-cab39984c08d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Actor\ScreenText">
+      <UniqueIdentifier>{3823acce-3c80-4a25-866e-f788d9942c32}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ContentsCore.h">
@@ -247,7 +250,10 @@
       <Filter>Actor\Text\LeftNoun</Filter>
     </ClInclude>
     <ClInclude Include="StageText.h">
-      <Filter>Actor</Filter>
+      <Filter>Actor\ScreenText</Filter>
+    </ClInclude>
+    <ClInclude Include="InfoText.h">
+      <Filter>Actor\ScreenText</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -417,7 +423,10 @@
       <Filter>Actor\Text\LeftNoun</Filter>
     </ClCompile>
     <ClCompile Include="StageText.cpp">
-      <Filter>Actor</Filter>
+      <Filter>Actor\ScreenText</Filter>
+    </ClCompile>
+    <ClCompile Include="InfoText.cpp">
+      <Filter>Actor\ScreenText</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

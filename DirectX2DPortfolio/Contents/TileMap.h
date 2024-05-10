@@ -6,6 +6,7 @@
 
 class ATile;
 class UFadeOutEffect;
+class AInfoText;
 class ATileMap : public AActor
 {
 	GENERATED_BODY(AActor)
@@ -44,6 +45,8 @@ protected:
 	void HotCheck(FINT _TilePosition);
 	void WinCheck(FINT _TilePosition);
 
+	bool ControllerCheck();
+
 private:
 	FINT MapSize = FINT();
 	EInputType Input = EInputType::None;
@@ -59,8 +62,12 @@ private:
 	float CurEndEffectTime = 0.0f;
 	float EndEffectTime = 2.0f;
 
+	float CurInfoTextTime = 0.0f;
+	float InfoTextTime = 1.0f;
+
 	bool AnimationEnd = false;
 	bool AnimationEndInit = false;
 	std::shared_ptr<UFadeOutEffect> FadeOut;
+	std::shared_ptr<AInfoText> StageText;
 };
 

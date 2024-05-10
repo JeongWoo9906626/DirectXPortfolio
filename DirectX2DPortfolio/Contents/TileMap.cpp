@@ -26,6 +26,7 @@
 #include "RockText.h"
 #include "SelectTile.h"
 #include "FadeOutEffect.h"
+#include "InfoText.h"
 
 
 
@@ -43,12 +44,31 @@ void ATileMap::BeginPlay()
 {
 	Super::BeginPlay();
 
+	StageText = GetWorld()->SpawnActor<AInfoText>("AInfoText");
+
 	//StaticHelper::CurTileMap = Map;
 }
 
 void ATileMap::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
+
+	if (false == ControllerCheck())
+	{
+		if (CurInfoTextTime > InfoTextTime)
+		{
+			CurInfoTextTime = 0.0f;
+			StageText->RenderOn();
+		}
+		else
+		{
+			CurInfoTextTime += _DeltaTime;
+		}
+	}
+	else
+	{
+		StageText->RenderOff();
+	}
 
 	if (UEngineInput::IsDown('E'))
 	{
@@ -318,7 +338,7 @@ bool ATileMap::MoveEnd()
 	}
 
 	bool Temp = false;
-	std::map<FINT, std::list<ATile*>> NewTileMap;
+	//std::map<FINT, std::list<ATile*>> NewTileMap;
 	for (std::pair<FINT, std::list<ATile*>> Iterator : StaticHelper::CurTileMap)
 	{
 		FINT CurMapTilePos = Iterator.first;
@@ -488,4 +508,20 @@ void ATileMap::WinCheck(FINT _TilePosition)
 			Tile->SetIsController(false);
 		}
 	}
+}
+
+bool ATileMap::ControllerCheck()
+{
+	for (std::pair<FINT, std::list<ATile*>> Iterator : StaticHelper::CurTileMap)
+	{
+		std::list<ATile*> TileActorList = Iterator.second;
+		for (ATile* TileActor : TileActorList)
+		{
+			if (true == TileActor->GetTileInfo().IsController)
+			{
+				return true;
+			}
+		}
+	}
+	return false;
 }

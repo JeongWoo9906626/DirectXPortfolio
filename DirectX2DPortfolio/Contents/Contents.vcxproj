@@ -216,6 +216,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="HotText.h" />
+    <ClInclude Include="InfoText.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="IsText.h">
       <SubType>
       </SubType>
@@ -430,6 +434,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="HotText.cpp" />
+    <ClCompile Include="InfoText.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="IsText.cpp">
       <SubType>
       </SubType>
