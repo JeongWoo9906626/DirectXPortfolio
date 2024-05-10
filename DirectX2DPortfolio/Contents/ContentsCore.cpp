@@ -92,6 +92,8 @@ void UContentsCore::Initialize()
 
 		// Alphabet
 		UEngineSprite::CreateCutting("WhiteAlphabet.png", 7, 12);
+		UEngineSprite::CreateCutting("RKey.png", 3, 1);
+		UEngineSprite::CreateCutting("ZKey.png", 3, 1);
 	}
 
 

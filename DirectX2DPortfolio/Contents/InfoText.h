@@ -34,5 +34,5 @@ private:
 	FINT CurPos = FINT();
 	FINT PrevPos = FINT(-1, 0);
 	
-	int Size = 9;
+	int Size = 10;
 };

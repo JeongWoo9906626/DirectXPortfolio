@@ -255,6 +255,9 @@
     <ClInclude Include="InfoText.h">
       <Filter>Actor\ScreenText</Filter>
     </ClInclude>
+    <ClInclude Include="TextActor.h">
+      <Filter>Actor\ScreenText</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp">
@@ -426,6 +429,9 @@
       <Filter>Actor\ScreenText</Filter>
     </ClCompile>
     <ClCompile Include="InfoText.cpp">
+      <Filter>Actor\ScreenText</Filter>
+    </ClCompile>
+    <ClCompile Include="TextActor.cpp">
       <Filter>Actor\ScreenText</Filter>
     </ClCompile>
   </ItemGroup>

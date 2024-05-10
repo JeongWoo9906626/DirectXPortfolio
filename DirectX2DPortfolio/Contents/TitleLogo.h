@@ -1,6 +1,5 @@
 #pragma once
 #include <Enginecore/Actor.h>
-#include <EngineCore/SpriteRenderer.h>
 
 // Ό³Έν :
 class ATitleLogo : public AActor
@@ -22,10 +21,6 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-	void RendererOff();
-	void RendererOn();
-
 private:
-	USpriteRenderer* Renderer = nullptr;
 };
 

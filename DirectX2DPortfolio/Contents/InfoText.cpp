@@ -89,13 +89,16 @@ void AInfoText::CreateTextAnimation()
 			RestartVector[i]->CreateAnimation("Restart" + Alphabet, "WhiteAlphabet.png", AnimationFrame, TextAnimationIndex);
 		}
 		UndoVector[i]->CreateAnimation("InfoBlank", "WhiteAlphabet.png", AnimationFrame, { 78 });
+		UndoVector[i]->CreateAnimation("ZKey", "ZKey.png", { 0.2f, 0.2f, 0.2f }, { 0, 1, 2 });
+
 		RestartVector[i]->CreateAnimation("RestartBlank", "WhiteAlphabet.png", AnimationFrame, { 78 });
+		RestartVector[i]->CreateAnimation("RKey", "RKey.png", { 0.2f, 0.2f, 0.2f }, { 0, 1, 2 });
 	}
 }
 
 void AInfoText::UndoTextChange()
 {
-	std::string CurText = "Z Undo";
+	std::string CurText = "Z  Undo";
 	int Len = CurText.size();
 
 	FVector TextPosition = FVector::Zero;
@@ -124,11 +127,12 @@ void AInfoText::UndoTextChange()
 			UndoVector[i]->ChangeAnimation("InfoBlank");
 		}
 	}
+	UndoVector[0]->ChangeAnimation("ZKey");
 }
 
 void AInfoText::RestartTextChange()
 {
-	std::string CurText = "R Restart";
+	std::string CurText = "R  Restart";
 	int Len = CurText.size();
 
 	FVector TextPosition = FVector::Zero;
@@ -157,6 +161,7 @@ void AInfoText::RestartTextChange()
 			RestartVector[i]->ChangeAnimation("RestartBlank");
 		}
 	}
+	RestartVector[0]->ChangeAnimation("RKey");
 }
 
 void AInfoText::RenderOff()
