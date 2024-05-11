@@ -2,6 +2,7 @@
 #include <Enginecore/Actor.h>
 
 // Ό³Έν :
+class TextActor;
 class AStageNumberText : public AActor
 {
 	GENERATED_BODY(AActor)
@@ -24,6 +25,8 @@ protected:
 private:
 	FVector StartPos = FVector(-280, 108);
 	FVector AddNext = FVector(60.0f, 0.0f);
-	FVector TitleScale = FVector(200, 200);
+	FVector TitleScale = FVector(100, 100);
+	TextActor* NumberText = nullptr;
+	bool IsChange = false;
 };
 

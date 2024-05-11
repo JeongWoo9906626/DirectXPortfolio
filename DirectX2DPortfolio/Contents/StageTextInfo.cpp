@@ -14,7 +14,7 @@ void AStageTextInfo::BeginPlay()
 {
 	Super::BeginPlay();
 
-	{
+	/*{
 		std::shared_ptr<TextActor> B = GetWorld()->SpawnActor<TextActor>("B");
 		B->SetText("B");
 		B->SetActorLocation(StartPos);
@@ -90,7 +90,7 @@ void AStageTextInfo::BeginPlay()
 		U->SetActorLocation(StartPos);
 		U->SetScale(TitleScale);
 		U->SetColor(FVector(217, 57, 106));
-	}
+	}*/
 }
 
 void AStageTextInfo::Tick(float _DeltaTime)

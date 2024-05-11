@@ -29,6 +29,8 @@ void ASwitchingLevelGameMode::Tick(float _DeltaTime)
 
 	if (CurChangeTime >= ChangeTime)
 	{
+		StaticHelper::IsStageNumberChange = false;
+		StaticHelper::IsNumberDestroy = true;
 		CurChangeTime = 0.0f;
 		GEngine->ChangeLevel("TestLevel");
 	}
@@ -37,6 +39,8 @@ void ASwitchingLevelGameMode::Tick(float _DeltaTime)
 		CurChangeTime += _DeltaTime;
 		if (true == UEngineInput::IsDown(VK_SPACE))
 		{
+			StaticHelper::IsStageNumberChange = false;
+			StaticHelper::IsNumberDestroy = true;
 			CurChangeTime = 0.0f;
 			GEngine->ChangeLevel("TestLevel");
 		}
@@ -46,6 +50,7 @@ void ASwitchingLevelGameMode::Tick(float _DeltaTime)
 void ASwitchingLevelGameMode::LevelEnd(ULevel* _NextLevel)
 {
 	Super::LevelEnd(_NextLevel);
+	
 }
 
 void ASwitchingLevelGameMode::LevelStart(ULevel* _PrevLevel)

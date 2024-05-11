@@ -11,3 +11,5 @@ std::string StaticHelper::StageNumber = "";
 std::string StaticHelper::StageText = "";
 bool StaticHelper::IsStageChange = false;
 ASelector* StaticHelper::CurSelector;
+bool StaticHelper::IsStageNumberChange = false;
+bool StaticHelper::IsNumberDestroy = false;

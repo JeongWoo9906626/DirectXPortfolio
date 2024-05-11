@@ -34,38 +34,67 @@ void TextActor::Tick(float _DeltaTime)
 
 void TextActor::TextAnimationSetting()
 {
-	std::vector<float> AnimationFrame = { 0.1f, 0.1f, 0.1f };
-	std::vector<int> TextAnimationIndex;
-	std::to_string(char('A'));
-
-	for (char ch = 'A'; ch <= 'Z'; ch++)
 	{
-		int Index = static_cast<int>(ch) - static_cast<int>('A');
-		std::string Alphabet = std::string(1, ch);
+		std::vector<float> AnimationFrame = { 0.1f, 0.1f, 0.1f };
+		std::vector<int> TextAnimationIndex;
+		std::to_string(char('A'));
 
-		if (Index <= 6)
+		for (char ch = 'A'; ch <= 'Z'; ch++)
 		{
-			// 0 ~ 6 (A ~ G)
-			TextAnimationIndex = { 0 + Index, 7 + Index, 14 + Index };
+			int Index = static_cast<int>(ch) - static_cast<int>('A');
+			std::string Alphabet = std::string(1, ch);
+
+			if (Index <= 6)
+			{
+				// 0 ~ 6 (A ~ G)
+				TextAnimationIndex = { 0 + Index, 7 + Index, 14 + Index };
+			}
+			else if (Index <= 13)
+			{
+				// 7 ~ 13 (H ~ N)
+				TextAnimationIndex = { 14 + Index, 21 + Index, 28 + Index };
+			}
+			else if (Index <= 20)
+			{
+				// 14 ~ 20 (O ~ U)(42,49,56)
+				TextAnimationIndex = { 28 + Index, 35 + Index, 42 + Index };
+			}
+			else
+			{
+				// 21 ~ 25 (V ~ Z) (63, 68, 73
+				TextAnimationIndex = { 42 + Index , 47 + Index, 52 + Index };
+			}
+			Renderer->CreateAnimation("Title" + Alphabet, "WhiteAlphabet.png", AnimationFrame, TextAnimationIndex);
 		}
-		else if (Index <= 13)
-		{
-			// 7 ~ 13 (H ~ N)
-			TextAnimationIndex = { 14 + Index, 21 + Index, 28 + Index };
-		}
-		else if (Index <= 20)
-		{
-			// 14 ~ 20 (O ~ U)(42,49,56)
-			TextAnimationIndex = { 28 + Index, 35 + Index, 42 + Index };
-		}
-		else
-		{
-			// 21 ~ 25 (V ~ Z) (63, 68, 73
-			TextAnimationIndex = { 42 + Index , 47 + Index, 52 + Index };
-		}
-		Renderer->CreateAnimation("Title" + Alphabet, "WhiteAlphabet.png", AnimationFrame, TextAnimationIndex);
+		Renderer->CreateAnimation("TitleBlank", "WhiteAlphabet.png", AnimationFrame, { 78 });
 	}
-	Renderer->CreateAnimation("TitleBlank", "WhiteAlphabet.png", AnimationFrame, { 78 });
+
+	{
+		int i = 0;
+		int Index = -1;
+		std::vector<float> AnimationFrame = { 0.1f, 0.1f, 0.1f };
+		std::vector<int> AnimationOnFrameIndex;
+
+		while (i < 10)
+		{
+			Index += 1;
+			std::string Number = std::to_string(i);
+
+			if (i < 5)
+			{
+				AnimationOnFrameIndex = { Index, Index + 10, Index + 20 };
+				Index++;
+			}
+			else
+			{
+				AnimationOnFrameIndex = { Index + 20, Index + 30, Index + 40 };
+				Index++;
+			}
+
+			Renderer->CreateAnimation("Title" + Number, "Number.png", AnimationFrame, AnimationOnFrameIndex, true);
+			i++;
+		}
+	}
 }
 
 

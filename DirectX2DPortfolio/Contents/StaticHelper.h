@@ -13,4 +13,6 @@ public:
 	static std::string StageText;
 	static bool IsStageChange;
 	static class ASelector* CurSelector;
+	static bool IsStageNumberChange;
+	static bool IsNumberDestroy;
 };

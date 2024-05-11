@@ -15,7 +15,7 @@ void ATitleLogo::BeginPlay()
 	Super::BeginPlay();
 
 	{
-		std::shared_ptr<TextActor> B = GetWorld()->SpawnActor<TextActor>("B");
+		TextActor* B = GetWorld()->SpawnActor<TextActor>("B").get();
 		B->SetText("B");
 		B->SetActorLocation(StartPos);
 		B->SetScale(TitleScale);
@@ -24,7 +24,7 @@ void ATitleLogo::BeginPlay()
 
 	{
 		StartPos += AddNext;
-		std::shared_ptr<TextActor> A = GetWorld()->SpawnActor<TextActor>("A");
+		TextActor* A = GetWorld()->SpawnActor<TextActor>("A").get();
 		A->SetText("A");
 		A->SetActorLocation(StartPos);
 		A->SetScale(TitleScale);
@@ -33,7 +33,7 @@ void ATitleLogo::BeginPlay()
 
 	{
 		StartPos += AddNext;
-		std::shared_ptr<TextActor> B = GetWorld()->SpawnActor<TextActor>("B");
+		TextActor* B = GetWorld()->SpawnActor<TextActor>("B").get();
 		B->SetText("B");
 		B->SetActorLocation(StartPos);
 		B->SetScale(TitleScale);
@@ -42,7 +42,7 @@ void ATitleLogo::BeginPlay()
 
 	{
 		StartPos += AddNext;
-		std::shared_ptr<TextActor> A = GetWorld()->SpawnActor<TextActor>("A");
+		TextActor* A = GetWorld()->SpawnActor<TextActor>("A").get();
 		A->SetText("A");
 		A->SetActorLocation(StartPos);
 		A->SetScale(TitleScale);
@@ -51,7 +51,7 @@ void ATitleLogo::BeginPlay()
 
 	{
 		StartPos += AddNext * 2;
-		std::shared_ptr<TextActor> I = GetWorld()->SpawnActor<TextActor>("I");
+		TextActor* I = GetWorld()->SpawnActor<TextActor>("I").get();
 		I->SetText("I");
 		I->SetActorLocation(StartPos);
 		I->SetScale(TitleScale);
@@ -59,7 +59,7 @@ void ATitleLogo::BeginPlay()
 
 	{
 		StartPos += AddNext;
-		std::shared_ptr<TextActor> S = GetWorld()->SpawnActor<TextActor>("S");
+		TextActor* S = GetWorld()->SpawnActor<TextActor>("S").get();
 		S->SetText("S");
 		S->SetActorLocation(StartPos);
 		S->SetScale(TitleScale);
@@ -67,7 +67,7 @@ void ATitleLogo::BeginPlay()
 
 	{
 		StartPos += AddNext * 2;
-		std::shared_ptr<TextActor> Y = GetWorld()->SpawnActor<TextActor>("Y");
+		TextActor* Y = GetWorld()->SpawnActor<TextActor>("Y").get();
 		Y->SetText("Y");
 		Y->SetActorLocation(StartPos);
 		Y->SetScale(TitleScale);
@@ -76,7 +76,7 @@ void ATitleLogo::BeginPlay()
 
 	{
 		StartPos += AddNext;
-		std::shared_ptr<TextActor> O = GetWorld()->SpawnActor<TextActor>("O");
+		TextActor* O = GetWorld()->SpawnActor<TextActor>("O").get();
 		O->SetText("O");
 		O->SetActorLocation(StartPos);
 		O->SetScale(TitleScale);
@@ -85,7 +85,7 @@ void ATitleLogo::BeginPlay()
 
 	{
 		StartPos += AddNext;
-		std::shared_ptr<TextActor> U = GetWorld()->SpawnActor<TextActor>("U");
+		TextActor* U = GetWorld()->SpawnActor<TextActor>("U").get();
 		U->SetText("U");
 		U->SetActorLocation(StartPos);
 		U->SetScale(TitleScale);

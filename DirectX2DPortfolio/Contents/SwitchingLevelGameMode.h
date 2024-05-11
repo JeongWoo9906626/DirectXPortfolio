@@ -2,6 +2,7 @@
 #include <EngineCore/GameMode.h>
 
 // Ό³Έν :
+class AStageNumberText;
 class ASwitchingLevelGameMode : public AGameMode
 {
 	GENERATED_BODY(AGameMode)
