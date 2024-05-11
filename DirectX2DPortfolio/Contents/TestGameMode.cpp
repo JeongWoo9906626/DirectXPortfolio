@@ -124,7 +124,7 @@ void ATestGameMode::LevelStart(ULevel* _PrevLevel)
 	FadeIn.get()->Active(true);
 
 	// 다을레벨 이름 넘겨주기
-	LoadTileMap(StaticHelper::StageName);
+	LoadTileMap(StaticHelper::StageNumber);
 	FINT::MapSize;
 	FVector BackGroundSize = { FINT::MapSize.X * StaticHelper::TileSize, FINT::MapSize.Y * StaticHelper::TileSize };
 	BackGround->SetActorScale3D(BackGroundSize);
@@ -199,12 +199,12 @@ void ATestGameMode::LoadTileMap(std::string _LevelName)
 	}
 }
 
-void ATestGameMode::ChangeStage(std::string _LevelName)
-{
-	LoadTileMap(StaticHelper::StageName);
-	std::shared_ptr<ATileMap> TileMap = GetWorld()->SpawnActor<ATileMap>("TM");
-	TileMap->SetTileSize(FINT(33, 18));
-}
+//void ATestGameMode::ChangeStage(std::string _LevelName)
+//{
+//	LoadTileMap(StaticHelper::StageName);
+//	std::shared_ptr<ATileMap> TileMap = GetWorld()->SpawnActor<ATileMap>("TM");
+//	TileMap->SetTileSize(FINT(33, 18));
+//}
 
 
 void ATestGameMode::InLevelSpawnTileActor(FINT _TilePos, ESpawnType _Type)

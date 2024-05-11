@@ -9,7 +9,8 @@ public:
 	static std::map<FINT, std::list<ATile*>> CurTileMap;
 	static std::map<FINT, class ASelectTile*> CurSelectTileMap;
 	static float TileSize;
-	static std::string StageName;
+	static std::string StageNumber;
+	static std::string StageText;
 	static bool IsStageChange;
 	static class ASelector* CurSelector;
 };

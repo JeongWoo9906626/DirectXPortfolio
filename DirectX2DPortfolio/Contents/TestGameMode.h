@@ -28,7 +28,7 @@ protected:
 
 	void LoadTileMap(std::string _LevelName);
 
-	void ChangeStage(std::string _LevelName);
+	//void ChangeStage(std::string _LevelName);
 
 private:
 	UEngineDirectory Dir;

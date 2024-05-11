@@ -266,10 +266,13 @@
     </ClInclude>
     <ClInclude Include="Skull.h" />
     <ClInclude Include="SkullText.h" />
+    <ClInclude Include="StageNumberText.h" />
     <ClInclude Include="StageText.h">
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="StageTextInfo.h" />
+    <ClInclude Include="SwitchingLevelGameMode.h" />
     <ClInclude Include="TextActor.h">
       <SubType>
       </SubType>
@@ -488,10 +491,13 @@
     </ClCompile>
     <ClCompile Include="Skull.cpp" />
     <ClCompile Include="SkullText.cpp" />
+    <ClCompile Include="StageNumberText.cpp" />
     <ClCompile Include="StageText.cpp">
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="StageTextInfo.cpp" />
+    <ClCompile Include="SwitchingLevelGameMode.cpp" />
     <ClCompile Include="TextActor.cpp">
       <SubType>
       </SubType>

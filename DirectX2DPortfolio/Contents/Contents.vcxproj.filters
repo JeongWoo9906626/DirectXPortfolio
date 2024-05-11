@@ -79,6 +79,12 @@
     <Filter Include="Actor\TextTile\Connecting">
       <UniqueIdentifier>{a529fcf0-1bc2-4470-8a4f-220c1098b9f0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Level\SwitchingLevel">
+      <UniqueIdentifier>{0592622c-9d52-4f80-9421-6a13188de7c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\SwitchingLevel\Actor">
+      <UniqueIdentifier>{c6bc0de2-c313-4a5f-af8c-9fb992276302}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ContentsCore.h">
@@ -258,6 +264,15 @@
     <ClInclude Include="TextActor.h">
       <Filter>Actor\ScreenText</Filter>
     </ClInclude>
+    <ClInclude Include="SwitchingLevelGameMode.h">
+      <Filter>Level\SwitchingLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="StageNumberText.h">
+      <Filter>Level\SwitchingLevel\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="StageTextInfo.h">
+      <Filter>Level\SwitchingLevel\Actor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp">
@@ -433,6 +448,15 @@
     </ClCompile>
     <ClCompile Include="TextActor.cpp">
       <Filter>Actor\ScreenText</Filter>
+    </ClCompile>
+    <ClCompile Include="SwitchingLevelGameMode.cpp">
+      <Filter>Level\SwitchingLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="StageNumberText.cpp">
+      <Filter>Level\SwitchingLevel\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="StageTextInfo.cpp">
+      <Filter>Level\SwitchingLevel\Actor</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

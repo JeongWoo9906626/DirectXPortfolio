@@ -1,6 +1,6 @@
 #include "PreCompile.h"
 #include "ContentsCore.h"
-#include "PlayGameMode.h"
+#include "SwitchingLevelGameMode.h"
 #include "TitleGameMode.h"
 #include "StageSelectGameMode.h"
 #include "TestGameMode.h"
@@ -137,9 +137,8 @@ void UContentsCore::Initialize()
 
 	GEngine->CreateLevel<ATitleGameMode>("TitleLevel");
 	GEngine->CreateLevel<AStageSelectGameMode>("SelectLevel");
-	GEngine->CreateLevel<APlayGameMode>("PlayLevel");
+	GEngine->CreateLevel<ASwitchingLevelGameMode>("SwitchingLevelGameMode");
 	GEngine->CreateLevel<ATestGameMode>("TestLevel");
 	GEngine->CreateLevel<ATileMapEditorGameMode>("TileMapEditorGameMode");
-	//GEngine->ChangeLevel("TileMapEditorGameMode");
 	GEngine->ChangeLevel("TitleLevel");
 }
