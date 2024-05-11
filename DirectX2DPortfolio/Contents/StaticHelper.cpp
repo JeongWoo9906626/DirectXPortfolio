@@ -13,3 +13,5 @@ bool StaticHelper::IsStageChange = false;
 ASelector* StaticHelper::CurSelector;
 bool StaticHelper::IsStageNumberChange = false;
 bool StaticHelper::IsNumberDestroy = false;
+bool StaticHelper::IsStageTextChange = false;
+bool StaticHelper::IsTextDestroy = false;

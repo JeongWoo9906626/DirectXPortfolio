@@ -1,8 +1,8 @@
 #include "PreCompile.h"
 #include "SwitchingLevelGameMode.h"
 #include <EngineCore/Camera.h>
-#include "StageTextInfo.h"
 #include "StageNumberText.h"
+#include "StageTextInfo.h"
 
 ASwitchingLevelGameMode::ASwitchingLevelGameMode()
 {
@@ -31,6 +31,8 @@ void ASwitchingLevelGameMode::Tick(float _DeltaTime)
 	{
 		StaticHelper::IsStageNumberChange = false;
 		StaticHelper::IsNumberDestroy = true;
+		StaticHelper::IsStageTextChange = false;
+		StaticHelper::IsTextDestroy = true;
 		CurChangeTime = 0.0f;
 		GEngine->ChangeLevel("TestLevel");
 	}
@@ -41,6 +43,8 @@ void ASwitchingLevelGameMode::Tick(float _DeltaTime)
 		{
 			StaticHelper::IsStageNumberChange = false;
 			StaticHelper::IsNumberDestroy = true;
+			StaticHelper::IsStageTextChange = false;
+			StaticHelper::IsTextDestroy = true;
 			CurChangeTime = 0.0f;
 			GEngine->ChangeLevel("TestLevel");
 		}

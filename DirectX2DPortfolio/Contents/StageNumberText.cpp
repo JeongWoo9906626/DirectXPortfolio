@@ -14,8 +14,8 @@ void AStageNumberText::BeginPlay()
 {
 	Super::BeginPlay();
 
-	std::string StageNumber = "LEVEL ";
-	int Len = 6;
+	std::string StageNumber = "LEVEL";
+	int Len = 5;
 	for (int i = 0; i < Len; i++)
 	{
 		TextActor* Text = GetWorld()->SpawnActor<TextActor>("Text").get();
@@ -52,11 +52,11 @@ void AStageNumberText::Tick(float _DeltaTime)
 	{
 		StaticHelper::IsNumberDestroy = false;
 		StaticHelper::IsStageNumberChange = true;
-		NumberText = GetWorld()->SpawnActor<TextActor>("Text").get();
 		StaticHelper::StageNumber;
 		std::string Alphabet = StaticHelper::StageNumber.substr(6, 1);
+		NumberText = GetWorld()->SpawnActor<TextActor>("Text").get();
 		NumberText->SetText(Alphabet);
-		NumberText->SetActorLocation(StartPos);
+		NumberText->SetActorLocation(StartPos + AddNext + FVector::Down * 25);
 		NumberText->SetScale(TitleScale * 2);
 		NumberText->SetColor(FVector(217, 57, 106));
 	}

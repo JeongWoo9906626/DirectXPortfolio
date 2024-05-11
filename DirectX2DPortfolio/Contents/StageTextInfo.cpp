@@ -13,87 +13,53 @@ AStageTextInfo::~AStageTextInfo()
 void AStageTextInfo::BeginPlay()
 {
 	Super::BeginPlay();
-
-	/*{
-		std::shared_ptr<TextActor> B = GetWorld()->SpawnActor<TextActor>("B");
-		B->SetText("B");
-		B->SetActorLocation(StartPos);
-		B->SetScale(TitleScale);
-		B->SetColor(FVector(217, 57, 106));
-	}
-
-	{
-		StartPos += AddNext;
-		std::shared_ptr<TextActor> A = GetWorld()->SpawnActor<TextActor>("A");
-		A->SetText("A");
-		A->SetActorLocation(StartPos);
-		A->SetScale(TitleScale);
-		A->SetColor(FVector(217, 57, 106));
-	}
-
-	{
-		StartPos += AddNext;
-		std::shared_ptr<TextActor> B = GetWorld()->SpawnActor<TextActor>("B");
-		B->SetText("B");
-		B->SetActorLocation(StartPos);
-		B->SetScale(TitleScale);
-		B->SetColor(FVector(217, 57, 106));
-	}
-
-	{
-		StartPos += AddNext;
-		std::shared_ptr<TextActor> A = GetWorld()->SpawnActor<TextActor>("A");
-		A->SetText("A");
-		A->SetActorLocation(StartPos);
-		A->SetScale(TitleScale);
-		A->SetColor(FVector(217, 57, 106));
-	}
-
-	{
-		StartPos += AddNext * 2;
-		std::shared_ptr<TextActor> I = GetWorld()->SpawnActor<TextActor>("I");
-		I->SetText("I");
-		I->SetActorLocation(StartPos);
-		I->SetScale(TitleScale);
-	}
-
-	{
-		StartPos += AddNext;
-		std::shared_ptr<TextActor> S = GetWorld()->SpawnActor<TextActor>("S");
-		S->SetText("S");
-		S->SetActorLocation(StartPos);
-		S->SetScale(TitleScale);
-	}
-
-	{
-		StartPos += AddNext * 2;
-		std::shared_ptr<TextActor> Y = GetWorld()->SpawnActor<TextActor>("Y");
-		Y->SetText("Y");
-		Y->SetActorLocation(StartPos);
-		Y->SetScale(TitleScale);
-		Y->SetColor(FVector(217, 57, 106));
-	}
-
-	{
-		StartPos += AddNext;
-		std::shared_ptr<TextActor> O = GetWorld()->SpawnActor<TextActor>("O");
-		O->SetText("O");
-		O->SetActorLocation(StartPos);
-		O->SetScale(TitleScale);
-		O->SetColor(FVector(217, 57, 106));
-	}
-
-	{
-		StartPos += AddNext;
-		std::shared_ptr<TextActor> U = GetWorld()->SpawnActor<TextActor>("U");
-		U->SetText("U");
-		U->SetActorLocation(StartPos);
-		U->SetScale(TitleScale);
-		U->SetColor(FVector(217, 57, 106));
-	}*/
 }
 
 void AStageTextInfo::Tick(float _DeltaTime)
 {
-	Super::Tick(_DeltaTime);
+ 	Super::Tick(_DeltaTime);
+
+	if (true == StaticHelper::IsTextDestroy)
+	{
+		int Len = TextVector.size();
+		for (int i = 0; i < Len; i++)
+		{
+			TextActor* Text = TextVector[i];
+			if (nullptr != Text)
+			{
+				Text->Destroy();
+				Text = nullptr;
+			}
+		}
+		TextVector.clear();
+		StartPos = FVector(-280, -108);
+	}
+
+	if (false == StaticHelper::IsStageTextChange)
+	{
+		StaticHelper::IsTextDestroy = false;
+		StaticHelper::IsStageTextChange = true;
+		std::string StageText = StaticHelper::StageText;
+		int TextLen = StageText.size();
+
+		StartPos = FVector(-56, 0) * (TextLen / 2);
+		StartPos += FVector(0, -108);
+
+		for (int i = 0; i < TextLen; i++)
+		{
+			TextVector.push_back(GetWorld()->SpawnActor<TextActor>("Text").get());
+			std::string Alphabet = std::string(1, StageText[i]);
+			if (Alphabet._Equal(" "))
+			{
+				TextVector[i]->SetText("Blank");
+			}
+			else
+			{
+				TextVector[i]->SetText(Alphabet);
+			}
+			TextVector[i]->SetActorLocation(StartPos);
+			TextVector[i]->SetScale(TitleScale);
+			StartPos += AddNext;
+		}
+	}
 }

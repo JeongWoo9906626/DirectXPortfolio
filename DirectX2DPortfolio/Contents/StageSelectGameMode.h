@@ -3,6 +3,7 @@
 
 class ASelector;
 class ASelectTileMap;
+class UFadeOutEffect;
 class AStageSelectGameMode : public AGameMode
 {
 	GENERATED_BODY(AGameMode)
@@ -32,4 +33,10 @@ private:
 
 	float StageOpenTime = 0.3f;
 	float CurStageOpenTime = 0.0f;
+
+	float CurEndEffectTime = 0.0f;
+	float EndEffectTime = 2.0f;
+	bool AnimationEnd = false;
+	bool AnimationEndInit = false;
+	std::shared_ptr<UFadeOutEffect> FadeOut;
 };

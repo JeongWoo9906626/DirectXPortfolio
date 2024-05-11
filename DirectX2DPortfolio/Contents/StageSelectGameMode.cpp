@@ -8,7 +8,6 @@
 #include <EngineCore/Camera.h>
 #include "StageText.h"
 #include "FadeOutEffect.h"
-
 #include "FadeInEffect.h"
 
 AStageSelectGameMode::AStageSelectGameMode()
@@ -47,12 +46,37 @@ void AStageSelectGameMode::Tick(float _DeltaTime)
 
 	if (true == StaticHelper::IsStageChange)
 	{
-		FINT MapPosition = Selector->GetTilePosition();
-		//StaticHelper::StageName = "Tests08";
-		StaticHelper::StageNumber = StaticHelper::CurSelectTileMap[MapPosition]->SelectInfo.Stage;
-		StaticHelper::StageText = StaticHelper::CurSelectTileMap[MapPosition]->SelectInfo.StageText;
-		GEngine->ChangeLevel("SwitchingLevelGameMode");
-		StaticHelper::IsStageChange = false;
+		if (false == AnimationEnd)
+		{
+			if (false == AnimationEndInit)
+			{
+				FadeOut = GetWorld()->GetLastTarget()->AddEffect<UFadeOutEffect>();
+				FadeOut->ResetTime();
+				FadeOut.get()->Active(true);
+				AnimationEndInit = true;
+			}
+			while (CurEndEffectTime >= EndEffectTime)
+			{
+				FadeOut.get()->Active(false);
+				AnimationEnd = true;
+				AnimationEndInit = false;
+				CurEndEffectTime = 0.0f;
+				return;
+			}
+			CurEndEffectTime += _DeltaTime;
+		}
+		else
+		{
+			FINT MapPosition = Selector->GetTilePosition();
+			//StaticHelper::StageName = "Tests08";
+			StaticHelper::StageNumber = StaticHelper::CurSelectTileMap[MapPosition]->SelectInfo.Stage;
+			StaticHelper::StageText = StaticHelper::CurSelectTileMap[MapPosition]->SelectInfo.StageText;
+			GEngine->ChangeLevel("SwitchingLevelGameMode");
+			StaticHelper::IsStageChange = false;
+			return;
+		}
+
+		
 	}
 
 	StageTileMapUpdate(_DeltaTime);
@@ -70,10 +94,6 @@ void AStageSelectGameMode::LevelStart(ULevel* _PrevLevel)
 	std::shared_ptr<UFadeInEffect> FadeIn = GetWorld()->GetLastTarget()->AddEffect<UFadeInEffect>();
 	FadeIn->ResetTime();
 	FadeIn.get()->Active(true);
-
-	/*std::shared_ptr<UFadeOutEffect> FadeOut = GetWorld()->GetLastTarget()->AddEffect<UFadeOutEffect>();
-	FadeOut->ResetTime();
-	FadeOut.get()->Active(true);*/
 }
 
 void AStageSelectGameMode::SetSelectTileMapSize(FINT _SelectTileMapSize)

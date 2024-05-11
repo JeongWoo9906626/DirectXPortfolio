@@ -15,4 +15,6 @@ public:
 	static class ASelector* CurSelector;
 	static bool IsStageNumberChange;
 	static bool IsNumberDestroy;
+	static bool IsStageTextChange;
+	static bool IsTextDestroy;
 };

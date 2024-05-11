@@ -2,6 +2,7 @@
 #include <Enginecore/Actor.h>
 
 // Ό³Έν :
+class TextActor;
 class AStageTextInfo : public AActor
 {
 	GENERATED_BODY(AActor)
@@ -22,8 +23,10 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 private:
-	FVector StartPos = FVector(-280, 108);
+	FVector StartPos = FVector::Zero;
 	FVector AddNext = FVector(60.0f, 0.0f);
 	FVector TitleScale = FVector(200, 200);
+
+	std::vector<TextActor*> TextVector;
 };
 
