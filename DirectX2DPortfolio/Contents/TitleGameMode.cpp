@@ -85,6 +85,7 @@ void ATitleGameMode::LevelEnd(ULevel* _NextLevel)
 {
 	Super::LevelEnd(_NextLevel);
 
+	AnimationEnd = false;
 	BGM.Off();
 }
 
@@ -98,7 +99,6 @@ void ATitleGameMode::LevelStart(ULevel* _PrevLevel)
 
 void ATitleGameMode::LevelChangeEffect(float _DeltaTime)
 {
-	
 	if (false == AnimationEnd)
 	{
 		if (false == AnimationEndInit)
@@ -108,7 +108,7 @@ void ATitleGameMode::LevelChangeEffect(float _DeltaTime)
 			FadeOut.get()->Active(true);
 			AnimationEndInit = true;
 		}
-		while (CurEndEffectTime >= EndEffectTime)
+		if (CurEndEffectTime >= EndEffectTime)
 		{
 			FadeOut.get()->Active(false);
 			AnimationEnd = true;

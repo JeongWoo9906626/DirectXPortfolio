@@ -9,6 +9,7 @@
 #include "MapEditorGUI.h"
 #include "TileMapEditorGameMode.h"
 #include "ContentsGUI.h"
+#include "EndingGameMode.h"
 
 UContentsCore::UContentsCore()
 {
@@ -151,5 +152,6 @@ void UContentsCore::Initialize()
 	GEngine->CreateLevel<ASwitchingLevelGameMode>("SwitchingLevelGameMode");
 	GEngine->CreateLevel<ATestGameMode>("TestLevel");
 	GEngine->CreateLevel<ATileMapEditorGameMode>("TileMapEditorGameMode");
+	GEngine->CreateLevel<AEndingGameMode>("Ending");
 	GEngine->ChangeLevel("TitleLevel");
 }

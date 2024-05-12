@@ -191,6 +191,8 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="EndingGameMode.h" />
+    <ClInclude Include="EndingLogo.h" />
     <ClInclude Include="EnumHelper.h" />
     <ClInclude Include="FadeInEffect.h">
       <SubType>
@@ -418,6 +420,8 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="EndingGameMode.cpp" />
+    <ClCompile Include="EndingLogo.cpp" />
     <ClCompile Include="FadeInEffect.cpp">
       <SubType>
       </SubType>

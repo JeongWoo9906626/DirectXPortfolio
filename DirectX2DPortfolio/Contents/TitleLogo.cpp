@@ -96,5 +96,4 @@ void ATitleLogo::BeginPlay()
 void ATitleLogo::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
-
 }

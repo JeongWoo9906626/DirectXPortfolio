@@ -604,7 +604,7 @@ void AConnectingTile::VerticalAndCheck(FINT _TilePos, ETileType _TileType, ENoun
 
 		if (true == IsUpAnd)
 		{
-			FINT UpNextTile = ExpectedUpAndTile + FINT::LEFT;
+			FINT UpNextTile = ExpectedUpAndTile + FINT::UP;
 			std::list<ATile*> TileActorList = StaticHelper::CurTileMap[UpNextTile];
 			for (ATile* Tile : TileActorList)
 			{

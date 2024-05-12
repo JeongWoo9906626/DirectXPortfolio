@@ -73,6 +73,10 @@ void ASelector::Tick(float _DeltaTime)
 			FVector MoveVector = Lerp(CurMoveTime);
 			SetActorLocation(MoveVector);
 		}
+		else
+		{
+			IsInput = false;
+		}
 	}
 }
 

@@ -26,6 +26,7 @@ protected:
 
 	void SetSelectTileMapSize(FINT _SelectTileMapSize);
 	void StageTileMapUpdate(float _DeltaTime);
+	void AllStageOpen();
 
 private:
 	UEngineSoundPlayer BGM;

@@ -92,6 +92,7 @@ void ASelectTileMap::BeginPlay()
 	StaticHelper::CurSelectTileMap[FINT(6, 6)]->SelectInfo.IsEnter = false;
 	StaticHelper::CurSelectTileMap[FINT(6, 6)]->SelectInfo.Type = ESelectTileType::Stage;
 	StaticHelper::CurSelectTileMap[FINT(6, 6)]->SelectInfo.Stage = "Stage0" + std::to_string(8);
+	StaticHelper::CurSelectTileMap[FINT(6, 6)]->SelectInfo.StageText = "TURNS";
 
 	// Walk
 	int TileNum = 100;

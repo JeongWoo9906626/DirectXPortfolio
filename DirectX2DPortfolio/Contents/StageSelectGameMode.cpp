@@ -44,6 +44,16 @@ void AStageSelectGameMode::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
+	if (true == UEngineInput::IsDown('T'))
+	{
+		AllStageOpen();
+	}
+
+	if (true == StaticHelper::CurSelectTileMap[FINT(6, 6)]->SelectInfo.IsStageClear)
+	{
+		GEngine->ChangeLevel("Ending");
+	}
+
 	if (true == StaticHelper::IsStageChange)
 	{
 		if (false == IsSoundChange)
@@ -85,7 +95,7 @@ void AStageSelectGameMode::Tick(float _DeltaTime)
 			return;
 		}
 
-		
+
 	}
 
 	StageTileMapUpdate(_DeltaTime);
@@ -181,6 +191,57 @@ void AStageSelectGameMode::StageTileMapUpdate(float _DeltaTime)
 				}
 				CurStageOpenTime += _DeltaTime;
 			}
+		}
+	}
+}
+
+void AStageSelectGameMode::AllStageOpen()
+{
+	for (int X = 0; X < FINT::SelectMapSize.X; X++)
+	{
+		for (int Y = 0; Y < FINT::SelectMapSize.Y; Y++)
+		{
+			FINT Current = FINT(X, Y);
+			FINT Up = Current + FINT(0, 1);
+			FINT Right = Current + FINT(1, 0);
+
+			ASelectTile* CurCheck = StaticHelper::CurSelectTileMap[Current];
+			std::string StageName = CurCheck->SelectInfo.Stage;
+
+			if (Up.Y < FINT::SelectMapSize.Y)
+			{
+				if (ESelectTileType::Walk == StaticHelper::CurSelectTileMap[Up]->SelectInfo.Type)
+				{
+					ASelectTile* UpCheck = StaticHelper::CurSelectTileMap[Up];
+					UpCheck->SelectInfo.IsEnter = true;
+					UpCheck->ShowOn();
+				}
+				if (ESelectTileType::Stage == StaticHelper::CurSelectTileMap[Up]->SelectInfo.Type)
+				{
+					ASelectTile* UpCheck = StaticHelper::CurSelectTileMap[Up];
+					UpCheck->SelectInfo.IsEnter = true;
+					UpCheck->ShowOn();
+				}
+			}
+
+			if (Right.X < FINT::SelectMapSize.X)
+			{
+				if (ESelectTileType::Walk == StaticHelper::CurSelectTileMap[Right]->SelectInfo.Type)
+				{
+					ASelectTile* RightCheck = StaticHelper::CurSelectTileMap[Right];
+					RightCheck->SelectInfo.IsEnter = true;
+					RightCheck->ShowOn();
+				}
+
+
+				if (ESelectTileType::Stage == StaticHelper::CurSelectTileMap[Right]->SelectInfo.Type)
+				{
+					ASelectTile* RightCheck = StaticHelper::CurSelectTileMap[Right];
+					RightCheck->SelectInfo.IsEnter = true;
+					RightCheck->ShowOn();
+				}
+			}
+
 		}
 	}
 }

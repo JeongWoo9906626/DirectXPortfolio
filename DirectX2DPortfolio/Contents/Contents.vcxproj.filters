@@ -85,6 +85,12 @@
     <Filter Include="Level\SwitchingLevel\Actor">
       <UniqueIdentifier>{c6bc0de2-c313-4a5f-af8c-9fb992276302}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Level\EndingLevel">
+      <UniqueIdentifier>{029fb090-fc48-4d6c-a268-4059a4330f4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\EndingLevel\Actor">
+      <UniqueIdentifier>{435e3426-d6c9-4ba5-80d5-23f39b2d20d9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ContentsCore.h">
@@ -276,6 +282,12 @@
     <ClInclude Include="CongratulationsText.h">
       <Filter>Actor\ScreenText</Filter>
     </ClInclude>
+    <ClInclude Include="EndingGameMode.h">
+      <Filter>Level\EndingLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="EndingLogo.h">
+      <Filter>Level\EndingLevel\Actor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp">
@@ -463,6 +475,12 @@
     </ClCompile>
     <ClCompile Include="CongratulationsText.cpp">
       <Filter>Actor\ScreenText</Filter>
+    </ClCompile>
+    <ClCompile Include="EndingGameMode.cpp">
+      <Filter>Level\EndingLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="EndingLogo.cpp">
+      <Filter>Level\EndingLevel\Actor</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
