@@ -45,8 +45,6 @@ void ATileMap::BeginPlay()
 	Super::BeginPlay();
 
 	StageText = GetWorld()->SpawnActor<AInfoText>("AInfoText");
-
-	//StaticHelper::CurTileMap = Map;
 }
 
 void ATileMap::Tick(float _DeltaTime)
@@ -96,11 +94,18 @@ void ATileMap::Tick(float _DeltaTime)
 				return;
 			}
 			CurEndEffectTime += _DeltaTime;
+
+			if (false == IsSoundOn)
+			{
+				UEngineSound::SoundPlay("Win.ogg");
+				IsSoundOn = true;
+			}
 		}
 		else
 		{
 			AnimationEnd = false;
 			GameWin = false;
+			IsSoundOn = false;
 			GEngine->ChangeLevel("SelectLevel");
 			StaticHelper::CurSelectTileMap[StaticHelper::CurSelector->GetTilePosition()]->SelectInfo.IsStageClear = true;
 			return;
@@ -227,6 +232,7 @@ void ATileMap::TileMoveSet()
 
 	if (true == IsBack)
 	{
+		Sound = UEngineSound::SoundPlay("MoveBackSound.ogg");
 		std::map<FINT, std::list<ATile*>> NewTileMap;
 		for (std::pair<FINT, std::list<ATile*>> Iterator : StaticHelper::CurTileMap)
 		{
@@ -238,9 +244,11 @@ void ATileMap::TileMoveSet()
 				TileActor->BackMoveSet();
 			}
 		}
+
 	}
 	else
 	{
+		Sound = UEngineSound::SoundPlay("Move.ogg");
 		std::map<FINT, std::list<ATile*>> NewTileMap;
 		for (std::pair<FINT, std::list<ATile*>> Iterator : StaticHelper::CurTileMap)
 		{

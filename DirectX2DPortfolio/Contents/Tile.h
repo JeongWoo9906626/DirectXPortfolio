@@ -254,4 +254,6 @@ private:
 
 	FVector Lerp(float _CurMoveTime);
 	EInputType InputType = EInputType::None;
+
+	bool IsSound = false;
 };

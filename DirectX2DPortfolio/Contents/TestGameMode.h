@@ -32,6 +32,7 @@ protected:
 
 private:
 	UEngineDirectory Dir;
+	UEngineSoundPlayer BGM;
 	void InLevelSpawnTileActor(FINT _TilePos, ESpawnType _Type);
 	std::vector<int> TileData;
 	ATileMap* CurTileMap = nullptr;

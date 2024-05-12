@@ -31,6 +31,9 @@ protected:
 private:
 	UImage* TitleBaba = nullptr;
 
+	UEngineSoundPlayer BGM;
+	UEngineSoundPlayer SelectSound;
+
 	bool IsLevelChange = false;
 
 	std::shared_ptr<UFadeOutEffect> FadeOut;

@@ -46,6 +46,13 @@ void AStageSelectGameMode::Tick(float _DeltaTime)
 
 	if (true == StaticHelper::IsStageChange)
 	{
+		if (false == IsSoundChange)
+		{
+			IsSoundChange = true;
+			BGM.Off();
+			BGM = UEngineSound::SoundPlay("StageEnterSound.ogg");
+		}
+
 		if (false == AnimationEnd)
 		{
 			if (false == AnimationEndInit)
@@ -67,6 +74,8 @@ void AStageSelectGameMode::Tick(float _DeltaTime)
 		}
 		else
 		{
+			AnimationEnd = false;
+			IsSoundChange = false;
 			FINT MapPosition = Selector->GetTilePosition();
 			//StaticHelper::StageName = "Tests08";
 			StaticHelper::StageNumber = StaticHelper::CurSelectTileMap[MapPosition]->SelectInfo.Stage;
@@ -94,6 +103,9 @@ void AStageSelectGameMode::LevelStart(ULevel* _PrevLevel)
 	std::shared_ptr<UFadeInEffect> FadeIn = GetWorld()->GetLastTarget()->AddEffect<UFadeInEffect>();
 	FadeIn->ResetTime();
 	FadeIn.get()->Active(true);
+
+	BGM = UEngineSound::SoundPlay("SelectMapBGM.mp3");
+	BGM.Loop(100);
 }
 
 void AStageSelectGameMode::SetSelectTileMapSize(FINT _SelectTileMapSize)

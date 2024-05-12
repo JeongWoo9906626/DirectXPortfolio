@@ -28,8 +28,12 @@ protected:
 	void StageTileMapUpdate(float _DeltaTime);
 
 private:
+	UEngineSoundPlayer BGM;
+
 	ASelectTileMap* SelectTileMap = nullptr;
 	ASelector* Selector = nullptr;
+
+	bool IsSoundChange = false;
 
 	float StageOpenTime = 0.3f;
 	float CurStageOpenTime = 0.0f;

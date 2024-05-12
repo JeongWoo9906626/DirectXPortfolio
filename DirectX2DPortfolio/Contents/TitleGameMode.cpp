@@ -68,6 +68,8 @@ void ATitleGameMode::Tick(float _DeltaTime)
 			if (-100 == static_cast<int>(TitleBaba->GetLocalPosition().Y))
 			{
 				IsLevelChange = true;
+				BGM.Off();
+				SelectSound = UEngineSound::SoundPlay("Click.ogg");
 			}
 			if (-200 == static_cast<int>(TitleBaba->GetLocalPosition().Y))
 			{
@@ -80,11 +82,16 @@ void ATitleGameMode::Tick(float _DeltaTime)
 void ATitleGameMode::LevelEnd(ULevel* _NextLevel)
 {
 	Super::LevelEnd(_NextLevel);
+
+	
 }
 
 void ATitleGameMode::LevelStart(ULevel* _PrevLevel)
 {
 	Super::LevelStart(_PrevLevel);
+
+	BGM = UEngineSound::SoundPlay("TitleBGM.mp3");
+	BGM.Loop(1000);
 }
 
 void ATitleGameMode::LevelChangeEffect(float _DeltaTime)

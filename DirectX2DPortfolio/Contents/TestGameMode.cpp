@@ -87,6 +87,8 @@ void ATestGameMode::Tick(float _DeltaTime)
 void ATestGameMode::LevelEnd(ULevel* _NextLevel)
 {
 	Super::LevelEnd(_NextLevel);
+	
+	BGM.Off();
 
 	{
 		for (std::pair<FINT, std::list<ATile*>> Iterator : StaticHelper::CurTileMap)
@@ -100,25 +102,14 @@ void ATestGameMode::LevelEnd(ULevel* _NextLevel)
 		}
 		StaticHelper::CurTileMap.clear();
 	}
-
-	/*{
-		for (std::pair<FINT, std::list<ATile*>> Iterator : StaticHelper::CurTileMap)
-		{
-			std::list<ATile*> IteratorList = Iterator.second;
-			for (ATile* IteratorTile : IteratorList)
-			{
-				IteratorTile->Destroy();
-			}
-			IteratorList.clear();
-		}
-		StaticHelper::CurTileMap.clear();
-	}*/
 }
 
 void ATestGameMode::LevelStart(ULevel* _PrevLevel)
 {
 	Super::LevelStart(_PrevLevel);
 	
+	BGM = UEngineSound::SoundPlay("StageBGM.mp3");
+
 	std::shared_ptr<UFadeInEffect> FadeIn = GetWorld()->GetLastTarget()->AddEffect<UFadeInEffect>();
 	FadeIn->ResetTime();
 	FadeIn.get()->Active(true);

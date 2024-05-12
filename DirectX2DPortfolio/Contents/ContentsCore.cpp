@@ -121,6 +121,17 @@ void UContentsCore::Initialize()
 
 	{
 		UEngineDirectory Dir;
+		Dir.MoveToSearchChild("ContentsResources");
+		Dir.Move("Sound");
+		std::vector<UEngineFile> Files = Dir.GetAllFile({ ".ogg", ".mp3" });
+		for (UEngineFile& File : Files)
+		{
+			UEngineSound::Load(File.GetFullPath());
+		}
+	}
+
+	{
+		UEngineDirectory Dir;
 		Dir.MoveToSearchChild("ContentsShader");
 		UEngineShader::AutoCompile(Dir);
 	}

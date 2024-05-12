@@ -48,6 +48,9 @@ protected:
 	bool ControllerCheck();
 
 private:
+	UEngineSoundPlayer Sound;
+	UEngineSoundPlayer StateSound;
+
 	FINT MapSize = FINT();
 	EInputType Input = EInputType::None;
 
@@ -58,6 +61,7 @@ private:
 
 	bool BeforeResult = false;
 	bool GameWin = false;
+	bool IsSoundOn = false;
 	
 	float CurEndEffectTime = 0.0f;
 	float EndEffectTime = 2.0f;
