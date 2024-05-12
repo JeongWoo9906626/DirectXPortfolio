@@ -46,11 +46,18 @@ void ASelector::Tick(float _DeltaTime)
 	if (false == IsInput)
 	{
 		InputCheck();
+		IsSound = false;
 	}
 	else
 	{
 		if (true == IsMove)
 		{
+			if (false == IsSound)
+			{
+				IsSound = true;
+				Sound = UEngineSound::SoundPlay("Move.ogg");
+			}
+
 			if (CurMoveTime <= 0.0f)
 			{
 				IsMove = false;
@@ -65,10 +72,6 @@ void ASelector::Tick(float _DeltaTime)
 
 			FVector MoveVector = Lerp(CurMoveTime);
 			SetActorLocation(MoveVector);
-		}
-		else
-		{
-			IsInput = false;
 		}
 	}
 }

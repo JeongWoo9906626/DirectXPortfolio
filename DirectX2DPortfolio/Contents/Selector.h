@@ -30,6 +30,9 @@ protected:
 	USpriteRenderer* Renderer = nullptr;
 	
 private:
+	UEngineSoundPlayer Sound;
+	bool IsSound = false;
+
 	bool IsInput = false;
 	bool IsMove = false;
 	FINT PrevPos = FINT();
