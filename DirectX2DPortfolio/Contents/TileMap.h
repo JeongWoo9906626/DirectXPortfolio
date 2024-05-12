@@ -48,6 +48,7 @@ protected:
 	bool ControllerCheck();
 
 private:
+	UEngineSoundPlayer BGM;
 	UEngineSoundPlayer Sound;
 	UEngineSoundPlayer StateSound;
 
@@ -73,5 +74,9 @@ private:
 	bool AnimationEndInit = false;
 	std::shared_ptr<UFadeOutEffect> FadeOut;
 	std::shared_ptr<AInfoText> StageText;
+
+	bool IsBGMFirst = false;
+	bool IsBGMOff = false;
+	bool IsBGMOn = false;
 };
 

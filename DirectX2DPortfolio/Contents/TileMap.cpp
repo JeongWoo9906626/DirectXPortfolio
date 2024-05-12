@@ -51,8 +51,21 @@ void ATileMap::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
+	if (false == IsBGMFirst)
+	{
+		IsBGMFirst = true;
+		BGM = UEngineSound::SoundPlay("StageBGM.mp3");
+		BGM.Loop(1000);
+	}
+
 	if (false == ControllerCheck())
 	{
+		if (false == IsBGMOff)
+		{
+			IsBGMOn = false;
+			IsBGMOff = true;
+			BGM.Off();
+		}
 		if (CurInfoTextTime > InfoTextTime)
 		{
 			CurInfoTextTime = 0.0f;
@@ -65,6 +78,12 @@ void ATileMap::Tick(float _DeltaTime)
 	}
 	else
 	{
+		if (false == IsBGMOn)
+		{
+			IsBGMOn = true;
+			IsBGMOff = false;
+			BGM.On();
+		}
 		StageText->RenderOff();
 	}
 
@@ -103,9 +122,11 @@ void ATileMap::Tick(float _DeltaTime)
 		}
 		else
 		{
+			BGM.Off();
 			AnimationEnd = false;
 			GameWin = false;
 			IsSoundOn = false;
+			IsBGMFirst = false;
 			GEngine->ChangeLevel("SelectLevel");
 			StaticHelper::CurSelectTileMap[StaticHelper::CurSelector->GetTilePosition()]->SelectInfo.IsStageClear = true;
 			return;

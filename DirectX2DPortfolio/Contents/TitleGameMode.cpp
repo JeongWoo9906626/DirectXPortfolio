@@ -58,10 +58,12 @@ void ATitleGameMode::Tick(float _DeltaTime)
 		if (true == UEngineInput::IsDown(VK_UP))
 		{
 			TitleBaba->SetPosition(FVector(-330, -100));
+			UEngineSound::SoundPlay("OptionSelectSound.ogg");
 		}
 		if (true == UEngineInput::IsDown(VK_DOWN))
 		{
 			TitleBaba->SetPosition(FVector(-330, -200));
+			UEngineSound::SoundPlay("OptionSelectSound.ogg");
 		}
 		if (true == UEngineInput::IsDown(VK_SPACE))
 		{
@@ -83,7 +85,7 @@ void ATitleGameMode::LevelEnd(ULevel* _NextLevel)
 {
 	Super::LevelEnd(_NextLevel);
 
-	
+	BGM.Off();
 }
 
 void ATitleGameMode::LevelStart(ULevel* _PrevLevel)

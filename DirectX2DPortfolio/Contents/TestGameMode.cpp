@@ -107,8 +107,6 @@ void ATestGameMode::LevelEnd(ULevel* _NextLevel)
 void ATestGameMode::LevelStart(ULevel* _PrevLevel)
 {
 	Super::LevelStart(_PrevLevel);
-	
-	BGM = UEngineSound::SoundPlay("StageBGM.mp3");
 
 	std::shared_ptr<UFadeInEffect> FadeIn = GetWorld()->GetLastTarget()->AddEffect<UFadeInEffect>();
 	FadeIn->ResetTime();

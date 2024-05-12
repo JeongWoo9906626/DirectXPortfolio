@@ -94,6 +94,7 @@ void AStageSelectGameMode::Tick(float _DeltaTime)
 void AStageSelectGameMode::LevelEnd(ULevel* _NextLevel)
 {
 	Super::LevelEnd(_NextLevel);
+	BGM.Off();
 }
 
 void AStageSelectGameMode::LevelStart(ULevel* _PrevLevel)
