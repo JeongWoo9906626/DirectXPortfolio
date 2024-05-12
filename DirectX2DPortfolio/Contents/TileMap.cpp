@@ -56,6 +56,9 @@ void ATileMap::Tick(float _DeltaTime)
 		IsBGMFirst = true;
 		BGM = UEngineSound::SoundPlay("StageBGM.mp3");
 		BGM.Loop(1000);
+		DeadBGM = UEngineSound::SoundPlay("GameOver.ogg");
+		DeadBGM.Loop(1000);
+		DeadBGM.Off();
 	}
 
 	if (false == ControllerCheck())
@@ -65,6 +68,7 @@ void ATileMap::Tick(float _DeltaTime)
 			IsBGMOn = false;
 			IsBGMOff = true;
 			BGM.Off();
+			DeadBGM.On();
 		}
 		if (CurInfoTextTime > InfoTextTime)
 		{
@@ -83,6 +87,7 @@ void ATileMap::Tick(float _DeltaTime)
 			IsBGMOn = true;
 			IsBGMOff = false;
 			BGM.On();
+			DeadBGM.Off();
 		}
 		StageText->RenderOff();
 	}

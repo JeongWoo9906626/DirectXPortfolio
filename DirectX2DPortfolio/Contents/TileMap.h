@@ -49,6 +49,7 @@ protected:
 
 private:
 	UEngineSoundPlayer BGM;
+	UEngineSoundPlayer DeadBGM;
 	UEngineSoundPlayer Sound;
 	UEngineSoundPlayer StateSound;
 
