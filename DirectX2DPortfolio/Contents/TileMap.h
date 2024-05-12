@@ -7,6 +7,7 @@
 class ATile;
 class UFadeOutEffect;
 class AInfoText;
+class ACongratulationsText;
 class ATileMap : public AActor
 {
 	GENERATED_BODY(AActor)
@@ -79,5 +80,11 @@ private:
 	bool IsBGMFirst = false;
 	bool IsBGMOff = false;
 	bool IsBGMOn = false;
+
+	std::shared_ptr<ACongratulationsText> ConText;
+
+	bool IsConTextRender = false;
+	float ConTextTime = 0.5f;
+	float CurConTextTime = 0.0f;
 };
 

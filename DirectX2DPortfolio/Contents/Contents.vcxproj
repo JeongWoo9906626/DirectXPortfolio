@@ -177,6 +177,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="CongratulationsText.h" />
     <ClInclude Include="ContentsCore.h">
       <SubType>
       </SubType>
@@ -403,6 +404,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="CongratulationsText.cpp" />
     <ClCompile Include="ContentsCore.cpp">
       <SubType>
       </SubType>

@@ -273,6 +273,9 @@
     <ClInclude Include="StageTextInfo.h">
       <Filter>Level\SwitchingLevel\Actor</Filter>
     </ClInclude>
+    <ClInclude Include="CongratulationsText.h">
+      <Filter>Actor\ScreenText</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp">
@@ -457,6 +460,9 @@
     </ClCompile>
     <ClCompile Include="StageTextInfo.cpp">
       <Filter>Level\SwitchingLevel\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="CongratulationsText.cpp">
+      <Filter>Actor\ScreenText</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

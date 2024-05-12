@@ -27,6 +27,7 @@
 #include "SelectTile.h"
 #include "FadeOutEffect.h"
 #include "InfoText.h"
+#include "CongratulationsText.h"
 
 
 
@@ -45,6 +46,8 @@ void ATileMap::BeginPlay()
 	Super::BeginPlay();
 
 	StageText = GetWorld()->SpawnActor<AInfoText>("AInfoText");
+	ConText = GetWorld()->SpawnActor<ACongratulationsText>("CongratulationsText");
+	ConText->RenderOff();
 }
 
 void ATileMap::Tick(float _DeltaTime)
@@ -100,42 +103,60 @@ void ATileMap::Tick(float _DeltaTime)
 	if (true == GameWin)
 	{
 		IsInput = true;
-		if (false == AnimationEnd)
-		{
-			if (false == AnimationEndInit)
-			{
-				FadeOut = GetWorld()->GetLastTarget()->AddEffect<UFadeOutEffect>();
-				FadeOut->ResetTime();
-				FadeOut.get()->Active(true);
-				AnimationEndInit = true;
-			}
-			while (CurEndEffectTime >= EndEffectTime)
-			{
-				FadeOut.get()->Active(false);
-				AnimationEnd = true;
-				AnimationEndInit = false;
-				CurEndEffectTime = 0.0f;
-				return;
-			}
-			CurEndEffectTime += _DeltaTime;
 
-			if (false == IsSoundOn)
+		if (CurConTextTime >= ConTextTime)
+		{
+			if (false == AnimationEnd)
 			{
-				UEngineSound::SoundPlay("Win.ogg");
-				IsSoundOn = true;
+				if (false == AnimationEndInit)
+				{
+					ConText->RenderOn();
+					FadeOut = GetWorld()->GetLastTarget()->AddEffect<UFadeOutEffect>();
+					FadeOut->ResetTime();
+					FadeOut.get()->Active(true);
+					AnimationEndInit = true;
+				}
+				while (CurEndEffectTime >= EndEffectTime)
+				{
+					FadeOut.get()->Active(false);
+					AnimationEnd = true;
+					AnimationEndInit = false;
+					CurEndEffectTime = 0.0f;
+					return;
+				}
+				CurEndEffectTime += _DeltaTime;
+
+				if (false == IsSoundOn)
+				{
+					UEngineSound::SoundPlay("Win.ogg");
+					IsSoundOn = true;
+				}
+			}
+			else
+			{
+				ConText->RenderOff();
+				IsConTextRender = false;
+				CurConTextTime = 0.0f;
+				BGM.Off();
+				AnimationEnd = false;
+				GameWin = false;
+				IsSoundOn = false;
+				IsBGMFirst = false;
+				GEngine->ChangeLevel("SelectLevel");
+				StaticHelper::CurSelectTileMap[StaticHelper::CurSelector->GetTilePosition()]->SelectInfo.IsStageClear = true;
+				return;
 			}
 		}
 		else
 		{
-			BGM.Off();
-			AnimationEnd = false;
-			GameWin = false;
-			IsSoundOn = false;
-			IsBGMFirst = false;
-			GEngine->ChangeLevel("SelectLevel");
-			StaticHelper::CurSelectTileMap[StaticHelper::CurSelector->GetTilePosition()]->SelectInfo.IsStageClear = true;
-			return;
+			if (false == IsConTextRender)
+			{
+				IsConTextRender = true;
+				ConText->RenderOn();
+			}
+			CurConTextTime += _DeltaTime;
 		}
+
 	}
 
 
