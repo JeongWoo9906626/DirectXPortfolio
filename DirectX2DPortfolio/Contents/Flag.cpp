@@ -24,7 +24,7 @@ void AFlag::BeginPlay()
 	Renderer->CreateAnimation("Off", "Flag.png", AnimationInterIndex, AnimationOffFrameIndex, true);
 	
 	Renderer->ChangeAnimation("On");
-	Renderer->SetOrder(ERenderOrder::Object);
+	Renderer->SetOrder(ERenderOrder::Flag);
 
 	SetActorType(ETileType::Flag);
 	SetNounType(ENounType::None);

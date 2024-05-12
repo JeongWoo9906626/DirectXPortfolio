@@ -7,6 +7,7 @@ enum class ERenderOrder
 	BackObject,
 	Object,
 	Words,
+	Flag,
 	Player,
 	Effect,
 	None,

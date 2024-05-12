@@ -24,8 +24,8 @@ protected:
 
 private:
 	FVector StartPos = FVector::Zero;
-	FVector AddNext = FVector(60.0f, 0.0f);
-	FVector TitleScale = FVector(200, 200);
+	FVector AddNext = FVector(65.0f, 0.0f);
+	FVector TitleScale = FVector(130, 200);
 
 	std::vector<TextActor*> TextVector;
 };
