@@ -10,12 +10,6 @@
     <Filter Include="Level">
       <UniqueIdentifier>{e9f62990-0fe6-4ce5-96f1-e0093f11c78e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Level\PlayLevel">
-      <UniqueIdentifier>{14f4b457-2fc7-417d-8670-5bfa698ae219}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\PlayLevel\Actor">
-      <UniqueIdentifier>{958d59fb-0361-4197-98cd-563e4d473954}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Level\TitleLevel">
       <UniqueIdentifier>{b6701d10-7d3c-4406-ba60-876ec93384b7}</UniqueIdentifier>
     </Filter>
@@ -99,20 +93,11 @@
     <ClInclude Include="PreCompile.h">
       <Filter>PreCompile</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Level\PlayLevel\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayGameMode.h">
-      <Filter>Level\PlayLevel</Filter>
-    </ClInclude>
     <ClInclude Include="TitleGameMode.h">
       <Filter>Level\TitleLevel</Filter>
     </ClInclude>
     <ClInclude Include="TitleLogo.h">
       <Filter>Level\TitleLevel\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayBack.h">
-      <Filter>Level\PlayLevel\Actor</Filter>
     </ClInclude>
     <ClInclude Include="StageSelectGameMode.h">
       <Filter>Level\StageSelectLevel</Filter>
@@ -296,20 +281,11 @@
     <ClCompile Include="PreCompile.cpp">
       <Filter>PreCompile</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Level\PlayLevel\Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayGameMode.cpp">
-      <Filter>Level\PlayLevel</Filter>
-    </ClCompile>
     <ClCompile Include="TitleGameMode.cpp">
       <Filter>Level\TitleLevel</Filter>
     </ClCompile>
     <ClCompile Include="TitleLogo.cpp">
       <Filter>Level\TitleLevel\Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayBack.cpp">
-      <Filter>Level\PlayLevel\Actor</Filter>
     </ClCompile>
     <ClCompile Include="StageSelectGameMode.cpp">
       <Filter>Level\StageSelectLevel</Filter>
